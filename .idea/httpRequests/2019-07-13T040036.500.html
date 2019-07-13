@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head><title>HTTP Status 500 – Internal Server Error</title>
+  <style type="text/css">H1 {
+    font-family: Tahoma, Arial, sans-serif;
+    color: white;
+    background-color: #525D76;
+    font-size: 22px;
+  }
+
+  H2 {
+    font-family: Tahoma, Arial, sans-serif;
+    color: white;
+    background-color: #525D76;
+    font-size: 16px;
+  }
+
+  H3 {
+    font-family: Tahoma, Arial, sans-serif;
+    color: white;
+    background-color: #525D76;
+    font-size: 14px;
+  }
+
+  BODY {
+    font-family: Tahoma, Arial, sans-serif;
+    color: black;
+    background-color: white;
+  }
+
+  B {
+    font-family: Tahoma, Arial, sans-serif;
+    color: white;
+    background-color: #525D76;
+  }
+
+  P {
+    font-family: Tahoma, Arial, sans-serif;
+    background: white;
+    color: black;
+    font-size: 12px;
+  }
+
+  A {
+    color: black;
+  }
+
+  A.name {
+    color: black;
+  }
+
+  HR {
+    color: #525D76;
+  }</style>
+</head>
+<body><h1>HTTP Status 500 – Internal Server Error</h1>
+<hr class="line"/>
+<p><b>Type</b> Exception Report</p>
+<p><b>Message</b> Request processing failed; nested exception is
+  org.springframework.dao.DataIntegrityViolationException: </p>
+<p><b>Description</b> The server encountered an unexpected condition that prevented it from fulfilling the request.</p>
+<p><b>Exception</b>
+<pre>org.springframework.web.util.NestedServletException: Request processing failed; nested exception is org.springframework.dao.DataIntegrityViolationException:
+### Error updating database.  Cause: java.sql.SQLException: Field 'id' doesn't have a default value
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: insert into user(user_name, user_password, user_class, integral, email, student_no, creation_time)         value (?, ?, ?, ?, ?, ?, now())
+### Cause: java.sql.SQLException: Field 'id' doesn't have a default value
+; SQL []; Field 'id' doesn't have a default value; nested exception is java.sql.SQLException: Field 'id' doesn't have a default value
+	org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:982)
+	org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:872)
+	javax.servlet.http.HttpServlet.service(HttpServlet.java:650)
+	org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	javax.servlet.http.HttpServlet.service(HttpServlet.java:731)
+	org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+</pre>
+</p><p><b>Root Cause</b>
+<pre>org.springframework.dao.DataIntegrityViolationException:
+### Error updating database.  Cause: java.sql.SQLException: Field 'id' doesn't have a default value
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: insert into user(user_name, user_password, user_class, integral, email, student_no, creation_time)         value (?, ?, ?, ?, ?, ?, now())
+### Cause: java.sql.SQLException: Field 'id' doesn't have a default value
+; SQL []; Field 'id' doesn't have a default value; nested exception is java.sql.SQLException: Field 'id' doesn't have a default value
+	org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:243)
+	org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:73)
+	org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:74)
+	org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:399)
+	com.sun.proxy.$Proxy24.insert(Unknown Source)
+	org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:253)
+	org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:52)
+	org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:53)
+	com.sun.proxy.$Proxy25.addUser(Unknown Source)
+	cn.chen.service.impl.UserDaoServiceImpl.addUser(UserDaoServiceImpl.java:18)
+	cn.chen.controller.UserController.register(UserController.java:49)
+	sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	java.lang.reflect.Method.invoke(Method.java:498)
+	org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:133)
+	org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:97)
+	org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827)
+	org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738)
+	org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)
+	org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:967)
+	org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901)
+	org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:872)
+	javax.servlet.http.HttpServlet.service(HttpServlet.java:650)
+	org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	javax.servlet.http.HttpServlet.service(HttpServlet.java:731)
+	org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+</pre>
+</p><p><b>Root Cause</b>
+<pre>java.sql.SQLException: Field 'id' doesn't have a default value
+	com.mysql.jdbc.SQLError.createSQLException(SQLError.java:998)
+	com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3835)
+	com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3771)
+	com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2435)
+	com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2582)
+	com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2535)
+	com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1911)
+	com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1203)
+	org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:45)
+	org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:73)
+	org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:49)
+	org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:115)
+	org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:75)
+	org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:170)
+	org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:157)
+	sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	java.lang.reflect.Method.invoke(Method.java:498)
+	org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:386)
+	com.sun.proxy.$Proxy24.insert(Unknown Source)
+	org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:253)
+	org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:52)
+	org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:53)
+	com.sun.proxy.$Proxy25.addUser(Unknown Source)
+	cn.chen.service.impl.UserDaoServiceImpl.addUser(UserDaoServiceImpl.java:18)
+	cn.chen.controller.UserController.register(UserController.java:49)
+	sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	java.lang.reflect.Method.invoke(Method.java:498)
+	org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:133)
+	org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:97)
+	org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827)
+	org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738)
+	org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)
+	org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:967)
+	org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901)
+	org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:872)
+	javax.servlet.http.HttpServlet.service(HttpServlet.java:650)
+	org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	javax.servlet.http.HttpServlet.service(HttpServlet.java:731)
+	org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+</pre>
+</p><p><b>Note</b> The full stack trace of the root cause is available in the server logs.</p>
+<hr class="line"/>
+<h3>Apache Tomcat/7.0.91</h3></body>
+</html>

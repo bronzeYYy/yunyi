@@ -1,0 +1,892 @@
+POST http://localhost:8080/user/register/send
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+studentNo=1232131&userName=llfudgg&userPassword=1231123&userClass=计算机&email=1769178812@qq.com&code=FSCFCWON
+
+<> 2019-07-13T062038.200.json
+
+###
+
+POST http://localhost:8080/user/register/send
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+studentNo=1232131&userName=llfudgg&userPassword=1231123&userClass=计算机&email=1769178812@qq.com&code=FSCFCWON
+
+<> 2019-07-13T062020.200.json
+
+###
+
+POST http://localhost:8080/user/register/send
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+studentNo=1232131&userName=llfudgg&userPassword=1231123&userClass=计算机&email=1769178812@qq.com&code=FSCFCWON
+
+<> 2019-07-13T061832.500.html
+
+###
+
+POST http://localhost:8080/user/register/send
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+studentNo=1232131&userName=llfudgg&userPassword=1231123&userClass=计算机&email=1769178812@qq.com&code=FSCFCWON
+
+<> 2019-07-13T061732.200.json
+
+###
+
+POST http://localhost:8080/user/register/send
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+studentNo=1232131&userName=llfudgg&userPassword=1231123&userClass=计算机&email=1769178812&code=FSCFCWON
+
+<> 2019-07-13T060702.200.json
+
+###
+
+POST http://localhost:8080/user/register/send
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+studentNo=1232131&userName=llfudgg&userPassword=1231123&userClass=计算机&email=1769178812@qq.c&code=FSCFCWON
+
+<> 2019-07-13T060700.200.json
+
+###
+
+POST http://localhost:8080/user/register/send
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+studentNo=1232131&userName=llfudgg&userPassword=1231123&userClass=计算机&email=1769178812@qqcom&code=FSCFCWON
+
+<> 2019-07-13T060652.200.json
+
+###
+
+POST http://localhost:8080/user/register/send
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+studentNo=1232131&userName=llfudgg&userPassword=1231123&userClass=计算机&email=1769178812qq.com&code=FSCFCWON
+
+<> 2019-07-13T060646.200.json
+
+###
+
+POST http://localhost:8080/user/register
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+studentNo=1232131&userName=llfudgg&userPassword=1231123&userClass=计算机&email=1769178812@qq.com&code=FSCFCWON
+
+<> 2019-07-13T060356.200.json
+
+###
+
+POST http://localhost:8080/user/register
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+studentNo=1232131&userName=llfudgg&userPassword=1231123&userClass=计算机&email=1769178812@qq.com&code=FSCFCWON
+
+<> 2019-07-13T060238.200.json
+
+###
+
+POST http://localhost:8080/user/register
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+studentNo=1232131&userName=llfudgg&userPassword=1231123&userClass=计算机&email=1769178812@qq.com&code=FSCFCWON
+
+<> 2019-07-13T060041.200.json
+
+###
+
+POST http://localhost:8080/user/register
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+studentNo=1232131&userName=llfudgg&userPassword=1231123&userClass=计算机&email=1769178812@qq.com&code=FSCFCWON
+
+<> 2019-07-13T055724.200.json
+
+###
+
+POST http://localhost:8080/user/register
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+studentNo=1232131&userName=llfudgg&userPassword=1231123&userClass=计算机&email=1769178812@qq.com&code=FSCFCWON
+
+<> 2019-07-13T055238.200.json
+
+###
+
+POST http://localhost:8080/user/register
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+studentNo=1232131&userName=llfudgg&userPassword=1231123&userClass=计算机&email=1769178812@qq.com&code=FSCFCWON
+
+<> 2019-07-13T054942.500.html
+
+###
+
+POST http://localhost:8080/user/register
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+studentNo=1232131&userName=llfudgg&userPassword=1231123&userClass=计算机&email=1769178812@qq.com&code=FSCFCWON
+
+<> 2019-07-13T054348.200.json
+
+###
+
+POST http://localhost:8080/user/register
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+studentNo=1232131&userName=llfudgg&userPassword=1231123&userClass=计算机&email=17691178812@qq.com&code=FSCFCWON
+
+<> 2019-07-13T054305.200.json
+
+###
+
+POST http://localhost:8080/user/register
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+studentNo=1232131&userName=张三李llfdgg&userPassword=1231123&userClass=计算机&email=17691178812@qq.com&code=FSCFCWON
+
+<> 2019-07-13T054259.200.json
+
+###
+
+POST http://localhost:8080/user/register
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+studentNo=1232131&userName=张三李llfdggdgfdgfd&userPassword=1231123&userClass=计算机&email=17691178812@qq.com&code=FSCFCWON
+
+<> 2019-07-13T054255.200.json
+
+###
+
+POST http://localhost:8080/user/register
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+studentNo=1232131&userName=张三李llfdg&userPassword=1231123&userClass=计算机&email=17691178812@qq.com&code=FSCFCWON
+
+<> 2019-07-13T054251.200.json
+
+###
+
+POST http://localhost:8080/user/register
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+studentNo=1232131&userName=张三李ll&userPassword=1231123&userClass=计算机&email=17691178812@qq.com&code=FSCFCWON
+
+<> 2019-07-13T054239.200.json
+
+###
+
+POST http://localhost:8080/user/register
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+studentNo=1232131&userName=张三李ll&userPassword=123123&userClass=计算机&email=17691178812@qq.com&code=FSCFCWON
+
+<> 2019-07-13T054235.200.json
+
+###
+
+POST http://localhost:8080/user/register
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+studentNo=1232131&userName=张三李ll&userPassword=123123&userClass=计算机&email=1769178812@qq.com&code=FSCFCWON
+
+<> 2019-07-13T054230.200.json
+
+###
+
+POST http://localhost:8080/user/register
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+studentNo=1232131&userName=张三李ll&userPassword=123123&userClass=计算机&email=1769178812@qq.com&code=FSCFCWON
+
+<> 2019-07-13T054228.200.json
+
+###
+
+POST http://localhost:8080/user/register
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+studentNo=1232131&userName=张三李ll&userPassword=123123&userClass=计算机&email=1769178812@qq.com&code=FSCFCWON
+
+<> 2019-07-13T054210.200.json
+
+###
+
+POST http://localhost:8080/user/register
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+
+studentNo=1232131&userName=张三李ll&userPassword=123123&userClass=计算机&email=1769178812@qq.com&code=FSCFCWON
+
+<> 2019-07-13T054203.200.json
+
+###
+
+POST http://localhost:8080/user/register
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+studentNo=1232131&userName=张三李ll&userPassword=123123&userClass=计算机&email=1769178812@qq.com&code=FSCFCWON
+
+<> 2019-07-13T054136.200.json
+
+###
+
+POST http://localhost:8080/user/register
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+studentNo=1232131&userName=张三李ll&userPassword=123123&userClass=计算机&email=1769178812@qq.com&code=FSCFCWON
+
+<> 2019-07-13T054118.200.json
+
+###
+
+POST http://localhost:8080/user/register
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+studentNo=1232131&userName=张三李ll&userPassword=123123&userClass=计算机&email=1769178812@qq.com&code=FSCFCWON
+
+<> 2019-07-13T054054.200.json
+
+###
+
+POST http://localhost:8080/user/register
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+studentNo=12321231&userName=张三李ll&userPassword=123123&userClass=计算机&email=1769178812@qq.com&code=FSCFCWON
+
+<> 2019-07-13T054043.200.json
+
+###
+
+POST http://localhost:8080/user/register
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+studentNo=12321231&userName=张三李四去lll&userPassword=123123&userClass=计算机&email=1769178812@qq.com&code=FSCFCWON
+
+<> 2019-07-13T054018.200.json
+
+###
+
+POST http://localhost:8080/user/register
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+studentNo=12321&userName=张三李四去lll&userPassword=123123&userClass=计算机&email=1769178812@qq.com&code=FSCFCWON
+
+<> 2019-07-13T054012.200.json
+
+###
+
+POST http://localhost:8080/user/register
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+studentNo=12321&userName=张三李四去l&userPassword=123123&userClass=计算机&email=1769178812@qq.com&code=FSCFCWON
+
+<> 2019-07-13T053954.200.json
+
+###
+
+POST http://localhost:8080/user/register
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+studentNo=12321&userName=张三李四去&userPassword=123123&userClass=计算机&email=1769178812@qq.com&code=FSCFCWON
+
+<> 2019-07-13T053943.200.json
+
+###
+
+POST http://localhost:8080/user/register/send
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+email=1769178812@qq.com&no=123211
+
+<> 2019-07-13T053911.200.json
+
+###
+
+POST http://localhost:8080/user/login/forget
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+email=1769178812@qq.com&no=123211
+
+<> 2019-07-13T053039.200.json
+
+###
+
+POST http://localhost:8080/user/login/forget
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+email=1769178812@qq.com&no=12321
+
+<> 2019-07-13T053031.200.json
+
+###
+
+POST http://localhost:8080/user/login/forget
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+email=1769178812@qq.com&no=12321
+
+<> 2019-07-13T053008.200.json
+
+###
+
+POST http://localhost:8080/user/login/forget
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+email=1769178812@qq.com&no=123123
+
+<> 2019-07-13T052953.200.json
+
+###
+
+POST http://localhost:8080/user/login/forget
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+
+email=1769178812@qq.com&no=123123
+
+<> 2019-07-13T052936.200.json
+
+###
+
+POST http://localhost:8080/user/login/forget
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+
+email=1769178812@qq.com&no=123123
+
+<> 2019-07-13T052825.200.json
+
+###
+
+POST http://localhost:8080/user/forget
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+
+email=1769178812@qq.com&no=123123
+
+<> 2019-07-13T052817.404.html
+
+###
+
+POST http://localhost:8080/user/forget
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+
+email=1769178812@qq.com&no=123123
+
+<> 2019-07-13T052719-1.404.html
+
+###
+
+POST http://localhost:8080/user/forget
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+
+email=1769178812@qq.com&no=123123
+
+<> 2019-07-13T052719.404.html
+
+###
+
+POST http://localhost:8080/user/foget
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+
+email=1769178812@qq.com&no=123123
+
+<> 2019-07-13T052713.404.html
+
+###
+
+POST http://localhost:8080/user/register
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+
+email=1769178812@qq.com&no=123123
+
+<> 2019-07-13T052659.200.json
+
+###
+
+POST http://localhost:8080/user/register
+Content-Type: application/x-www-form-urlencoded
+
+studentNo=12321&userName=张三&userPassword=123123&userClass=计算机&email=1769178812@qq.com&code=HXMMVMNO
+
+<> 2019-07-13T040109.200.json
+
+###
+
+POST http://localhost:8080/user/register
+Content-Type: application/x-www-form-urlencoded
+
+studentNo=12321&userName=张三&userPassword=123123&userClass=计算机&email=1769178812@qq.com&code=HXMMVMNO
+
+<> 2019-07-13T040036.500.html
+
+###
+
+POST http://localhost:8080/user/register
+Content-Type: application/x-www-form-urlencoded
+
+studentNo=12321&userName=张三&userPassword=123123&userClass=计算机&email=1769178812@qq.com&code=DDOOHARX
+
+<> 2019-07-13T035208.200.json
+
+###
+
+POST http://localhost:8080/user/register
+Content-Type: application/x-www-form-urlencoded
+
+studentNo=12321&userName=张三&userPassword=123123&userClass=计算机&email=1769178812@qq.com&code=SWFHQPXC
+
+<> 2019-07-13T035040.200.json
+
+###
+
+POST http://localhost:8080/user/register
+Content-Type: application/x-www-form-urlencoded
+
+studentNo=12321&userName=张三&userPassword=123123&userClass=计算机&email=1769178812@qq.com&code=SWFHQPXC
+
+<> 2019-07-13T034940.200.json
+
+###
+

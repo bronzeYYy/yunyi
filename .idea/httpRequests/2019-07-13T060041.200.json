@@ -1,0 +1,4 @@
+{
+  "code": -1,
+  "msg": "\r\n### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '1769178812@qq.com' for key 'email'\r\n### The error may involve defaultParameterMap\r\n### The error occurred while setting parameters\r\n### SQL: insert into user(user_name, user_password, user_class, integral, email, student_no, creation_time)         value (?, ?, ?, ?, ?, ?, now())\r\n### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '1769178812@qq.com' for key 'email'\n; SQL []; Duplicate entry '1769178812@qq.com' for key 'email'; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '1769178812@qq.com' for key 'email'"
+}

@@ -1,0 +1,4 @@
+{
+  "code": -1,
+  "msg": "Failed messages: com.sun.mail.smtp.SMTPSendFailedException: 553 Mail from must equal authorized user\n"
+}

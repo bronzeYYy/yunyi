@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head><title>HTTP Status 500 – Internal Server Error</title>
+  <style type="text/css">H1 {
+    font-family: Tahoma, Arial, sans-serif;
+    color: white;
+    background-color: #525D76;
+    font-size: 22px;
+  }
+
+  H2 {
+    font-family: Tahoma, Arial, sans-serif;
+    color: white;
+    background-color: #525D76;
+    font-size: 16px;
+  }
+
+  H3 {
+    font-family: Tahoma, Arial, sans-serif;
+    color: white;
+    background-color: #525D76;
+    font-size: 14px;
+  }
+
+  BODY {
+    font-family: Tahoma, Arial, sans-serif;
+    color: black;
+    background-color: white;
+  }
+
+  B {
+    font-family: Tahoma, Arial, sans-serif;
+    color: white;
+    background-color: #525D76;
+  }
+
+  P {
+    font-family: Tahoma, Arial, sans-serif;
+    background: white;
+    color: black;
+    font-size: 12px;
+  }
+
+  A {
+    color: black;
+  }
+
+  A.name {
+    color: black;
+  }
+
+  HR {
+    color: #525D76;
+  }</style>
+</head>
+<body><h1>HTTP Status 500 – Internal Server Error</h1>
+<hr class="line"/>
+<p><b>Type</b> Exception Report</p>
+<p><b>Message</b> Request processing failed; nested exception is java.lang.NullPointerException</p>
+<p><b>Description</b> The server encountered an unexpected condition that prevented it from fulfilling the request.</p>
+<p><b>Exception</b>
+<pre>org.springframework.web.util.NestedServletException: Request processing failed; nested exception is java.lang.NullPointerException
+	org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:982)
+	org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:872)
+	javax.servlet.http.HttpServlet.service(HttpServlet.java:650)
+	org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	javax.servlet.http.HttpServlet.service(HttpServlet.java:731)
+	org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+</pre>
+</p><p><b>Root Cause</b>
+<pre>java.lang.NullPointerException
+	cn.chen.dao.JedisDaoImpl.setRandomCode(JedisDaoImpl.java:31)
+	cn.chen.controller.UserController.sendEmail(UserController.java:103)
+	cn.chen.controller.UserController.send(UserController.java:80)
+	sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	java.lang.reflect.Method.invoke(Method.java:498)
+	org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:133)
+	org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:97)
+	org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827)
+	org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738)
+	org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)
+	org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:967)
+	org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901)
+	org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:872)
+	javax.servlet.http.HttpServlet.service(HttpServlet.java:650)
+	org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	javax.servlet.http.HttpServlet.service(HttpServlet.java:731)
+	org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+</pre>
+</p><p><b>Note</b> The full stack trace of the root cause is available in the server logs.</p>
+<hr class="line"/>
+<h3>Apache Tomcat/7.0.91</h3></body>
+</html>

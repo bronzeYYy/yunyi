@@ -1,0 +1,15 @@
+POST http://localhost:8080/user/register/send
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: JSESSIONID=21076439E03B45322ADBF59F8428C896
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+studentNo=1232131&userName=llfudgg&userPassword=1231123&userClass=计算机&email=1769178812@qq.com&code=FSCFCWON
+###
