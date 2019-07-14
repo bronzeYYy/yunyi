@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -41,7 +42,7 @@
     margin-left:200px;
     margin-top:10px;
     
-    border:1;
+    border:1px;
     width: 35px;
     position: absolute;
     cursor: pointer;
@@ -71,7 +72,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="index.jsp">返回首页</a>
+				<a class="navbar-brand" href="WEB-INF/views/index.jsp">返回首页</a>
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
@@ -139,7 +140,7 @@
 		<tr>
 				<div style="margin-top:20px">
 				<font style="size:20px;color:#989898;">创建时间${i.creationTime }</font>
-				<h3>问题${i.questionName }</h3>
+					<a href="question.jsp"><h3>问题${i.questionName }</h3></a>
 				<h3>问题内容${i.questionContent }</h3>
 				<p>赞同数 &emsp;评论数</p>
 				<hr>

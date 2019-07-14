@@ -12,4 +12,8 @@
     <select id="getQuestionById" resultType="cn.chen.model.Question" parameterType="cn.chen.model.Question">
         select * from question where id = #{id}
     </select>
+    <resultMap id="getQuestion" type="cn.chen.model.Question">
+        <id property="id" column="id" />
+
+    </resultMap>
 </mapper>

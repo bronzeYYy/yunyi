@@ -50,6 +50,7 @@ public class QuestionController {
     @RequestMapping("")
     public String questions(Model model) {
         model.addAttribute("questions", questionService.getQuestions());
+        model.addAttribute("hello", "../");
         return "index";
     }
 
@@ -60,8 +61,9 @@ public class QuestionController {
             throw new NoSuchDataException();
         }
         model.addAttribute("Question", question);
+        model.addAttribute("hello", "../");
         model.addAttribute("comment", answerDaoService.getAnswersByQuestionId(id));
-        return "index";
+        return "question";
     }
 
     @RequestMapping("/upload")

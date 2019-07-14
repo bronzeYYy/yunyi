@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%--<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> --%> 
@@ -50,10 +51,10 @@
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
 				
-					<li class="active"><a class="scroll" href="column.jsp" id="test">专栏</a></li>
+					<li class="active"><a class="scroll" href="../../column.jsp" id="test">专栏</a></li>
 					<li class="active"><a class="scroll" href="#" id = "yuan">发现</a></li>
-					<li class="active"><a class="scroll" href="#lianxi" id ="wenjian">联系我们</a></li>
-					<li class="active"><a class="scroll" href="personal.jsp" id ="wenjian">我的主页</a></li>
+					<li class="active"><a class="scroll" href="#lianxi">联系我们</a></li>
+					<li class="active"><a class="scroll" href="../../personal.jsp">我的主页</a></li>
 				</ul>
 				<ul class="nav navbar-nav pull-right">
 					<li>
@@ -155,7 +156,7 @@
 				<tr>
 				<div style="margin-top:20px">
 				<font style="size:20px;color:#989898;">创建时间${i.creationTime }</font>
-				<h3>问题${i.questionName }</h3>
+				<h3><a href="${hello}question/detail/${i.id}">问题${i.questionName }</a></h3>
 				<h3>问题内容${i.questionContent }</h3>
 				<p>赞同数 &emsp;评论数</p>
 				<hr>
