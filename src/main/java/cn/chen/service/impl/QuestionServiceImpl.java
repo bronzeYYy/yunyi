@@ -15,16 +15,15 @@ public class QuestionServiceImpl implements QuestionService {
     }
     @Override
     public boolean save(Question question) {
-        return false;
+        return questionDao.save(question) == 1;
     }
-
     @Override
     public List<Question> getQuestions() {
-        return null;
+        return questionDao.getQuestions();
     }
 
     @Override
     public Question getQuestionById(int id) {
-        return null;
+        return questionDao.getQuestionById(id);
     }
 }
