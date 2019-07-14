@@ -3,22 +3,21 @@
 <!DOCTYPE html>
 <%-- <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> --%>
 
-<%
-String names = (String) session.getAttribute("name");
-String image = "image/back";
-%>
 <html>
 <head>
 <meta charset="utf-8">
 <title>问答专栏</title>
-<link rel="stylesheet" href="css&js/bootstrap.min.css">
-<link rel="stylesheet" href="css&js/login.css" />
-<link href="css&js/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link href="css&js/scrollbar.css" rel="stylesheet" type="text/css" media="all" />
-<link href="css&js/ddsmoothmenu.css" rel="stylesheet" type="text/css" media="all" />
-<script  src="css&js/jquery.min.js"></script>
+<link rel="stylesheet" href="${hello}css&js/bootstrap.min.css">
+<link rel="stylesheet" href="${hello}css&js/login.css" />
+<link href="${hello}css&js/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="${hello}css&js/scrollbar.css" rel="stylesheet" type="text/css" media="all" />
+<link href="${hello}css&js/ddsmoothmenu.css" rel="stylesheet" type="text/css" media="all" />
+<script  src="${hello}css&js/jquery.min.js"></script>
 
-<link href="css&js/style.css" rel="stylesheet" type="text/css" media="all" />	
+<link href="${hello}css&js/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="${hello}css/style2.css" rel="stylesheet" type="text/css" media="all" />
+   <script src="${hello}layer-v3.1.1/layer/layer.js"></script>
+	
 <style type="text/css">
 
 .conta {
@@ -41,11 +40,10 @@ String image = "image/back";
     height: 35px;
     margin-left:200px;
     margin-top:10px;
-    color:#909090;
+    
     border:1;
     width: 35px;
     position: absolute;
-    background: url("image/select.png") ;
     cursor: pointer;
 
 }
@@ -56,24 +54,24 @@ String image = "image/back";
 <link href='http://fonts.useso.com/css?family=Raleway:400,200,100,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
 <link href='http://fonts.useso.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>
 		
-<link href="css&js/styles.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="css&js/component.css" />
+<link href="${hello}css&js/styles.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="${hello}css&js/component.css" />
 
-<link href="css&js/animate.min.css" rel="stylesheet"> 
-<script src="css&js/wow.min.js"></script>
+<link href="${hello}css&js/animate.min.css" rel="stylesheet"> 
+<script src="${hello}css&js/wow.min.js"></script>
 <script>
  new WOW().init();
 </script>
 <!-- //animation-effect -->
 
-<script src="css&js/jquery.min.js"></script>
-<script src="css&js/bootstrap.min.js"></script>
+<script src="${hello}css&js/jquery.min.js"></script>
+<script src="${hello}css&js/bootstrap.min.js"></script>
 </head>
 <body style="background-color:#101010;background-repeat :no-repeat;background-position: right bottom;background-attachment:fixed;">
 <nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="Page.jsp">返回首页</a>
+				<a class="navbar-brand" href="index.jsp">返回首页</a>
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
@@ -99,13 +97,13 @@ String image = "image/back";
 				</ul>
 				<ul class="nav navbar-nav pull-right">
 					<li>
-						<h3 style="margin-top:20px;color:#FFFFFF"><%=names %></h3>
+						<h3 style="margin-top:20px;color:#FFFFFF">用户</h3>
 					</li>
 				</ul>
 			</div>
 		</div>
 	</nav>
-<div id="zhuye" class="header" style="background-image :url(image/beijing.jpg);background-repeat:no-repeat; height:100%; width:100%;"  id="shouye">
+<div id="zhuye" class="header" style="background-image :url(${hello}image/beijing.jpg);background-repeat:no-repeat; height:100%; width:100%;"  id="shouye">
 	<div class="container">
 		<div class="nav-icon">
 		</div>
@@ -121,26 +119,50 @@ String image = "image/back";
 		
 </div>
 
+
 <div id="main" style="width:100%;">
-<div id="left" style="width:55%;margin-left:50px;float:left;text-align:center">
+
+	<div class="footer_grids" style="text-align:center;margin-left:380px">
+				<div class="col-md-8 footer_grid_right" >
+
+				
+						<input  type="button" id="iwant" value="我要提问">
+				
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+<div id="left" style="width:55%;margin-left:50px;float:left">
 	<h3 style="color:#fff;margin-top:50px">问答专栏</h2>
 	<hr>
-		<c:forEach var="i" items="${wenda}">
-				<div style="bgcolor:#F00000">
-				<h2>${i.questionName }</h2><h4>${i.creationTime }</h4>
-				<p><h4>${i.questionContent }</h1></p>
-				</div>
-				</c:forEach>	
+	<table>
+		<c:forEach var="i" items="${questions}">
+		<tr>
+				<div style="margin-top:20px">
+				<font style="size:20px;color:#989898;">创建时间${i.creationTime }</font>
+				<h3>问题${i.questionName }</h3>
+				<h3>问题内容${i.questionContent }</h3>
+				<p>赞同数 &emsp;评论数</p>
+				<hr>
+				<br>		
+				</div>	
+		</tr>
+				</c:forEach>
+	</table>	
 </div>
 <div id="right" style="width:35%;margin-left:30px;float:left;text-align:center">
 	<h3 style="color:#fff;margin-top:50px">资料专栏</h2>
 	<hr>
-	<c:forEach var="i" items="${ziliao}">
+
+		<c:forEach var="i" items="${ziliao}">
+	
 				<div style="bgcolor:#F00000">
 				<h2>${i.questionName }</h2><h4>${i.creationTime }</h4>
 				<p><h4>${i.questionContent }</h4></p>
 				</div>
-				</c:forEach>	
+		
+		</c:forEach>
+
+		
 </div>
 </div>
 
@@ -159,8 +181,8 @@ String image = "image/back";
 </div>
 	</div>
 
-<script type="text/javascript" src="css&js/move-top.js"></script>
-		<script type="text/javascript" src="css&js/easing.js"></script>
+<script type="text/javascript" src="${hello}css&js/move-top.js"></script>
+		<script type="text/javascript" src="${hello}css&js/easing.js"></script>
 		<script type="text/javascript">
 			jQuery(document).ready(function($) { 
 				$(".scroll").click(function(event){		
@@ -168,6 +190,17 @@ String image = "image/back";
 					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
 				});
 			});
+			$('#iwant').on('click',function(){
+				layer.open({
+		   			type:2,
+		   			title:'提交问题',
+		   			maxmin:true,
+		   			shadeClose:true,
+		   			area:['1000px','700px'],
+		   			content:'input.jsp'
+		   		});
+
+		});
 		</script>
 
 </body>

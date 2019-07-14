@@ -1,0 +1,180 @@
+
+.nav{
+    height: 50px;
+    background: #444;
+    width:100%;
+}
+.container{
+    width: 1000px;
+    height: 800px;
+    background: #fff;
+    margin: 15px auto;
+    border:1px #ccc solid;
+    border-radius: 5px;
+
+    box-shadow:0 0 8px #666;
+}
+.container .personInfo{
+    width: 100%;
+
+    position: relative;
+}
+
+.container .personInfo{
+    width: 100%;
+    border-bottom: 10px #888 solid;
+    position: relative;
+}
+.container .personInfo .top{
+    height: 100px;
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+    background: #f7faa6;
+}
+.container .personInfo .bot{
+    height: 100px;
+    width: 100%;
+    background: #eeeeee;
+}
+.container .personInfo img{
+    width: 120px;
+    height: 120px;
+    border-radius: 5px;
+    border: 4px solid #fff;
+    position: absolute;
+    left: 40px;
+    top: 40px;
+}
+.container .personInfo .usrname{
+    width: fit-content;
+    font-weight: 600;
+    font-size: 25px;
+    position: absolute;
+    left: 200px;
+    top: 50px;
+}
+.container .personInfo .textinfo{
+    position: absolute;
+    top: 120px;
+    left: 200px;
+}
+.container .personInfo .textinfo span{
+    display: inline-block;
+    margin-right: 50px;
+    font-size: 20px;
+}
+.container .personInfo #modify{
+    border:1px #7bc7ff solid;
+    border-radius: 10px;
+    outline: none;
+    background: #fff;
+    height: 32px;
+    width: 100px;
+    position: absolute;
+    right: 50px;
+    top: 130px;
+    cursor: pointer;
+}
+.container .personInfo .detailbtn{
+    cursor: pointer;
+    font-size: 14px;
+    width: fit-content;
+    position: absolute;
+    left: 260px;
+    bottom: 10px;
+}
+.container .personInfo .detail{
+    display: none;
+    font-size: 14px;
+    position: absolute;
+    left: 200px;
+    bottom: 45px;
+}
+.container .menu{
+    list-style: none;
+    overflow: hidden;
+    border-bottom: 1px #bbb solid;
+}
+.container .menu li{
+    float: left;
+    width: 100px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+
+    border-right: 1px #bbb solid;
+    color: #777;
+    cursor: pointer;
+}
+.container .menu li:nth-of-type(1){
+    font-weight: 600;
+    color: #000;
+}
+.shadow{
+    display: none;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: #222;
+    opacity: .4;
+    z-index: 998;
+}
+.hidebox,.hidebox2,.modifyinfo{
+    display: none;
+    position: fixed;
+    height: 400px;
+    width: 600px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #f8f8f8;
+    border: 1px #222 solid;
+    border-radius: 10px;
+    z-index: 999;
+}
+.hidebox .title,.hidebox .tag,.hidebox .content{
+    text-align: center;
+    margin-top: 25px;
+}
+.hidebox .submit,.hidebox2 .submit,.modifyinfo .submit{
+    display: block;
+    width: 80px;
+    height: 30px;
+    margin: 25px auto;
+    outline: none;
+    border: #7bc7ff 2px solid;
+    border-radius: 5px;
+    background: #fff;
+}
+.modifyinfo .submit{
+    margin: 35px auto;
+}
+.hidebox2 label{
+    display: block;
+    width: 140px;
+    height: 50px;
+    border: 2px #7bc7ff solid;
+    border-radius: 10px;
+    margin: 130px auto;
+    line-height: 50px;
+    text-align: center;
+    font-size: 20px;
+    cursor: pointer;
+}
+.modifyinfo div{
+    /*text-align: center;*/
+    margin: 38px 0 0 280px;
+}
+.modifyinfo label{
+    position: absolute;
+    height: 140px;
+    width: 140px;
+    border: 2px #888 dashed;
+    left: 75px;
+    top: 120px;
+    text-align: center;
+    line-height: 140px;
+    cursor: pointer;
+}
