@@ -51,7 +51,13 @@ public class JedisDaoImpl implements JedisDao {
 
     @Override
     public boolean checkCommit(int id, CommitTypeEnum commitTypeEnum) {
-        return false;
+        Jedis jedis = null;
+        try {
+            jedis = jedisPool.getResource();
+            return jedis.get(id + commitTypeEnum.getType()) == null;
+        } finally {
+            close(jedis);
+        }
     }
 
     @Override
@@ -71,6 +77,17 @@ public class JedisDaoImpl implements JedisDao {
             close(jedis);
         }
         return false;
+    }
+
+    @Override
+    public void setCommitState(int id, CommitTypeEnum commitTypeEnum) {
+        Jedis jedis = null;
+        try {
+            jedis = jedisPool.getResource();
+            jedis.set(id + commitTypeEnum.getType(), "1", "nx", "ex", 120);
+        } finally {
+            close(jedis);
+        }
     }
 
     @Override

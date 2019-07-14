@@ -52,7 +52,7 @@ public class UserController {
             return new MsgResult(-1, "请填写验证码");
         }
         if (errors.hasErrors()) {
-            return new MsgResult(1, errors.getAllErrors().get(0).getDefaultMessage());
+            return Utils.dealErrors(errors);
         }
         if (!jedisDao.checkRandomCode(user.getEmail(), code)) {
             return new MsgResult(-1, "验证码不正确");
@@ -84,10 +84,10 @@ public class UserController {
     }
 
     @RequestMapping("/login/forget")
-    public AbstractResult forget(String email, String no) {
+    public AbstractResult forget(String email, String studentNo) {
         Utils.checkStringLength(email, 8, 40);
-        Utils.checkStringLength(no, 5, 10);
-        User user = userDaoService.getUserPassword(email, no);
+        Utils.checkStringLength(studentNo, 5, 10);
+        User user = userDaoService.getUserPassword(email, studentNo);
         if (user == null) {
             return new MsgResult(-1, "信息不匹配");
         }

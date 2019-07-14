@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class IndexController {
     @RequestMapping("/user")
     public AbstractResult getUser() {
-
         return new MsgResult(1, "失败");
     }
     @RequestMapping("/test")

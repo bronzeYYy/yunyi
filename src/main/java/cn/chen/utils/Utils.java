@@ -1,10 +1,12 @@
 package cn.chen.utils;
 
 import cn.chen.data.exceptions.IllegalParamException;
+import cn.chen.data.result.MsgResult;
 import com.mysql.jdbc.StringUtils;
 import org.springframework.mail.MailException;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.validation.Errors;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.imageio.ImageIO;
@@ -48,5 +50,8 @@ public final class Utils {
             return false;
         }
         return true;
+    }
+    public static MsgResult dealErrors(Errors errors) {
+        return new MsgResult(1, errors.getAllErrors().get(0).getDefaultMessage());
     }
 }
