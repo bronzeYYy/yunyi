@@ -8,5 +8,6 @@ public interface JedisDao {
     boolean checkCommit(int id, CommitTypeEnum commitTypeEnum);
     boolean checkCommit(String email, CommitTypeEnum commitTypeEnum);
     boolean checkEmailSendCode(String email);
+    void setCommitState(int id, CommitTypeEnum commitTypeEnum);
     void delCode(String email);
 }
