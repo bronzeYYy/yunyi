@@ -26,25 +26,25 @@
 <div class="container">
     <div><h1></h1></div>
     <div>
-        <form action="function.php" method="post">
+       
 
             <p>
-                <strong>标题：</strong>
+                <strong>请简单描述你的问题：</strong>
             </p>
             <p>
-                <input type="text" name="title">
+                <input type="text" id="title" value="">
             </p>
 
             <p>
-                <strong>内容：</strong>
+                <strong>说说问题的提出背景：</strong>
             </p>
             <p>
-                <textarea id="textarea1" name="content"></textarea>
+                <textarea id="content" value=""></textarea>
             </p>
             <p>
-                <input style="width:50px;height:30px;background-color: #666666; border-radius:3px; color:#FFFFFF" type="submit" value="提交">
+                <input id="fabu" style="width:50px;height:30px;background-color: #666666; border-radius:3px; color:#FFFFFF" type="submit" value="提交">
             </p>
-        </form>
+       
     </div>
 </div>
 
@@ -60,6 +60,26 @@
     editor.create();
 </script>
    <script src="layer-v3.1.1/layer/layer.js"></script>
+  <script>
+  	$('#fabu').on('click',function(){
+  		var f1 = document.getElementById("title").value;
+		var f2 = document.getElementById("content").value;
+		$.ajax({
+			url:  'question/save',
+			type: 'post',
+			data: {'questionName':f1,'questionContent':f2},
+			success:function(data) {
+				if(data.code)
+					{
+					layer.msg('提交成功');
+						window.location('column.jsp');
+					} else {
+						layer.msg(data.msg);
+					}
+			}
+		})
+  	});
   
+  </script>
 </body>
 </html>

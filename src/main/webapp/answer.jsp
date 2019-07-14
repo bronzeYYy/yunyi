@@ -53,6 +53,6 @@
     editor.config.uploadImgFileName = 'myFileName';
     editor.create();
 </script>
- 
+
 </body>
 </html>

@@ -10,6 +10,7 @@
 <script src="layer-v3.1.1/layer/layer.js"></script> 
 <script src="css&js/jquery.min.js"></script>
 <script src="css&js/bootstrap.min.js"></script>
+  <script src="${hello}layer-v3.1.1/layer/layer.js"></script>
 <script>
 	$(document).ready(function() {
 		//关闭
@@ -48,10 +49,10 @@
 	</div>	 
 	<div style="width:300px;height:300px">
 		<p style="font-size:20px;text-align:center;color:#708090">用户登录</p>
-		<form action="Login" method="post">
-			<input type="text" class="form-control" placeholder="账号"  name="d_userid" />
+		
+			<input type="text" id="zhanghao" class="form-control" placeholder="账号"  name="noOrEmail" value="" />
 			<br>
-			<input type="password" style="margin-top:10px" class="form-control" placeholder="密码" name="d_userpass" />
+			<input type="password" id="mima" style="margin-top:10px" class="form-control" placeholder="密码" name="password" value="" />
 		<br><br>
 		<span>
 			<span>
@@ -65,12 +66,13 @@
 		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<a style="cursor:pointer" id="fergot">忘记密码?</a>
 		</span>
 		<br><br>
-		<input type="submit" class="btn btn-success" style="width:300px;color:white;text-align:center" value="登录" />
-		</form>
+		<input type="submit" id="tijiao" class="btn btn-success" style="width:300px;color:white;text-align:center" value="登录" />
+		
 		<br>
 		<span>
-		<a style="cursor:pointer">QQ登录</a>
-		&emsp;&emsp;&emsp;&emsp;&emsp;<a style="cursor:pointer">微信登录</a>
+		<br>
+		<a id="QQ" style="cursor:pointer">QQ登录</a>
+		&emsp;&emsp;&emsp;&emsp;&emsp;<a id="weibo" style="cursor:pointer">微信登录</a>
 		</span>
 	</div>
 	<hr style="height:1px;border:none;border-top:1px solid white;" />
@@ -94,18 +96,16 @@
 	</div>	 
 	<div style="width:300px;height:310px">
 		<p style="font-size:20px;text-align:center;color:#708090">找回密码</p>
-		<form action="find" method="post">
-			<input type="text" class="form-control" placeholder="账号"  name="d_userid" />
+			<input type="text" id="fzhaohao" class="form-control" placeholder="账号"  name="d_userid" value="" />
 			<br>
 			<div>
 			  <div  style="heighgt:50px;float:left">
-			    <input type="text"  class="form-control" style="width:210px" placeholder="邮箱"  name="e-mail" />
+			    <input type="text" id="fyouxiang" class="form-control" style="width:210px" placeholder="邮箱"  name="e-mail"  value=""/>
 			  </div>
 			  <div style="heighgt:50px;float:left;margin-left:5px">
 			    <button id="get_passwd" type="button" class="btn btn-info">找回密码</button>
 			  </div>
 			</div>
-		</form>
 			<hr style="height:1px;border:none;border-top:1px solid white;" />
 	<div style="font-size:16px;text-align:center">
 	    <br>
@@ -129,26 +129,26 @@
 	</div>	 
 	<div style="width:300px;height:310px">
 		<p style="font-size:20px;text-align:center;color:#708090">用户注册</p>
-		<form action="Login" method="post">
-			<input type="text" class="form-control" placeholder="账号"  name="d_userid" />
-			<input type="password" style="margin-top:10px" class="form-control" placeholder="密码" name="d_userpass" />
-			<input type="password" style="margin-top:10px" class="form-control" placeholder="确认密码" name="d_userpass" />
-			<br>
-			<input type="text" class="form-control" placeholder="邮箱"  name="e-mail" />
-			<br>
+		
+		<input type="text" id="rzhaohao" style="margin-top:10px" class="form-control" placeholder="账号" name="studentNo" value="" />
+			<input type="text" id="rname" style="margin-top:10px" class="form-control" placeholder="昵称"  name="userName" value="" />
+			<input type="password" id="rmima" style="margin-top:10px" class="form-control" placeholder="密码" name="userPassword"  value=""/>
+			<input type="text" id="rbanji" style="margin-top:10px" class="form-control" placeholder="班级"  name="banji" value="" />
+			<input type="text" id="ryouxiang" class="form-control" style="margin-top:10px" placeholder="邮箱"  name="email" value="" />
 			<div>
-			  <div  style="heighgt:50px;float:left">
-			    <input type="text"  class="form-control" style="width:195px" placeholder="验证码"  name="veri-code" />
+			  <div  style="heighgt:50px;float:left;margin-top:10px">
+			    <input type="text" id="ryanzheng"  class="form-control" style="width:195px" placeholder="验证码"  name="veri-code" value="" />
 			  </div>
 			  <div style="heighgt:50px;float:left;margin-left:5px">
-			    <button id="get_code" type="button" class="btn btn-info">获取验证码</button>
+			    <input id="get_code" id="rgetma" type="submit" style="margin-top:10px" class="btn btn-info" value="获取验证码">
 			  </div>
 			</div>
+			
 		    <br><br>
-		    <input type="submit" class="btn btn-success" style="width:300px;color:white;text-align:center" value="注册" />
-		</form>
+		    <input type="submit" id="rtijiao" class="btn btn-success" style="width:300px;color:white;text-align:center;margin-top:10px" value="注册" />
+		
 	</div>
-	<hr style="height:1px;border:none;border-top:1px solid white;" />
+	<hr style="margin-top:10px;height:1px;border:none;border-top:1px solid white;" />
 	<div style="font-size:16px;text-align:center">
 	    <br>
 	    <span >
@@ -157,5 +157,93 @@
 		</span>
 	</div>
 </div>
+  <script src="${hello}layer-v3.1.1/layer/layer.js"></script>
+<script>
+$('#QQ').on('click',function(){
+	layer.msg('人家还没得到授权呢~',function(){
+		
+	})
+});
+$('#weibo').on('click',function(){
+	layer.msg('人家还没得到授权呢~',function(){
+		
+	})
+});
+	$('#tijiao').on('click',function(){   //登录
+		var d1 = document.getElementById("zhanghao").value;
+		var d2 = document.getElementById("mima").value;
+		$.ajax({
+			url:  '${path}user/login',
+			type: 'post',
+			data: {'noOrEmail':d1,'password':d2},
+			success:function(data) {
+				if(data.code)
+					{
+						window.location('column.jsp');
+					} else {
+						layer.msg(data.msg);
+					}
+			}
+		})
+	});
+	$('#rtijiao').on('click',function(){  //注册
+		
+		var r1 = document.getElementById("rzhaohao").value;
+		var r2 = document.getElementById("rname").value;
+		var r3 = document.getElementById("rmima").value;
+		var r4 = document.getElementById("rbanji").value;
+		var r5 = document.getElementById("ryouxiang").value;
+		var r6 = document.getElementById("ryanzheng").value;
+		$.ajax({
+			url:  '${path}user/register',
+			type: 'post',
+			data: {'studentNo':r1,'userName':r2,'userPassword':r3,'userClass':r4,'email':r5,'code':r6},
+			success:function(data) {
+				if(data.code)
+					{
+						layer.msg(data.msg);
+						window.location('login.jsp');
+					} else {
+						layer.msg(data.msg);
+					}
+			}
+		})
+	});
+	$('#rgetma').on('click',function(){  //发送验证码
+		var m = document.getElementById("ryouxiang").value;
+		$.ajax({
+			url:  '${path}user/register/send',
+			type: 'post',
+			data: {'email':m},
+			success:function(data) {
+				if(data.code)
+					{
+						layer.msg(data.msg);
+					} else {
+						layer.msg(data.msg);
+					}
+			}
+		})
+	});
+	$('#get_passwd').on('click',function(){  //找回密码
+		var f1 = document.getElementById("fzhanghao").value;
+		var f2 = document.getElementById("fyouxiang").value;
+		$.ajax({
+			url:  '${path}user/login/forget',
+			type: 'post',
+			data: {'email':f2,'studentNo':f1},
+			success:function(data) {
+				if(data.code)
+					{
+						layer.msg(data.msg);
+					} else {
+						layer.msg(data.msg);
+					}
+			}
+		})
+	});
+	
+
+</script>
 </body>
 </html>
