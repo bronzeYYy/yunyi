@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.chen.dao.mysql.UserDao">
+    <insert id="addUser">
+        insert into user(user_name, user_password, user_class, integral, email, student_no, creation_time)
+        value (#{userName}, #{userPassword}, #{userClass}, #{integral}, #{email}, #{studentNo}, now())
+    </insert>
+    <select id="getUserById" resultType="cn.chen.model.User">
+        select * from user where id = #{id}
+    </select>
+    <select id="getUserByNoOrEmail" resultType="cn.chen.model.User">
+        select * from user where student_no = #{0} and user_password = #{1} or email = #{0} and user_password = #{1}
+    </select>
+    <select id="getUserPassword" resultType="cn.chen.model.User">
+        select * from user where email = #{0} and student_no = #{1}
+    </select>
+    <update>
+        update user set user_name = #{userName}, user_class = #{userClass}, student_no = {studentNo} where id = #{id}
+    </update>
+</mapper>

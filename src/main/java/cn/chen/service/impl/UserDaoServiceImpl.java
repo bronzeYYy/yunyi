@@ -27,4 +27,14 @@ public class UserDaoServiceImpl implements UserDaoService {
     public User getUserPassword(String email, String studentNo) {
         return userDao.getUserPassword(email, studentNo);
     }
+
+    @Override
+    public boolean updateUser(User user) {
+        return userDao.updateUser
+    }
+
+    @Override
+    public User getUserById(int id) {
+        return userDao.getUserById(id);
+    }
 }
