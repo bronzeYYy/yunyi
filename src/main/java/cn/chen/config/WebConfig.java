@@ -35,5 +35,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         registry.addInterceptor(new QuestionInterceptor())
                 .addPathPatterns("/question/*", "/user/update")
                 .excludePathPatterns("/question/detail/*");
+        // 注册拦截器
     }
 }

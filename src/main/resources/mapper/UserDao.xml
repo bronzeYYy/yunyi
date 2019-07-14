@@ -17,6 +17,6 @@
         select * from user where email = #{0} and student_no = #{1}
     </select>
     <update id="updateUser" parameterType="cn.chen.model.User">
-        update user set user_name = #{userName}, user_class = #{userClass}, student_no = {studentNo} where id = #{id}
+        update user set user_name = #{userName}, user_class = #{userClass}, student_no = #{studentNo} where id = #{id}
     </update>
 </mapper>

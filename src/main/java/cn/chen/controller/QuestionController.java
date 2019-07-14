@@ -1,9 +1,6 @@
 package cn.chen.controller;
 
 import cn.chen.config.QiNiuConfig;
-import cn.chen.dao.JedisDao;
-import cn.chen.data.enums.CommitTypeEnum;
-import cn.chen.data.exceptions.FrequencyException;
 import cn.chen.data.exceptions.NoSuchDataException;
 import cn.chen.data.result.AbstractResult;
 import cn.chen.data.result.MsgResult;
@@ -38,15 +35,13 @@ public class QuestionController {
     private Auth auth;
     private StandardServletMultipartResolver servletMultipartResolver;
     private QuestionService questionService;
-    private JedisDao jedisDao;
     @Autowired
     public QuestionController(UploadManager uploadManager, Auth auth, StandardServletMultipartResolver multipartResolver,
-                              QuestionService questionService, JedisDao jedisDao) {
+                              QuestionService questionService) {
         this.uploadManager = uploadManager;
         this.auth = auth;
         this.servletMultipartResolver = multipartResolver;
         this.questionService = questionService;
-        this.jedisDao = jedisDao;
     }
 
     @RequestMapping("")
@@ -93,15 +88,11 @@ public class QuestionController {
             return Utils.dealErrors(errors);
         }
         User user = (User) session.getAttribute("user");
-        if (!jedisDao.checkCommit(user.getId(), CommitTypeEnum.COMMIT_QUESTION)) {
-            throw new FrequencyException(CommitTypeEnum.COMMIT_QUESTION);
-        }
         question.setQuestioner(user);
         MsgResult msgResult = new MsgResult();
-        if (questionService.save(question)) {
+        if (questionService.save(question)) { // save方法抛出的异常传到此处之后ExceptionHandler进行处理
             msgResult.setCode(0);
             msgResult.setMsg("提问成功");
-            jedisDao.setCommitState(user.getId(), CommitTypeEnum.COMMIT_QUESTION);
         } else {
             msgResult.setCode(0);
             msgResult.setMsg("提问失败，请重试");

@@ -1,6 +1,7 @@
 package cn.chen.controller;
 
 
+import cn.chen.data.exceptions.IllegalParamException;
 import cn.chen.data.result.AbstractResult;
 import cn.chen.data.result.MsgResult;
 import cn.chen.model.User;
@@ -20,9 +21,12 @@ public class UserUpdateController {
         this.userDaoService = userDaoService;
     }
     @RequestMapping ("/update")
-    public AbstractResult update(@Valid User user, Errors errors) {
+    public AbstractResult update(@Valid User user, Errors errors, HttpSession session) {
         if (errors.hasErrors()) {
             return new MsgResult(1, errors.getAllErrors().get(0).getDefaultMessage());
+        }
+        if (user.getId() != 0 && user.getId() != ((User) session.getAttribute("user")).getId()) {
+            throw new IllegalParamException("用户想做坏事");
         }
         MsgResult msgResult = new MsgResult();
         if (userDaoService.updateUser(user)) {

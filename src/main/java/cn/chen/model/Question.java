@@ -6,11 +6,10 @@ import javax.validation.constraints.Size;
 public class Question {
     private int id;
     @NotNull(message = "问题标题必须填")
-    @Size(min = 4, max = 15, message = "问题长度需在2到10之间")
+    @Size(min = 4, max = 30, message = "标题长度需在4到30之间")
     private String questionName;
     private User questioner;
     @NotNull(message = "问题内容必须填")
-    @Size(min = 5, message = "问题内容长度需大于5")
     private String questionContent;
     private String creationTime;
 
