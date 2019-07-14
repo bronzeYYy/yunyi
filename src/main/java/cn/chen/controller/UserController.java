@@ -95,6 +95,7 @@ public class UserController {
         return new MsgResult(0, "密码已发送到邮箱");
     }
 
+
     private boolean sendEmail(String email) {
         String code = Utils.getRandomCode();
         String text = "你正在注册云易校园问答平台，验证码为" + code + "。若非本人操作请忽略。";

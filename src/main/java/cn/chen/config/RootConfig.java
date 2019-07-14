@@ -10,6 +10,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import redis.clients.jedis.JedisPool;
 
@@ -89,5 +90,9 @@ public class RootConfig {
         properties.put("mail.smtp.socketFactory.class","javax.net.ssl.SSLSocketFactory");
         javaMailSender.setJavaMailProperties(properties);
         return javaMailSender;
+    }
+    @Bean
+    public StandardServletMultipartResolver multipartResolver() {
+        return new StandardServletMultipartResolver();
     }
 }

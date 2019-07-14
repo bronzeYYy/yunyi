@@ -3,6 +3,9 @@
 <body>
 <h2>Hello World!</h2>
 </body>
-${user.userName}
-${user.userClass}
+<form action="/question/upload" enctype="multipart/form-data" method="post">
+    <input type="file" name="file">
+    <input type="submit">
+</form>
+
 </html>

@@ -5,7 +5,11 @@ import com.mysql.jdbc.StringUtils;
 import org.springframework.mail.MailException;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.Random;
 
 public final class Utils {
@@ -33,5 +37,16 @@ public final class Utils {
         mailMessage.setFrom("chensuwei0@163.com");
         mailMessage.setTo(email);
         mailSender.send(mailMessage);
+    }
+    public static boolean isImgFile(MultipartFile file) {
+        try {
+            BufferedImage image = ImageIO.read(file.getInputStream());
+            if (image == null) {
+                return false;
+            }
+        } catch (IOException e) {
+            return false;
+        }
+        return true;
     }
 }
