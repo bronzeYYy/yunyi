@@ -10,7 +10,7 @@
 <script src="layer-v3.1.1/layer/layer.js"></script> 
 <script src="css&js/jquery.min.js"></script>
 <script src="css&js/bootstrap.min.js"></script>
-  <script src="${hello}layer-v3.1.1/layer/layer.js"></script>
+  <script src="layer-v3.1.1/layer/layer.js"></script>
 <script>
 	$(document).ready(function() {
 		//关闭
@@ -140,7 +140,7 @@
 			    <input type="text" id="ryanzheng"  class="form-control" style="width:195px" placeholder="验证码"  name="veri-code" value="" />
 			  </div>
 			  <div style="heighgt:50px;float:left;margin-left:5px">
-			    <input id="get_code" id="rgetma" type="submit" style="margin-top:10px" class="btn btn-info" value="获取验证码">
+			    <input id="rgetma" type="submit" style="margin-top:10px" class="btn btn-info" value="获取验证码">
 			  </div>
 			</div>
 			
@@ -177,7 +177,7 @@ $('#weibo').on('click',function(){
 			type: 'post',
 			data: {'noOrEmail':d1,'password':d2},
 			success:function(data) {
-				if(data.code)
+				if(data.code === 0)
 					{
 						window.location('column.jsp');
 					} else {
@@ -195,16 +195,14 @@ $('#weibo').on('click',function(){
 		var r5 = document.getElementById("ryouxiang").value;
 		var r6 = document.getElementById("ryanzheng").value;
 		$.ajax({
-			url:  '${path}user/register',
+			url:  'user/register',
 			type: 'post',
 			data: {'studentNo':r1,'userName':r2,'userPassword':r3,'userClass':r4,'email':r5,'code':r6},
 			success:function(data) {
-				if(data.code)
+				layer.msg(data.msg);
+				if(data.code === 0)
 					{
-						layer.msg(data.msg);
-						window.location('login.jsp');
-					} else {
-						layer.msg(data.msg);
+						window.location = 'index';
 					}
 			}
 		})
@@ -216,12 +214,7 @@ $('#weibo').on('click',function(){
 			type: 'post',
 			data: {'email':m},
 			success:function(data) {
-				if(data.code)
-					{
-						layer.msg(data.msg);
-					} else {
-						layer.msg(data.msg);
-					}
+				layer.msg(data.msg);
 			}
 		})
 	});
@@ -233,12 +226,7 @@ $('#weibo').on('click',function(){
 			type: 'post',
 			data: {'email':f2,'studentNo':f1},
 			success:function(data) {
-				if(data.code)
-					{
-						layer.msg(data.msg);
-					} else {
-						layer.msg(data.msg);
-					}
+				layer.msg(data.msg);
 			}
 		})
 	});
