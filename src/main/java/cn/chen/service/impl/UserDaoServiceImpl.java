@@ -30,7 +30,7 @@ public class UserDaoServiceImpl implements UserDaoService {
 
     @Override
     public boolean updateUser(User user) {
-        return false;
+        return userDao.updateUser(user) == 1;
     }
 
     @Override
