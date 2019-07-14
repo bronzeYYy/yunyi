@@ -4,6 +4,7 @@ import cn.chen.config.QiNiuConfig;
 import cn.chen.dao.JedisDao;
 import cn.chen.data.enums.CommitTypeEnum;
 import cn.chen.data.exceptions.FrequencyException;
+import cn.chen.data.exceptions.NoSuchDataException;
 import cn.chen.data.result.AbstractResult;
 import cn.chen.data.result.MsgResult;
 import cn.chen.model.Question;
@@ -14,7 +15,9 @@ import com.qiniu.storage.UploadManager;
 import com.qiniu.util.Auth;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -45,6 +48,23 @@ public class QuestionController {
         this.questionService = questionService;
         this.jedisDao = jedisDao;
     }
+
+    @RequestMapping("")
+    public String questions(Model model) {
+        model.addAttribute("questions", questionService.getQuestions());
+        return "index";
+    }
+
+    @RequestMapping("/detail/{id}")
+    public String questionDetail(@PathVariable int id, Model model) {
+        Question question = questionService.getQuestionById(id);
+        if (question == null) {
+            throw new NoSuchDataException();
+        }
+        model.addAttribute("questions", questionService.getQuestions());
+        return "index";
+    }
+
     @RequestMapping("/upload")
     @ResponseBody
     public AbstractResult uploadImg(HttpServletRequest request) {
