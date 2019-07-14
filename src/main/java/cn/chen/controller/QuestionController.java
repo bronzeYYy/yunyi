@@ -6,6 +6,7 @@ import cn.chen.data.result.AbstractResult;
 import cn.chen.data.result.MsgResult;
 import cn.chen.model.Question;
 import cn.chen.model.User;
+import cn.chen.service.AnswerDaoService;
 import cn.chen.service.QuestionService;
 import cn.chen.utils.Utils;
 import com.qiniu.storage.UploadManager;
@@ -35,13 +36,15 @@ public class QuestionController {
     private Auth auth;
     private StandardServletMultipartResolver servletMultipartResolver;
     private QuestionService questionService;
+    private AnswerDaoService answerDaoService;
     @Autowired
     public QuestionController(UploadManager uploadManager, Auth auth, StandardServletMultipartResolver multipartResolver,
-                              QuestionService questionService) {
+                              QuestionService questionService, AnswerDaoService answerDaoService) {
         this.uploadManager = uploadManager;
         this.auth = auth;
         this.servletMultipartResolver = multipartResolver;
         this.questionService = questionService;
+        this.answerDaoService = answerDaoService;
     }
 
     @RequestMapping("")
@@ -56,7 +59,8 @@ public class QuestionController {
         if (question == null) {
             throw new NoSuchDataException();
         }
-        model.addAttribute("questions", questionService.getQuestions());
+        model.addAttribute("Question", question);
+        model.addAttribute("comment", answerDaoService.getAnswersByQuestionId(id));
         return "index";
     }
 
