@@ -16,4 +16,7 @@
     <select id="getUserPassword" resultType="cn.chen.model.User">
         select * from user where email = #{0} and student_no = #{1}
     </select>
+    <update>
+        update user set user_name = #{userName}, user_class = #{userClass}, student_no = {studentNo} where id = #{id}
+    </update>
 </mapper>
