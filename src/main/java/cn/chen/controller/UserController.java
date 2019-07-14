@@ -84,10 +84,10 @@ public class UserController {
     }
 
     @RequestMapping("/login/forget")
-    public AbstractResult forget(String email, String no) {
+    public AbstractResult forget(String email, String studentNo) {
         Utils.checkStringLength(email, 8, 40);
-        Utils.checkStringLength(no, 5, 10);
-        User user = userDaoService.getUserPassword(email, no);
+        Utils.checkStringLength(studentNo, 5, 10);
+        User user = userDaoService.getUserPassword(email, studentNo);
         if (user == null) {
             return new MsgResult(-1, "信息不匹配");
         }
