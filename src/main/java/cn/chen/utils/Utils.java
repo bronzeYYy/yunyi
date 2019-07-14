@@ -1,11 +1,17 @@
 package cn.chen.utils;
 
 import cn.chen.data.exceptions.IllegalParamException;
+import cn.chen.data.result.MsgResult;
 import com.mysql.jdbc.StringUtils;
 import org.springframework.mail.MailException;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.validation.Errors;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.Random;
 
 public final class Utils {
@@ -33,5 +39,19 @@ public final class Utils {
         mailMessage.setFrom("chensuwei0@163.com");
         mailMessage.setTo(email);
         mailSender.send(mailMessage);
+    }
+    public static boolean isImgFile(MultipartFile file) {
+        try {
+            BufferedImage image = ImageIO.read(file.getInputStream());
+            if (image == null) {
+                return false;
+            }
+        } catch (IOException e) {
+            return false;
+        }
+        return true;
+    }
+    public static MsgResult dealErrors(Errors errors) {
+        return new MsgResult(1, errors.getAllErrors().get(0).getDefaultMessage());
     }
 }

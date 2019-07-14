@@ -49,9 +49,23 @@ public class JedisDaoImpl implements JedisDao {
         }
     }
 
+    /*
+     * create by: chen
+     * description: 判断用户是否可以提交
+     * create time: 13:22 2019-07-14
+     * @param id: 用户id
+     * @param commitTypeEnum: 提交类型
+     * @return boolean: 结果
+     */
     @Override
     public boolean checkCommit(int id, CommitTypeEnum commitTypeEnum) {
-        return false;
+        Jedis jedis = null;
+        try {
+            jedis = jedisPool.getResource();
+            return jedis.get(id + ":" + commitTypeEnum.getCode()) == null;
+        } finally {
+            close(jedis);
+        }
     }
 
     @Override
@@ -71,6 +85,25 @@ public class JedisDaoImpl implements JedisDao {
             close(jedis);
         }
         return false;
+    }
+
+    /*
+     * create by: chen
+     * description: 设置用户提交状态，有效期为两分钟，即两分钟内不能再次提问（回答）
+     * create time: 13:23 2019-07-14
+     * @param id: 用户id
+     * @param commitTypeEnum: 提交类型
+     * @return boolean: 设置结果
+     */
+    @Override
+    public boolean setCommitState(int id, CommitTypeEnum commitTypeEnum) {
+        Jedis jedis = null;
+        try {
+            jedis = jedisPool.getResource();
+            return "OK".equals(jedis.set(id + ":" + commitTypeEnum.getCode(), "1", "nx", "ex", 120));
+        } finally {
+            close(jedis);
+        }
     }
 
     @Override

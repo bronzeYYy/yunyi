@@ -1,5 +1,4 @@
 package cn.chen.dao;
-
 import cn.chen.data.enums.CommitTypeEnum;
 
 public interface JedisDao {
@@ -8,5 +7,6 @@ public interface JedisDao {
     boolean checkCommit(int id, CommitTypeEnum commitTypeEnum);
     boolean checkCommit(String email, CommitTypeEnum commitTypeEnum);
     boolean checkEmailSendCode(String email);
+    boolean setCommitState(int id, CommitTypeEnum commitTypeEnum);
     void delCode(String email);
 }
