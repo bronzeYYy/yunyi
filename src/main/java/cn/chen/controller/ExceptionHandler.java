@@ -1,5 +1,6 @@
 package cn.chen.controller;
 
+import cn.chen.data.exceptions.NeedLoginException;
 import cn.chen.data.exceptions.NoSuchDataException;
 import cn.chen.data.exceptions.YunyiException;
 import cn.chen.data.result.AbstractResult;
@@ -9,6 +10,10 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.mail.MailException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 @ControllerAdvice
 public class ExceptionHandler {
@@ -23,7 +28,29 @@ public class ExceptionHandler {
 //        return new MsgResult(-1, e.getClass().getName());
     }
     @org.springframework.web.bind.annotation.ExceptionHandler(NoSuchDataException.class)
-    public String handleException() {
+    public String handleException(HttpServletResponse response) {
+        try {
+            response.sendError(404);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return "404";
+    }
+    @org.springframework.web.bind.annotation.ExceptionHandler(NeedLoginException.class)
+    public String toLogin(HttpServletRequest request) {
+        StringBuilder url = new StringBuilder();
+        String path = request.getServletPath();
+        int j = 0;
+        for (int i = 0; i < path.length(); i++) {
+            if (path.charAt(i) == '/') {
+                j++;
+            }
+        }
+        for (int k = 1; k < j; k++) {
+            url.append("../");
+        }
+        //String url = request.getScheme() + "://" + request.getServletPath() + ":" + request.getServerPort() + "/";
+        //System.out.println(url);
+        return "redirect:"+ url + "login.jsp";
     }
 }

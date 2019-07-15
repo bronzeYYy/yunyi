@@ -1,5 +1,6 @@
 package cn.chen.controller;
 
+import cn.chen.config.QiNiuConfig;
 import cn.chen.dao.JedisDao;
 import cn.chen.data.result.AbstractResult;
 import cn.chen.data.result.MsgResult;
@@ -10,13 +11,16 @@ import com.mysql.jdbc.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSender;
 import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.regex.Pattern;
 
 
@@ -95,6 +99,20 @@ public class UserController {
         return new MsgResult(0, "密码已发送到邮箱");
     }
 
+    @RequestMapping(value = "/avatar/{id}", method = RequestMethod.GET)
+    public void getUserAvatar(@PathVariable int id, HttpServletResponse response) {
+        String avatarUrl = QiNiuConfig.BUCKET_URL + "avatar_" + id;
+        try {
+            if (Utils.qiniuFileExists(avatarUrl)) {
+                response.sendRedirect(avatarUrl);
+            } else {
+                response.sendRedirect(QiNiuConfig.BUCKET_URL + "avatar_default");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 
     private boolean sendEmail(String email) {
         String code = Utils.getRandomCode();

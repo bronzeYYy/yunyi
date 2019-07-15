@@ -54,7 +54,7 @@
 				<li class="active"><a class="scroll" href="${hello}column" id="test">专栏</a></li>
 				<li class="active"><a class="scroll" href="#" id = "yuan">发现</a></li>
 				<li class="active"><a class="scroll" href="#lianxi">联系我们</a></li>
-				<li class="active"><a class="scroll" href="../../personal.jsp">我的主页</a></li>
+				<li class="active"><a class="scroll" href="${hello}user">我的主页</a></li>
 			</ul>
 			<ul class="nav navbar-nav pull-right">
 				<li>
@@ -171,11 +171,11 @@
 
 		<!--  资料显示栏 -->
 
-		<div class="col-md-4 footer_grid" style="margin-top:60px;margin-left:300px">
+		<%--<div class="col-md-4 footer_grid" style="margin-top:60px;margin-left:300px">
 			<h3></h3>
 			<hr>
 			<div style="margin-top:20px;bgcolor:#ffff00" >
-				<c:forEach var="i" items="${}">
+				<c:forEach var="i" items="${questions}">
 					<div style="bgcolor:#F00000">
 						<h1>${i.questionName }</h1><h4>${i.creationTime }</h4>
 						<p><h3>${i.questionContent }</h3></p>
@@ -183,7 +183,7 @@
 					</div>
 				</c:forEach>
 			</div>
-		</div>
+		</div>--%>
 
 		<div class="clearfix"> </div>
 

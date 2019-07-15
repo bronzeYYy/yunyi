@@ -8,11 +8,10 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class QiNiuConfig {
-    private static final String AK = "R7TaJghShAbqOFxRY4uvxAvAwaDshaXT1msvW2Nx";
-    private static final String SK = "ixYbz5nAdt7C0sNJEONG5CQN4dNz4DioPnnetWr9";
+    private static final String AK = "";
+    private static final String SK = "";
 
     public static final String BUCKET = "yunyi_img";
-
 
 
     @Bean

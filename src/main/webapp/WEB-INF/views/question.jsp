@@ -2,14 +2,14 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%--<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> --%>
-
+<html>
 <head>
 <title>问题详情页</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-   <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-   <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-   <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <link rel="stylesheet" href="${hello}css/bootstrap.css">
+   <script src="${hello}js/jquery-3.3.1.min.js"></script>
+   <script src="${hello}js/bootstrap.js"></script>
    <script src="${hello}layer-v3.1.1/layer/layer.js"></script>
 <style>
 body{
@@ -24,10 +24,7 @@ color:white;
     a:hover{color: #CCFFFF;} /*鼠标在链接上 */ 
 
 </style>
-    <script src="layer-v3.1.1/layer/layer.js"></script>
 </head>
-
-
 
 <body style="background-color:#303030">
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -41,7 +38,7 @@ color:white;
                 <li class="active"><a class="scroll" href="${hello}column" id="test">专栏</a></li>
                 <li class="active"><a class="scroll" href="#" id = "yuan">发现</a></li>
                 <li class="active"><a class="scroll" href="#lianxi">联系我们</a></li>
-                <li class="active"><a class="scroll" href="../../personal.jsp">我的主页</a></li>
+                <li class="active"><a class="scroll" href="personal.jsp">我的主页</a></li>
             </ul>
             <ul class="nav navbar-nav pull-right">
 
@@ -83,7 +80,7 @@ color:white;
             <div class="row">
                     <br>
                     <div style="width:100px;height:100px;float:left;margin-top:20px;margin-left:30px">
-						<p><img src="" width=45px height=45px></p>
+						<p><img src="${hello}user/avatar/${i.answerUser.id}" width=45px height=45px></p>
 						<p><a  href="#">  ${i.answerUser.userName}</a></p>
 					</div>
                
@@ -111,27 +108,33 @@ color:white;
         </div>
     </div>
 </div>
-
+<div id="huifa" style="display: none">
+    <textarea id='huidaneirong' value='' style='background:transparent;
+          margin-top:20px;margin-left:20px;
+          color:#000000;height: 100px;width:460px'></textarea><br><br><br><strong>
+    <h3 id='huidafabiao' style='cursor:pointer;color: #000000;margin-top:20px;margin-left: 230px'>提交</h3></strong>
+</div>
 
 <script>
 	$('#huida').on('click',function(){
-		layer.open({
-   			type:2,
-   			title:'评论界面',
-   			maxmin:true,
-   			shadeClose:true,
-   			area:['1000px','700px'],
-   			content:'${hello}answer.jsp'
-   		});
+      //var content = "";
+      layer.open({
+          type:1,
+          title:'回答界面',
+          maxmin:true,
+          shadeClose:true,
+          area:['500px','300px'],
+          content:$('#huifa')
+      });
 
-});
+  });
 	</script>
 	<script>
 	$('#huifu').on('click',function(){
-	    var content = "<textarea style='background:transparent;" +
+	    var content = "<textarea id='neirong' value='' style='background:transparent;" +
           "margin-top:20px;margin-left:20px;" +
           "color:#000000;height: 100px;width:460px'></textarea><br><br><br>" +
-          "<strong><h3 style='cursor:pointer;color: #000000;margin-top:20px;margin-left: 230px'>发表</h3></strong>";
+          "<strong><h3 id='fabiao' style='cursor:pointer;color: #000000;margin-top:20px;margin-left: 230px'>发表</h3></strong>";
 		layer.open({
    			type:1,
    			title:'回复界面',
@@ -142,6 +145,48 @@ color:white;
    		});
 
 });
+</script>
+<script>
+var index = parent.layer.getFrameIndex(window.name);
+$('#fabiao').on('click',function(){
+	  var f1 = document.getElementById("neirong").value;
+	 
+      $.ajax({
+    //      url:  'answer/save',
+                  type: 'post',
+                  data: {'answerContent':f1, 'questionId': ${Question.id}},
+              success:function(data) {
+                  layer.msg(data.msg);
+                  if(data.code === 0)
+                  {
+                      parent.layer.close(index);
+                  }
+          }
+      })
+});
+
+
+</script>
+<script>
+    var index = parent.layer.getFrameIndex(window.name);
+    $('#huidafabiao').on('click',function(){
+        var f1 = document.getElementById("huidaneirong").value;
+        $.ajax({
+            url:  '${hello}answer/save',
+            type: 'post',
+            data: {'answerContent':f1, 'questionId': ${Question.id}},
+            success:function(data) {
+                layer.msg(data.msg);
+                if(data.code === 0)
+                {
+                    window.location.reload();
+                    parent.layer.close(index);
+                }
+            }
+        })
+    });
+
+
 </script>
 </body>
 </html>

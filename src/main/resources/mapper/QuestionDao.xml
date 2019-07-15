@@ -13,6 +13,10 @@
         select *, `user`.creation_time as user_creationTime, `user`.id as user_id from question left join user on questioner_id = `user`.id
         where question.id = #{id};
     </select>
+    <select id="getUserQuestionsByUserId" resultMap="getQuestion">
+         select *, `user`.creation_time as user_creationTime, `user`.id as user_id from question left join user on questioner_id = `user`.id
+        where questioner_id = #{userId};
+    </select>
     <resultMap id="getQuestion" type="cn.chen.model.Question">
         <id column="id" property="id" />
         <result column="question_name" property="questionName" />

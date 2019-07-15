@@ -100,7 +100,7 @@
 			</ul>
 			<ul class="nav navbar-nav pull-right">
 				<li>
-					<a style="margin-top:20px;color:#FFFFFF" href="${hello}personal.jsp"><c:if test="${not empty user}">
+					<a style="margin-top:20px;color:#FFFFFF" href="${hello}user"><c:if test="${not empty user}">
 						${user.userName}
 					</c:if> </a>
 				</li>
