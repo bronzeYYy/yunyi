@@ -14,8 +14,15 @@
       <change afterPath="$PROJECT_DIR$/src/main/java/cn/chen/config/AspectConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chen/config/RootConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chen/config/RootConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chen/dao/JedisDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chen/dao/JedisDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chen/dao/JedisDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chen/dao/JedisDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chen/service/UserDaoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chen/service/UserDaoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chen/service/impl/AnswerDaoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chen/service/impl/AnswerDaoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/chen/service/impl/QuestionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/chen/service/impl/QuestionServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/jdbc.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/jdbc.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/UserDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/cn/chen/dao/AnswerDaoServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/cn/chen/dao/AnswerDaoServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/cn/chen/dao/QuestionServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/cn/chen/dao/QuestionServiceTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -43,53 +50,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/cn/chen/controller/QuestionController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
+            <state relative-caret-position="928">
               <caret line="64" column="19" selection-start-line="64" selection-start-column="19" selection-end-line="64" selection-end-column="19" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chen/dao/mysql/UserDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="10" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chen/service/UserDaoService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="8" column="34" lean-forward="true" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chen/aop/UserBehaviorAspect.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="14" column="4" lean-forward="true" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/chen/config/AspectConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -135,7 +100,6 @@
         <option value="$PROJECT_DIR$/src/main/java/cn/chen/interceptor/QuestionInterceptor.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/index.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chen/config/MyDispatcherServlet.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chen/service/impl/UserDaoServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chen/dao/mysql/QuestionDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chen/utils/Utils.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chen/controller/UserController.java" />
@@ -145,12 +109,8 @@
         <option value="$PROJECT_DIR$/src/main/resources/mapper/QuestionDao.xml.fxml" />
         <option value="$PROJECT_DIR$/src/main/resources/jdbc.properties" />
         <option value="$PROJECT_DIR$/src/test/cn/chen/dao/Test.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/UserDao.xml" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chen/controller/UserUpdateController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chen/dao/mysql/AnswerDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chen/dao/JedisDaoImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chen/dao/JedisDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chen/service/impl/QuestionServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chen/model/Question.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chen/service/AnswerDaoService.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chen/config/RootConfig.java" />
@@ -159,14 +119,11 @@
         <option value="$PROJECT_DIR$/src/main/java/cn/chen/controller/QuestionController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/answer.jsp" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/QuestionDao.xml" />
-        <option value="$PROJECT_DIR$/src/test/cn/chen/dao/QuestionServiceTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chen/controller/IndexController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chen/config/WebConfig.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/personal.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/login.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/column.jsp" />
-        <option value="$PROJECT_DIR$/src/test/cn/chen/dao/AnswerDaoServiceTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chen/service/impl/AnswerDaoServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/AnswerDao.xml" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chen/controller/AnswerController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" />
@@ -175,11 +132,19 @@
         <option value="$PROJECT_DIR$/src/main/webapp/answer.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/question.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chen/dao/mysql/UserDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/chen/service/UserDaoService.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chen/aop/UserBehavourAspect.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chen/service/impl/UserDaoServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chen/service/UserDaoService.java" />
+        <option value="$PROJECT_DIR$/src/test/cn/chen/dao/QuestionServiceTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chen/service/impl/QuestionServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/UserDao.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chen/dao/JedisDaoImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chen/dao/JedisDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chen/config/AspectConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/chen/service/impl/AnswerDaoServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/chen/aop/UserBehaviorAspect.java" />
+        <option value="$PROJECT_DIR$/src/test/cn/chen/dao/AnswerDaoServiceTest.java" />
       </list>
     </option>
   </component>
@@ -220,10 +185,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="355" />
-    <option name="y" value="55" />
-    <option name="width" value="1190" />
-    <option name="height" value="975" />
+    <option name="x" value="217" />
+    <option name="y" value="40" />
+    <option name="width" value="1470" />
+    <option name="height" value="1044" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -271,7 +236,17 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="chen" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="question" type="b2602c69:ProjectViewProjectNode" />
+              <item name="question" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="chen" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="impl" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="question" type="b2602c69:ProjectViewProjectNode" />
@@ -2097,7 +2072,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 7.0.91">
+  <component name="RunManager" selected="JUnit.AnswerDaoServiceTest.test">
     <configuration name="test#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/src/test/cn/chen/dao/test.http">
       <method v="2" />
     </configuration>
@@ -2261,7 +2236,7 @@
       <workItem from="1562977276774" duration="36862000" />
       <workItem from="1563064257514" duration="36855000" />
       <workItem from="1563110841443" duration="4860000" />
-      <workItem from="1563150696084" duration="2325000" />
+      <workItem from="1563150696084" duration="4665000" />
     </task>
     <task id="LOCAL-00001" summary="add update user and interceptor">
       <created>1563069932957</created>
@@ -2333,43 +2308,50 @@
       <option name="project" value="LOCAL" />
       <updated>1563151794211</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="add answerDao">
+      <created>1563153189460</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1563153189460</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="QuestionServiceTest_test - 2019.07.14 at 18h 47m 53s.xml">
+    <history-entry file="QuestionServiceTest_test - 2019.07.15 at 09h 31m 58s.xml">
       <configuration name="QuestionServiceTest.test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="QuestionServiceTest_test - 2019.07.14 at 18h 48m 13s.xml">
+    <history-entry file="QuestionServiceTest_test - 2019.07.15 at 09h 33m 15s.xml">
       <configuration name="QuestionServiceTest.test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="QuestionServiceTest_test - 2019.07.14 at 18h 48m 26s.xml">
+    <history-entry file="QuestionServiceTest_test - 2019.07.15 at 09h 34m 26s.xml">
       <configuration name="QuestionServiceTest.test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="QuestionServiceTest_test - 2019.07.14 at 18h 48m 48s.xml">
+    <history-entry file="QuestionServiceTest_test - 2019.07.15 at 09h 40m 02s.xml">
       <configuration name="QuestionServiceTest.test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="QuestionServiceTest_test - 2019.07.14 at 18h 57m 25s.xml">
+    <history-entry file="QuestionServiceTest_test - 2019.07.15 at 09h 40m 28s.xml">
       <configuration name="QuestionServiceTest.test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="QuestionServiceTest_test - 2019.07.14 at 19h 03m 21s.xml">
-      <configuration name="QuestionServiceTest.test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AnswerDaoServiceTest_test - 2019.07.14 at 20h 14m 18s.xml">
+    <history-entry file="AnswerDaoServiceTest_test - 2019.07.15 at 09h 45m 48s.xml">
       <configuration name="AnswerDaoServiceTest.test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AnswerDaoServiceTest_test - 2019.07.14 at 20h 16m 27s.xml">
+    <history-entry file="AnswerDaoServiceTest_test - 2019.07.15 at 09h 46m 39s.xml">
       <configuration name="AnswerDaoServiceTest.test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AnswerDaoServiceTest_test - 2019.07.14 at 20h 23m 03s.xml">
+    <history-entry file="AnswerDaoServiceTest_test - 2019.07.15 at 09h 47m 29s.xml">
       <configuration name="AnswerDaoServiceTest.test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AnswerDaoServiceTest_test - 2019.07.14 at 20h 49m 08s.xml">
+    <history-entry file="AnswerDaoServiceTest_test - 2019.07.15 at 09h 48m 03s.xml">
+      <configuration name="AnswerDaoServiceTest.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AnswerDaoServiceTest_test - 2019.07.15 at 09h 48m 42s.xml">
       <configuration name="AnswerDaoServiceTest.test" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="84641000" />
+    <option name="totallyTimeSpent" value="86981000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -2385,7 +2367,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932975" weight="0.36827195" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932975" visible="true" weight="0.31728044" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.21671388" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -2425,74 +2407,14 @@
     <MESSAGE value="update pages" />
     <MESSAGE value="update jackson-databind version to 2.9.9" />
     <MESSAGE value="add askingNumber when post a question" />
-    <option name="LAST_COMMIT_MESSAGE" value="add askingNumber when post a question" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/cn/chen/dao/AnswerDaoServiceTest.java</url>
-          <line>26</line>
-          <properties />
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/cn/chen/dao/AnswerDaoServiceTest.java</url>
-          <line>22</line>
-          <properties />
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="add answerDao" />
+    <option name="LAST_COMMIT_MESSAGE" value="add answerDao" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chen/utils/Utils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="781">
-          <caret line="53" column="18" selection-start-line="53" selection-start-column="18" selection-end-line="53" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chen/data/exceptions/YunyiException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="2" column="46" selection-start-line="2" selection-start-column="46" selection-end-line="2" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/javainstall/jdk/src.zip!/java/lang/RuntimeException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2">
-          <caret line="42" column="13" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chen/controller/ExceptionHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1054#1055#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/chen/data/exceptions/NoSuchDataException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="16">
           <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/UserDao.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="16" column="67" lean-forward="true" selection-start-line="16" selection-start-column="67" selection-end-line="16" selection-end-column="67" />
         </state>
       </provider>
     </entry>
@@ -2531,29 +2453,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chen/dao/JedisDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="91" column="52" selection-start-line="91" selection-start-column="52" selection-end-line="91" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#setRandomCode#0;class#JedisDaoImpl#0" />
-            <element signature="method#checkRandomCode#0;class#JedisDaoImpl#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/jdbc.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="48">
           <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chen/dao/JedisDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16">
-          <caret line="1" column="41" selection-start-line="1" selection-start-column="41" selection-end-line="1" selection-end-column="41" />
         </state>
       </provider>
     </entry>
@@ -2630,48 +2533,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
           <caret line="208" column="5" lean-forward="true" selection-start-line="208" selection-start-column="5" selection-end-line="208" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/cn/chen/dao/QuestionServiceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="22" selection-end-column="60" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chen/service/impl/AnswerDaoServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="32" column="36" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1385#1386#0" expanded="true" />
-            <element signature="e#1452#1453#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chen/service/AnswerDaoService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/cn/chen/dao/AnswerDaoServiceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2773,16 +2634,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chen/controller/QuestionController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="64" column="19" selection-start-line="64" selection-start-column="19" selection-end-line="64" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/chen/model/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="256">
@@ -2794,13 +2645,6 @@
             <element signature="e#2387#2388#0" expanded="true" />
             <element signature="e#2429#2430#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chen/dao/mysql/UserDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="10" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -2824,16 +2668,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chen/config/AspectConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/chen/service/QuestionService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
@@ -2851,17 +2685,146 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://E:/javainstall/jdk/src.zip!/java/lang/Boolean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="49" column="32" selection-start-line="49" selection-start-column="32" selection-end-line="49" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chen/service/impl/UserDaoServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="38" column="5" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/chen/service/UserDaoService.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/aspectj/aspectjweaver/1.9.3/aspectjweaver-1.9.3.jar!/org/aspectj/lang/ProceedingJoinPoint.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="16" column="38" lean-forward="true" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chen/data/exceptions/YunyiException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chen/data/exceptions/FrequencyException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="3" column="48" selection-start-line="3" selection-start-column="48" selection-end-line="3" selection-end-column="48" />
+          <folding>
+            <element signature="e#239#240#0" expanded="true" />
+            <element signature="e#292#293#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chen/dao/mysql/UserDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="10" column="33" lean-forward="true" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/UserDao.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chen/dao/JedisDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="11" column="51" selection-start-line="11" selection-start-column="51" selection-end-line="11" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chen/config/AspectConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="14" column="51" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chen/dao/JedisDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="112" column="59" selection-start-line="112" selection-start-column="59" selection-end-line="112" selection-end-column="59" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#setRandomCode#0;class#JedisDaoImpl#0" />
+            <element signature="method#checkRandomCode#0;class#JedisDaoImpl#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chen/service/AnswerDaoService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chen/service/impl/AnswerDaoServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="373">
+          <caret line="27" column="42" lean-forward="true" selection-start-line="27" selection-start-column="42" selection-end-line="27" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chen/aop/UserBehaviorAspect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="861">
+          <caret line="62" column="45" lean-forward="true" selection-start-line="62" selection-start-column="45" selection-end-line="62" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/cn/chen/dao/AnswerDaoServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
-          <caret line="8" column="34" lean-forward="true" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
+          <caret line="8" column="79" lean-forward="true" selection-start-line="8" selection-start-column="79" selection-end-line="8" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/cn/chen/dao/QuestionServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="15" column="41" lean-forward="true" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/chen/service/impl/QuestionServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="32" column="13" lean-forward="true" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
+        <state relative-caret-position="640">
+          <caret line="40" column="85" lean-forward="true" selection-start-line="40" selection-start-column="85" selection-end-line="40" selection-end-column="85" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1579#1580#0" expanded="true" />
@@ -2872,10 +2835,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chen/aop/UserBehaviorAspect.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/chen/controller/QuestionController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="14" column="4" lean-forward="true" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+        <state relative-caret-position="928">
+          <caret line="64" column="19" selection-start-line="64" selection-start-column="19" selection-end-line="64" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
