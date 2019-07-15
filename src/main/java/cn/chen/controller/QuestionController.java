@@ -47,13 +47,6 @@ public class QuestionController {
         this.answerDaoService = answerDaoService;
     }
 
-    @RequestMapping("")
-    public String questions(Model model) {
-        model.addAttribute("questions", questionService.getQuestions());
-        model.addAttribute("hello", "../");
-        return "index";
-    }
-
     @RequestMapping("/detail/{id}")
     public String questionDetail(@PathVariable int id, Model model) {
         Question question = questionService.getQuestionById(id);
@@ -61,7 +54,7 @@ public class QuestionController {
             throw new NoSuchDataException();
         }
         model.addAttribute("Question", question);
-        model.addAttribute("hello", "../");
+        model.addAttribute("hello", "../../");
         model.addAttribute("comment", answerDaoService.getAnswersByQuestionId(id));
         return "question";
     }

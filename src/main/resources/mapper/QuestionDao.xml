@@ -6,14 +6,29 @@
     <insert id="save">
         insert into question(question_name, questioner_id, question_content, creation_time) values(#{questionName}, #{questioner.id}, #{questionContent}, now())
     </insert>
-    <select id="getQuestions" resultType="cn.chen.model.Question" parameterType="cn.chen.model.Question">
-        select * from question
+    <select id="getQuestions" resultMap="getQuestion" parameterType="cn.chen.model.Question">
+        select * from question;
     </select>
-    <select id="getQuestionById" resultType="cn.chen.model.Question" parameterType="cn.chen.model.Question">
-        select * from question where id = #{id}
+    <select id="getQuestionById" resultMap="getQuestion" parameterType="cn.chen.model.Question">
+        select *, `user`.creation_time as user_creationTime, `user`.id as user_id from question left join user on questioner_id = `user`.id
+        where question.id = #{id};
     </select>
     <resultMap id="getQuestion" type="cn.chen.model.Question">
-        <id property="id" column="id" />
-
+        <id column="id" property="id" />
+        <result column="question_name" property="questionName" />
+        <result column="question_content" property="questionContent" />
+        <result column="creation_time" property="creationTime" />
+        <association property="questioner" javaType="cn.chen.model.User">
+            <id column="user_id" property="id"/>
+            <result column="user_name" property="userName" />
+            <result column="user_password" property="userPassword" />
+            <result column="user_class" property="userClass" />
+            <result column="integral" property="integral" />
+            <result column="asking_number" property="askingNumber" />
+            <result column="answer_number" property="answerNumber" />
+            <result column="email" property="email" />
+            <result column="user_creationTime" property="creationTime" />
+            <result column="student_no" property="studentNo" />
+        </association>
     </resultMap>
 </mapper>

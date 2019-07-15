@@ -33,7 +33,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     public void addInterceptors(InterceptorRegistry registry) {
         super.addInterceptors(registry);
         registry.addInterceptor(new QuestionInterceptor())
-                .addPathPatterns("/question/*", "/user/update")
+                .addPathPatterns("/question/*", "/user/update", "/answer/save")
                 .excludePathPatterns("/question/detail/*");
         // 注册拦截器
     }

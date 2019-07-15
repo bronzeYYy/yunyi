@@ -10,12 +10,12 @@
     <!--引入wangEditor.css-->
     <link rel="stylesheet" type="text/css" href="dist/css/wangEditor.min.css">
     <style type="text/css">
-        .container{
+        .contain{
             width: 800px;
             height: auto;
             margin: 50px auto;
         }
-        .container textarea{
+        .contain textarea{
             height: 400px;
         }
     </style>
@@ -23,10 +23,10 @@
 </head>
 <body align="center">
 
-<div class="container">
-    <div><h1></h1></div>
+<div class="contain" style="align-content: center">
+    <div style="align-items: center"><h1></h1></div>
     <div>
-       
+
 
             <p>
                 <strong>请简单描述你的问题：</strong>
@@ -39,12 +39,12 @@
                 <strong>说说问题的提出背景：</strong>
             </p>
             <p>
-                <textarea id="content" value=""></textarea>
+                <textarea id="textarea1" value=""></textarea>
             </p>
             <p>
                 <input id="fabu" style="width:50px;height:30px;background-color: #666666; border-radius:3px; color:#FFFFFF" type="submit" value="提交">
             </p>
-       
+
     </div>
 </div>
 
@@ -55,31 +55,33 @@
 <script type="text/javascript">
     var editor = new wangEditor('textarea1');
     // 上传图片（举例）
-    editor.config.uploadImgUrl = '/upload.php';
+
     editor.config.uploadImgFileName = 'myFileName';
     editor.create();
 </script>
    <script src="layer-v3.1.1/layer/layer.js"></script>
   <script>
+      var index = parent.layer.getFrameIndex(window.name);
   	$('#fabu').on('click',function(){
+
   		var f1 = document.getElementById("title").value;
-		var f2 = document.getElementById("content").value;
+		var f2 = document.getElementById("textarea1").value;
 		$.ajax({
 			url:  'question/save',
 			type: 'post',
 			data: {'questionName':f1,'questionContent':f2},
 			success:function(data) {
-				if(data.code)
-					{
-					layer.msg('提交成功');
-						window.location('column.jsp');
-					} else {
-						layer.msg(data.msg);
+          layer.msg(data.msg);
+				if(data.code === 0)
+        {
+              parent.layer.close(index);
 					}
 			}
 		})
+
   	});
-  
+
+
   </script>
 </body>
 </html>

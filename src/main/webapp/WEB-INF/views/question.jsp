@@ -20,23 +20,42 @@ text-decoration:none;
 color:white; 
 } 
     a:link {color: #FFFFFF;} /* 未访问的链接 */
-    a:visited {color: #DC143C;} /* 已访问的链接 */
+
     a:hover{color: #CCFFFF;} /*鼠标在链接上 */ 
-    a:active {color: #00FFFF;} /* 点击激活链接：在你点击该链接后，页面正在转向新地址的时候，链接显示此颜色 */
+
 </style>
+    <script src="layer-v3.1.1/layer/layer.js"></script>
 </head>
 
 
 
-<body style="background-color:#778899">
+<body style="background-color:#303030">
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" style="font-size:20px" href="#">云易</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
 
+                <li class="active"><a class="scroll" href="${hello}column" id="test">专栏</a></li>
+                <li class="active"><a class="scroll" href="#" id = "yuan">发现</a></li>
+                <li class="active"><a class="scroll" href="#lianxi">联系我们</a></li>
+                <li class="active"><a class="scroll" href="../../personal.jsp">我的主页</a></li>
+            </ul>
+            <ul class="nav navbar-nav pull-right">
+
+            </ul>
+        </div>
+    </div>
+</nav>
 <div class="container">
-    <div class="row-md-12">
+    <div style="margin-top:30px" class="row-md-12">
         
         <div class="col-md-12" >
 					<br>
-					 <p ><strong><h3>问题名：${Question.questionName}</h3></strong></p>
-					 <p ><strong><h4>问题详情：${Question.questionContent}</h4></strong></p>
+					 <p ><strong><h3>${Question.questionName}</h3></strong></p>
+					 <p ><strong><h4>${Question.questionContent}</h4></strong></p>
 					
 			 <div class="row">
 					<div class="col-md-2" >
@@ -45,7 +64,7 @@ color:white;
 					</div>
 					<div class="col-md-10 col-md-pull-1">
 					<p align=right><br><br><br><br>
-					<span class="glyphicon glyphicon-user"></span> <a href="#">发表人：${Question.questioner.userName}</a>
+					<span class="glyphicon glyphicon-user"></span> <a href="#">${Question.questioner.userName}</a>
 					&nbsp;
 					<text>创建时间: ${Question.creationTime}</text>
 					</p>
@@ -56,42 +75,44 @@ color:white;
 			<br>
             <div class="col-md-12" style=" box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
                     <h5><b><p>评论列表</p></b></h5>
-            </div>		
+            </div>
+
             <table>
             <c:forEach var="i" items="${comment}">
       		<tr>
             <div class="row">
-            	
                     <br>
                     <div style="width:100px;height:100px;float:left;margin-top:20px;margin-left:30px">
 						<p><img src="" width=45px height=45px></p>
-						<p><a href="#">用户名:  ${i.responder.userName}</a></p>
+						<p><a  href="#">  ${i.answerUser.userName}</a></p>
 					</div>
                
-				<div style="width:500px;height:100px;float:left;margin-top:20px;margin-left:30px;">
-					<h3>评论内容:${i.answerContent}</h3>
+				<div style="width:400px;height:100px;float:left;margin-top:20px;margin-left:30px;">
+					<h3>${i.answerContent}</h3>
 				</div>
 				<div style="width:100px;height:100px;float:left;margin-top:20px;margin-left:30px;">	
 					<h4 style="line-height:80px">第${i.id}楼</h4>
 				</div>
-				<div style="width:300px;height:100px;float:left;margin-top:20px;margin-left:30px;">
+				<div style="width:300px;height:100px;float:left;margin-top:20px;margin-left:20px;">
 					
-				<font style="line-height:100px">发表日期 ${i.answerTime}</font>
+				<font style="line-height:100px"> ${i.answerTime}</font>
 					&emsp;&emsp;&emsp;
-					<a id="doubleclick"><span class="glyphicon glyphicon-thumbs-up"></span></a>&nbsp;&nbsp;&nbsp;<text>点赞数:</text>
+					<a id="doubleclick"><span class="glyphicon glyphicon-thumbs-up"></span></a><text></text>
 					&emsp;&emsp;&emsp;
-					<a id="huifu" href="#"><span class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;回复</a>
+					<a id="huifu" href="#"><span class="glyphicon glyphicon-comment"></span></a>
 				</div>
             </div>
             <hr>
             </tr>
+
           </c:forEach>
           
           </table>
         </div>
     </div>
 </div>
-   <script src="${hello}layer-v3.1.1/layer/layer.js"></script>
+
+
 <script>
 	$('#huida').on('click',function(){
 		layer.open({
@@ -100,20 +121,24 @@ color:white;
    			maxmin:true,
    			shadeClose:true,
    			area:['1000px','700px'],
-   			content:'answer.jsp'
+   			content:'${hello}answer.jsp'
    		});
 
 });
 	</script>
 	<script>
 	$('#huifu').on('click',function(){
+	    var content = "<textarea style='background:transparent;" +
+          "margin-top:20px;margin-left:20px;" +
+          "color:#000000;height: 100px;width:460px'></textarea><br><br><br>" +
+          "<strong><h3 style='cursor:pointer;color: #000000;margin-top:20px;margin-left: 230px'>发表</h3></strong>";
 		layer.open({
-   			type:2,
-   			title:'评论界面',
+   			type:1,
+   			title:'回复界面',
    			maxmin:true,
    			shadeClose:true,
-   			area:['1000px','700px'],
-   			content:'answer.jsp'
+   			area:['500px','300px'],
+   			content:content
    		});
 
 });
