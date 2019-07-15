@@ -8,4 +8,6 @@ public interface UserDaoService {
     User getUserPassword(String email, String studentNo);
     boolean updateUser(User user);
     User getUserById(int id);
+    int addAskingNum(int userId);
+    int addAnswerNum(int userId);
 }

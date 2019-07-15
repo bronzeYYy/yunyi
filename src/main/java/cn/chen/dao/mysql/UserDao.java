@@ -7,4 +7,6 @@ public interface UserDao {
     User getUserByNoOrEmail(String noOrEmail, String password);
     User getUserPassword(String email, String studentNo);
     int updateUser(User user);
+    int addAskingNum(int userId);
+    int addAnswerNum(int userId);
 }
