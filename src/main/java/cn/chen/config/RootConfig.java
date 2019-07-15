@@ -92,7 +92,8 @@ public class RootConfig {
         JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
         javaMailSender.setHost("smtp.163.com");
         javaMailSender.setUsername("chensuwei0@163.com");
-        javaMailSender.setPassword("123123");
+        //javaMailSender.setPassword("123123123123");
+        javaMailSender.setPassword("chen1769178812");
         javaMailSender.setPort(465);
         Properties properties = new Properties();
         properties.put("mail.smtp.auth", "true");
