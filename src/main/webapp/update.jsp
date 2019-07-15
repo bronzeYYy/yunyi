@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-				 pageEncoding="utf-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -21,11 +20,11 @@
 	</div>
 	<div style="width:300px;height:310px">
 		<p style="font-size:20px;text-align:center;color:#708090">修改用户信息</p>
-		<form action="${path}/update" method="post">
-			<input type="text" class="form-control" placeholder="新用户名"  name="userName" />
-			<input type="password" style="margin-top:10px" class="form-control" placeholder="新密码" name="userPassword" />
-			<input type="password" style="margin-top:10px" class="form-control" placeholder="确认密码" name="userPassword1" />
-			<input type="text" style="margin-top:10px" class="form-control" placeholder="新班级"  name="userClass" />
+		<form action="${path}/user/update" method="post">
+			<input type="text" class="form-control" placeholder="新用户名"  name="userName" value="${user.userName}" />
+			<input type="password" style="margin-top:10px" class="form-control" placeholder="新密码" name="userPassword" value="${user.userPassword}" />
+			<input type="password" style="margin-top:10px" class="form-control" placeholder="确认密码" name="userPassword1" value="${user.userPassword}" />
+			<input type="text" style="margin-top:10px" class="form-control" placeholder="新班级"  name="userClass" value="${user.userClass}" />
 			<input type="submit" class="btn btn-success" style="width:300px;color:white;text-align:center;margin-top:10px" value="保存信息" />
 		</form>
 	</div>

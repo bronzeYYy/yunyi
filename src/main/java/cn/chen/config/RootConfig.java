@@ -84,7 +84,7 @@ public class RootConfig {
 
     @Bean
     public JedisPool jedisPool() {
-        return new JedisPool("192.168.190.130");
+        return new JedisPool("127.0.0.1");
     }
 
     @Bean
@@ -93,7 +93,7 @@ public class RootConfig {
         javaMailSender.setHost("smtp.163.com");
         javaMailSender.setUsername("chensuwei0@163.com");
         //javaMailSender.setPassword("123123123123");
-        javaMailSender.setPassword("chen1769178812");
+
         javaMailSender.setPort(465);
         Properties properties = new Properties();
         properties.put("mail.smtp.auth", "true");

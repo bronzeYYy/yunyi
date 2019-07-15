@@ -8,22 +8,22 @@
 <meta charset="utf-8">
     <title>发表问题</title>
     <!--引入wangEditor.css-->
-    <link rel="stylesheet" type="text/css" href="dist/css/wangEditor.min.css">
+    <link rel="stylesheet" type="text/css" href="${hello}dist/css/wangEditor.min.css">
     <style type="text/css">
-        .contain{
+        .container{
             width: 800px;
             height: auto;
             margin: 50px auto;
         }
-        .contain textarea{
+        .container textarea{
             height: 400px;
         }
     </style>
-     <script src="layer-v3.1.1/layer/layer.js"></script>
+
 </head>
 <body align="center">
 
-<div class="contain" style="align-content: center">
+<div class="container" style="align-content: center">
     <div style="align-items: center"><h1></h1></div>
     <div>
 
@@ -49,8 +49,8 @@
 </div>
 
 
-<script type="text/javascript" src="dist/js/lib/jquery-1.10.2.min.js"></script>
-<script type="text/javascript" src="dist/js/wangEditor.min.js"></script>
+<script type="text/javascript" src="${hello}dist/js/lib/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="${hello}dist/js/wangEditor.min.js"></script>
 
 <script type="text/javascript">
     var editor = new wangEditor('textarea1');
@@ -59,7 +59,7 @@
     editor.config.uploadImgFileName = 'myFileName';
     editor.create();
 </script>
-   <script src="layer-v3.1.1/layer/layer.js"></script>
+   <script src="${hello}layer-v3.1.1/layer/layer.js"></script>
   <script>
       var index = parent.layer.getFrameIndex(window.name);
   	$('#fabu').on('click',function(){

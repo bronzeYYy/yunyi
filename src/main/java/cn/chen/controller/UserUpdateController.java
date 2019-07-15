@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @RestController
+@RequestMapping("/user")
 public class UserUpdateController {
     private UserDaoService userDaoService;
     public UserUpdateController(UserDaoService userDaoService) {
@@ -23,7 +24,7 @@ public class UserUpdateController {
     @RequestMapping ("/update")
     public AbstractResult update(@Valid User user, Errors errors, HttpSession session) {
         if (errors.hasErrors()) {
-            return new MsgResult(1, errors.getAllErrors().get(0).getDefaultMessage());
+            return new MsgResult(-1, errors.getAllErrors().get(0).getDefaultMessage());
         }
         if (user.getId() != 0 && user.getId() != ((User) session.getAttribute("user")).getId()) {
             throw new IllegalParamException("用户想做坏事");
@@ -32,6 +33,7 @@ public class UserUpdateController {
         if (userDaoService.updateUser(user)) {
             msgResult.setCode(0);
             msgResult.setMsg("修改成功");
+            session.setAttribute("user", user);
         } else {
             msgResult.setCode(-1);
             msgResult.setMsg("修改失败");

@@ -13,9 +13,9 @@
     <title>Title</title>
 </head>
 <body>
-<p>index</p>
-<c:forEach items="${questions}" var="i">
-    <p>${i.questionContent}</p>
-</c:forEach>
+<form action="../user/update" method="post">
+    <input type="text" name="userClass">
+    <input type="submit">
+</form>
 </body>
 </html>

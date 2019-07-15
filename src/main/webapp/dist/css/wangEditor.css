@@ -4,49 +4,49 @@
 /* input focus 时的颜色 */
 /* 按钮颜色 */
 /* tab selected 状态下的颜色 */
-.wangEditor-contain {
+.wangEditor-containererer {
   position: relative;
   background-color: #fff;
   border: 1px solid #ccc;
   z-index: 1;
   width: 100%;
 }
-.wangEditor-contain a:focus,
-.wangEditor-contain button:focus {
+.wangEditor-containererer a:focus,
+.wangEditor-containererer button:focus {
   outline: none;
 }
-.wangEditor-contain,
-.wangEditor-contain * {
+.wangEditor-containererer,
+.wangEditor-containererer * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   line-height: 1;
 }
-.wangEditor-contain img {
+.wangEditor-containererer img {
   border: none;
 }
-.wangEditor-contain .clearfix:after {
+.wangEditor-containererer .clearfix:after {
   content: '';
   display: table;
   clear: both;
 }
-.wangEditor-contain .clearfix {
+.wangEditor-containererer .clearfix {
   *zoom: 1;
 }
-.wangEditor-contain textarea {
+.wangEditor-containererer textarea {
   border: none;
 }
-.wangEditor-contain textarea:focus {
+.wangEditor-containererer textarea:focus {
   outline: none;
 }
-.wangEditor-contain .height-tip {
+.wangEditor-containererer .height-tip {
   position: absolute;
   width: 3px;
   background-color: #ccc;
   left: 0;
   transition: top .2s;
 }
-.wangEditor-contain .txt-toolbar {
+.wangEditor-containererer .txt-toolbar {
   position: absolute;
   background-color: #fff;
   padding: 3px 5px;
@@ -56,7 +56,7 @@
   border-bottom: 1px\9 solid\9 #999\9;
   border-right: 1px\9 solid\9 #999\9;
 }
-.wangEditor-contain .txt-toolbar .tip-triangle {
+.wangEditor-containererer .txt-toolbar .tip-triangle {
   display: block;
   position: absolute;
   width: 0;
@@ -67,7 +67,7 @@
   left: 50%;
   margin-left: -5px;
 }
-.wangEditor-contain .txt-toolbar a {
+.wangEditor-containererer .txt-toolbar a {
   color: #666;
   display: inline-block;
   margin: 0 3px;
@@ -75,10 +75,10 @@
   text-decoration: none;
   border-radius: 3px;
 }
-.wangEditor-contain .txt-toolbar a:hover {
+.wangEditor-containererer .txt-toolbar a:hover {
   background-color: #f1f1f1;
 }
-.wangEditor-contain .img-drag-point {
+.wangEditor-containererer .img-drag-point {
   display: block;
   position: absolute;
   width: 12px;
@@ -90,7 +90,7 @@
   margin-top: -6px;
   box-shadow: 1px 1px 5px #999;
 }
-.wangEditor-contain .wangEditor-upload-progress {
+.wangEditor-containererer .wangEditor-upload-progress {
   position: absolute;
   height: 1px;
   background: #1e88e5;
@@ -107,7 +107,7 @@
   left: 0;
   right: 0;
 }
-.wangEditor-contain .code-textarea {
+.wangEditor-containererer .code-textarea {
   resize: none;
   width: 100%;
   font-size: 14px;
@@ -116,30 +116,30 @@
   color: #333;
   padding: 0 15px 0 15px;
 }
-.wangEditor-menu-contain {
+.wangEditor-menu-containererer {
   width: 100%;
   border-bottom: 1px solid #f1f1f1;
   background-color: #fff;
 }
-.wangEditor-menu-contain a {
+.wangEditor-menu-containererer a {
   text-decoration: none;
 }
-.wangEditor-menu-contain .menu-group {
+.wangEditor-menu-containererer .menu-group {
   float: left;
   padding: 0 8px;
   border-right: 1px solid #f1f1f1;
 }
-.wangEditor-menu-contain .menu-item {
+.wangEditor-menu-containererer .menu-item {
   float: left;
   position: relative;
   text-align: center;
   height: 31px;
   width: 35px;
 }
-.wangEditor-menu-contain .menu-item:hover {
+.wangEditor-menu-containererer .menu-item:hover {
   background-color: #f1f1f1;
 }
-.wangEditor-menu-contain .menu-item a {
+.wangEditor-menu-containererer .menu-item a {
   display: block;
   text-align: center;
   color: #666;
@@ -147,17 +147,17 @@
   padding: 8px 0;
   font-size: 0.9em;
 }
-.wangEditor-menu-contain .menu-item .selected {
+.wangEditor-menu-containererer .menu-item .selected {
   color: #1e88e5;
 }
-.wangEditor-menu-container .menu-item .active {
+.wangEditor-menu-containererer .menu-item .active {
   background-color: #f1f1f1;
 }
-.wangEditor-menu-container .menu-item .disable {
+.wangEditor-menu-containererer .menu-item .disable {
   opacity: 0.5;
   filter: alpha(opacity=50);
 }
-.wangEditor-menu-container .menu-tip {
+.wangEditor-menu-containererer .menu-tip {
   display: block;
   position: absolute;
   z-index: 20;
@@ -186,11 +186,11 @@
             margin-left: -5px;
         }*/
 }
-.wangEditor-menu-container .menu-tip-40 {
+.wangEditor-menu-containererer .menu-tip-40 {
   width: 40px;
   margin-left: -20px;
 }
-.wangEditor-menu-container .menu-tip-50 {
+.wangEditor-menu-containererer .menu-tip-50 {
   width: 50px;
   margin-left: -25px;
 }
@@ -199,7 +199,7 @@
   border-bottom: 1px\9 solid\9 #f1f1f1\9;
   box-shadow: 0 1px 3px #999;
 }
-.wangEditor-container .wangEditor-txt {
+.wangEditor-containererer .wangEditor-txt {
   width: 100%;
   text-align: left;
   padding: 15px;
@@ -207,43 +207,43 @@
   margin-top: 5px;
   overflow-y: auto;
 }
-.wangEditor-container .wangEditor-txt p,
-.wangEditor-container .wangEditor-txt h1,
-.wangEditor-container .wangEditor-txt h2,
-.wangEditor-container .wangEditor-txt h3,
-.wangEditor-container .wangEditor-txt h4,
-.wangEditor-container .wangEditor-txt h5 {
+.wangEditor-containererer .wangEditor-txt p,
+.wangEditor-containererer .wangEditor-txt h1,
+.wangEditor-containererer .wangEditor-txt h2,
+.wangEditor-containererer .wangEditor-txt h3,
+.wangEditor-containererer .wangEditor-txt h4,
+.wangEditor-containererer .wangEditor-txt h5 {
   margin: 10px 0;
   line-height: 1.8;
 }
-.wangEditor-container .wangEditor-txt p *,
-.wangEditor-container .wangEditor-txt h1 *,
-.wangEditor-container .wangEditor-txt h2 *,
-.wangEditor-container .wangEditor-txt h3 *,
-.wangEditor-container .wangEditor-txt h4 *,
-.wangEditor-container .wangEditor-txt h5 * {
+.wangEditor-containererer .wangEditor-txt p *,
+.wangEditor-containererer .wangEditor-txt h1 *,
+.wangEditor-containererer .wangEditor-txt h2 *,
+.wangEditor-containererer .wangEditor-txt h3 *,
+.wangEditor-containererer .wangEditor-txt h4 *,
+.wangEditor-containererer .wangEditor-txt h5 * {
   line-height: 1.8;
 }
-.wangEditor-container .wangEditor-txt ul,
-.wangEditor-container .wangEditor-txt ol {
+.wangEditor-containererer .wangEditor-txt ul,
+.wangEditor-containererer .wangEditor-txt ol {
   padding-left: 20px;
 }
-.wangEditor-container .wangEditor-txt img {
+.wangEditor-containererer .wangEditor-txt img {
   cursor: pointer;
 }
-.wangEditor-container .wangEditor-txt img.clicked {
+.wangEditor-containererer .wangEditor-txt img.clicked {
   box-shadow: 1px 1px 10px #999;
 }
-.wangEditor-container .wangEditor-txt table.clicked {
+.wangEditor-containererer .wangEditor-txt table.clicked {
   box-shadow: 1px 1px 10px #999;
 }
-.wangEditor-container .wangEditor-txt pre code {
+.wangEditor-containererer .wangEditor-txt pre code {
   line-height: 1.5;
 }
-.wangEditor-container .wangEditor-txt:focus {
+.wangEditor-containererer .wangEditor-txt:focus {
   outline: none;
 }
-.wangEditor-container .wangEditor-txt blockquote {
+.wangEditor-containererer .wangEditor-txt blockquote {
   display: block;
   border-left: 8px solid #d0e5f2;
   padding: 5px 10px;
@@ -252,18 +252,18 @@
   font-size: 100%;
   background-color: #f1f1f1;
 }
-.wangEditor-container .wangEditor-txt table {
+.wangEditor-containererer .wangEditor-txt table {
   border: none;
   border-collapse: collapse;
 }
-.wangEditor-container .wangEditor-txt table td,
-.wangEditor-container .wangEditor-txt table th {
+.wangEditor-containererer .wangEditor-txt table td,
+.wangEditor-containererer .wangEditor-txt table th {
   border: 1px solid #999;
   padding: 3px 5px;
   min-width: 50px;
   height: 20px;
 }
-.wangEditor-container .wangEditor-txt pre {
+.wangEditor-containererer .wangEditor-txt pre {
   border: 1px solid #ccc;
   background-color: #f8f8f8;
   padding: 10px;
@@ -432,49 +432,49 @@
   opacity: .5;
   filter: alpha(opacity=50);
 }
-.wangEditor-drop-panel .panel-tab .tab-container,
-.txt-toolbar .panel-tab .tab-container {
+.wangEditor-drop-panel .panel-tab .tab-containererer,
+.txt-toolbar .panel-tab .tab-containererer {
   margin-bottom: 5px;
 }
-.wangEditor-drop-panel .panel-tab .tab-container a,
-.txt-toolbar .panel-tab .tab-container a {
+.wangEditor-drop-panel .panel-tab .tab-containererer a,
+.txt-toolbar .panel-tab .tab-containererer a {
   display: inline-block;
   color: #999;
   text-align: center;
   margin: 0 5px;
   padding: 5px 5px;
 }
-.wangEditor-drop-panel .panel-tab .tab-container a.selected,
-.txt-toolbar .panel-tab .tab-container a.selected {
+.wangEditor-drop-panel .panel-tab .tab-containererer a.selected,
+.txt-toolbar .panel-tab .tab-containererer a.selected {
   color: #1e88e5;
   border-bottom: 2px solid #1e88e5;
 }
-.wangEditor-drop-panel .panel-tab .content-container .content,
-.txt-toolbar .panel-tab .content-container .content {
+.wangEditor-drop-panel .panel-tab .content-containererer .content,
+.txt-toolbar .panel-tab .content-containererer .content {
   display: none;
 }
-.wangEditor-drop-panel .panel-tab .content-container .content a,
-.txt-toolbar .panel-tab .content-container .content a {
+.wangEditor-drop-panel .panel-tab .content-containererer .content a,
+.txt-toolbar .panel-tab .content-containererer .content a {
   display: inline-block;
   margin: 2px;
   padding: 2px;
   border-radius: 2px;
 }
-.wangEditor-drop-panel .panel-tab .content-container .content a:hover,
-.txt-toolbar .panel-tab .content-container .content a:hover {
+.wangEditor-drop-panel .panel-tab .content-containererer .content a:hover,
+.txt-toolbar .panel-tab .content-containererer .content a:hover {
   background-color: #f1f1f1;
 }
-.wangEditor-drop-panel .panel-tab .content-container .selected,
-.txt-toolbar .panel-tab .content-container .selected {
+.wangEditor-drop-panel .panel-tab .content-containererer .selected,
+.txt-toolbar .panel-tab .content-containererer .selected {
   display: block;
 }
-.wangEditor-drop-panel .panel-tab .emotion-content-container,
-.txt-toolbar .panel-tab .emotion-content-container {
+.wangEditor-drop-panel .panel-tab .emotion-content-containererer,
+.txt-toolbar .panel-tab .emotion-content-containererer {
   height: 200px;
   overflow-y: auto;
 }
-.wangEditor-drop-panel .upload-icon-container,
-.txt-toolbar .upload-icon-container {
+.wangEditor-drop-panel .upload-icon-containererer,
+.txt-toolbar .upload-icon-containererer {
   color: #ccc;
   text-align: center;
   margin: 20px 20px 15px 20px !important;
@@ -484,8 +484,8 @@
   border: 2px dotted #f1f1f1;
   display: block !important;
 }
-.wangEditor-drop-panel .upload-icon-container:hover,
-.txt-toolbar .upload-icon-container:hover {
+.wangEditor-drop-panel .upload-icon-containererer:hover,
+.txt-toolbar .upload-icon-containererer:hover {
   color: #666;
   border-color: #ccc;
 }

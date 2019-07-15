@@ -29,7 +29,7 @@ public class AnswerDaoServiceImpl implements AnswerDaoService {
             return false;
         }
         if (!jedisDao.setCommitState(answer.getAnswerUser().getId(), CommitTypeEnum.COMMIT_ANSWER)) {
-            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+            //TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
             throw new FrequencyException(CommitTypeEnum.COMMIT_ANSWER);
         }
         return true;
@@ -38,5 +38,15 @@ public class AnswerDaoServiceImpl implements AnswerDaoService {
     @Override
     public List<Answer> getAnswersByQuestionId(int questionId) {
         return answerDao.getAnswersByQuestionId(questionId);
+    }
+
+    @Override
+    public Answer getAnswerById(int id) {
+        return answerDao.getAnswerById(id);
+    }
+
+    @Override
+    public List<Answer> getUserAnswersByUserId(int userId) {
+        return answerDao.getUserAnswersByUserId(userId);
     }
 }

@@ -14,7 +14,8 @@
         select * from answer where id = #{id}
     </select>
     <select id="getUserAnswersByUserId" resultMap="getAnswer" parameterType="cn.chen.model.Answer">
-        select *, `user`.creation_time as user_creationTime, `user`.id as user_id from answer left join user on responder_id = #{userId};
+        select *, `user`.creation_time as user_creationTime, `user`.id as user_id from answer left join user on responder_id = `user`.id
+        where responder_id = #{userId};
     </select>
     <resultMap id="getAnswer" type="cn.chen.model.Answer">
         <id property="id" column="id" />
