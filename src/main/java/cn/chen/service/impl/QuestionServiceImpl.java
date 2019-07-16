@@ -35,9 +35,10 @@ public class QuestionServiceImpl implements QuestionService {
         if (questionDao.save(question) == 0) {
             return false;
         }
+        System.out.println("保存到数据库成功");
         if (!jedisDao.setCommitState(question.getQuestioner().getId(), CommitTypeEnum.COMMIT_QUESTION)) {
-            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
-            throw new FrequencyException(CommitTypeEnum.COMMIT_QUESTION);
+            //TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+            throw new FrequencyException(CommitTypeEnum.COMMIT_QUESTION); // 抛出异常自动回滚
         }
         return true;
     }
@@ -49,5 +50,10 @@ public class QuestionServiceImpl implements QuestionService {
     @Override
     public Question getQuestionById(int id) {
         return questionDao.getQuestionById(id);
+    }
+
+    @Override
+    public List<Question> getUserQuestionsByUserId(int userId) {
+        return questionDao.getUserQuestionsByUserId(userId);
     }
 }

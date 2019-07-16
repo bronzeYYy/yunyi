@@ -8,4 +8,5 @@ public interface QuestionService {
     boolean save(Question question);
     List<Question> getQuestions();
     Question  getQuestionById(int id);
+    List<Question> getUserQuestionsByUserId(int userId);
 }

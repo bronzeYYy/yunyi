@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.chen.dao.mysql.AnswerDao">
+    <insert id="save" parameterType="cn.chen.model.Answer">
+        insert into answer(question_id, answer_content, answer_time, responder_id) values(#{question.id}, #{answerContent}, now(), #{answerUser.id})
+    </insert>
+    <select id="getAnswersByQuestionId" resultMap="getAnswer" parameterType="cn.chen.model.Answer">
+        select *, question.creation_time as question_creationTime ,`user`.creation_time as user_creationTime, `user`.id as user_id from answer
+        left join user on responder_id = `user`.id left join question on question_id = question.id where question_id = #{questionId};
+    </select>
+    <select id="getAnswerById" resultMap="getAnswer" parameterType="cn.chen.model.Answer">
+        select * from answer where id = #{id}
+    </select>
+    <select id="getUserAnswersByUserId" resultMap="getAnswer" parameterType="cn.chen.model.Answer">
+        select *, `user`.creation_time as user_creationTime, `user`.id as user_id from answer left join user on responder_id = `user`.id
+        where responder_id = #{userId};
+    </select>
+    <resultMap id="getAnswer" type="cn.chen.model.Answer">
+        <id property="id" column="id" />
+        <result column="answer_content" property="answerContent" />
+        <result column="answer_time" property="answerTime" />
+        <association property="question" javaType="cn.chen.model.Question">
+            <id column="question_id" property="id" />
+            <result column="question_name" property="questionName" />
+            <result column="question_content" property="questionContent" />
+            <result column="creation_time" property="creationTime" />
+            <association property="questioner" javaType="cn.chen.model.User">
+                <id column="user_id" property="id"/>
+                <result column="user_name" property="userName" />
+                <result column="user_password" property="userPassword" />
+                <result column="user_class" property="userClass" />
+                <result column="integral" property="integral" />
+                <result column="asking_number" property="askingNumber" />
+                <result column="answer_number" property="answerNumber" />
+                <result column="email" property="email" />
+                <result column="user_creationTime" property="creationTime" />
+                <result column="student_no" property="studentNo" />
+            </association>
+        </association>
+        <association property="answerUser" javaType="cn.chen.model.User">
+            <id column="user_id" property="id"/>
+            <result column="user_name" property="userName" />
+            <result column="user_password" property="userPassword" />
+            <result column="user_class" property="userClass" />
+            <result column="integral" property="integral" />
+            <result column="asking_number" property="askingNumber" />
+            <result column="answer_number" property="answerNumber" />
+            <result column="email" property="email" />
+            <result column="user_creationTime" property="creationTime" />
+            <result column="student_no" property="studentNo" />
+        </association>
+    </resultMap>
+</mapper>

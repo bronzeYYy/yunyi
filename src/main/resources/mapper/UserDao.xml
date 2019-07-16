@@ -19,4 +19,10 @@
     <update id="updateUser" parameterType="cn.chen.model.User">
         update user set user_name = #{userName}, user_class = #{userClass}, student_no = #{studentNo} where id = #{id}
     </update>
+    <update id="addAskingNum">
+        update user set asking_number = asking_number + 1 where id = #{userId};
+    </update>
+    <update id="addAnswerNum">
+        update user set answer_number = answer_number + 1 where id = #{userId};
+    </update>
 </mapper>

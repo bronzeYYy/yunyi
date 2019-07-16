@@ -106,6 +106,16 @@ public class JedisDaoImpl implements JedisDao {
         }
     }
 
+    public void del(int id, CommitTypeEnum commitTypeEnum) {
+        Jedis jedis = null;
+        try {
+            jedis = jedisPool.getResource();
+            jedis.del(id + ":" + commitTypeEnum.getCode());
+        } finally {
+            close(jedis);
+        }
+    }
+
     @Override
     public void delCode(String email) {
         Jedis jedis = null;

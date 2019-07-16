@@ -6,7 +6,7 @@
 }
 .container{
     width: 1000px;
-    height: 800px;
+    height: 3000px;
     background: #fff;
     margin: 15px auto;
     border:1px #ccc solid;
@@ -102,14 +102,11 @@
     text-align: center;
     line-height: 40px;
 
-    border-right: 1px #bbb solid;
-    color: #777;
+  
+  
     cursor: pointer;
 }
-.container .menu li:nth-of-type(1){
-    font-weight: 600;
-    color: #000;
-}
+
 .shadow{
     display: none;
     height: 100%;

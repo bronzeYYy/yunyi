@@ -1,5 +1,6 @@
 package cn.chen.utils;
 
+import cn.chen.config.QiNiuConfig;
 import cn.chen.data.exceptions.IllegalParamException;
 import cn.chen.data.result.MsgResult;
 import com.mysql.jdbc.StringUtils;
@@ -12,6 +13,8 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Random;
 
 public final class Utils {
@@ -37,7 +40,13 @@ public final class Utils {
         mailMessage.setText(text);
         mailMessage.setSubject(subject);
         mailMessage.setFrom("chensuwei0@163.com");
-        mailMessage.setTo(email);
+        try {
+            HttpURLConnection connection = (HttpURLConnection) new URL(QiNiuConfig.BUCKET_URL + "file").openConnection();
+
+            System.out.println(connection.getResponseCode());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }      mailMessage.setTo(email);
         mailSender.send(mailMessage);
     }
     public static boolean isImgFile(MultipartFile file) {
@@ -53,5 +62,15 @@ public final class Utils {
     }
     public static MsgResult dealErrors(Errors errors) {
         return new MsgResult(1, errors.getAllErrors().get(0).getDefaultMessage());
+    }
+
+    public static boolean qiniuFileExists(String url) {
+        try {
+            HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+            return connection.getResponseCode() == 200;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }

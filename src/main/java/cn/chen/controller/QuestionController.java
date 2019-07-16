@@ -8,6 +8,7 @@ import cn.chen.model.Question;
 import cn.chen.model.User;
 import cn.chen.service.AnswerDaoService;
 import cn.chen.service.QuestionService;
+import cn.chen.service.UserDaoService;
 import cn.chen.utils.Utils;
 import com.qiniu.storage.UploadManager;
 import com.qiniu.util.Auth;
@@ -37,21 +38,16 @@ public class QuestionController {
     private StandardServletMultipartResolver servletMultipartResolver;
     private QuestionService questionService;
     private AnswerDaoService answerDaoService;
+    private UserDaoService userDaoService;
     @Autowired
     public QuestionController(UploadManager uploadManager, Auth auth, StandardServletMultipartResolver multipartResolver,
-                              QuestionService questionService, AnswerDaoService answerDaoService) {
+                              QuestionService questionService, AnswerDaoService answerDaoService, UserDaoService userDaoService) {
         this.uploadManager = uploadManager;
         this.auth = auth;
         this.servletMultipartResolver = multipartResolver;
         this.questionService = questionService;
         this.answerDaoService = answerDaoService;
-    }
-
-    @RequestMapping("")
-    public String questions(Model model) {
-        model.addAttribute("questions", questionService.getQuestions());
-        model.addAttribute("hello", "../");
-        return "index";
+        this.userDaoService = userDaoService;
     }
 
     @RequestMapping("/detail/{id}")
@@ -61,7 +57,7 @@ public class QuestionController {
             throw new NoSuchDataException();
         }
         model.addAttribute("Question", question);
-        model.addAttribute("hello", "../");
+        model.addAttribute("hello", "../../");
         model.addAttribute("comment", answerDaoService.getAnswersByQuestionId(id));
         return "question";
     }
@@ -99,6 +95,7 @@ public class QuestionController {
         if (questionService.save(question)) { // save方法抛出的异常传到此处之后ExceptionHandler进行处理
             msgResult.setCode(0);
             msgResult.setMsg("提问成功");
+            session.setAttribute("user", userDaoService.getUserById(user.getId()));
         } else {
             msgResult.setCode(0);
             msgResult.setMsg("提问失败，请重试");
