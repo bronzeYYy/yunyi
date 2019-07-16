@@ -94,8 +94,8 @@
         <c:forEach var="i" items="${answers}">
             <tr>
                 <div style="margin-top:20px">
-                    <font style="size:20px;color:#989898;">创建时间${i.answerTime }</font>
-                    <a href="/question/detail/${i.question.id}"><h3>${i.answerContent }</h3></a>
+                    <font style="size:20px;color:#989898;">创建时间${i.answerTime}</font>
+                    <a href="/question/detail/${i.question.id}"><h3>${i.answerContent}</h3></a>
 <%--                    <h4>我的回答</h4>--%>
                     <hr>
                     <br>

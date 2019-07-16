@@ -19,13 +19,14 @@ public class AnswerDaoServiceTest {
         /*uestion.setQuestionContent("1");
         question.setQuestionName("你好");*/
         User user = new User();
-        user.setId(1);
+        user.setId(15);
         question.setQuestioner(user);
         Answer answer = new Answer();
         answer.setAnswerContent("testtestetst");
         answer.setAnswerUser(user);
         answer.setQuestion(question);
-        System.out.println(answerDaoService.getUserAnswersByUserId(14).size());
+        System.out.println(answerDaoService.save(answer));
+        //System.out.println(answerDaoService.getUserAnswersByUserId(14).size());
         //System.out.println(answerDaoService.save(answer));
         /*List<Answer> q = answerDaoService.getAnswersByQuestionId(1);
         System.out.println();

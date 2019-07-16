@@ -6,6 +6,7 @@ import cn.chen.model.Answer;
 import cn.chen.model.Question;
 import cn.chen.model.User;
 import cn.chen.service.AnswerDaoService;
+import cn.chen.service.UserDaoService;
 import cn.chen.utils.Utils;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
@@ -19,8 +20,10 @@ import javax.validation.Valid;
 @RequestMapping("/answer")
 public class AnswerController {
     private AnswerDaoService answerDaoService;
-    public AnswerController(AnswerDaoService answerDaoService) {
+    private UserDaoService userDaoService;
+    public AnswerController(AnswerDaoService answerDaoService, UserDaoService userDaoService) {
         this.answerDaoService = answerDaoService;
+        this.userDaoService = userDaoService;
     }
     @RequestMapping("/save")
     @ResponseBody
@@ -36,6 +39,7 @@ public class AnswerController {
         if (answerDaoService.save(answer)) {
             msgResult.setCode(0);
             msgResult.setMsg("回复成功");
+            session.setAttribute("user", userDaoService.getUserById(answer.getAnswerUser().getId()));
         } else {
             msgResult.setCode(0);
             msgResult.setMsg("回复失败");

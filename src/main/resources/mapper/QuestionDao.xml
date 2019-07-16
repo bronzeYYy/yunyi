@@ -7,7 +7,7 @@
         insert into question(question_name, questioner_id, question_content, creation_time) values(#{questionName}, #{questioner.id}, #{questionContent}, now())
     </insert>
     <select id="getQuestions" resultMap="getQuestion" parameterType="cn.chen.model.Question">
-        select * from question;
+        select * from question order by creation_time desc;
     </select>
     <select id="getQuestionById" resultMap="getQuestion" parameterType="cn.chen.model.Question">
         select *, `user`.creation_time as user_creationTime, `user`.id as user_id from question left join user on questioner_id = `user`.id
@@ -15,7 +15,7 @@
     </select>
     <select id="getUserQuestionsByUserId" resultMap="getQuestion">
          select *, `user`.creation_time as user_creationTime, `user`.id as user_id from question left join user on questioner_id = `user`.id
-        where questioner_id = #{userId};
+        where questioner_id = #{userId} order by question.creation_time desc;
     </select>
     <resultMap id="getQuestion" type="cn.chen.model.Question">
         <id column="id" property="id" />

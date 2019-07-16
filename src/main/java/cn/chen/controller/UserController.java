@@ -39,7 +39,7 @@ public class UserController {
 
     @RequestMapping("/login")
     public AbstractResult login(String noOrEmail, String password, HttpSession session) {
-        Utils.checkStringLength(noOrEmail, 8, 40);
+        Utils.checkStringLength(noOrEmail, 5, 40);
         Utils.checkStringLength(password, 5, 15);
         User user = userDaoService.login(noOrEmail, password);
         if (user == null) {

@@ -96,7 +96,7 @@
 	</div>
 	<div style="width:300px;height:310px">
 		<p style="font-size:20px;text-align:center;color:#708090">找回密码</p>
-		<input type="text" id="fzhaohao" class="form-control" placeholder="账号"  name="d_userid" value="" />
+		<input type="text" id="fzhanghao" class="form-control" placeholder="学号"  name="d_userid" value="" />
 		<br>
 		<div>
 			<div  style="heighgt:50px;float:left">
@@ -130,7 +130,7 @@
 	<div style="width:300px;height:310px">
 		<p style="font-size:20px;text-align:center;color:#708090">用户注册</p>
 
-		<input type="text" id="rzhaohao" style="margin-top:10px" class="form-control" placeholder="账号" name="studentNo" value="" />
+		<input type="text" id="rzhaohao" style="margin-top:10px" class="form-control" placeholder="学号" name="studentNo" value="" />
 		<input type="text" id="rname" style="margin-top:10px" class="form-control" placeholder="昵称"  name="userName" value="" />
 		<input type="password" id="rmima" style="margin-top:10px" class="form-control" placeholder="密码" name="userPassword"  value=""/>
 		<input type="text" id="rbanji" style="margin-top:10px" class="form-control" placeholder="班级"  name="banji" value="" />
@@ -222,7 +222,7 @@
 		var f1 = document.getElementById("fzhanghao").value;
 		var f2 = document.getElementById("fyouxiang").value;
 		$.ajax({
-			url:  '${path}user/login/forget',
+			url:  'user/login/forget',
 			type: 'post',
 			data: {'email':f2,'studentNo':f1},
 			success:function(data) {
