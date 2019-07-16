@@ -75,7 +75,10 @@
 				if(data.code === 0)
         {
               parent.layer.close(index);
-					}
+            window.location.href=window.location.href;
+            window.location.reload();
+        }
+
 			}
 		})
 

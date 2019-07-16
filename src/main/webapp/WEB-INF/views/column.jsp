@@ -176,7 +176,7 @@
 <div class="footer_top_agileits">
 
 	<div style=" float:left;margin-left:880px;width:35%" align="center">
-		<hr>
+
 		<a style="margin-top:50px;color:#ffffff;cursor:pointer">侵权举报 网上有害信息举报专区</a><p style="margin-top:10px"></p>
 		<a style="color:#ffffff;cursor:pointer">违法和不良信息举报：15500545625</a><p style="margin-top:10px"></p>
 		<a style="color:#ffffff;cursor:pointer">色情信息举报专区</a><p style="margin-top:10px"></p>

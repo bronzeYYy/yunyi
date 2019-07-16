@@ -58,7 +58,16 @@
 			</ul>
 			<ul class="nav navbar-nav pull-right">
 				<li>
-					<a id="Login_start_" class="danger" style="cursor:pointer;background-color: #666666; border-radius:3px; color:#FFFFFF" onclick="window.location='login.jsp'">登录</a>
+
+						<c:choose>
+							<c:when test="${not empty user}">
+								<a class="danger" style="cursor:pointer;background-color: #666666; border-radius:3px; color:#FFFFFF" href="${hello}user">${user.userName}</a>
+							</c:when>
+							<c:otherwise>
+								<a id="Login_start_" class="danger" style="cursor:pointer;background-color: #666666; border-radius:3px; color:#FFFFFF" href="${hello}login.jsp">登录</a>
+							</c:otherwise>
+						</c:choose>
+
 				</li>
 			</ul>
 		</div>
@@ -171,9 +180,9 @@
 
 		<!--  资料显示栏 -->
 
-		<%--<div class="col-md-4 footer_grid" style="margin-top:60px;margin-left:300px">
+		<div class="col-md-4 footer_grid" style="margin-top:60px;margin-left:300px">
 			<h3></h3>
-			<hr>
+		<%--	<hr>
 			<div style="margin-top:20px;bgcolor:#ffff00" >
 				<c:forEach var="i" items="${questions}">
 					<div style="bgcolor:#F00000">
@@ -182,8 +191,8 @@
 						<hr>
 					</div>
 				</c:forEach>
-			</div>
-		</div>--%>
+			</div>--%>
+		</div>
 
 		<div class="clearfix"> </div>
 
@@ -193,7 +202,7 @@
 
 
 <!-- 尾联 -->
-<div name="lianxi" class="footer_top_agileits">
+<div id="lianxi" class="footer_top_agileits">
 	<div class="container">
 		<div class="col-md-4 footer_grid">
 			<h3>关于我们</h3>
@@ -232,7 +241,7 @@
 
 	</div>
 	<div class="col-md-4 footer_grid">
-		<img src="${hello}images/m.jpg">
+		<img style ="height:100px;width:100px;margin-left: 300px" src="${hello}images/m.jpg">
 
 	</div>
 </div>

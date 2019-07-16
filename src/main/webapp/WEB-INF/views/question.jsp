@@ -30,7 +30,7 @@ color:white;
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" style="font-size:20px" href="#">云易</a>
+            <a class="navbar-brand" style="font-size:20px" href="${hello}index">云易</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
@@ -38,7 +38,7 @@ color:white;
                 <li class="active"><a class="scroll" href="${hello}column" id="test">专栏</a></li>
                 <li class="active"><a class="scroll" href="#" id = "yuan">发现</a></li>
                 <li class="active"><a class="scroll" href="#lianxi">联系我们</a></li>
-                <li class="active"><a class="scroll" href="personal.jsp">我的主页</a></li>
+                <li class="active"><a class="scroll" href="${hello}user">我的主页</a></li>
             </ul>
             <ul class="nav navbar-nav pull-right">
 
@@ -88,7 +88,7 @@ color:white;
 					<h3>${i.answerContent}</h3>
 				</div>
 				<div style="width:100px;height:100px;float:left;margin-top:20px;margin-left:30px;">	
-					<h4 style="line-height:80px">第${i.id}楼</h4>
+					<h4 style="line-height:80px">第?楼</h4>
 				</div>
 				<div style="width:300px;height:100px;float:left;margin-top:20px;margin-left:20px;">
 					
@@ -147,7 +147,7 @@ color:white;
 });
 </script>
 <script>
-var index = parent.layer.getFrameIndex(window.name);
+//var index = parent.layer.getFrameIndex(window.name);
 $('#fabiao').on('click',function(){
 	  var f1 = document.getElementById("neirong").value;
 	 
@@ -159,7 +159,8 @@ $('#fabiao').on('click',function(){
                   layer.msg(data.msg);
                   if(data.code === 0)
                   {
-                      parent.layer.close(index);
+                      window.location.href=window.location.href;
+                      window.location.reload();
                   }
           }
       })
@@ -168,7 +169,7 @@ $('#fabiao').on('click',function(){
 
 </script>
 <script>
-    var index = parent.layer.getFrameIndex(window.name);
+    //var index = parent.layer.getFrameIndex(window.name);
     $('#huidafabiao').on('click',function(){
         var f1 = document.getElementById("huidaneirong").value;
         $.ajax({
@@ -179,8 +180,8 @@ $('#fabiao').on('click',function(){
                 layer.msg(data.msg);
                 if(data.code === 0)
                 {
+                    window.location.href=window.location.href;
                     window.location.reload();
-                    parent.layer.close(index);
                 }
             }
         })
