@@ -1,6 +1,7 @@
 package cn.chen.config;
 
 import com.qiniu.common.Zone;
+import com.qiniu.storage.BucketManager;
 import com.qiniu.storage.UploadManager;
 import com.qiniu.util.Auth;
 import org.springframework.context.annotation.Bean;
@@ -12,7 +13,7 @@ public class QiNiuConfig {
     private static final String SK = "";
 
     public static final String BUCKET = "yunyi_img";
-
+    public static final String BUCKET_URL = "http://yunyi-img.chen1234.cn/";
 
     @Bean
     public Auth auth () {
@@ -29,6 +30,10 @@ public class QiNiuConfig {
     @Bean
     public UploadManager uploadManager(com.qiniu.storage.Configuration configuration) {
         return new UploadManager(configuration);
+    }
+    @Bean
+    public BucketManager bucketManager(Auth auth, com.qiniu.storage.Configuration configuration) {
+        return new BucketManager(auth, configuration);
     }
 }
 

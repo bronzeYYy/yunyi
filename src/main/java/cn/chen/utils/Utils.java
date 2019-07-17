@@ -2,20 +2,31 @@ package cn.chen.utils;
 
 import cn.chen.config.QiNiuConfig;
 import cn.chen.data.exceptions.IllegalParamException;
+import cn.chen.data.result.AbstractResult;
 import cn.chen.data.result.MsgResult;
 import com.mysql.jdbc.StringUtils;
+import com.qiniu.storage.BucketManager;
+import com.qiniu.storage.UploadManager;
+import com.qiniu.util.Auth;
 import org.springframework.mail.MailException;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.validation.Errors;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 
 import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletRequest;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 
 public final class Utils {
     public static String getRandomCode() {
@@ -49,7 +60,7 @@ public final class Utils {
         }      mailMessage.setTo(email);
         mailSender.send(mailMessage);
     }
-    public static boolean isImgFile(MultipartFile file) {
+    static boolean isImgFile(MultipartFile file) {
         try {
             BufferedImage image = ImageIO.read(file.getInputStream());
             if (image == null) {
@@ -73,4 +84,6 @@ public final class Utils {
         }
         return false;
     }
+
+
 }

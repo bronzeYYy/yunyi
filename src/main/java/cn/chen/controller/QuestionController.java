@@ -4,11 +4,13 @@ import cn.chen.config.QiNiuConfig;
 import cn.chen.data.exceptions.NoSuchDataException;
 import cn.chen.data.result.AbstractResult;
 import cn.chen.data.result.MsgResult;
+import cn.chen.model.Answer;
 import cn.chen.model.Question;
 import cn.chen.model.User;
 import cn.chen.service.AnswerDaoService;
 import cn.chen.service.QuestionService;
 import cn.chen.service.UserDaoService;
+import cn.chen.utils.QiniuUtils;
 import cn.chen.utils.Utils;
 import com.qiniu.storage.UploadManager;
 import com.qiniu.util.Auth;
@@ -18,6 +20,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -27,6 +30,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -51,14 +55,20 @@ public class QuestionController {
     }
 
     @RequestMapping("/detail/{id}")
-    public String questionDetail(@PathVariable int id, Model model) {
+    public String questionDetail(@PathVariable int id, Model model, @RequestParam(required = false) Integer answerOrderType) {
         Question question = questionService.getQuestionById(id);
         if (question == null) {
             throw new NoSuchDataException();
         }
         model.addAttribute("Question", question);
         model.addAttribute("hello", "../../");
-        model.addAttribute("comment", answerDaoService.getAnswersByQuestionId(id));
+        List<Answer> answers;
+        if (answerOrderType != null) {
+            answers = answerDaoService.getAnswersByQuestionIdOrderByStar(id);
+        } else {
+            answers = answerDaoService.getAnswersByQuestionId(id);
+        }
+        model.addAttribute("comment", answers);
         return "question";
     }
 
@@ -66,7 +76,8 @@ public class QuestionController {
     @ResponseBody
     public AbstractResult uploadImg(HttpServletRequest request) {
         // 等待确认返回信息
-        if (servletMultipartResolver.isMultipart(request)) {
+        return QiniuUtils.uploadImg(request, "");
+        /*if (servletMultipartResolver.isMultipart(request)) {
             MultipartHttpServletRequest multipartHttpServletRequest = servletMultipartResolver.resolveMultipart(request);
             Map<String, MultipartFile> multipartFileMap = multipartHttpServletRequest.getFileMap();
             Set<String> strings = multipartFileMap.keySet();
@@ -81,7 +92,7 @@ public class QuestionController {
                 }
             }
         }
-        return new MsgResult(0, "question");
+        return new MsgResult(0, "question");*/
     }
     @RequestMapping("/save")
     @ResponseBody
