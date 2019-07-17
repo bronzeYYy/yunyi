@@ -1,17 +1,13 @@
 package cn.chen.controller;
 
-import cn.chen.data.enums.CommitTypeEnum;
-import cn.chen.data.exceptions.FrequencyException;
-import cn.chen.data.result.AbstractResult;
-import cn.chen.data.result.MsgResult;
 import cn.chen.model.User;
 import cn.chen.service.AnswerDaoService;
 import cn.chen.service.QuestionService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -30,12 +26,13 @@ public class IndexController {
         model.addAttribute("questions", questionService.getUserQuestionsByUserId(user.getId()));
         return "personal";
     }
-    @RequestMapping("/test")
-    public String testException() {
+    /*@RequestMapping("/")
+    public void testException(HttpServletRequest request) {
         //throw new FrequencyException(CommitTypeEnum.SEND_RANDOM_CODE);
         //return null;
-        return "test";
-    }
+        System.out.println("getRequestURI: " + request.getRequestURI());
+        System.out.println("getServletPath: " + request.getServletPath());
+    }*/
     @RequestMapping("/column")
     public String column(Model model) {
         model.addAttribute("questions", questionService.getQuestions());

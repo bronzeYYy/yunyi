@@ -1,16 +1,20 @@
 package cn.chen.controller;
 
 
+import cn.chen.config.QiNiuConfig;
 import cn.chen.data.exceptions.IllegalParamException;
 import cn.chen.data.result.AbstractResult;
 import cn.chen.data.result.MsgResult;
 import cn.chen.model.User;
 import cn.chen.service.UserDaoService;
+import cn.chen.utils.QiniuUtils;
+import cn.chen.utils.Utils;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -40,6 +44,14 @@ public class UserUpdateController {
         }
         return msgResult;
     }
+
+    @RequestMapping("/update/avatar")
+    public AbstractResult updateAvatar(HttpServletRequest request, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+
+        return QiniuUtils.uploadAvatar(request, "avatar_" + user.getId());
+    }
+
     @ModelAttribute
     public User getUser(HttpSession session) {
         User user = (User) session.getAttribute("user");

@@ -49,4 +49,14 @@ public class AnswerDaoServiceImpl implements AnswerDaoService {
     public List<Answer> getUserAnswersByUserId(int userId) {
         return answerDao.getUserAnswersByUserId(userId);
     }
+
+    @Override
+    public boolean starAnswer(int answerId, int userId) {
+        return true;
+    }
+
+    @Override
+    public List<Answer> getAnswersByQuestionIdOrderByStar(int questionId) {
+        return null;
+    }
 }

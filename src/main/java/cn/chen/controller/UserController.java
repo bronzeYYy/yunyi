@@ -6,6 +6,7 @@ import cn.chen.data.result.AbstractResult;
 import cn.chen.data.result.MsgResult;
 import cn.chen.model.User;
 import cn.chen.service.UserDaoService;
+import cn.chen.utils.QiniuUtils;
 import cn.chen.utils.Utils;
 import com.mysql.jdbc.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -100,11 +101,11 @@ public class UserController {
     }
 
     @RequestMapping(value = "/avatar/{id}", method = RequestMethod.GET)
-    public void getUserAvatar(@PathVariable int id, HttpServletResponse response) {
-        String avatarUrl = QiNiuConfig.BUCKET_URL + "avatar_" + id;
+    public void getUserAvatar(@PathVariable int id, HttpServletRequest request, HttpServletResponse response) {
+        String avatarUrl = QiNiuConfig.BUCKET_URL + QiniuUtils.AVATAR_SUFFIX + id;
         try {
-            if (Utils.qiniuFileExists(avatarUrl)) {
-                response.sendRedirect(avatarUrl);
+            if (Utils.qiniuFileExists(avatarUrl + "_0")) {
+                response.sendRedirect(avatarUrl + "_" + (QiniuUtils.getUserAvatarNum(request, QiniuUtils.AVATAR_SUFFIX + id) - 1));
             } else {
                 response.sendRedirect(QiNiuConfig.BUCKET_URL + "avatar_default");
             }
