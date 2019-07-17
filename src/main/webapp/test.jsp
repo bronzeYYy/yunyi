@@ -13,8 +13,9 @@
     <title>Title</title>
 </head>
 <body>
-<form action="../user/update" method="post">
-    <input type="text" name="userClass">
+<form action="${pageContext.request.contextPath}/file/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="file">
+    <input type="text" name="fileDetail">
     <input type="submit">
 </form>
 </body>

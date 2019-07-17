@@ -2,6 +2,7 @@ package cn.chen.utils;
 
 import cn.chen.config.QiNiuConfig;
 import cn.chen.data.exceptions.IllegalParamException;
+import cn.chen.data.exceptions.YunyiException;
 import cn.chen.data.result.AbstractResult;
 import cn.chen.data.result.MsgResult;
 import com.mysql.jdbc.StringUtils;
@@ -71,8 +72,9 @@ public final class Utils {
         }
         return true;
     }
-    public static MsgResult dealErrors(Errors errors) {
-        return new MsgResult(1, errors.getAllErrors().get(0).getDefaultMessage());
+    public static void dealErrors(Errors errors) {
+        throw new YunyiException(errors.getAllErrors().get(0).getDefaultMessage());
+        //return new MsgResult(1, errors.getAllErrors().get(0).getDefaultMessage());
     }
 
     public static boolean qiniuFileExists(String url) {
@@ -83,6 +85,10 @@ public final class Utils {
             e.printStackTrace();
         }
         return false;
+    }
+    public static MultipartFile getFirstPartFile(MultipartHttpServletRequest request) {
+        Map<String, MultipartFile> multipartFileMap = request.getFileMap();
+        return multipartFileMap.get(multipartFileMap.keySet().iterator().next());
     }
 
 

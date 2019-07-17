@@ -32,4 +32,16 @@ public class AnswerDaoServiceTest {
         System.out.println();
         System.out.println();*/
     }
+    @Test
+    public void test1() {
+        AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(RootConfig.class);
+        AnswerDaoService answerDaoService = annotationConfigApplicationContext.getBean(AnswerDaoService.class);
+        answerDaoService.getAnswersByQuestionId(1).forEach(e -> System.out.println(e.getId()));
+        //System.out.println(answerDaoService.getUserAnswersByUserId(14).size());
+        //System.out.println(answerDaoService.save(answer));
+        /*List<Answer> q = answerDaoService.getAnswersByQuestionId(1);
+        System.out.println();
+        System.out.println();*/
+    }
+
 }

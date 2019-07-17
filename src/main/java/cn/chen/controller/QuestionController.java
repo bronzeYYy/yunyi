@@ -22,17 +22,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.io.IOException;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 @Controller
 @RequestMapping("/question")
@@ -55,7 +50,7 @@ public class QuestionController {
     }
 
     @RequestMapping("/detail/{id}")
-    public String questionDetail(@PathVariable int id, Model model, @RequestParam(required = false) Integer answerOrderType) {
+    public String questionDetail(@PathVariable int id, Model model, @RequestParam(required = false) String answerOrderType) {
         Question question = questionService.getQuestionById(id);
         if (question == null) {
             throw new NoSuchDataException();
@@ -77,28 +72,28 @@ public class QuestionController {
     public AbstractResult uploadImg(HttpServletRequest request) {
         // 等待确认返回信息
         return QiniuUtils.uploadImg(request, "");
-        /*if (servletMultipartResolver.isMultipart(request)) {
-            MultipartHttpServletRequest multipartHttpServletRequest = servletMultipartResolver.resolveMultipart(request);
-            Map<String, MultipartFile> multipartFileMap = multipartHttpServletRequest.getFileMap();
-            Set<String> strings = multipartFileMap.keySet();
-            for (String string : strings) {
-                MultipartFile multipartFile = multipartFileMap.get(string);
-                if (Utils.isImgFile(multipartFile)) {
-                    try {
-                        uploadManager.put(multipartFile.getBytes(), multipartFile.getName(), getToken());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-        return new MsgResult(0, "question");*/
+
     }
+    @RequestMapping("/star")
+    @ResponseBody
+    public AbstractResult star(int questionId, HttpSession session) {
+        MsgResult msgResult = new MsgResult();
+        if (questionService.starQuestion(questionId, ((User) session.getAttribute("user")).getId())) {
+            msgResult.setCode(0);
+            msgResult.setMsg("ok");
+        } else {
+            msgResult.setCode(-1);
+            msgResult.setMsg("点赞失败");
+        }
+        return msgResult;
+
+    }
+
     @RequestMapping("/save")
     @ResponseBody
     public AbstractResult save(@Valid Question question, Errors errors, HttpSession session) {
         if (errors.hasErrors()) {
-            return Utils.dealErrors(errors);
+            Utils.dealErrors(errors);
         }
         User user = (User) session.getAttribute("user");
         question.setQuestioner(user);

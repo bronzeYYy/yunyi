@@ -4,8 +4,11 @@ import cn.chen.dao.JedisDao;
 import cn.chen.dao.mysql.QuestionDao;
 import cn.chen.data.enums.CommitTypeEnum;
 import cn.chen.data.exceptions.FrequencyException;
+import cn.chen.data.exceptions.YunyiException;
 import cn.chen.model.Question;
 import cn.chen.service.QuestionService;
+import org.springframework.dao.DataAccessException;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -55,5 +58,29 @@ public class QuestionServiceImpl implements QuestionService {
     @Override
     public List<Question> getUserQuestionsByUserId(int userId) {
         return questionDao.getUserQuestionsByUserId(userId);
+    }
+
+    @Override
+    public List<Question> getQuestionsOrderByStarAndComment() {
+        return questionDao.getQuestionsOrderByStarAndComment();
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    @Override
+    public boolean starQuestion(int questionId, int userId) {
+        try {
+            if (questionDao.starQuestion(questionId, userId) != 1) {
+                return false;
+            }
+            if (questionDao.addStarNum(questionId) != 1) {
+                throw new YunyiException("点赞失败");
+            }
+        } catch (DataAccessException e) {
+            if (e instanceof DuplicateKeyException) {
+                throw new YunyiException("你已经赞过");
+            }
+            throw new YunyiException("点赞失败");
+        }
+        return true;
     }
 }

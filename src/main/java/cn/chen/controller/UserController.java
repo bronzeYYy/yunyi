@@ -57,7 +57,7 @@ public class UserController {
             return new MsgResult(-1, "请填写验证码");
         }
         if (errors.hasErrors()) {
-            return Utils.dealErrors(errors);
+            Utils.dealErrors(errors);
         }
         if (!jedisDao.checkRandomCode(user.getEmail(), code)) {
             return new MsgResult(-1, "验证码不正确");

@@ -12,6 +12,8 @@ public class Question {
     @NotNull(message = "问题内容必须填")
     private String questionContent;
     private String creationTime;
+    private int likenum;
+    private int commentNum;
 
     public int getId() {
         return id;
@@ -51,5 +53,21 @@ public class Question {
 
     public void setCreationTime(String creationTime) {
         this.creationTime = creationTime;
+    }
+
+    public void setLikenum(int likenum) {
+        this.likenum = likenum;
+    }
+
+    public int getLikenum() {
+        return likenum;
+    }
+
+    public void setCommentNum(int commentNum) {
+        this.commentNum = commentNum;
+    }
+
+    public int getCommentNum() {
+        return commentNum;
     }
 }
