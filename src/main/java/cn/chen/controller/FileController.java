@@ -9,7 +9,9 @@ import cn.chen.service.FileDaoService;
 import cn.chen.utils.QiniuUtils;
 import cn.chen.utils.Utils;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -59,5 +61,11 @@ public class FileController {
             throw new NoSuchDataException();
         }
         QiniuUtils.download(request, response, file);
+    }
+
+    @RequestMapping("/detail/{md5}")
+    public String detail(@PathVariable String md5, Model model) {
+        model.addAttribute("file", fileDaoService.getFileByMD5(md5));
+        return "";
     }
 }

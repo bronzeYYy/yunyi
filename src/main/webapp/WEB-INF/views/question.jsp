@@ -1,22 +1,44 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" --%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<%--<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> --%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 <title>问题详情页</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-   <link rel="stylesheet" href="${hello}css/bootstrap.css">
-   <script src="${hello}js/jquery-3.3.1.min.js"></script>
-   <script src="${hello}js/bootstrap.js"></script>
-   <script src="${hello}layer-v3.1.1/layer/layer.js"></script>
+   <link rel="stylesheet" href="${hello}../css/bootstrap.css">
+   <script src="${hello}../js/jquery-3.3.1.min.js"></script>
+   <script src="${hello}../js/bootstrap.js"></script>
+   <script src="${hello}../layer-v3.1.1/layer/layer.js"></script>
+   <script src="${hello}../css&js/jquery.min.js"></script>
+	<script src="${hello}../css&js/bootstrap.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			//关闭
+				var test = 1;
+			var zan = 1;
+			$("#getdown").on('click',function(){
+				if(test === 1)
+				{
+					$(this).attr('src', '${hello}../image/up.png');
+					$("#dpinglun").show(500);
+					test = 0;
+				} else {
+					$(this).attr('src', '${hello}../image/down.png');
+					$("#dpinglun").hide(500);
+					test = 1;
+				}
+			});
+		});
+	</script>
 <style>
 body{
 color:white;
 }
 a{ 
 text-decoration:none; 
+
 color:white; 
 } 
     a:link {color: #FFFFFF;} /* 未访问的链接 */
@@ -26,7 +48,7 @@ color:white;
 </style>
 </head>
 
-<body style="background-color:#303030">
+<body style="background-color:#F0F0F0">
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -51,19 +73,19 @@ color:white;
         
         <div class="col-md-12" >
 					<br>
-					 <p ><strong><h3>${Question.questionName}</h3></strong></p>
-					 <p ><strong><h4>${Question.questionContent}</h4></strong></p>
+					 <p ><strong><h3 style="color:#202020">问题名${Question.questionName}</h3></strong></p>
+					 <p ><strong><h4 style="color:#303030">问题内容${Question.questionContent}</h4></strong></p>
 					
 			 <div class="row">
 					<div class="col-md-2" >
 					<p><br>
-					<button id="huida" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span>&nbsp;我来回答</button>
+					<button style="color:#ffffff;background-color:#505050" id="huida" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span>&nbsp;我来回答</button>
 					</div>
 					<div class="col-md-10 col-md-pull-1">
 					<p align=right><br><br><br><br>
-					<span class="glyphicon glyphicon-user"></span> <a href="#">${Question.questioner.userName}</a>
+					<span style="color:#202020" class="glyphicon glyphicon-user"></span> <a style="color:	#505050" href="#">提问者${Question.questioner.userName}</a>
 					&nbsp;
-					<text>创建时间: ${Question.creationTime}</text>
+					<text style="color:#505050">创建时间: ${Question.creationTime}</text>
 					</p>
 					</div>
 			 </div>
@@ -71,7 +93,7 @@ color:white;
 
 			<br>
             <div class="col-md-12" style=" box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
-                    <h5><b><p>评论列表</p></b></h5>
+                    <h5><b><p style="color:#202020">评论列表</p></b></h5>
             </div>
 
             <table>
@@ -80,39 +102,56 @@ color:white;
             <div class="row">
                     <br>
                     <div style="width:100px;height:100px;float:left;margin-top:20px;margin-left:30px">
-						<p><img src="${hello}user/avatar/${i.answerUser.id}" width=45px height=45px></p>
-						<p><a  href="#">  ${i.answerUser.userName}</a></p>
+						<p><img src="${hello}user/avatar/${i.answerUser.id}"style=" width:45px ;height:45px"></p>
+						<p><a style="color:#202020" href="${hello}others.jsp">用户名${i.answerUser.userName}</a></p>
 					</div>
                
 				<div style="width:400px;height:100px;float:left;margin-top:20px;margin-left:30px;">
-					<h3>${i.answerContent}</h3>
+					<h3  style="color:#202020">评论内容${i.answerContent}</h3>
 				</div>
 				<div style="width:100px;height:100px;float:left;margin-top:20px;margin-left:30px;">	
-					<h4 style="line-height:80px">第?楼</h4>
+					<h4 style="color:#202020;line-height:80px">第?楼</h4>
 				</div>
-				<div style="width:300px;height:100px;float:left;margin-top:20px;margin-left:20px;">
+				<div style="color:#202020;width:300px;height:100px;float:left;margin-top:20px;margin-left:20px;">
 					
-				<font style="line-height:100px"> ${i.answerTime}</font>
+				<font style="line-height:100px;color:#202020">回复时间${i.answerTime}</font>
 					&emsp;&emsp;&emsp;
-					<a id="doubleclick"><span class="glyphicon glyphicon-thumbs-up"></span></a><text></text>
+					<img id="dianzan" src="../image/dianzan1.png" style="cursor:pointer;height:25px;width:25px">
 					&emsp;&emsp;&emsp;
-					<a id="huifu" href="#"><span class="glyphicon glyphicon-comment"></span></a>
+					<a style="color:#202020" id="huifu" href="#"><span class="glyphicon glyphicon-comment"></span></a>
+					&emsp;&emsp;&emsp;
+					<img id="getdown" src="../image/down.png" style="cursor:pointer;height:25px;width:25px">
 				</div>
             </div>
-            <hr>
+           <div id="dpinglun" style="display:none;background-color:#E0E0E0;margin-left:180px;width:70%;height:70px;">
+           		<div style="width:50px;float:left">
+           			 <img src="${hello}user/avatar/${i.answerUser.id}" style=" width:45px ;height:45px">
+           			<br><a href="others.jsp" style="color:#202020">用户名${i.answerUser.userName}</a>
+           		</div>
+           		<div style="margin-left:50px;float:left;width:60%;height:70px;">
+           			 <font style="line-height:80px;color:#202020">评论内容${i.answerTime}</font>
+           		</div>
+           		<div style="margin-left:50px;float:left;width:20%;height:70px">
+           			 <font style="line-height:80px;color:#202020">回复时间${i.answerTime}</font>
+           			&emsp;
+					<a  style="color:#202020;cursor:pointer"id="doubleclick"><span class="glyphicon glyphicon-thumbs-up"></span></a><text></text>
+      
+           		</div>	
+           </div>
             </tr>
-
           </c:forEach>
           
+            <hr style=" height:2px;width:80%;border:none;border-top:2px dotted #808080;" />
           </table>
         </div>
+       
     </div>
 </div>
-<div id="huifa" style="display: none">
-    <textarea id='huidaneirong' value='' style='background:transparent;
-          margin-top:20px;margin-left:20px;
-          color:#000000;height: 100px;width:460px'></textarea><br><br><br><strong>
-    <h3 id='huidafabiao' style='cursor:pointer;color: #000000;margin-top:20px;margin-left: 230px'>提交</h3></strong>
+
+<div id="huifa" style="display:none">
+	<textarea id="huidaneirong" value="" style="margin-top:20px;margin-left:20px;color:#000000;height: 100px;width:460px">
+	</textarea><br><br><br><strong>
+	<h3 id='huidafabiao' style="cursor:pointer;color: #000000;margin-top:20px;margin-left: 230px">提交</h3></strong>
 </div>
 
 <script>
@@ -128,8 +167,7 @@ color:white;
       });
 
   });
-	</script>
-	<script>
+
 	$('#huifu').on('click',function(){
 	    var content = "<textarea id='neirong' value='' style='background:transparent;" +
           "margin-top:20px;margin-left:20px;" +
@@ -145,8 +183,7 @@ color:white;
    		});
 
 });
-</script>
-<script>
+
 //var index = parent.layer.getFrameIndex(window.name);
 $('#fabiao').on('click',function(){
 	  var f1 = document.getElementById("neirong").value;
@@ -155,7 +192,7 @@ $('#fabiao').on('click',function(){
     //      url:  'answer/save',
                   type: 'post',
                   data: {'answerContent':f1, 'questionId': ${Question.id}},
-              success:function(data) {
+              		success:function(data) {
                   layer.msg(data.msg);
                   if(data.code === 0)
                   {
@@ -166,9 +203,6 @@ $('#fabiao').on('click',function(){
       })
 });
 
-
-</script>
-<script>
     //var index = parent.layer.getFrameIndex(window.name);
     $('#huidafabiao').on('click',function(){
         var f1 = document.getElementById("huidaneirong").value;
@@ -184,9 +218,28 @@ $('#fabiao').on('click',function(){
                     window.location.reload();
                 }
             }
-        })
+        });
     });
-
+    
+    $('dianzan').on('click',function(){
+        $.ajax({
+            url:  '${hello}answer/star',
+            type: 'post',
+            data: {'answerId':${i.answerId}},
+            success:function(data) {
+                layer.msg(data.msg);
+                if(data.code === 0)
+                {
+                	$(this).attr('src', '${hello}../image/dianzan2.png');
+                    window.location.href=window.location.href;
+                    window.location.reload();
+                }
+            }
+        });
+    		
+    });
+ 	
+  
 
 </script>
 </body>

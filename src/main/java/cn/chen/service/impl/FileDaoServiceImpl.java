@@ -49,6 +49,7 @@ public class FileDaoServiceImpl implements FileDaoService {
         } catch (DataAccessException e) {
             e.printStackTrace();
             if (e instanceof DuplicateKeyException) {
+                fileInfo.setUploader(null);
                 throw new FileMd5ExistsException("文件信息已存在", fileInfo);
             }
         }

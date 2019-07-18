@@ -34,6 +34,8 @@
         <result column="question_name" property="questionName" />
         <result column="question_content" property="questionContent" />
         <result column="creation_time" property="creationTime" />
+        <result column="likenum" property="likenum" />
+        <result column="comment_num" property="commentNum" />
         <association property="questioner" javaType="cn.chen.model.User">
             <id column="user_id" property="id"/>
             <result column="user_name" property="userName" />

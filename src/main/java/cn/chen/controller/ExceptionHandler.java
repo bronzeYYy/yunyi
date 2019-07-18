@@ -8,7 +8,6 @@ import cn.chen.data.exceptions.login.NeedLoginNotRedirectException;
 import cn.chen.data.result.AbstractResult;
 import cn.chen.data.result.DataResult;
 import cn.chen.data.result.MsgResult;
-import cn.chen.model.File;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.mail.MailException;
@@ -45,7 +44,7 @@ public class ExceptionHandler {
     @org.springframework.web.bind.annotation.ExceptionHandler(FileMd5ExistsException.class)
     @ResponseBody
     public DataResult fileExists(FileMd5ExistsException e) {
-        return new DataResult<File>(-1, e.getFile(), e.getMessage());
+        return new DataResult<>(-2, e.getFile(), e.getMessage());
     }
 
     @org.springframework.web.bind.annotation.ExceptionHandler(NeedLoginAndRedirectException.class)

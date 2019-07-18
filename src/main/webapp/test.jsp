@@ -1,22 +1,21 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: 17691
-  Date: 2019-07-14
-  Time: 11:05
-  To change this template use File | Settings | File Templates.
---%>
-
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+				 pageEncoding="utf-8"%>
+<!DOCTYPE html>
 <html>
-<head>
-    <title>Title</title>
-</head>
-<body>
-<form action="${pageContext.request.contextPath}/file/upload" method="post" enctype="multipart/form-data">
-    <input type="file" name="file">
-    <input type="text" name="fileDetail">
-    <input type="submit">
-</form>
-</body>
-</html>
+<head> 
+<meta charset="utf-8" /> 
+<title>半透明实例在线演示 www.divcss5.com</title> 
+<style> 
+.div-a{ background:url(image/bj1.jpg)no-repeat;width:230px;height:136px;padding:10px} 
+.div-b{ background:#888888;width:200px;height:100px;padding:5px;color:#F00; 
+filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6} 
+/* CSS注释说明：这里对CSS代码换行是为了让代码在此我要中显示完整，换行后CSS效果不受影响 */ 
+</style> 
+</head> 
+ 
+<body> 
+<div class="div-a"> 
+<div class="div-b">实现DIV半透明实例演示</div> 
+</div> 
+</body> 
+</html> 

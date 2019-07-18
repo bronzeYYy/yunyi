@@ -33,6 +33,7 @@
         <id property="id" column="id" />
         <result column="answer_content" property="answerContent" />
         <result column="answer_time" property="answerTime" />
+        <result column="likenum" property="likenum" />
         <association property="question" javaType="cn.chen.model.Question">
             <id column="question_id" property="id" />
             <result column="question_name" property="questionName" />
