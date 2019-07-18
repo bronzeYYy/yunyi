@@ -1,43 +1,39 @@
-<%--@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" --%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 				 pageEncoding="utf-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <head>
 	<title>云易知识问答平台</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="keywords" content="" />
 	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 	<!-- Custom Theme files -->
-	<link href="${hello}css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
-	<link href="${hello}css/style.css" type="text/css" rel="stylesheet" media="all">
-	<link href="${hello}css/font-awesome.css" rel="stylesheet"> <!-- font-awesome icons -->
-	<link rel="stylesheet" href="${hello}css/owl.carousel.css" type="text/css" media="all" />
-	<link rel="stylesheet" href="${hello}css&js/bootstrap.min.css">
-	<link rel="stylesheet" href="${hello}css&js/login.css" />
-	<link href="${hello}css&js/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-	<script  src="${hello}css&js/jquery.min.js"></script>
+	<link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+	<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
+	<link href="css/font-awesome.css" rel="stylesheet"> <!-- font-awesome icons -->
+	<link rel="stylesheet" href="css/owl.carousel.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="css&js/bootstrap.min.css">
+	<link rel="stylesheet" href="css&js/login.css" />
+	<link href="css&js/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+	<script  src="css&js/jquery.min.js"></script>
 
 
-	<link href="${hello}css&js/style.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="css&js/style.css" rel="stylesheet" type="text/css" media="all" />
 	<link href='http://fonts.useso.com/css?family=Raleway:400,200,100,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.useso.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>
 
 
-	<link href="${hello}css&js/styles.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="${hello}css&js/component.css" />
+	<link href="css&js/styles.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css&js/component.css" />
 
-	<link href="${hello}css&js/animate.min.css" rel="stylesheet">
+	<link href="css&js/animate.min.css" rel="stylesheet">
 	<!-- //Custom Theme files -->
 	<!-- js -->
-	<script src="${hello}js/jquery-2.2.3.min.js"></script>
+	<script src="js/jquery-2.2.3.min.js"></script>
 	<!-- //js -->
 	<!-- web-fonts -->
 	<link href="http://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 	<link href="http://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700" rel="stylesheet">
 
-<script src="${hello}css&js/jquery.min.js"></script>
-<script>
+	<!-- //web-fonts -->
+	<script>
 		$(document).ready(function() {
 			//关闭
 			//去 找回
@@ -50,7 +46,7 @@
 				$("#ziliao").hide(00);
 				$("#wenda").show(00);
 			});
-		
+
 		});
 	</script>
 
@@ -71,23 +67,12 @@
 
 				<li class="active"><a class="scroll" href="${hello}column" id="test">专栏</a></li>
 				<li class="active"><a class="scroll" href="#" id = "yuan">发现</a></li>
-				<li class="active"><a class="scroll" href="#lianxi">联系我们</a></li>
-				<li class="active"><a class="scroll" href="${hello}user">我的主页</a></li>
-				
-				<li class="active"><a class="scroll" href="${hello}user"><c:if test="${param.type eq 2}">${param.type}页</c:if></a></li>
+				<li class="active"><a class="scroll" href="#" id ="wenjian">联系我们</a></li>
+				<li class="active"><a class="scroll" href="personal.jsp" id ="${hello}user">我的主页</a></li>
 			</ul>
 			<ul class="nav navbar-nav pull-right">
 				<li>
-
-						<c:choose>
-							<c:when test="${not empty user}">
-								<a class="danger" style="cursor:pointer;background-color: #666666; border-radius:3px; color:#FFFFFF" href="${hello}user">${user.userName}</a>
-							</c:when>
-							<c:otherwise>
-								<a id="Login_start_" class="danger" style="cursor:pointer;background-color: #666666; border-radius:3px; color:#FFFFFF" href="${hello}login.jsp">登录</a>
-							</c:otherwise>
-						</c:choose>
-
+					<a id="Login_start_" href="login.jsp" class="danger" style="background-color: #666666; border-radius:3px; color:#FFFFFF" onclick="window.location='Denglu.jsp'">登录</a>
 				</li>
 			</ul>
 		</div>
@@ -96,14 +81,13 @@
 <!-- //Navigation -->
 
 <!-- banner-slider -->
- <!-- 
 <div class="w3l_banner_info">
 	<div class="slider">
 		<div class="callbacks_container">
 			<ul class="rslides" id="slider3">
 				<li>
 					<div class="slider-img">
-						<img src="${hello}image/bj1.jpg"class="img-responsive" alt="impetus">
+						<img src="image/bj1.jpg"class="img-responsive" alt="impetus">
 					</div>
 					<div class="slider_banner_info">
 					</div>
@@ -111,16 +95,7 @@
 				</li>
 				<li>
 					<div class="slider-img">
-						<img src="${hello}image/bj2.jpg" class="img-responsive" alt="impetus">
-					</div>
-					<div class="slider_banner_info">
-
-					</div>
-
-				</li>
-				<li>
-					<div class="slider-img">
-						<img src="${hello}image/bj3.jpg" class="img-responsive" alt="impetus">
+						<img src="image/bj2.jpg" class="img-responsive" alt="impetus">
 					</div>
 					<div class="slider_banner_info">
 
@@ -129,22 +104,35 @@
 				</li>
 				<li>
 					<div class="slider-img">
-						<img src="${hello}image/bj4.jpg" class="img-responsive" alt="impetus">
+						<img src="image/bj3.jpg" class="img-responsive" alt="impetus">
 					</div>
 					<div class="slider_banner_info">
 
 					</div>
+
 				</li>
 				<li>
 					<div class="slider-img">
-						<img src="${hello}image/bj5.jpg" class="img-responsive" alt="impetus">
+						<img src="image/bj4.jpg" class="img-responsive" alt="impetus">
 					</div>
 					<div class="slider_banner_info">
+
 					</div>
+
 				</li>
 				<li>
 					<div class="slider-img">
-						<img src="${hello}image/bj6.jpg" class="img-responsive" alt="impetus">
+						<img src="image/bj5.jpg" class="img-responsive" alt="impetus">
+					</div>
+					<div class="slider_banner_info">
+
+
+					</div>
+
+				</li>
+				<li>
+					<div class="slider-img">
+						<img src="image/bj6.jpg" class="img-responsive" alt="impetus">
 					</div>
 					<div class="slider_banner_info">
 
@@ -155,8 +143,6 @@
 		</div>
 	</div>
 </div>
-
--->
 <div class="clearfix"></div>
 
 <!-- //banner-slider -->
@@ -166,84 +152,87 @@
 <!--//banner-->
 <!--about -->
 
+
+
+
 <!-- footer -->
 
 <div style="width:100%;background-color:#F0F0F0">
-<c:choose> 
-<c:when test="${not empty param.type and param.type eq 1 }">
-<div class="container" id="wenda">
-		<div class="footer_grids">
-			<div class="col-md-8 footer_grid_right">
+	<c:choose>
+		<c:when test="${not empty param.type and param.type eq 1 }">
+			<div class="container" id="wenda">
+				<div class="footer_grids">
+					<div class="col-md-8 footer_grid_right">
 
-				<form action="#" method="post">
-					<input type="email" name="Email" placeholder="搜索" required="">
-					<input type="submit" value="Submit">
-				</form>
+						<form action="#" method="post">
+							<input type="email" name="Email" placeholder="搜索" required="">
+							<input type="submit" value="Submit">
+						</form>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+
+
+				<div class="col-md-4 footer_grid" style="margin-top:60px;width:70%;float:left;">
+					<strong><a style="cursor:pointer;font-size:20px;color:#000000">问答</a></strong>&emsp;&emsp;&emsp;&emsp;&emsp;<a id="goziliao" style="cursor:pointer;font-size:20px;color:#000000">资料</a>
+					<hr  style="height:3px;border:none;border-top:5px ridge green;" >
+					<table>
+						<c:forEach var="i" items="${questions}">
+							<tr>
+								<div style="margin-top:20px">
+									<font style="size:20px;color:#282828;">${i.creationTime }</font>
+									<h3 style="color:#000000"><a href="${hello}question/detail/${i.id}">${i.questionName }</a></h3>
+									<h3 style="color:#404040">${i.questionContent }</h3>
+									<p>赞同数 &emsp;评论数</p>
+									<hr>
+									<br>
+								</div>
+							</tr>
+						</c:forEach>
+					</table>
+				</div>
 			</div>
-			<div class="clearfix"> </div>
-		</div>
-	
+		</c:when>
+		<c:otherwise>
 
-		<div class="col-md-4 footer_grid" style="margin-top:60px;width:70%;float:left;">
-			<strong><a style="cursor:pointer;font-size:20px;color:#000000">问答</a></strong>&emsp;&emsp;&emsp;&emsp;&emsp;<a id="goziliao" style="cursor:pointer;font-size:20px;color:#000000">资料</a>
-			<hr  style="height:3px;border:none;border-top:5px ridge green;" >
-			<table>
-				<c:forEach var="i" items="${questions}">
-					<tr>
-						<div style="margin-top:20px">
-							<font style="size:20px;color:#282828;">${i.creationTime }</font>
-							<h3 style="color:000000"><a href="${hello}question/detail/${i.id}">${i.questionName }</a></h3>
-							<h3 style="color:#404040">${i.questionContent }</h3>
-							<p>赞同数 &emsp;评论数</p>
-							<hr>
-							<br>
-						</div>
-					</tr>
-				</c:forEach>
-			</table>
-		</div>
-	</div>
-</c:when>
-<c:otherwise>
+			<!--  资料显示栏 -->
+			<div class="container" id="ziliao" style="display:none">
+				<div class="footer_grids">
+					<div class="col-md-8 footer_grid_right">
 
-		<!--  资料显示栏 -->
-<div class="container" id="ziliao" style="display:none">
-		<div class="footer_grids">
-			<div class="col-md-8 footer_grid_right">
+						<form action="#" method="post">
+							<input type="email" name="Email" placeholder="搜索" required="">
+							<input type="submit" value="Submit">
+						</form>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
 
-				<form action="#" method="post">
-					<input type="email" name="Email" placeholder="搜索" required="">
-					<input type="submit" value="Submit">
-				</form>
+
+				<div class="col-md-4 footer_grid" style="margin-top:60px;width:70%;float:left">
+					<a id="gowenda" style="cursor:pointer;font-size:20px;color:#000000">问答</a>&emsp;&emsp;&emsp;&emsp;&emsp;<strong><a style="cursor:pointer;font-size:20px;color:#000000">资料</a></strong>
+					<hr  style="height:3px;border:none;border-top:5px ridge green;" >
+					<table>
+						<c:forEach var="i" items="${questions}">
+							<tr>
+								<div style="margin-top:20px">
+									<font style="size:20px;color:#282828;">${i.creationTime }</font>
+									<h3 style="color:#000000"><a href="${hello}question/detail/${i.id}">${i.questionName }</a></h3>
+									<h3 style="color:#404040">${i.questionContent }</h3>
+									<p>赞同数 &emsp;评论数</p>
+									<hr>
+									<br>
+								</div>
+							</tr>
+						</c:forEach>
+					</table>
+				</div>
 			</div>
-			<div class="clearfix"> </div>
-		</div>
-	
 
-		<div class="col-md-4 footer_grid" style="margin-top:60px;width:70%;float:left">
-			<a id="gowenda" style="cursor:pointer;font-size:20px;color:#000000">问答</a>&emsp;&emsp;&emsp;&emsp;&emsp;<strong><a style="cursor:pointer;font-size:20px;color:#000000">资料</a></strong>
-			<hr  style="height:3px;border:none;border-top:5px ridge green;" >
-			<table>
-				<c:forEach var="i" items="${questions}">
-					<tr>
-						<div style="margin-top:20px">
-							<font style="size:20px;color:#282828;">${i.creationTime }</font>
-							<h3 style="color:000000"><a href="${hello}question/detail/${i.id}">${i.questionName }</a></h3>
-							<h3 style="color:#404040">${i.questionContent }</h3>
-							<p>赞同数 &emsp;评论数</p>
-							<hr>
-							<br>
-						</div>
-					</tr>
-				</c:forEach>
-			</table>
-		</div>
-	</div>
+		</c:otherwise>
+	</c:choose>
 
-</c:otherwise>
-</c:choose>
-
-	</div>
+</div>
 
 
 
@@ -304,7 +293,7 @@
 			auto: true,
 			pager:true,
 			nav:false,
-			speed: 500,
+			speed: 300,
 			namespace: "callbacks",
 			before: function () {
 				$('.events').append("<li>before event fired.</li>");
@@ -316,7 +305,5 @@
 
 	});
 </script>
-
-
 </body>
 </html>

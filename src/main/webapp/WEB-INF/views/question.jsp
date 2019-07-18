@@ -7,12 +7,12 @@
 <title>问题详情页</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-   <link rel="stylesheet" href="${hello}../css/bootstrap.css">
-   <script src="${hello}../js/jquery-3.3.1.min.js"></script>
-   <script src="${hello}../js/bootstrap.js"></script>
-   <script src="${hello}../layer-v3.1.1/layer/layer.js"></script>
-   <script src="${hello}../css&js/jquery.min.js"></script>
-	<script src="${hello}../css&js/bootstrap.min.js"></script>
+   <link rel="stylesheet" href="${hello}css/bootstrap.css">
+   <script src="${hello}js/jquery-3.3.1.min.js"></script>
+   <script src="${hello}js/bootstrap.js"></script>
+   <script src="${hello}layer-v3.1.1/layer/layer.js"></script>
+   <script src="${hello}css&js/jquery.min.js"></script>
+	<script src="${hello}css&js/bootstrap.min.js"></script>
 	<script>
 		$(document).ready(function() {
 			//关闭
@@ -21,11 +21,11 @@
 			$("#getdown").on('click',function(){
 				if(test === 1)
 				{
-					$(this).attr('src', '${hello}../image/up.png');
+					$(this).attr('src', '${hello}image/up.png');
 					$("#dpinglun").show(500);
 					test = 0;
 				} else {
-					$(this).attr('src', '${hello}../image/down.png');
+					$(this).attr('src', '${hello}image/down.png');
 					$("#dpinglun").hide(500);
 					test = 1;
 				}
@@ -73,8 +73,8 @@ color:white;
         
         <div class="col-md-12" >
 					<br>
-					 <p ><strong><h3 style="color:#202020">问题名${Question.questionName}</h3></strong></p>
-					 <p ><strong><h4 style="color:#303030">问题内容${Question.questionContent}</h4></strong></p>
+					 <p ><strong><h3 style="color:#202020">${Question.questionName}</h3></strong></p>
+					 <p ><strong><h4 style="color:#303030">${Question.questionContent}</h4></strong></p>
 					
 			 <div class="row">
 					<div class="col-md-2" >
@@ -83,9 +83,9 @@ color:white;
 					</div>
 					<div class="col-md-10 col-md-pull-1">
 					<p align=right><br><br><br><br>
-					<span style="color:#202020" class="glyphicon glyphicon-user"></span> <a style="color:	#505050" href="#">提问者${Question.questioner.userName}</a>
+					<span style="color:#202020" class="glyphicon glyphicon-user"></span> <a style="color:	#505050" href="#">${Question.questioner.userName}</a>
 					&nbsp;
-					<text style="color:#505050">创建时间: ${Question.creationTime}</text>
+					<text style="color:#505050">${Question.creationTime}</text>
 					</p>
 					</div>
 			 </div>
@@ -103,36 +103,36 @@ color:white;
                     <br>
                     <div style="width:100px;height:100px;float:left;margin-top:20px;margin-left:30px">
 						<p><img src="${hello}user/avatar/${i.answerUser.id}"style=" width:45px ;height:45px"></p>
-						<p><a style="color:#202020" href="${hello}others.jsp">用户名${i.answerUser.userName}</a></p>
+						<p><a style="color:#202020" href="${hello}others.jsp">${i.answerUser.userName}</a></p>
 					</div>
                
 				<div style="width:400px;height:100px;float:left;margin-top:20px;margin-left:30px;">
-					<h3  style="color:#202020">评论内容${i.answerContent}</h3>
+					<h3  style="color:#202020">${i.answerContent}</h3>
 				</div>
 				<div style="width:100px;height:100px;float:left;margin-top:20px;margin-left:30px;">	
 					<h4 style="color:#202020;line-height:80px">第?楼</h4>
 				</div>
 				<div style="color:#202020;width:300px;height:100px;float:left;margin-top:20px;margin-left:20px;">
 					
-				<font style="line-height:100px;color:#202020">回复时间${i.answerTime}</font>
+				<font style="line-height:100px;color:#202020">${i.answerTime}</font>
 					&emsp;&emsp;&emsp;
-					<img id="dianzan" src="../image/dianzan1.png" style="cursor:pointer;height:25px;width:25px">
+					<img id="dianzan" src="image/dianzan1.png" style="cursor:pointer;height:25px;width:25px">
 					&emsp;&emsp;&emsp;
 					<a style="color:#202020" id="huifu" href="#"><span class="glyphicon glyphicon-comment"></span></a>
 					&emsp;&emsp;&emsp;
-					<img id="getdown" src="../image/down.png" style="cursor:pointer;height:25px;width:25px">
+					<img id="getdown" src="image/down.png" style="cursor:pointer;height:25px;width:25px">
 				</div>
             </div>
            <div id="dpinglun" style="display:none;background-color:#E0E0E0;margin-left:180px;width:70%;height:70px;">
            		<div style="width:50px;float:left">
            			 <img src="${hello}user/avatar/${i.answerUser.id}" style=" width:45px ;height:45px">
-           			<br><a href="others.jsp" style="color:#202020">用户名${i.answerUser.userName}</a>
+           			<br><a href="others.jsp" style="color:#202020">${i.answerUser.userName}</a>
            		</div>
            		<div style="margin-left:50px;float:left;width:60%;height:70px;">
-           			 <font style="line-height:80px;color:#202020">评论内容${i.answerTime}</font>
+           			 <font style="line-height:80px;color:#202020">${i.answerTime}</font>
            		</div>
            		<div style="margin-left:50px;float:left;width:20%;height:70px">
-           			 <font style="line-height:80px;color:#202020">回复时间${i.answerTime}</font>
+           			 <font style="line-height:80px;color:#202020">${i.answerTime}</font>
            			&emsp;
 					<a  style="color:#202020;cursor:pointer"id="doubleclick"><span class="glyphicon glyphicon-thumbs-up"></span></a><text></text>
       
@@ -230,7 +230,7 @@ $('#fabiao').on('click',function(){
                 layer.msg(data.msg);
                 if(data.code === 0)
                 {
-                	$(this).attr('src', '${hello}../image/dianzan2.png');
+                	$(this).attr('src', '${hello}image/dianzan2.png');
                     window.location.href=window.location.href;
                     window.location.reload();
                 }

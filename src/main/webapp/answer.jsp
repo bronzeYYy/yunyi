@@ -213,10 +213,10 @@
       		var formData = new FormData();
       		formData.append('file',$('#xuanze')[0].files[0]);
       		formData.append('fileDetail',f1);
-      		var content = "<h3>md5:${md5}</h3><h3>文件名:${fileName}</h3><h3>文件描述:${fileDetail}</h3>'";
+
       		
       	$.ajax({
-                url: "${hello}/upload",
+                url: "${hello}/file/upload",
                 data: formData,
                 type: "POST",
                 async: false,
@@ -224,19 +224,17 @@
                 contentType: false,
                 processData: false,
                 success: function(data) {
+                    layer.msg(data.msg);
     				if(data.code === 0)
             		{
-    					 layer.msg('上传成功');
+
                 		window.location.href=window.location.href;
                 		window.location.reload();
-            		} 
-    				if(data.code === -1)
-    					{
-    					layer.msg('上传失败');
-    					}
+            		}
     				if(data.code === -2)
     					{
-    						layer.msg('文件已存在');
+    					    var md5 = data.data.md5;
+                  var content = "<h3><a href='file/detail/" + md5 + "'>点击查看</a></h3><h3>文件名:${fileName}</h3><h3>文件描述:${fileDetail}</h3>'";
     						 $("#show").append(content);
     					}
                 }

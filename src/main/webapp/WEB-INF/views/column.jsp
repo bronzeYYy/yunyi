@@ -49,6 +49,18 @@
 			border-bottom: 1px solid #aaa ;
 
 		}
+
+		.content-p {
+			display: block;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			-webkit-box-orient: vertical;
+		}
+
+		tr, td {
+			vertical-align: middle;
+		}
 	</style> 
 	
 <style type="text/css">
@@ -82,7 +94,7 @@ a:hover{
 	<script src="${hello}css&js/bootstrap.min.js"></script>
 	
 </head>
-<body style="background-color:#F0F0F0;background-repeat :no-repeat;background-position: right bottom;background-attachment:fixed;">
+<body style="background-color:#F6F6F6;background-repeat :no-repeat;background-position: right bottom;background-attachment:fixed;">
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
@@ -155,9 +167,8 @@ a:hover{
 		hide.append(newnode);
 	});
 
-
 </script>
-<div id="zhuye" class="header" style="background-image :url(${hello}image/beijing.jpg);background-repeat:no-repeat; height:100%; width:100%;"  id="shouye">
+<%--<div id="zhuye" class="header" style="background-image :url(${hello}image/beijing.jpg);background-repeat:no-repeat; height:100%; width:100%;"  id="shouye">
 	<div class="container">
 		<div class="nav-icon">
 		</div>
@@ -171,80 +182,95 @@ a:hover{
 		<label></label>
 	</div>
 
-</div>
-
-
+</div>--%>
 <div id="main" style="width:100%;">
 
 <c:choose> 
 <c:when test="${not empty param.type and param.type eq 1 }">
-<div>
-	<div class="footer_grids" style="text-align:center;margin-left:380px">
+<div class="container" style="margin-top: 5%">
+	<%--<div class="footer_grids" style="text-align:center;margin-left:380px">
 		<div class="col-md-8 footer_grid_right" >
-
-
 			<input  type="button" id="iwant" value="我要提问">
 
 		</div>
 		<br>
 		
 		<div class="clearfix"> </div>
+	</div>--%>
+	<div style="padding: 20px; background-color: #FFFFFF">
+<%--		--%>
+		<div style="font-size: 15px; line-height: 25px">
+			<h2>问答</h2>
+			<div style="margin-top: 10px; color: #646464">
+				云易校园问答平台汇集青海大学的所有阶段的学生。有任何不懂的问题或者想问的问题都可以在这里提问，全天都有学生为你解答。
+			</div>
+		</div>
+<%--	下方操作按钮组--%>
+		<div style="margin-top: 10px">
+			<button class="btn btn-success" id="iwant">提问</button>
+			<c:choose>
+				<c:when test="${not empty param.order and param.order eq 1 }">
+					<a style="margin-left: 5px; padding: 10px; color: #646464;" href="${hello}column?type=1&order=2"><span>按时间排序</span></a>
+				</c:when>
+				<c:otherwise>
+					<a style="margin-left: 5px; padding: 10px; color: #646464;" href="${hello}column?type=1&order=1"><span>按热度排序</span></a>
+				</c:otherwise>
+			</c:choose>
+
+			<a style="padding: 10px; color: #646464;" href="${hello}column?type=2"><span>资料</span></a>
+		</div>
 	</div>
-	<hr  style="height:3px;width:80%;border:none;border-top:5px ridge;" >
-	
-	
-	<div id="left" style="width:55%;margin-left:200px;float:left">
-			<strong><a style="cursor:pointer;font-size:20px;color:#000000">问答</a></strong>&emsp;&emsp;&emsp;&emsp;&emsp;<a href="${hello}column.jsp?type=2" style="cursor:pointer;font-size:20px;color:#000000">资料</a>
-			<hr>
-			<table>
-				<c:forEach var="i" items="${questions}">
-					<tr>
-						<div style="margin-top:20px">
-							<font style="size:20px;color:#989898;">${i.creationTime }</font>
-							<a href="${hello}question/detail/${i.id}"><h3 style="color:#585858">问题${i.questionName }</h3></a>
-							<br><h4 style="color:#000000">问题详情${i.questionContent }</h4><br>
-							<img onclick="star(${i.id})" id="clickit" style="cursor:pointer;width:20px;height:20px" src="${hello}image/dianzan1.png"><font style="color:#000000">${i.likenum}</font>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-							<img style="width:18px;height:18px" src="${hello}image/pinglun.png"><font style="color:#000000">${i.commentNum}</font>
-							
-							<hr style=" height:2px;border:none;border-top:2px dotted #808080;" />
-							<br>
-						</div>
-					</tr>
-				</c:forEach>
-			</table>
+
+		<hr style=" height:2px;border:none;border-top:2px dotted #808080;" />
+<%--	<hr  style="height:3px;border:none;border-top:5px ridge;" >--%>
+	<div id="left" style="background-color: #FFFFFF; padding: 20px; margin-bottom: 15px">
+		<div>
+			<c:forEach var="i" items="${questions}">
+				<div>
+						<%--							<font style="size:20px;color:#989898;">${i.creationTime }</font>--%>
+					<h3>
+						<a style="color:#1A1A1A" href="${hello}question/detail/${i.id}">${i.questionName }</a>
+						<span style="float: right; font-size: 13px; color: #999999">${i.creationTime }</span>
+					</h3><br>
+					<p class="content-p" style="color:#000000">${i.questionContent }</p><br>
+					<img onclick="star(${i.id})" id="clickit" style="cursor:pointer;width:20px;height:20px" src="${hello}image/dianzan1.png"><font style="color:#000000">${i.likenum}</font>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<a href="${hello}question/detail/${i.id}">
+								<img style="width:18px;height:18px" src="${hello}image/pinglun.png"><font style="color:#000000">${i.commentNum}</font>
+							</a>
+					<hr style=" height:2px;border:none;border-top:2px dotted #808080;" />
+				</div>
+			</c:forEach>
+		</div>
 	</div>
 	</div>
 	</c:when>
 	<c:otherwise>
-	<div style="display:none">
-	<div class="footer_grids" style="text-align:center;margin-left:380px">
-		<div class="col-md-8 footer_grid_right" >
-
-
-			<input  type="button" id="ishang" value="我要上传">
-
-		</div>
-		<br>
-		
-		<div class="clearfix"> </div>
-	</div>
-	<div id="right" style="width:55%;margin-left:200px;float:left">
-			<a href="${hello}column.jsp?type=1" style="cursor:pointer;font-size:20px;color:#000000">问答</a>&emsp;&emsp;&emsp;&emsp;&emsp;<strong><a style="cursor:pointer;font-size:20px;color:#000000">资料</a></strong>
+	<div>
+	<div id="right" style="width:55%">
+			<a href="${hello}column?type=1" style="cursor:pointer;font-size:20px;color:#000000">问答</a>
+		<strong><a style="cursor:pointer;font-size:20px;color:#000000">资料</a></strong>
 			<hr>
-			<table>
-				<c:forEach var="i" items="${questions}">
+			<table class="table table-hover">
+				<tr>
+					<td>文件名</td>
+					<td>上传时间</td>
+					<td>上传者</td>
+					<td>操作</td>
+				</tr>
+				<c:forEach var="i" items="${files}">
 					<tr>
-						<div style="margin-top:20px">
-							<font style="size:20px;color:#989898;">${i.creationTime }</font>
-							<a href="${hello}question/detail/${i.id}"><h3 style="color:#585858">资料名${i.questionName }</h3></a>
-							<br><h4 style="color:#000000">资料详情${i.questionContent }</h4><br>
-					
-							<img style="width:20px;height:20px" src="${hello}image/dianzan1.png"><font style="color:#000000">${i.likenum}</font>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-							<img style="width:18px;height:18px" src="${hello}image/pinglun.png"><font style="color:#000000">${i.commentNum}</font>
-							
-							<hr style=" height:2px;border:none;border-top:2px dotted #808080;" />
-							<br>
-						</div>
+						<td>
+								${i.fileName}
+						</td>
+						<td>
+								${i.creationTime}
+						</td>
+						<td>
+								${i.uploader.userName}
+						</td>
+						<td>
+								<button class="btn btn-primary">下载</button>
+						</td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -254,7 +280,6 @@ a:hover{
 	</c:choose>
 
 </div>
-
 
 
 <div class="footer_top_agileits">
@@ -285,7 +310,7 @@ jQuery(document).ready(function($) {
 			title:'提交问题',
 			maxmin:true,
 			shadeClose:true,
-			area:['1000px','770px'],
+			area:['60%','90%'],
 			content:'${hello}input.jsp'
 		});
 
@@ -317,25 +342,7 @@ jQuery(document).ready(function($) {
 		});
 	}
 	
-	/*$('#clickit').on('click',function(){
-		//var
-		  $.ajax({
-	            url:  '${hello}answer/star',
-	            type: 'post',
-	            data: {'questionId':${i.questionId}},
-	            success:function(data) {
-	                layer.msg(data.msg);
-	                if(data.code === 0)
-	                {
-	                	$(this).attr('src', '${hello}image/dianzan2.png');
-	                    window.location.href=window.location.href;
-	                    window.location.reload();
-	                }
-	            }
-	        });
-	});*/
-	
-	
+
 	
 	var div_x_1 = 230;
 	var div_y_1 = 50;

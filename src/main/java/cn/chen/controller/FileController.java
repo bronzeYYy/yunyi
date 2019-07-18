@@ -54,8 +54,8 @@ public class FileController {
         return msgResult;
     }
 
-    @RequestMapping(value = "/download", method = RequestMethod.GET)
-    public void download(String md5, HttpServletRequest request, HttpServletResponse response) {
+    @RequestMapping(value = "/download/{md5}", method = RequestMethod.GET)
+    public void download(@PathVariable String md5, HttpServletRequest request, HttpServletResponse response) {
         File file = fileDaoService.getFileByMD5(md5);
         if (file == null) {
             throw new NoSuchDataException();
@@ -63,9 +63,10 @@ public class FileController {
         QiniuUtils.download(request, response, file);
     }
 
-    @RequestMapping("/detail/{md5}")
+    @RequestMapping(value = "/detail/{md5}", method = RequestMethod.GET)
     public String detail(@PathVariable String md5, Model model) {
         model.addAttribute("file", fileDaoService.getFileByMD5(md5));
-        return "";
+        model.addAttribute("hello", "../../");
+        return "ziliao";
     }
 }

@@ -120,7 +120,7 @@ public final class QiniuUtils {
     }
 
     private static void download(String url, HttpServletResponse response, String filename) {
-        if (Utils.qiniuFileExists(url)) {
+        if (!Utils.qiniuFileExists(url)) {
             throw new YunyiException("文件不存在");
         }
         try {
