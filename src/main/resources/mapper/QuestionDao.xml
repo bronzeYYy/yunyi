@@ -17,11 +17,25 @@
          select *, `user`.creation_time as user_creationTime, `user`.id as user_id from question left join user on questioner_id = `user`.id
         where questioner_id = #{userId} order by question.creation_time desc;
     </select>
+    <insert id="starQuestion">
+        INSERT into likenum_ques(question_id, questioner_id, star_time) VALUES(#{0}, #{1}, now());
+    </insert>
+    <select id="getQuestionsOrderByStarAndComment" resultMap="getQuestion">
+        select * from question order by (likenum + comment_num) desc;
+    </select>
+    <update id="addStarNum">
+        UPDATE question set likenum = likenum + 1 WHERE id = #{questionId};
+    </update>
+    <update id="addCommentNum">
+        UPDATE question set comment_num= comment_num + 1 WHERE id = #{questionId};
+    </update>
     <resultMap id="getQuestion" type="cn.chen.model.Question">
         <id column="id" property="id" />
         <result column="question_name" property="questionName" />
         <result column="question_content" property="questionContent" />
         <result column="creation_time" property="creationTime" />
+        <result column="likenum" property="likenum" />
+        <result column="comment_num" property="commentNum" />
         <association property="questioner" javaType="cn.chen.model.User">
             <id column="user_id" property="id"/>
             <result column="user_name" property="userName" />

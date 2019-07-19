@@ -9,6 +9,5 @@ public interface AnswerDaoService {
     List<Answer> getAnswersByQuestionIdOrderByStar(int questionId);
     Answer getAnswerById(int id);
     List<Answer> getUserAnswersByUserId(int userId);
-
     boolean starAnswer(int answerId, int userId);
 }

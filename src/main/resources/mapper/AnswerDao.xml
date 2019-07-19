@@ -8,7 +8,8 @@
     </insert>
     <select id="getAnswersByQuestionId" resultMap="getAnswer" parameterType="cn.chen.model.Answer">
         select *, question.creation_time as question_creationTime ,`user`.creation_time as user_creationTime, `user`.id as user_id from answer
-        left join user on responder_id = `user`.id left join question on question_id = question.id where question_id = #{questionId};
+        left join user on responder_id = `user`.id left join question on question_id = question.id where question_id = #{questionId}
+        order  by answer_time desc;
     </select>
     <select id="getAnswerById" resultMap="getAnswer" parameterType="cn.chen.model.Answer">
         select * from answer where id = #{id}
@@ -17,10 +18,22 @@
         select *, `user`.creation_time as user_creationTime, `user`.id as user_id from answer left join user on responder_id = `user`.id
         where responder_id = #{userId};
     </select>
+    <insert id="starAnswer">
+        INSERT into likenum_ans(response_id, responder_id, star_time) VALUES(#{0}, #{1}, now());
+    </insert>
+    <select id="getAnswersByQuestionIdOrderByStar" resultMap="getAnswer">
+        select *, question.creation_time as question_creationTime ,`user`.creation_time as user_creationTime, `user`.id as user_id from answer
+        left join user on responder_id = `user`.id left join question on question_id = question.id where question_id = #{questionId}
+        order  by  likenum desc;
+    </select>
+    <update id="addStarNum">
+        UPDATE answer set likenum = likenum + 1 WHERE id = #{answerId};
+    </update>
     <resultMap id="getAnswer" type="cn.chen.model.Answer">
         <id property="id" column="id" />
         <result column="answer_content" property="answerContent" />
         <result column="answer_time" property="answerTime" />
+        <result column="likenum" property="likenum" />
         <association property="question" javaType="cn.chen.model.Question">
             <id column="question_id" property="id" />
             <result column="question_name" property="questionName" />

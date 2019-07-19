@@ -68,30 +68,34 @@ color:white;
         </div>
     </div>
 </nav>
-<div class="container">
+<div class="container">             <!--资料详情 -->
     <div style="margin-top:30px" class="row-md-12">
         
         <div class="col-md-12" >
-					<br>
-					 <p ><strong><h3 style="color:#202020">${Question.questionName}</h3></strong></p>
-					 <p ><strong><h4 style="color:#303030">${Question.questionContent}</h4></strong></p>
-					
-			 <div class="row">
-					<div class="col-md-2" >
-					<p><br>
-					<button style="color:#ffffff;background-color:#505050" id="huida" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span>&nbsp;我来回答</button>
-					</div>
-					<div class="col-md-10 col-md-pull-1">
-					<p align=right><br><br><br><br>
-					<span style="color:#202020" class="glyphicon glyphicon-user"></span> <a style="color:	#505050" href="#">${Question.questioner.userName}</a>
-					&nbsp;
-					<text style="color:#505050">${Question.creationTime}</text>
-					</p>
-					</div>
-			 </div>
+					<div style="background-color: #DDDDDD; margin-top: 4%">
+					 <h3 style="background-color:#CCCCCC; padding: 15px; border-top-left-radius: 5px; border-top-right-radius: 5px">${file.fileName}</h3>
+					 <p style="color:#202020; padding: 15px">${file.fileDetail}</p>
 
+						<p align=right style="padding: 15px">
+							<img alt="上传者头像" title="上传者头像" width="16px" height="16px" style="color:#202020" src="${hello}user/avatar/${file.uploader.id}">
+							<a style="color:	#505050" href="#">${file.uploader.userName}</a>
+							&nbsp;
+							<text style="color:#505050">${file.creationTime}</text>
+						</p>
+					</div>
+					<div>
+						<div style="float: left">
+							<button class="btn btn-default" style="margin-bottom: 20px" id="huida" type="submit">
+								<span class="glyphicon glyphicon-pencil"></span>&nbsp;我来评价</button>
+						</div>
+						<div style="margin-left:20px;cursor:pointer; float: left">
+							<a class="btn btn-primary" href="${hello}file/download/${file.md5}">
+								<img width="20px" height="20px" id="download" src="${hello}image/download.png">
+								下载</a>
+						</div>
+					</div>
 
-			<br>
+                                               <!-- 资料评价 -->
             <div class="col-md-12" style=" box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
                     <h5><b><p style="color:#202020">评论列表</p></b></h5>
             </div>
@@ -123,7 +127,7 @@ color:white;
 					<img id="getdown" src="image/down.png" style="cursor:pointer;height:25px;width:25px">
 				</div>
             </div>
-           <div id="dpinglun" style="display:none;background-color:#E0E0E0;margin-left:180px;width:70%;height:70px;">
+           <div id="dpinglun" style="display:none;background-color:#E0E0E0;margin-left:180px;width:70%;height:70px;">            <!-- 评价的评论-->
            		<div style="width:50px;float:left">
            			 <img src="${hello}user/avatar/${i.answerUser.id}" style=" width:45px ;height:45px">
            			<br><a href="others.jsp" style="color:#202020">${i.answerUser.userName}</a>
@@ -139,9 +143,10 @@ color:white;
            		</div>	
            </div>
             </tr>
+							<br><hr style=" height:2px;width:80%;border:none;border-top:2px dotted #808080;" />
           </c:forEach>
           
-            <hr style=" height:2px;width:80%;border:none;border-top:2px dotted #808080;" />
+
           </table>
         </div>
        
@@ -154,8 +159,10 @@ color:white;
 	<h3 id='huidafabiao' style="cursor:pointer;color: #000000;margin-top:20px;margin-left: 230px">提交</h3></strong>
 </div>
 
+
 <script>
 	$('#huida').on('click',function(){
+
       //var content = "";
       layer.open({
           type:1,
@@ -165,8 +172,15 @@ color:white;
           area:['500px','300px'],
           content:$('#huifa')
       });
-
-  });
+	
+  });	
+	/*$('#download').on('click',function(){
+		
+		 $.ajax({
+	            url:  '${hello}download/${file.md5}',
+	            type: 'GET'
+	        });
+	});*/
 
 	$('#huifu').on('click',function(){
 	    var content = "<textarea id='neirong' value='' style='background:transparent;" +
@@ -191,8 +205,8 @@ $('#fabiao').on('click',function(){
       $.ajax({
     //      url:  'answer/save',
                   type: 'post',
-                  data: {'answerContent':f1, 'questionId': ${Question.id}},
-              		success:function(data) {
+                  data: {'answerContent':f1, 'answerId': ${answer.id}},
+              success:function(data) {
                   layer.msg(data.msg);
                   if(data.code === 0)
                   {
@@ -202,14 +216,13 @@ $('#fabiao').on('click',function(){
           }
       })
 });
-
     //var index = parent.layer.getFrameIndex(window.name);
-    $('#huidafabiao').on('click',function(){
+  $('#huidafabiao').on('click',function(){
         var f1 = document.getElementById("huidaneirong").value;
         $.ajax({
             url:  '${hello}answer/save',
             type: 'post',
-            data: {'answerContent':f1, 'questionId': ${Question.id}},
+            data: {'answerContent':f1, 'ziliaoId': ${file.md5}},
             success:function(data) {
                 layer.msg(data.msg);
                 if(data.code === 0)
@@ -217,7 +230,7 @@ $('#fabiao').on('click',function(){
                     window.location.href=window.location.href;
                     window.location.reload();
                 }
-            }
+           	 }
         });
     });
     
@@ -238,9 +251,6 @@ $('#fabiao').on('click',function(){
         });
     		
     });
- 	
-  
-
 </script>
 </body>
 </html>

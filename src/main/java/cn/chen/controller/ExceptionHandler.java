@@ -1,10 +1,12 @@
 package cn.chen.controller;
 
+import cn.chen.data.exceptions.FileMd5ExistsException;
 import cn.chen.data.exceptions.NoSuchDataException;
 import cn.chen.data.exceptions.YunyiException;
 import cn.chen.data.exceptions.login.NeedLoginAndRedirectException;
 import cn.chen.data.exceptions.login.NeedLoginNotRedirectException;
 import cn.chen.data.result.AbstractResult;
+import cn.chen.data.result.DataResult;
 import cn.chen.data.result.MsgResult;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DuplicateKeyException;
@@ -38,10 +40,18 @@ public class ExceptionHandler {
         }
         return "404";
     }
+
+    @org.springframework.web.bind.annotation.ExceptionHandler(FileMd5ExistsException.class)
+    @ResponseBody
+    public DataResult fileExists(FileMd5ExistsException e) {
+        return new DataResult<>(-2, e.getFile(), e.getMessage());
+    }
+
     @org.springframework.web.bind.annotation.ExceptionHandler(NeedLoginAndRedirectException.class)
     public Object delNeedLogin(HttpServletRequest request) {
         return toLogin(request);
     }
+
     @org.springframework.web.bind.annotation.ExceptionHandler(NeedLoginNotRedirectException.class)
     @ResponseBody
     public Object delNeedLogin(Exception e) {

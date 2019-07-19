@@ -30,7 +30,7 @@ public class AnswerController {
     @ResponseBody
     public AbstractResult save(@Valid Answer answer, Errors errors, HttpSession session, int questionId) {
         if (errors.hasErrors()) {
-            return Utils.dealErrors(errors);
+            Utils.dealErrors(errors);
         }
         answer.setAnswerUser((User) session.getAttribute("user"));
         Question question = new Question();
@@ -42,7 +42,7 @@ public class AnswerController {
             msgResult.setMsg("回复成功");
             session.setAttribute("user", userDaoService.getUserById(answer.getAnswerUser().getId()));
         } else {
-            msgResult.setCode(0);
+            msgResult.setCode(-1);
             msgResult.setMsg("回复失败");
         }
         return msgResult;

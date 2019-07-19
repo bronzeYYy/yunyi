@@ -10,7 +10,7 @@ public class Answer {
     @NotNull(message = "回答内容必须填")
     @Size(min = 5, message = "回答内容长度需大于5")
     private String answerContent;
-
+    private int likenum;
     private String answerTime;
 
     public int getId() {
@@ -53,4 +53,11 @@ public class Answer {
         this.answerTime = answerTime;
     }
 
+    public int getLikenum() {
+        return likenum;
+    }
+
+    public void setLikenum(int likenum) {
+        this.likenum = likenum;
+    }
 }

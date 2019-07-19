@@ -13,7 +13,9 @@ public class QiNiuConfig {
     private static final String SK = "";
 
     public static final String BUCKET = "yunyi_img";
+    public static final String FILE_BUCKET = "yunyi_file";
     public static final String BUCKET_URL = "http://yunyi-img.chen1234.cn/";
+    public static final String FILE_BUCKET_URL = "http://yunyi-file.chen1234.cn/";
 
     @Bean
     public Auth auth () {
