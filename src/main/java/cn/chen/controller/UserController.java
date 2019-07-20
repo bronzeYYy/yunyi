@@ -66,6 +66,7 @@ public class UserController {
         if (userDaoService.addUser(user)) {
             msgResult.setMsg("注册成功");
             msgResult.setCode(0);
+            login(user.getEmail(), user.getUserPassword(), request.getSession());
             jedisDao.delCode(user.getEmail());
         } else {
             msgResult.setMsg("注册失败");

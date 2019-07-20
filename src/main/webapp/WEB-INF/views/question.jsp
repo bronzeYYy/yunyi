@@ -146,7 +146,7 @@ color:white;
 								<span id="likenum">${i.likenum}</span>
 							</span>
 					&emsp;&emsp;&emsp;<a style="color:#202020" id="huifu"><span class="glyphicon glyphicon-comment"></span></a>
-					&emsp;&emsp;&emsp;<img id="getdown" src="${hello}image/down.png" style="cursor:pointer;height:25px;width:25px">
+<%--					&emsp;&emsp;&emsp;<img id="getdown" src="${hello}image/down.png" style="cursor:pointer;height:25px;width:25px">--%>
 							</div>
 						</div>
            <div id="dpinglun" style="display:none;background-color:#E0E0E0;margin-left:180px;width:70%;height:70px;">
@@ -190,6 +190,9 @@ color:white;
 			data: {'questionId': ${Question.id}, 'answerContent': editor.txt.html()},
 			success: function (data) {
 				layer.msg(data.msg);
+				if (data.code == 0) {
+					window.location.reload();
+				}
 			}
 		});
 	});

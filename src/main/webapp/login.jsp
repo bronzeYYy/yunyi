@@ -50,7 +50,7 @@
 	<div style="width:300px;height:300px">
 		<p style="font-size:20px;text-align:center;color:#708090">用户登录</p>
 
-		<input type="text" id="zhanghao" class="form-control" placeholder="账号"  name="noOrEmail" value="" />
+		<input type="text" id="zhanghao" class="form-control" placeholder="学号或邮箱"  name="noOrEmail" value="" />
 		<br>
 		<input type="password" id="mima" style="margin-top:10px" class="form-control" placeholder="密码" name="password" value="" />
 		<br><br>
@@ -208,13 +208,18 @@
 		})
 	});
 	$('#rgetma').on('click',function(){  //发送验证码
+		var l = layer.load();
 		var m = document.getElementById("ryouxiang").value;
 		$.ajax({
 			url:  '${path}user/register/send',
 			type: 'post',
 			data: {'email':m},
 			success:function(data) {
+				layer.close(l);
 				layer.msg(data.msg);
+			},
+			complete: function () {
+				layer.close(l);
 			}
 		})
 	});

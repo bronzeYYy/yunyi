@@ -77,7 +77,7 @@
     <ul class="menu">
         <li><strong>我的提问</strong></li>
         <li><a id="answer">我的回答</a></li>
-        <li>我的资料</li>
+<%--        <li>我的资料</li>--%>
         <li><a id="tiwen">提问</a></li>
         <li><a id="ziliao">上传资料</a></li>
     </ul>
@@ -106,7 +106,7 @@
     <ul class="menu">
          <li><a id="question">我的问题</a></li>
         <li><strong>我的回答</strong></li>
-        <li>我的资料</li>
+<%--        <li>我的资料</li>--%>
         <li><a id="tiwen">提问</a></li>
         <li><a id="ziliao">上传资料</a></li>
     </ul>
