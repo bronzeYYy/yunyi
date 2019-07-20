@@ -1,6 +1,7 @@
 package cn.chen.dao;
 
 import cn.chen.data.enums.CommitTypeEnum;
+import cn.chen.data.exceptions.FrequencyException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import redis.clients.jedis.Jedis;
@@ -14,6 +15,7 @@ public class JedisDaoImpl implements JedisDao {
     private JedisPool jedisPool;
     private static final String CODE = ":code";
     private static final String SEND = ":send";
+    private static final int TIME = 30;
     @Autowired
     public JedisDaoImpl(JedisPool jedisPool) {
         this.jedisPool = jedisPool;
@@ -24,8 +26,8 @@ public class JedisDaoImpl implements JedisDao {
         try {
             jedis = jedisPool.getResource();
             Transaction transaction = jedis.multi();
-            transaction.set(email + SEND, "1", "nx", "ex", 120);
-            transaction.set(email + CODE, code, "nx", "ex", 120);
+            transaction.set(email + SEND, "1", "nx", "ex", TIME);
+            transaction.set(email + CODE, code, "nx", "ex", TIME);
             List<Object> objects = transaction.exec();
             for (Object object : objects) {
                 if (!"OK".equals(object)) {
@@ -55,14 +57,15 @@ public class JedisDaoImpl implements JedisDao {
      * create time: 13:22 2019-07-14
      * @param id: 用户id
      * @param commitTypeEnum: 提交类型
-     * @return boolean: 结果
      */
     @Override
-    public boolean checkCommit(int id, CommitTypeEnum commitTypeEnum) {
+    public void checkCommit(int id, CommitTypeEnum commitTypeEnum) {
         Jedis jedis = null;
         try {
             jedis = jedisPool.getResource();
-            return jedis.get(id + ":" + commitTypeEnum.getCode()) == null;
+            if (jedis.get(id + ":" + commitTypeEnum.getCode()) != null) {
+                throw new FrequencyException(CommitTypeEnum.COMMIT_UPLOAD);
+            }
         } finally {
             close(jedis);
         }
@@ -74,17 +77,17 @@ public class JedisDaoImpl implements JedisDao {
     }
 
     @Override
-    public boolean checkEmailSendCode(String email) {
+    public void checkEmailSendCode(String email) {
         Jedis jedis = null;
         try {
             jedis = jedisPool.getResource();
-            if (jedis.get(email + JedisDaoImpl.SEND) == null) {
-                return true;
+            if (jedis.get(email + JedisDaoImpl.SEND) != null) {
+                throw new FrequencyException(CommitTypeEnum.SEND_RANDOM_CODE);
             }
         } finally {
             close(jedis);
         }
-        return false;
+
     }
 
     /*
@@ -100,7 +103,7 @@ public class JedisDaoImpl implements JedisDao {
         Jedis jedis = null;
         try {
             jedis = jedisPool.getResource();
-            return "OK".equals(jedis.set(id + ":" + commitTypeEnum.getCode(), "1", "nx", "ex", 120));
+            return "OK".equals(jedis.set(id + ":" + commitTypeEnum.getCode(), "1", "nx", "ex", TIME));
         } finally {
             close(jedis);
         }

@@ -1,21 +1,21 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-				 pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
-<head> 
-<meta charset="utf-8" /> 
-<title>半透明实例在线演示 www.divcss5.com</title> 
-<style> 
-.div-a{ background:url(image/bj1.jpg)no-repeat;width:230px;height:136px;padding:10px} 
-.div-b{ background:#888888;width:200px;height:100px;padding:5px;color:#F00; 
-filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6} 
-/* CSS注释说明：这里对CSS代码换行是为了让代码在此我要中显示完整，换行后CSS效果不受影响 */ 
-</style> 
-</head> 
- 
-<body> 
-<div class="div-a"> 
-<div class="div-b">实现DIV半透明实例演示</div> 
-</div> 
-</body> 
-</html> 
+<head>
+	<meta charset="UTF-8">
+	<title>wangEditor demo</title>
+</head>
+<body>
+<div id="editor">
+	<p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>
+</div>
+
+<!-- 注意， 只需要引用 JS，无需引用任何 CSS ！！！-->
+<script type="text/javascript" src="js/wangEditor.min.js"></script>
+<script type="text/javascript">
+	var E = window.wangEditor;
+	var editor = new E('#editor');
+	// 或者 var editor = new E( document.getElementById('editor') )
+	editor.create()
+</script>
+</body>
+</html>

@@ -1,7 +1,5 @@
 package cn.chen.model;
 
-import com.qiniu.util.StringMap;
-
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -14,6 +12,42 @@ public class File {
     private User uploader;
     private String creationTime;
     private int likenum;
+    private float fileSize;
+    private int downloadNum;
+    private String fileType;
+    private String sizeUnit;
+
+    public String getSizeUnit() {
+        return sizeUnit;
+    }
+
+    public void setSizeUnit(String sizeUnit) {
+        this.sizeUnit = sizeUnit;
+    }
+
+    public String getFileType() {
+        return fileType;
+    }
+
+    public void setFileType(String fileType) {
+        this.fileType = fileType;
+    }
+
+    public float getFileSize() {
+        return fileSize;
+    }
+
+    public void setFileSize(float fileSize) {
+        this.fileSize = fileSize;
+    }
+
+    public int getDownloadNum() {
+        return downloadNum;
+    }
+
+    public void setDownloadNum(int downloadNum) {
+        this.downloadNum = downloadNum;
+    }
 
     public int getLikenum() {
         return likenum;

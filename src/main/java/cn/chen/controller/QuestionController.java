@@ -50,7 +50,7 @@ public class QuestionController {
     }
 
     @RequestMapping("/detail/{id}")
-    public String questionDetail(@PathVariable int id, Model model, @RequestParam(required = false) String answerOrderType) {
+    public String questionDetail(@PathVariable int id, Model model, @RequestParam(required = false) String order) {
         Question question = questionService.getQuestionById(id);
         if (question == null) {
             throw new NoSuchDataException();
@@ -58,7 +58,7 @@ public class QuestionController {
         model.addAttribute("Question", question);
         model.addAttribute("hello", "../../");
         List<Answer> answers;
-        if (answerOrderType != null) {
+        if (order != null) {
             answers = answerDaoService.getAnswersByQuestionIdOrderByStar(id);
         } else {
             answers = answerDaoService.getAnswersByQuestionId(id);

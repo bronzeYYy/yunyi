@@ -7,6 +7,8 @@ import cn.chen.data.exceptions.FrequencyException;
 import cn.chen.data.exceptions.YunyiException;
 import cn.chen.model.Question;
 import cn.chen.service.QuestionService;
+import cn.chen.utils.Utils;
+import com.hankcs.hanlp.HanLP;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,8 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
+import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 @Service
@@ -82,5 +86,66 @@ public class QuestionServiceImpl implements QuestionService {
             throw new YunyiException("点赞失败");
         }
         return true;
+    }
+
+    @Override
+    public List<Question> getQuestionsByKeywords(String searchContent, int order) {
+        List<String> list = Utils.getResultList(searchContent);
+        String column = Utils.getOrder(order);
+        List<Question> questions;
+        if (list.size() == 0) {
+            list = Collections.singletonList(searchContent);
+            questions = questionDao.getQuestionsByContent("%" + searchContent + "%", column);
+        } else {
+            questions = questionDao.getQuestionsByKeywords(Utils.getSql(searchContent, list), column);
+        }
+        Utils.highAll(questions, list);
+        return questions;
+    }
+
+    @Override
+    public List<Question> getQuestionsByKeywordsAndName1(String searchContent, String name1, int order) {
+        String column = Utils.getOrder(order);
+        List<String> list = Utils.getResultList(searchContent);
+        List<Question> questions;
+        if (list.size() == 0) {
+            list = Collections.singletonList(searchContent);
+            questions = questionDao.getQuestionsByContentFromName1(name1, "%" + searchContent + "%", column);
+        } else {
+            questions = questionDao.getQuestionsByKeywordsAndName1(Utils.getSql(searchContent, list), name1, column);
+        }
+        Utils.highAll(questions, list);
+        return questions;
+    }
+
+    @Override
+    public List<Question> getQuestionsByKeywordsAndName1AndName2(String searchContent, String name1, String name2, int order) {
+        List<String> list = Utils.getResultList(searchContent);
+        String column = Utils.getOrder(order);
+        List<Question> questions;
+        if (list.size() == 0) {
+            list = Collections.singletonList(searchContent);
+            questions = questionDao.getQuestionsByContentFromNames(name1, name2, "%" + searchContent + "%", column);
+        } else {
+            questions = questionDao.getQuestionsByKeywordsAndName1AndName2(Utils.getSql(searchContent, list), name1, name2, column);
+        }
+        Utils.highAll(questions, list);
+        return questions;
+    }
+
+    @Override
+    public List<Question> getQuestionsByName1(String name1, int order) {
+        String column = Utils.getOrder(order);
+        return questionDao.getQuestionsByName1(name1, column);
+    }
+
+    @Override
+    public List<Question> getQuestionsByName1AndName2(String name1, String name2, int order) {
+        String column = Utils.getOrder(order);
+        return questionDao.getQuestionsByName1AndName2(name1, name2, column);
+    }
+
+    private List<Question> getQuestionsByContent(String name1, String name2, String content, int order) {
+        return null;
     }
 }

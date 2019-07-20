@@ -32,13 +32,15 @@ public class ExceptionHandler {
 //        return new MsgResult(-1, e.getClass().getName());
     }
     @org.springframework.web.bind.annotation.ExceptionHandler(NoSuchDataException.class)
-    public String handleException(HttpServletResponse response) {
-        try {
+    public String handleException(HttpServletRequest request) {
+        /*try {
             response.sendError(404);
+            //response.sendRedirect("404.jsp");
         } catch (IOException e) {
             e.printStackTrace();
-        }
-        return "404";
+        }*/
+
+        return "redirect:"+ getHome(request) + "404.jsp";
     }
 
     @org.springframework.web.bind.annotation.ExceptionHandler(FileMd5ExistsException.class)
@@ -59,7 +61,8 @@ public class ExceptionHandler {
     }
 
     private String toLogin(HttpServletRequest request) {
-        StringBuilder url = new StringBuilder();
+        return "redirect:"+ getHome(request) + "login.jsp";
+        /*StringBuilder url = new StringBuilder();
         String path = request.getServletPath();
         int j = 0;
         for (int i = 0; i < path.length(); i++) {
@@ -72,6 +75,21 @@ public class ExceptionHandler {
         }
         //String url = request.getScheme() + "://" + request.getServletPath() + ":" + request.getServerPort() + "/";
         //System.out.println(url);
-        return "redirect:"+ url + "login.jsp";
+        return "redirect:"+ url + "login.jsp";*/
+    }
+
+    private String getHome(HttpServletRequest request) {
+        StringBuilder url = new StringBuilder();
+        String path = request.getServletPath();
+        int j = 0;
+        for (int i = 0; i < path.length(); i++) {
+            if (path.charAt(i) == '/') {
+                j++;
+            }
+        }
+        for (int k = 1; k < j; k++) {
+            url.append("../");
+        }
+        return url.toString();
     }
 }

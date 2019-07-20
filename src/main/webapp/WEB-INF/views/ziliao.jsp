@@ -4,7 +4,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-<title>问题详情页</title>
+<title>资料详情-${file.fileName}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
    <link rel="stylesheet" href="${hello}css/bootstrap.css">
@@ -60,11 +60,13 @@ color:white;
                 <li class="active"><a class="scroll" href="${hello}column" id="test">专栏</a></li>
                 <li class="active"><a class="scroll" href="#" id = "yuan">发现</a></li>
                 <li class="active"><a class="scroll" href="#lianxi">联系我们</a></li>
-                <li class="active"><a class="scroll" href="${hello}user">我的主页</a></li>
+<%--                <li class="active"><a class="scroll" href="${hello}user">我的主页</a></li>--%>
             </ul>
-            <ul class="nav navbar-nav pull-right">
-
-            </ul>
+					<ul class="nav navbar-nav pull-right">
+						<li>
+							<a style="color:#FFFFFF" href="${hello}user">${not empty user.userName ? user.userName:'登陆'}</a>
+						</li>
+					</ul>
         </div>
     </div>
 </nav>
@@ -72,11 +74,17 @@ color:white;
     <div style="margin-top:30px" class="row-md-12">
         
         <div class="col-md-12" >
-					<div style="background-color: #DDDDDD; margin-top: 4%">
-					 <h3 style="background-color:#CCCCCC; padding: 15px; border-top-left-radius: 5px; border-top-right-radius: 5px">${file.fileName}</h3>
-					 <p style="color:#202020; padding: 15px">${file.fileDetail}</p>
+					<div style="background-color: #DDDDDD;margin-top: 4%">
+					 <h3 style="background-color: #cccccc;color: #000000;padding: 15px; border-top-left-radius: 5px; border-top-right-radius: 5px">
+						 <img alt="图标" width="50px" src="${hello}images/ge/${file.fileType}.png">
+						 &nbsp;${file.fileName}</h3>
+					 <div style="font-size: 16px;color:#202020; padding: 15px">${file.fileDetail}</div>
 
 						<p align=right style="padding: 15px">
+							<span style="color: #000000; float: left">
+								<span>下载：${file.downloadNum}</span>
+								<span style="margin-left: 10px">大小：${file.fileSize}${file.sizeUnit}</span>
+							</span>
 							<img alt="上传者头像" title="上传者头像" width="16px" height="16px" style="color:#202020" src="${hello}user/avatar/${file.uploader.id}">
 							<a style="color:	#505050" href="#">${file.uploader.userName}</a>
 							&nbsp;

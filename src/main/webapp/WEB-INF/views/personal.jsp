@@ -142,7 +142,7 @@
 <div style="display: none" id="update">
  <div class="divcss5"> 
 
-  <img id="img" style='height:300px;width:300px' src='${hello}image/touxiang1.jpeg'>
+  <img id="img" style='height:300px;width:300px' src='${hello}user/avatar/${user.id}'>
  </div>
   <br>
  <button class='file' style='cursor:pointer;text-align:center;margin-left:110px;height:30px;width:100px' id='add'>选择图片</button>
@@ -201,7 +201,7 @@
             maxmin:true,
             shadeClose:true,
             area:['1000px','700px'],
-            content:'${hello}input.jsp'
+            content:'${hello}answer.jsp'
         });
     });
 
@@ -295,11 +295,12 @@
     	}
 	//图片上传
     	$('#picinput').on('click',function(){
+          var l = layer.load();
         var formData = new FormData();  //创建一个forData 
 
         formData.append('img', $('#xuanze')[0].files[0]) //把file添加进去  name命名为img
         $.ajax({
-            url: "${hello}/updata/avatar",
+            url: "${hello}user/update/avatar",
             data: formData,
             type: "POST",
             async: false,
@@ -308,14 +309,16 @@
             processData: false,
             success: function(data) {
                 layer.msg(data.msg);
-				if(data.code === 0)
-        {
-             
-            window.location.href=window.location.href;
-            window.location.reload();
-        }
+                if(data.code === 0)
+                {
+
+                    window.location.href=window.location.href;
+                    window.location.reload();
+                }
+            },
+            complete: function () {
+              layer.close(l);
             }
-           
           });
     });
 </script>
