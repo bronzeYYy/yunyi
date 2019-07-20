@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!doctype html>
 <html>
 <head>
 <title>问题详情页</title>
@@ -11,26 +12,26 @@
    <script src="${hello}js/jquery-3.3.1.min.js"></script>
    <script src="${hello}js/bootstrap.js"></script>
    <script src="${hello}layer-v3.1.1/layer/layer.js"></script>
-   <script src="${hello}css&js/jquery.min.js"></script>
 	<script src="${hello}css&js/bootstrap.min.js"></script>
 	<script>
-		$(document).ready(function() {
-			//关闭
-				var test = 1;
-			var zan = 1;
-			$("#getdown").on('click',function(){
-				if(test === 1)
-				{
-					$(this).attr('src', '${hello}image/up.png');
-					$("#dpinglun").show(500);
-					test = 0;
-				} else {
-					$(this).attr('src', '${hello}image/down.png');
-					$("#dpinglun").hide(500);
-					test = 1;
-				}
-			});
+		var test = 1;
+		var zan = 1;
+		$("#getdown").on('click',function(){
+			if(test === 1)
+			{
+				$(this).attr('src', '${hello}image/up.png');
+				$("#dpinglun").show(500);
+				test = 0;
+			} else {
+				$(this).attr('src', '${hello}image/down.png');
+				$("#dpinglun").hide(500);
+				test = 1;
+			}
 		});
+		/*$(document).ready(function() {
+			//关闭
+
+		});*/
 	</script>
 <style>
 body{
@@ -48,7 +49,7 @@ color:white;
 </style>
 </head>
 
-<body style="background-color:#F0F0F0">
+<body style="background-color:#F0F0F0; height: 100%">
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -62,9 +63,11 @@ color:white;
                 <li class="active"><a class="scroll" href="#lianxi">联系我们</a></li>
                 <li class="active"><a class="scroll" href="${hello}user">我的主页</a></li>
             </ul>
-            <ul class="nav navbar-nav pull-right">
-
-            </ul>
+					<ul class="nav navbar-nav pull-right">
+						<li>
+							<a style="color:#FFFFFF" href="${hello}user">${not empty user.userName ? user.userName:'登陆'}</a>
+						</li>
+					</ul>
         </div>
     </div>
 </nav>
@@ -73,27 +76,50 @@ color:white;
         
         <div class="col-md-12" >
 					<br>
-					 <p ><strong><h3 style="color:#202020">${Question.questionName}</h3></strong></p>
-					 <p ><strong><h4 style="color:#303030">${Question.questionContent}</h4></strong></p>
-					
-			 <div class="row">
-					<div class="col-md-2" >
-					<p><br>
-					<button style="color:#ffffff;background-color:#505050" id="huida" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span>&nbsp;我来回答</button>
-					</div>
-					<div class="col-md-10 col-md-pull-1">
-					<p align=right><br><br><br><br>
-					<span style="color:#202020" class="glyphicon glyphicon-user"></span> <a style="color:	#505050" href="#">${Question.questioner.userName}</a>
-					&nbsp;
-					<text style="color:#505050">${Question.creationTime}</text>
-					</p>
-					</div>
-			 </div>
+					 <p style="margin-top: 20px"><strong><h3 style="color:#202020">${Question.questionName}</h3></strong></p>
+					<br>
+					 <p ><h4 style="color:#303030">${Question.questionContent}</h4></p>
 
+					<div>
+						<br>
+						<button style="color:#ffffff;background-color:#505050" id="huida" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span>&nbsp;我来回答</button>
 
+					</div>
+					<div>
+						<p align=right>
+							<span style="color:#202020"></span>
+							<img alt="上传者头像" title="上传者头像" width="16px" height="16px" style="color:#202020" src="${hello}user/avatar/${Question.questioner.id}">
+							<a style="color:	#505050" href="#">${Question.questioner.userName}</a>
+							&nbsp
+							<text style="color:#505050">${Question.creationTime}</text>
+						</p>
+					</div>
+					<div id="editorDiv" style="color: #000000; display: none">
+						<div id="editor">
+
+						</div>
+						<div style="margin-top: 10px" >
+							<button id="answer" class="btn btn-primary">回答</button>
+							<span id="answer-cancel" style="margin-left: 10px; cursor: pointer">取消</span>
+						</div>
+
+					</div>
 			<br>
-            <div class="col-md-12" style=" box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
-                    <h5><b><p style="color:#202020">评论列表</p></b></h5>
+            <div style="height: 50px; padding: 15px; box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+							<b><p style="color:#202020">评论列表(${Question.commentNum})
+								<c:choose>
+									<c:when test="${not empty param.order and param.order eq 1 }">
+										<a style="margin-left: 5px; color: #646464;"
+											 href="${hello}question/detail/${Question.id}?order=2">
+											<small>按热度排序</small></a>
+									</c:when>
+									<c:otherwise>
+										<a style="margin-left: 5px; color: #646464;"
+															href="${hello}question/detail/${Question.id}?order=1"><small>按时间排序</small></a>
+									</c:otherwise>
+								</c:choose>
+							</p></b>
+
             </div>
 
             <table>
@@ -116,9 +142,12 @@ color:white;
 					
 				<font style="line-height:100px;color:#202020">${i.answerTime}</font>
 					&emsp;&emsp;&emsp;
-					<img id="dianzan" src="image/dianzan1.png" style="cursor:pointer;height:25px;width:25px">
+					<span>
+						<img onclick="star('${i.id}')" id="dianzan" src="${hello}image/dianzan1.png" style="cursor:pointer;height:25px;width:25px">
+						${i.likenum}
+					</span>
 					&emsp;&emsp;&emsp;
-					<a style="color:#202020" id="huifu" href="#"><span class="glyphicon glyphicon-comment"></span></a>
+					<a style="color:#202020" id="huifu"><span class="glyphicon glyphicon-comment"></span></a>
 					&emsp;&emsp;&emsp;
 					<img id="getdown" src="image/down.png" style="cursor:pointer;height:25px;width:25px">
 				</div>
@@ -139,32 +168,56 @@ color:white;
            		</div>	
            </div>
             </tr>
+							<hr style=" height:2px;width:80%;border:none;border-top:2px dotted #808080;" />
           </c:forEach>
-          
-            <hr style=" height:2px;width:80%;border:none;border-top:2px dotted #808080;" />
+
+
           </table>
         </div>
        
     </div>
 </div>
 
-<div id="huifa" style="display:none">
-	<textarea id="huidaneirong" value="" style="margin-top:20px;margin-left:20px;color:#000000;height: 100px;width:460px">
-	</textarea><br><br><br><strong>
-	<h3 id='huidafabiao' style="cursor:pointer;color: #000000;margin-top:20px;margin-left: 230px">提交</h3></strong>
-</div>
-
+<script type="text/javascript" src="${hello}js/wangEditor.min.js"></script>
 <script>
+	// 上传图片（举例）var E = window.wangEditor
+	var E = window.wangEditor;
+	var editor = new E('#editor');
+	// 或者 var editor = new E( document.getElementById('editor') )
+	editor.create();
+	$('#answer').on('click', function () {
+		$.ajax({
+			url: '${hello}answer/save',
+			type: 'post',
+			data: {'questionId': ${Question.id}, 'answerContent': editor.txt.html()},
+			success: function (data) {
+				layer.msg(data.msg);
+			}
+		});
+	});
+	$('#answer-cancel').on('click', function () {
+		$('#editorDiv').css('display', 'none');
+	});
+</script>
+<script>
+	$(document).ready(function () {
+
 	$('#huida').on('click',function(){
-      //var content = "";
+
+		$('#editorDiv').css('display', 'block');
+      /*var content = "<div id=\"huifa\">\n" +
+					"\t<textarea id=\"huidaneirong\" style=\"margin-top:20px;margin-left:20px;color:#000000;height: 100px;width:460px\">\n" +
+					"\t</textarea><br><br><br><strong>\n" +
+					"\t<h3 id='huidafabiao' style=\"cursor:pointer;color: #000000;margin-top:20px;margin-left: 230px\">提交</h3></strong>\n" +
+					"</div>";
       layer.open({
           type:1,
           title:'回答界面',
           maxmin:true,
           shadeClose:true,
           area:['500px','300px'],
-          content:$('#huifa')
-      });
+          content:content
+      });*/
 
   });
 
@@ -220,26 +273,23 @@ $('#fabiao').on('click',function(){
             }
         });
     });
-    
-    $('dianzan').on('click',function(){
-        $.ajax({
-            url:  '${hello}answer/star',
-            type: 'post',
-            data: {'answerId':${i.answerId}},
-            success:function(data) {
-                layer.msg(data.msg);
-                if(data.code === 0)
-                {
-                	$(this).attr('src', '${hello}image/dianzan2.png');
-                    window.location.href=window.location.href;
-                    window.location.reload();
-                }
-            }
-        });
-    		
-    });
- 	
-  
+	});
+	var star = function star (id) {
+		$.ajax({
+			url:  '${hello}answer/star',
+			type: 'post',
+			data: {'questionId':id},
+			success:function(data) {
+				layer.msg(data.msg);
+				if(data.code === 0)
+				{
+					$(this).attr('src', '${hello}image/dianzan2.png');
+					window.location.href=window.location.href;
+					window.location.reload();
+				}
+			}
+		});
+	};
 
 </script>
 </body>

@@ -234,7 +234,8 @@
     				if(data.code === -2)
     					{
     					    var md5 = data.data.md5;
-                  var content = "<h3><a href='file/detail/" + md5 + "'>点击查看</a></h3><h3>文件名:${fileName}</h3><h3>文件描述:${fileDetail}</h3>'";
+                  var content =
+                      "<h3>文件已存在<a target='_blank' href='file/detail/" + md5 + "'>点击查看</a></h3>";
     						 $("#show").append(content);
     					}
                 }

@@ -3,17 +3,22 @@ package cn.chen.dao;
 import cn.chen.config.QiNiuConfig;
 import cn.chen.config.RootConfig;
 import cn.chen.dao.mysql.UserDao;
+import cn.chen.utils.Utils;
 import com.google.gson.JsonParser;
 import com.qiniu.util.Md5;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.util.Properties;
 
 public class Test {
     @org.junit.Test
@@ -55,7 +60,14 @@ public class Test {
 
     @org.junit.Test
     public void test4() {
-        System.out.println("1".getBytes().length);
+        /*Properties properties = new Properties();
+        try {
+            properties.load(new InputStreamReader(new ClassPathResource("detail.properties").getInputStream(), "gbk"));
+            System.out.println(properties.getProperty("计算机系"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
+
     }
 
 }

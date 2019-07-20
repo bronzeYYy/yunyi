@@ -10,4 +10,5 @@ public interface FileDaoService {
     File getFileByMD5(String md5);
     List<File> getFilesByUserId(int userId);
     List<File> getFiles();
+    boolean upDownloadNumByMD5(String md5);
 }

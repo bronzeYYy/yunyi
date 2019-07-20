@@ -10,4 +10,7 @@ public interface FileDao {
     File getFileByMD5(String md5);
     List<File> getFilesByUserId(int userId);
     List<File> getFiles();
+
+    //int upStarNumByMD5(String md5);
+    int upDownloadNumByMD5(String md5);
 }

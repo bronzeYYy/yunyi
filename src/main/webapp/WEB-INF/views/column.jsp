@@ -102,20 +102,19 @@ a:hover{
 		</div>
 		<div id="navbar" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
-			<li class="active"><a style="font-size:20px;color:#888888" href="" id="test">推荐</a></li>
-				<li class="active"><a class="scroll" href="#zhuye" id="cpu">计算机系</a></li>
-				<li class="active"><a class="scroll" href="gaishu.jsp" id = "chemical">化工学院</a></li>
-				<li class="active"><a class="scroll" href="jisuanji.jsp" id ="husbandry">农牧学院</a></li>
-				<li class="active"><a class="scroll" href="yixue.jsp" id="machinery">机械学院</a></li>
-				<li class="active"><a class="scroll" href="tiyu.jsp" id="economy">财经学院</a></li>
-				<li class="active"><a class="scroll" href="zhishi.jsp" id="medical">医学院</a></li>
-				<li class="active"><a class="scroll" href="zepai.jsp" id="build">土木学院</a></li>
+			<li class="active"><a style="font-size:20px;color:#888888" href="${hello}column" id="test">所有</a></li>
+				<li class="active"><a class="scroll" href="${hello}column?name1=计算机系" id="cpu">计算机系</a></li>
+				<li class="active"><a class="scroll" href="${hello}column?name1=化工学院" id = "chemical">化工学院</a></li>
+				<li class="active"><a class="scroll" href="${hello}column?name1=农牧学院" id ="husbandry">农牧学院</a></li>
+				<li class="active"><a class="scroll" href="${hello}column?name1=机械学院" id="machinery">机械学院</a></li>
+				<li class="active"><a class="scroll" href="${hello}column?name1=财经学院" id="economy">财经学院</a></li>
+				<li class="active"><a class="scroll" href="${hello}column?name1=医学院" id="medical">医学院</a></li>
+				<li class="active"><a class="scroll" href="${hello}column?name1=土木学院" id="build">土木学院</a></li>
+				<li class="active"><a class="scroll" href="${hello}column?name1=其它">其它</a></li>
 			</ul>
 			<ul class="nav navbar-nav pull-right">
 				<li>
-					<a style="margin-top:20px;color:#FFFFFF" href="${hello}user"><c:if test="${not empty user}">
-						${user.userName}
-					</c:if> </a>
+					<a style="color:#FFFFFF" href="${hello}user">${not empty user.userName ? user.userName:'登陆'}</a>
 				</li>
 			</ul>
 		</div>
@@ -123,44 +122,57 @@ a:hover{
 </nav>
 <div class="hidebar"></div>
 <script>
-	var data=[
-		[{title:"软件使用",content:["office","Ps","3DsMax"]},
-		{title:"编程语言",content:["C/C++","Java","Python","Javascript"]},
-		{title:"计算机网络",content:["TCP/IP","网络安全"]},
-		{title:"计算机系统平台",content:["CPU","进程管理","内存管理","磁盘管理"]}],
-		[{title:"有机化学",content:["醇，醚","醛，酮","酚，醌","有机合成"]},
-		{title:"结构化学",content:["原子结构","分子机构","分子对称性","晶体结构"]},
-		{title:"物理化学",content:["化学热力学","相平衡","化学动力学","表面物理化学"]},
-		{title:"分析化学",content:["误差与数据处理","酸碱滴定","配位滴定","氧化还原滴定"]}],
-		[{title:"植物生产",content:[""]},
-		{title:"动物生产",content:[""]},
-		{title:"林学草学",content:[""]},
-		{title:"自然保护",content:[""]}],
-		[{title:"植物生产",content:[""]},
-		{title:"动物生产",content:[""]},
-		{title:"林学草学",content:[""]},
-		{title:"自然保护",content:[""]}],
-		[{title:"植物生产",content:[""]},
-		{title:"动物生产",content:[""]},
-		{title:"林学草学",content:[""]},
-		{title:"自然保护",content:[""]}],
-		[{title:"植物生产",content:[""]},
-		{title:"动物生产",content:[""]},
-		{title:"林学草学",content:[""]},
-		{title:"自然保护",content:[""]}],
-		[{title:"植物生产",content:[""]},
-		{title:"动物生产",content:[""]},
-		{title:"林学草学",content:[""]},
-		{title:"自然保护",content:[""]}],
+	var data=[[{title:"软件使用",content:["office","Ps","3DsMax"], belong:'计算机系'},
+		{title:"编程语言",content:["C/C++","Java","Python","Javascript"], belong:'计算机系'},
+		{title:"计算机网络",content:["TCP/IP","网络安全"], belong:'计算机系'},
+		{title:"计算机系统平台",content:["CPU","进程管理","内存管理","磁盘管理"], belong:'计算机系'}],
+
+		[{title:"有机化学",content:["醇，醚","醛，酮","酚，醌","有机合成"], belong:'化工学院'},
+			{title:"结构化学",content:["原子结构","分子机构","分子对称性","晶体结构"], belong:'化工学院'},
+			{title:"物理化学",content:["化学热力学","相平衡","化学动力学","表面物理化学"], belong:'化工学院'},
+			{title:"分析化学",content:["误差与数据处理","酸碱滴定","配位滴定","氧化还原滴定"], belong:'化工学院'}],
+
+
+		[{title:"植物生产",content:["植物科学与技术","农学、园艺、茶学、烟草","植物保护","种子科学与工程","应用生物学"], belong:'农牧学院'},
+			{title:"动物生产",content:["生物化学","免疫学","医学","生物物理学"], belong:'农牧学院'},
+			{title:"林学草学",content:["林学","森林保护","林学（城市林业方向）","林学（森林防火方向）","森林培育"/*,"林木遗传育种","森林病虫鼠害防治与检疫","野生植物资源开发利用"*/], belong:'农牧学院'},
+			{title:"自然保护",content:["动物检疫学","自然保护区管理","野生动物组织解剖学","动物遗传育种与繁殖学的技术人工繁殖"], belong:'农牧学院'}],
+
+
+		[{title:"机械电子",content:["机械工业自动化","电力电子","计算机应用","机械制造","电子工程"], belong:'机械学院'},
+			{title:"材料",content:["金属材料工程","高分子材料与工程","无机非金属材料工程","材料成型及控制工程"], belong:'机械学院'},
+			{title:"工业工程",content:["物流工程","虚拟制造","企业资源计划(ERP)","人力资源管理"], belong:'机械学院'},
+			{title:"控制工程",content:["复杂系统控制理论与应用","智能控制理论研究与应用","计算机控制系统","网络控制理论及其应用"], belong:'机械学院'}],
+
+
+		[{title:"市场营销",content:["管理","经济","法律","教学","科研"], belong:'财经学院'},
+			{title:"人力资源管理",content:["管理","经济","法律","教学","科研工商管理"], belong:'财经学院'},
+			{title:"国际贸易",content:["马克思主义经济学基本原理","国际经济","国际贸易的基本理论"], belong:'财经学院'},
+			{title:"企业管理",content:["现代企业管理方法","营销","会计"], belong:'财经学院'}],
+
+		[{title:"基础医学",content:["自然科学","生命科学","医学科学","生物学"], belong:'医学院'},
+			{title:"临床医学",content:["内科","耳鼻喉科","眼科","肿瘤学","麻醉学"/*,"急诊医学"*/], belong:'医学院'},
+			{title:"藏医学",content:["藏医医疗","藏药研发","认药、制药、用药"], belong:'医学院'},
+			{title:"护理学",content:["护理学基础","护理药械","中医护理","医院感染控制","病理生理学"/*,"急救护理","老年护理学"*/], belong:'医学院'}],
+
+		[/*{title:"建筑工程",content:["建筑工程技术与应用","建筑工程测量","供热通风与空调工程技术","给水排水工程"], belong:'土木学院'},*/
+			{title:"交通土建工程",content:["道路勘测设计","道路工程","路基路面工程","施工技术与组织"], belong:'土木学院'},
+			{title:"建设与房地产",content:["工民建","城市规划","给水排水工程","城市地下空间工程","景观建筑设计"/*,"计房地产开发管理"*/], belong:'土木学院'},
+			{title:"工程力学",content:["理论力学","材料力学","弹性力学","塑性力学","断裂力学"/*,"分析力学"*/], belong:'土木学院'},
+			/*{title:"桥隧与地下工程",content:["桥梁结构工程与抗震分析","桥隧检测、加固技术与可靠性分析","桥隧工程仿真分析"," 隧道设计理论与优化"," 隧道施工新技术及信息化"], belong:'土木学院'},*/
+			{title:"市政工程",content:["道路交通工程","河湖水系工程、地下管线工程","架空杆线工程","街道绿化工程"], belong:'土木学院'}]
 	];
+
 	var hide=$('.hidebar');
+	var id=0;
 	data.forEach(function (item,index) {
 		var newnode=$("<div class='hidebar1'></div>");
 		item.forEach(function (item2) {
 			var newUL=$("<ul></ul>");
 			newUL.append($("<li class='title'>"+item2.title+"</li>"));
 			item2.content.forEach(function (item3) {
-				newUL.append($("<li>"+item3+"</li>"))
+				newUL.append($("<li><a style='color: #CCCCCC' href='${hello}column?name1=" + item2.belong + "&name2="+item3+"'>"+item3+"</a></li>"));
+				//id++
 			});
 			newnode.append(newUL);
 		});
@@ -184,123 +196,97 @@ a:hover{
 
 </div>--%>
 <div id="main" style="width:100%;">
+	<div class="container" style="margin-top: 5%">
+		<%--<div class="footer_grids" style="text-align:center;margin-left:380px">
+      <div class="col-md-8 footer_grid_right" >
+        <input  type="button" id="iwant" value="我要提问">
 
-<c:choose> 
-<c:when test="${not empty param.type and param.type eq 1 }">
-<div class="container" style="margin-top: 5%">
-	<%--<div class="footer_grids" style="text-align:center;margin-left:380px">
-		<div class="col-md-8 footer_grid_right" >
-			<input  type="button" id="iwant" value="我要提问">
+      </div>
+      <br>
 
+      <div class="clearfix"> </div>
+    </div>--%>
+		<div style="padding: 20px; background-color: #FFFFFF">
+			<%--		--%>
+			<div style="font-size: 15px; line-height: 25px">
+				<h2>${columnName}</h2>
+				<div style="margin-top: 10px; color: #646464">
+					${columnDetail}
+				</div>
+			</div>
+			<%--	下方操作按钮组--%>
+			<div style="margin-top: 10px">
+				<button class="btn btn-success" id="iwant">提问</button>
+				<c:choose>
+					<c:when test="${not empty param.order and param.order eq 1 }">
+						<a style="margin-left: 5px; padding: 10px; color: #646464;"
+							 href="${hello}column?name1=${param.name1}&name2=${param.name2}&searchContent=${param.searchContent}&order=2"><span>按热度排序</span></a>
+					</c:when>
+					<c:otherwise>
+						<a style="margin-left: 5px; padding: 10px; color: #646464;"
+							 href="${hello}column?name1=${param.name1}&name2=${param.name2}&searchContent=${param.searchContent}&order=1"><span>按时间排序</span></a>
+					</c:otherwise>
+				</c:choose>
+				<a style="padding: 10px; color: #646464;" href="${hello}files?name1=${param.name1}&name2=${param.name2}"><span>资料</span></a>
+				<a style="padding: 10px; color: #646464;"><span>当前栏目：${param.name2}</span></a>
+				<label class="control-label">
+					&nbsp;<input class="form-control" type="text" placeholder="要搜索的内容" name="searchContent" value="${param.searchContent}">
+				</label>
+				<a style="padding: 10px; color: #646464; cursor: pointer" id="search">搜索</a>
+			</div>
+			<script>
+				$('#search').on('click', function () {
+					window.location = '${hello}column?name1=${param.name1}&name2=${param.name2}&order=${param.order}&searchContent='
+							+ $("input[name='searchContent']").val();
+				})
+			</script>
 		</div>
-		<br>
-		
-		<div class="clearfix"> </div>
-	</div>--%>
-	<div style="padding: 20px; background-color: #FFFFFF">
-<%--		--%>
-		<div style="font-size: 15px; line-height: 25px">
-			<h2>问答</h2>
-			<div style="margin-top: 10px; color: #646464">
-				云易校园问答平台汇集青海大学的所有阶段的学生。有任何不懂的问题或者想问的问题都可以在这里提问，全天都有学生为你解答。
+		<hr style=" height:2px;border:none;border-top:2px dotted #808080;" />
+		<%--	<hr  style="height:3px;border:none;border-top:5px ridge;" >--%>
+		<div id="left" style="background-color: #FFFFFF; padding: 20px; margin-bottom: 15px">
+			<div>
+				<c:forEach var="i" items="${questions}">
+					<div>
+							<%--							<font style="size:20px;color:#989898;">${i.creationTime }</font>--%>
+						<h3>
+							<a style="color:#1A1A1A" href="${hello}question/detail/${i.id}">${i.questionName }</a>
+							<span style="float: right; font-size: 13px; color: #999999">${i.creationTime }</span>
+						</h3><br>
+						<p class="content-p" style="color:#000000">${i.questionContent }</p><br>
+						<img onclick="star(${i.id})" id="clickit" style="cursor:pointer;width:20px;height:20px" src="${hello}image/dianzan1.png"><font style="color:#000000">${i.likenum}</font>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<a href="${hello}question/detail/${i.id}">
+							<img style="width:18px;height:18px" src="${hello}image/pinglun.png"><font style="color:#000000">${i.commentNum}</font>
+						</a>
+						<hr style=" height:2px;border:none;border-top:2px dotted #808080;" />
+					</div>
+				</c:forEach>
 			</div>
 		</div>
-<%--	下方操作按钮组--%>
-		<div style="margin-top: 10px">
-			<button class="btn btn-success" id="iwant">提问</button>
-			<c:choose>
-				<c:when test="${not empty param.order and param.order eq 1 }">
-					<a style="margin-left: 5px; padding: 10px; color: #646464;" href="${hello}column?type=1&order=2"><span>按时间排序</span></a>
-				</c:when>
-				<c:otherwise>
-					<a style="margin-left: 5px; padding: 10px; color: #646464;" href="${hello}column?type=1&order=1"><span>按热度排序</span></a>
-				</c:otherwise>
-			</c:choose>
 
-			<a style="padding: 10px; color: #646464;" href="${hello}column?type=2"><span>资料</span></a>
-		</div>
-	</div>
+			<div class="footer_top_agileits">
 
-		<hr style=" height:2px;border:none;border-top:2px dotted #808080;" />
-<%--	<hr  style="height:3px;border:none;border-top:5px ridge;" >--%>
-	<div id="left" style="background-color: #FFFFFF; padding: 20px; margin-bottom: 15px">
-		<div>
-			<c:forEach var="i" items="${questions}">
-				<div>
-						<%--							<font style="size:20px;color:#989898;">${i.creationTime }</font>--%>
-					<h3>
-						<a style="color:#1A1A1A" href="${hello}question/detail/${i.id}">${i.questionName }</a>
-						<span style="float: right; font-size: 13px; color: #999999">${i.creationTime }</span>
-					</h3><br>
-					<p class="content-p" style="color:#000000">${i.questionContent }</p><br>
-					<img onclick="star(${i.id})" id="clickit" style="cursor:pointer;width:20px;height:20px" src="${hello}image/dianzan1.png"><font style="color:#000000">${i.likenum}</font>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-							<a href="${hello}question/detail/${i.id}">
-								<img style="width:18px;height:18px" src="${hello}image/pinglun.png"><font style="color:#000000">${i.commentNum}</font>
-							</a>
-					<hr style=" height:2px;border:none;border-top:2px dotted #808080;" />
+				<div style=" float:right" align="center">
+
+					<a style="margin-top:50px">侵权举报 网上有害信息举报专区</a><p style="margin-top:10px"></p>
+					<a >违法和不良信息举报：15500545625</a><p style="margin-top:10px"></p>
+					<a >色情信息举报专区</a><p style="margin-top:10px"></p>
+					<a>证照中心</a><p style="margin-top:10px"></p>
+					<a >联系我们 @云易校园知识问答平台</a><p style="margin-top:10px"></p>
+
 				</div>
-			</c:forEach>
-		</div>
-	</div>
-	</div>
-	</c:when>
-	<c:otherwise>
-	<div>
-	<div id="right" style="width:55%">
-			<a href="${hello}column?type=1" style="cursor:pointer;font-size:20px;color:#000000">问答</a>
-		<strong><a style="cursor:pointer;font-size:20px;color:#000000">资料</a></strong>
-			<hr>
-			<table class="table table-hover">
-				<tr>
-					<td>文件名</td>
-					<td>上传时间</td>
-					<td>上传者</td>
-					<td>操作</td>
-				</tr>
-				<c:forEach var="i" items="${files}">
-					<tr>
-						<td>
-								${i.fileName}
-						</td>
-						<td>
-								${i.creationTime}
-						</td>
-						<td>
-								${i.uploader.userName}
-						</td>
-						<td>
-								<button class="btn btn-primary">下载</button>
-						</td>
-					</tr>
-				</c:forEach>
-			</table>
-	</div>
-	</div>
-	</c:otherwise>
-	</c:choose>
-
-</div>
-
-
-<div class="footer_top_agileits">
-
-	<div style=" float:left;margin-left:880px;width:35%" align="center">
-
-		<a style="margin-top:50px">侵权举报 网上有害信息举报专区</a><p style="margin-top:10px"></p>
-		<a >违法和不良信息举报：15500545625</a><p style="margin-top:10px"></p>
-		<a >色情信息举报专区</a><p style="margin-top:10px"></p>
-		<a>证照中心</a><p style="margin-top:10px"></p>
-		<a >联系我们 @云易校园知识问答平台</a><p style="margin-top:10px"></p>
-
+			</div>
 	</div>
 </div>
+
+
+
 
 <script type="text/javascript" src="${hello}css&js/move-top.js"></script>
 <script type="text/javascript" src="${hello}css&js/easing.js"></script>
 <script type="text/javascript">
 jQuery(document).ready(function($) {
 	$(".scroll").click(function(event){
-		event.preventDefault();
+		//event.preventDefault();
 		$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
 	});
 });
@@ -380,7 +366,6 @@ jQuery(document).ready(function($) {
 
 		});
 	}
-
 
 </script>
 

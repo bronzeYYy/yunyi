@@ -1,9 +1,12 @@
 package cn.chen.controller;
 
+import cn.chen.data.exceptions.NoSuchDataException;
 import cn.chen.model.User;
 import cn.chen.service.AnswerDaoService;
 import cn.chen.service.FileDaoService;
 import cn.chen.service.QuestionService;
+import cn.chen.utils.Utils;
+import com.mysql.jdbc.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,25 +47,102 @@ public class IndexController {
         System.out.println("getServletPath: " + request.getServletPath());
     }*/
     @RequestMapping("/column")
-    public String column(@RequestParam(required = false) Integer type, @RequestParam(required = false) Integer order,  Model model) {
-        if (null != type && type == 1) {
+    public String column(@RequestParam(required = false) Integer order, Model model,
+                         @RequestParam(required = false) String name1, @RequestParam(required = false) String name2,
+                         @RequestParam(required = false) String searchContent) {
+        if (!StringUtils.isNullOrEmpty(name1)) {
+            return name1Column(order, model, name1, name2, searchContent);
+        }
+        if (!StringUtils.isNullOrEmpty(searchContent)) {
             if (null != order && order == 1) {
-                model.addAttribute("questions", questionService.getQuestionsOrderByStarAndComment());
+                model.addAttribute("questions", questionService.getQuestionsByKeywords(searchContent, 1));
             } else {
-                model.addAttribute("questions", questionService.getQuestions());
+                model.addAttribute("questions", questionService.getQuestionsByKeywords(searchContent, 2));
             }
         } else {
-            model.addAttribute("files", fileDaoService.getFiles());
+            if (null != order && order == 1) {
+                model.addAttribute("questions", questionService.getQuestions());
+            } else {
+                model.addAttribute("questions", questionService.getQuestionsOrderByStarAndComment());
+            }
         }
-
         model.addAttribute("hello", "");
+        model.addAttribute("columnName", "所有");
+        model.addAttribute("columnDetail", Utils.getString("所有"));
         return "column";
     }
+    @RequestMapping("/files")
+    public String files(@RequestParam(required = false) Integer order, Model model,
+                         @RequestParam(required = false) String name1, @RequestParam(required = false) String name2) {
+        if (!StringUtils.isNullOrEmpty(name1)) {
+            String columnDetail = Utils.getString(name1);
+            if (columnDetail == null) {
+                throw new NoSuchDataException();
+            }
+            model.addAttribute("columnName", name1);
+            model.addAttribute("columnDetail", columnDetail);
+        }
+        model.addAttribute("files", fileDaoService.getFiles());
+        model.addAttribute("hello", "");
+        return "files";
+    }
+
     @RequestMapping(value = {"", "/index"})
     public String questions(Model model) {
         model.addAttribute("questions", questionService.getQuestions());
         model.addAttribute("hello", "");
         return "index";
+    }
+
+    private String name1Column(Integer order, Model model, String name1, String name2, String searchContent) {
+        String columnDetail = Utils.getString(name1);
+        if (!StringUtils.isNullOrEmpty(name2)) {
+            return name2Column(order, model, name1, name2, searchContent);
+        }
+        if (!StringUtils.isNullOrEmpty(searchContent)) {
+            if (null != order && order == 1) {
+                model.addAttribute("questions", questionService.getQuestionsByKeywordsAndName1(searchContent, name1, 1));
+            } else {
+                model.addAttribute("questions", questionService.getQuestionsByKeywordsAndName1(searchContent, name1, 2));
+            }
+        } else {
+            if (null != order && order == 1) {
+                model.addAttribute("questions", questionService.getQuestionsByName1(name1, 1));
+            } else {
+                model.addAttribute("questions", questionService.getQuestionsByName1(name1, 2));
+            }
+        }
+        model.addAttribute("columnName", name1);
+        model.addAttribute("columnDetail", columnDetail);
+        model.addAttribute("hello", "");
+        return "column";
+    }
+    private String name2Column(Integer order, Model model, String name1, String name2, String searchContent) {
+        String columnDetail = Utils.getString(name1);
+        if (!StringUtils.isNullOrEmpty(searchContent)) {
+            return searchColumn(order, model, name1, name2, searchContent);
+        }
+        if (null != order && order == 1) {
+            model.addAttribute("questions", questionService.getQuestionsByName1AndName2(name1, name2, 1));
+        } else {
+            model.addAttribute("questions", questionService.getQuestionsByName1AndName2(name1, name2, 2));
+        }
+        model.addAttribute("columnName", name1);
+        model.addAttribute("columnDetail", columnDetail);
+        model.addAttribute("hello", "");
+        return "column";
+    }
+    private String searchColumn(Integer order, Model model, String name1, String name2, String searchContent) {
+        if (null != order && order == 1) {
+            model.addAttribute("questions", questionService.getQuestionsByKeywordsAndName1AndName2(searchContent, name1, name2, 1));
+        } else {
+            model.addAttribute("questions", questionService.getQuestionsByKeywordsAndName1AndName2(searchContent, name1, name2, 2));
+        }
+        String columnDetail = Utils.getString(name1);
+        model.addAttribute("columnName", name1);
+        model.addAttribute("columnDetail", columnDetail);
+        model.addAttribute("hello", "");
+        return "column";
     }
 
 }

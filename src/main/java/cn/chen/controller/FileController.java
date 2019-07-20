@@ -1,6 +1,7 @@
 package cn.chen.controller;
 
 import cn.chen.data.exceptions.NoSuchDataException;
+import cn.chen.data.exceptions.YunyiException;
 import cn.chen.data.result.AbstractResult;
 import cn.chen.data.result.MsgResult;
 import cn.chen.model.File;
@@ -60,7 +61,13 @@ public class FileController {
         if (file == null) {
             throw new NoSuchDataException();
         }
-        QiniuUtils.download(request, response, file);
+        try {
+            QiniuUtils.download(request, response, file);
+            fileDaoService.upDownloadNumByMD5(md5);
+        } catch (IndexOutOfBoundsException e) {
+            e.printStackTrace();
+            throw new YunyiException("文件有点问题");
+        }
     }
 
     @RequestMapping(value = "/detail/{md5}", method = RequestMethod.GET)

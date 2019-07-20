@@ -60,11 +60,13 @@ color:white;
                 <li class="active"><a class="scroll" href="${hello}column" id="test">专栏</a></li>
                 <li class="active"><a class="scroll" href="#" id = "yuan">发现</a></li>
                 <li class="active"><a class="scroll" href="#lianxi">联系我们</a></li>
-                <li class="active"><a class="scroll" href="${hello}user">我的主页</a></li>
+<%--                <li class="active"><a class="scroll" href="${hello}user">我的主页</a></li>--%>
             </ul>
-            <ul class="nav navbar-nav pull-right">
-
-            </ul>
+					<ul class="nav navbar-nav pull-right">
+						<li>
+							<a style="color:#FFFFFF" href="${hello}user">${not empty user.userName ? user.userName:'登陆'}</a>
+						</li>
+					</ul>
         </div>
     </div>
 </nav>
@@ -72,9 +74,11 @@ color:white;
     <div style="margin-top:30px" class="row-md-12">
         
         <div class="col-md-12" >
-					<div style="background-color: #DDDDDD; margin-top: 4%">
-					 <h3 style="background-color:#CCCCCC; padding: 15px; border-top-left-radius: 5px; border-top-right-radius: 5px">${file.fileName}</h3>
-					 <p style="color:#202020; padding: 15px">${file.fileDetail}</p>
+					<div style="background-color: #DDDDDD;margin-top: 4%">
+					 <h3 style="background-color: #cccccc;color: #000000;padding: 15px; border-top-left-radius: 5px; border-top-right-radius: 5px">
+						 <img alt="图标" width="50px" src="${hello}images/ge/${file.fileType}.png">
+						 &nbsp;${file.fileName}</h3>
+					 <p style="font-size: 16px;color:#202020; padding: 15px">${file.fileDetail}</p>
 
 						<p align=right style="padding: 15px">
 							<img alt="上传者头像" title="上传者头像" width="16px" height="16px" style="color:#202020" src="${hello}user/avatar/${file.uploader.id}">
