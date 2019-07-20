@@ -64,7 +64,7 @@ public final class QiniuUtils {
             try {
                 //String token = isAvatar ? getAvatarToken(request, fileName) : getToken(request);
                 if (isAvatar) {
-                    fileName = fileName + "_" +
+                    fileName = fileName +
                             getUserAvatarNum(request, fileName);
                 }
                 Response response = uploadManager.put(multipartFile.getBytes(), fileName, token);
@@ -99,7 +99,7 @@ public final class QiniuUtils {
         while (iterator.hasNext()) {
             FileInfo[] fileInfos = iterator.next();
             for (FileInfo fileInfo : fileInfos) {
-                int i = Integer.valueOf(fileInfo.key.substring(prefix.length() + 1));
+                int i = Integer.valueOf(fileInfo.key.substring(prefix.length()));
                 if (i > max) {
                     max = i;
                 }

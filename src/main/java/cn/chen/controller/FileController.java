@@ -1,5 +1,7 @@
 package cn.chen.controller;
 
+import cn.chen.dao.JedisDao;
+import cn.chen.data.enums.CommitTypeEnum;
 import cn.chen.data.exceptions.NoSuchDataException;
 import cn.chen.data.exceptions.YunyiException;
 import cn.chen.data.result.AbstractResult;
@@ -27,11 +29,13 @@ import javax.validation.Valid;
 @RequestMapping(value = "/file", method = RequestMethod.POST)
 public class FileController {
     private FileDaoService fileDaoService;
+    private JedisDao jedisDao;
     // private UserDaoService userDaoService;
     private StandardServletMultipartResolver multipartResolver;
-    public FileController(FileDaoService fileDaoService, StandardServletMultipartResolver multipartResolver) {
+    public FileController(FileDaoService fileDaoService, StandardServletMultipartResolver multipartResolver, JedisDao jedisDao) {
         this.fileDaoService = fileDaoService;
         this.multipartResolver = multipartResolver;
+        this.jedisDao = jedisDao;
     }
 
     @RequestMapping("/upload")
@@ -43,11 +47,16 @@ public class FileController {
         if (!multipartResolver.isMultipart(request)) {
             return new MsgResult(-1, "请选择文件");
         }
-        file.setUploader((User) session.getAttribute("user"));
+        User user = (User) session.getAttribute("user");
+        jedisDao.checkCommit(user.getId(), CommitTypeEnum.COMMIT_UPLOAD);
+
+        file.setUploader(user);
+
         MsgResult msgResult = new MsgResult();
         if (fileDaoService.uploadFile(file, multipartResolver.resolveMultipart(request))) {
             msgResult.setCode(0);
             msgResult.setMsg("上传成功");
+            jedisDao.setCommitState(user.getId(), CommitTypeEnum.COMMIT_UPLOAD);
         } else {
             msgResult.setCode(-1);
             msgResult.setMsg("上传失败");
@@ -69,6 +78,7 @@ public class FileController {
             throw new YunyiException("文件有点问题");
         }
     }
+
 
     @RequestMapping(value = "/detail/{md5}", method = RequestMethod.GET)
     public String detail(@PathVariable String md5, Model model) {

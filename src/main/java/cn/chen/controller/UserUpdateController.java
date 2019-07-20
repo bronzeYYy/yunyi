@@ -48,8 +48,7 @@ public class UserUpdateController {
     @RequestMapping("/update/avatar")
     public AbstractResult updateAvatar(HttpServletRequest request, HttpSession session) {
         User user = (User) session.getAttribute("user");
-
-        return QiniuUtils.uploadAvatar(request, "avatar_" + user.getId());
+        return QiniuUtils.uploadAvatar(request, "avatar_" + user.getId() + "_");
     }
 
     @ModelAttribute

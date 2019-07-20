@@ -1,7 +1,9 @@
 package cn.chen.service.impl;
 
+import cn.chen.dao.JedisDao;
 import cn.chen.dao.mysql.FileDao;
 import cn.chen.data.exceptions.FileMd5ExistsException;
+import cn.chen.data.exceptions.NoSuchDataException;
 import cn.chen.data.exceptions.YunyiException;
 import cn.chen.model.File;
 import cn.chen.service.FileDaoService;
@@ -25,6 +27,7 @@ public class FileDaoServiceImpl implements FileDaoService {
     public FileDaoServiceImpl(FileDao fileDao) {
         this.fileDao = fileDao;
     }
+
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public boolean uploadFile(File fileInfo, MultipartHttpServletRequest request) {
@@ -39,8 +42,10 @@ public class FileDaoServiceImpl implements FileDaoService {
             String md5 = Md5.md5(multipartFile.getBytes());
             fileInfo.setMd5(md5);
             fileInfo.setFileName(fileName);
-            fileInfo.setFileSize(size);
             fileInfo.setFileType(fileType);
+            int type = Utils.getSizeUnitType(size);
+            fileInfo.setFileSize(Utils.getSize(type, size));
+            fileInfo.setSizeUnit(Utils.SIZE_UNITS[type]);
             if (fileDao.uploadFile(fileInfo) == 1) {
                 // 添加信息成功, 向七牛云上传文件
                 if (QiniuUtils.uploadFile(request, fileInfo.getMd5()
@@ -65,7 +70,11 @@ public class FileDaoServiceImpl implements FileDaoService {
 
     @Override
     public File getFileByMD5(String md5) {
-        return fileDao.getFileByMD5(md5);
+        File file = fileDao.getFileByMD5(md5);
+        if (file == null) {
+            throw new NoSuchDataException();
+        }
+        return file;
     }
 
     @Override

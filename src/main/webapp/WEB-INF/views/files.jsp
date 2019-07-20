@@ -7,7 +7,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>问答专栏</title>
+    <title>资料专栏</title>
     <link rel="stylesheet" href="${hello}css&js/bootstrap.min.css">
     <link rel="stylesheet" href="${hello}css&js/login.css" />
     <link href="${hello}css&js/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
@@ -98,7 +98,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="${hello}index.jsp">返回首页</a>
+            <a class="navbar-brand" href="${hello}index">返回首页</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
@@ -248,10 +248,15 @@
                             <span style="float: right; font-size: 13px; color: #999999">${i.creationTime }</span>
                         </h3><br>
                         <p class="content-p" style="color:#000000">${i.fileDetail }</p><br>
-                                <span>
-                                    <img onclick="star(${i.md5})" id="clickit" style="cursor:pointer;width:20px;height:20px" src="${hello}image/dianzan1.png"><font style="color:#000000">${i.likenum}</font>&emsp;
-                                    文件大小: ${i.fileSize / 1024} kb
+                                <p>
+                                    <span>下载：${i.downloadNum}</span>
+                                    <span style="margin-left: 10px">大小: ${i.fileSize}${i.sizeUnit}
                                 </span>
+                                </p>
+                                <%--<span>
+                                    <img onclick="star(${i.md5})" id="clickit" style="cursor:pointer;width:20px;height:20px" src="${hello}image/dianzan1.png"><font style="color:#000000">${i.likenum}</font>&emsp;
+                                    文件大小: ${i.fileSize}${i.sizeUnit}
+                                </span>--%>
                         <%--<a href="${hello}question/detail/${i.md5}">
                             <img style="width:18px;height:18px" src="${hello}image/pinglun.png"><font style="color:#000000">${i.commentNum}</font>
                         </a>--%>

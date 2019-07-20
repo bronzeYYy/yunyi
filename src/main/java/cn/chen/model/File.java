@@ -12,9 +12,18 @@ public class File {
     private User uploader;
     private String creationTime;
     private int likenum;
-    private long fileSize;
+    private float fileSize;
     private int downloadNum;
     private String fileType;
+    private String sizeUnit;
+
+    public String getSizeUnit() {
+        return sizeUnit;
+    }
+
+    public void setSizeUnit(String sizeUnit) {
+        this.sizeUnit = sizeUnit;
+    }
 
     public String getFileType() {
         return fileType;
@@ -24,11 +33,11 @@ public class File {
         this.fileType = fileType;
     }
 
-    public long getFileSize() {
+    public float getFileSize() {
         return fileSize;
     }
 
-    public void setFileSize(long fileSize) {
+    public void setFileSize(float fileSize) {
         this.fileSize = fileSize;
     }
 

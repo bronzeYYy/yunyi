@@ -4,7 +4,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-<title>问题详情页</title>
+<title>资料详情-${file.fileName}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
    <link rel="stylesheet" href="${hello}css/bootstrap.css">
@@ -78,9 +78,13 @@ color:white;
 					 <h3 style="background-color: #cccccc;color: #000000;padding: 15px; border-top-left-radius: 5px; border-top-right-radius: 5px">
 						 <img alt="图标" width="50px" src="${hello}images/ge/${file.fileType}.png">
 						 &nbsp;${file.fileName}</h3>
-					 <p style="font-size: 16px;color:#202020; padding: 15px">${file.fileDetail}</p>
+					 <div style="font-size: 16px;color:#202020; padding: 15px">${file.fileDetail}</div>
 
 						<p align=right style="padding: 15px">
+							<span style="color: #000000; float: left">
+								<span>下载：${file.downloadNum}</span>
+								<span style="margin-left: 10px">大小：${file.fileSize}${file.sizeUnit}</span>
+							</span>
 							<img alt="上传者头像" title="上传者头像" width="16px" height="16px" style="color:#202020" src="${hello}user/avatar/${file.uploader.id}">
 							<a style="color:	#505050" href="#">${file.uploader.userName}</a>
 							&nbsp;

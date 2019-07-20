@@ -5,7 +5,7 @@
 <!doctype html>
 <html>
 <head>
-<title>问题详情页</title>
+<title>问题详情-${Question.questionName}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
    <link rel="stylesheet" href="${hello}css/bootstrap.css">
@@ -108,14 +108,14 @@ color:white;
             <div style="height: 50px; padding: 15px; box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
 							<b><p style="color:#202020">评论列表(${Question.commentNum})
 								<c:choose>
-									<c:when test="${not empty param.order and param.order eq 1 }">
+									<c:when test="${not empty param.order}">
 										<a style="margin-left: 5px; color: #646464;"
-											 href="${hello}question/detail/${Question.id}?order=2">
-											<small>按热度排序</small></a>
+											 href="${hello}question/detail/${Question.id}">
+											<small>按时间排序</small></a>
 									</c:when>
 									<c:otherwise>
 										<a style="margin-left: 5px; color: #646464;"
-															href="${hello}question/detail/${Question.id}?order=1"><small>按时间排序</small></a>
+															href="${hello}question/detail/${Question.id}?order=2"><small>按热度排序</small></a>
 									</c:otherwise>
 								</c:choose>
 							</p></b>
@@ -123,35 +123,32 @@ color:white;
             </div>
 
             <table>
+							<c:set var="j" value="1" scope="page"/>
             <c:forEach var="i" items="${comment}">
       		<tr>
             <div class="row">
-                    <br>
-                    <div style="width:100px;height:100px;float:left;margin-top:20px;margin-left:30px">
-						<p><img src="${hello}user/avatar/${i.answerUser.id}"style=" width:45px ;height:45px"></p>
-						<p><a style="color:#202020" href="${hello}others.jsp">${i.answerUser.userName}</a></p>
-					</div>
-               
-				<div style="width:400px;height:100px;float:left;margin-top:20px;margin-left:30px;">
-					<h3  style="color:#202020">${i.answerContent}</h3>
-				</div>
-				<div style="width:100px;height:100px;float:left;margin-top:20px;margin-left:30px;">	
-					<h4 style="color:#202020;line-height:80px">第?楼</h4>
-				</div>
-				<div style="color:#202020;width:300px;height:100px;float:left;margin-top:20px;margin-left:20px;">
-					
-				<font style="line-height:100px;color:#202020">${i.answerTime}</font>
-					&emsp;&emsp;&emsp;
-					<span>
-						<img onclick="star('${i.id}')" id="dianzan" src="${hello}image/dianzan1.png" style="cursor:pointer;height:25px;width:25px">
-						${i.likenum}
-					</span>
-					&emsp;&emsp;&emsp;
-					<a style="color:#202020" id="huifu"><span class="glyphicon glyphicon-comment"></span></a>
-					&emsp;&emsp;&emsp;
-					<img id="getdown" src="image/down.png" style="cursor:pointer;height:25px;width:25px">
-				</div>
-            </div>
+							<br>
+							<div style="width:100px;height:100px;float:left;margin-top:20px;margin-left:30px">
+								<p><img src="${hello}user/avatar/${i.answerUser.id}"style=" width:45px ;height:45px">
+								</p>
+								<p><a style="color:#202020" href="${hello}others.jsp">${i.answerUser.userName}</a></p>
+							</div>
+							<div style="width:400px;float:left;margin-top:20px;margin-left:30px;">
+								<h3  style="color:#202020">${i.answerContent}</h3>
+							</div>
+							<div style="width:100px;height:100px;float:left;margin-top:20px;margin-left:30px;">
+								<h4 style="color:#202020;line-height:80px">第${j}楼</h4>
+							</div>
+							<div style="color:#202020;width:300px;height:100px;float:left;margin-top:20px;margin-left:20px;">
+								<font style="line-height:100px;color:#202020">${i.answerTime}</font>
+					&emsp;&emsp;&emsp;<span>
+								<img onclick="star($(this), '${i.id}')" id="dianzan" src="${hello}image/dianzan1.png" style="cursor:pointer;height:25px;width:25px">
+								<span id="likenum">${i.likenum}</span>
+							</span>
+					&emsp;&emsp;&emsp;<a style="color:#202020" id="huifu"><span class="glyphicon glyphicon-comment"></span></a>
+					&emsp;&emsp;&emsp;<img id="getdown" src="${hello}image/down.png" style="cursor:pointer;height:25px;width:25px">
+							</div>
+						</div>
            <div id="dpinglun" style="display:none;background-color:#E0E0E0;margin-left:180px;width:70%;height:70px;">
            		<div style="width:50px;float:left">
            			 <img src="${hello}user/avatar/${i.answerUser.id}" style=" width:45px ;height:45px">
@@ -169,6 +166,7 @@ color:white;
            </div>
             </tr>
 							<hr style=" height:2px;width:80%;border:none;border-top:2px dotted #808080;" />
+							<c:set scope="page" value="${j + 1}" var="j" />
           </c:forEach>
 
 
@@ -249,8 +247,7 @@ $('#fabiao').on('click',function(){
                   layer.msg(data.msg);
                   if(data.code === 0)
                   {
-                      window.location.href=window.location.href;
-                      window.location.reload();
+										window.location.reload();
                   }
           }
       })
@@ -267,25 +264,25 @@ $('#fabiao').on('click',function(){
                 layer.msg(data.msg);
                 if(data.code === 0)
                 {
-                    window.location.href=window.location.href;
                     window.location.reload();
                 }
             }
         });
     });
 	});
-	var star = function star (id) {
+	var star = function star (img, id) {
+		var n = img.next();
+
 		$.ajax({
 			url:  '${hello}answer/star',
 			type: 'post',
-			data: {'questionId':id},
+			data: {'answerId':id},
 			success:function(data) {
 				layer.msg(data.msg);
 				if(data.code === 0)
 				{
-					$(this).attr('src', '${hello}image/dianzan2.png');
-					window.location.href=window.location.href;
-					window.location.reload();
+					img.attr('src', '${hello}image/dianzan2.png');
+					n.text(parseInt(n.text()) + 1);
 				}
 			}
 		});

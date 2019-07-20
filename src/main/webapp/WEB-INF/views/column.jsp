@@ -98,7 +98,7 @@ a:hover{
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="${hello}index.jsp">返回首页</a>
+			<a class="navbar-brand" href="${hello}index">返回首页</a>
 		</div>
 		<div id="navbar" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
@@ -253,7 +253,11 @@ a:hover{
 							<span style="float: right; font-size: 13px; color: #999999">${i.creationTime }</span>
 						</h3><br>
 						<p class="content-p" style="color:#000000">${i.questionContent }</p><br>
-						<img onclick="star(${i.id})" id="clickit" style="cursor:pointer;width:20px;height:20px" src="${hello}image/dianzan1.png"><font style="color:#000000">${i.likenum}</font>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+								<span>
+									<img onclick="star($(this), '${i.id}')" id="clickit" style="cursor:pointer;width:20px;height:20px" src="${hello}image/dianzan1.png">
+									<span>${i.likenum}</span>
+								</span>
+						&emsp;&emsp;&emsp;&emsp;&emsp;
 						<a href="${hello}question/detail/${i.id}">
 							<img style="width:18px;height:18px" src="${hello}image/pinglun.png"><font style="color:#000000">${i.commentNum}</font>
 						</a>
@@ -311,7 +315,8 @@ jQuery(document).ready(function($) {
 			content:'${hello}answer.jsp'
 		});
 	});
-	var star = function star (id) {
+	var star = function star (img, id) {
+		var n = img.next();
 		$.ajax({
 			url:  '${hello}question/star',
 			type: 'post',
@@ -320,9 +325,8 @@ jQuery(document).ready(function($) {
 				layer.msg(data.msg);
 				if(data.code === 0)
 				{
-					$(this).attr('src', '${hello}image/dianzan2.png');
-					window.location.href=window.location.href;
-					window.location.reload();
+					img.attr('src', '${hello}image/dianzan2.png');
+					n.text(parseInt(n.text()) + 1);
 				}
 			}
 		});

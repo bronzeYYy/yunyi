@@ -25,6 +25,7 @@ import java.util.*;
 public final class Utils {
     private static final Properties nameDetail;
     public static final Long maxFileSize = 200 * 1024 * 1024L;
+    public static final String[] SIZE_UNITS = {"B", "KB", "MB"};
     static {
         nameDetail = new Properties();
         try {
@@ -93,6 +94,9 @@ public final class Utils {
     }
     public static MultipartFile getFirstPartFile(MultipartHttpServletRequest request) {
         Map<String, MultipartFile> multipartFileMap = request.getFileMap();
+        if (multipartFileMap.size() != 1) {
+            throw new YunyiException("请选择一个文件");
+        }
         return multipartFileMap.get(multipartFileMap.keySet().iterator().next());
     }
 
@@ -151,6 +155,30 @@ public final class Utils {
                     }
                 })
         );
+    }
+
+    public static int getSizeUnitType(long size) {
+        if (size >= 1024 * 1024) {
+            return 2;
+        }
+        if (size >= 1024) {
+            return 1;
+        }
+        return 0;
+    }
+
+
+    public static float getSize(int type, long size) {
+        if (type == 0) {
+            // B
+            return size;
+        }
+        if (type == 1) {
+            // KB
+            return (float) (size / 1024.0);
+        }
+        // MB
+        return (float) (size / 1024.0 / 1024);
     }
 
 }

@@ -34,9 +34,9 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     public void addInterceptors(InterceptorRegistry registry) {
         super.addInterceptors(registry);
         registry.addInterceptor(new QuestionInterceptor()) // 需要登陆并自动跳转
-                .addPathPatterns("/user/update", "/user", "/user/update/avatar");
+                .addPathPatterns("/user/update", "/user");
         registry.addInterceptor(new NeedLoginMsgInterceptor())
-                .addPathPatterns("/answer/save", "/answer/star", "/question/star", "/file/upload", "/question/save");
+                .addPathPatterns("/answer/save", "/answer/star", "/question/star", "/file/upload", "/question/save", "/user/update/avatar");
         // 注册拦截器
     }
 }

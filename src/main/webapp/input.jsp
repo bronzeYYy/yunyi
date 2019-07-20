@@ -101,6 +101,7 @@
                 <option value="5">财经学院</option>
                 <option value="6">医学院</option>
                 <option value="7">土木学院</option>
+                <option value="8">其他</option>
 
             </select>
             &emsp;&emsp;
@@ -120,7 +121,6 @@
         <p>
             <input id="fabu" style="width:50px;height:30px;background-color: #666666; border-radius:3px; color:#FFFFFF"
                    type="submit" value="提交">
-            <button id="show">dasdsadas</button>
         </p>
 
     </div>
@@ -133,7 +133,6 @@
 <script type="text/javascript">
     var editor = new wangEditor('textarea1');
     // 上传图片（举例）
-
     editor.config.uploadImgFileName = 'myFileName';
     editor.create();
 </script>
@@ -145,9 +144,9 @@ $(document).ready(function() {
         var index = document.getElementById('s2').selectedIndex;
         var option2 = document.getElementById('s2').options[index].text;
         alert(option2);
-
     });
     $('#fabu').on('click', function () {
+        var l = layer.load();
         var index1 = document.getElementById('s2').selectedIndex;
         var option2 = document.getElementById('s2').options[index1].text;
         //alert(option2);
@@ -162,12 +161,16 @@ $(document).ready(function() {
             type: 'post',
             data: {'questionName': f1, 'questionContent': f2, 'name1': option1, 'name2': option2},
             success: function (data) {
+                layer.close(l);
                 layer.msg(data.msg);
                 if (data.code === 0) {
-                    parent.layer.close(ind);
-                    window.location.href = window.location.href;
-                    window.location.reload();
+                    /*parent.layer.close(ind);
+                    window.location.href = window.location.href;*/
+                    parent.window.location.reload();
                 }
+            },
+            complete: function () {
+                layer.close(l);
             }
         });
     });
@@ -231,13 +234,13 @@ $(document).ready(function() {
     select2[3][11] = new Option("林学（城市林业方向）", " ");
     select2[3][12] = new Option("林学（森林防火方向）", " ");
     select2[3][13] = new Option("森林培育", " ");
-    select2[3][14] = new Option("林木遗传育种", " ");
+    /*select2[3][14] = new Option("林木遗传育种", " ");
     select2[3][15] = new Option("森林病虫鼠害防治与检疫", " ");
-    select2[3][16] = new Option("野生植物资源开发利用", " ");
-    select2[3][17] = new Option("动物检疫学", " ");
-    select2[3][18] = new Option("自然保护区管理", " ");
-    select2[3][19] = new Option("野生动物组织解剖学", " ");
-    select2[3][20] = new Option("动物遗传育种与繁殖学的技术人工繁殖", " ");
+    select2[3][16] = new Option("野生植物资源开发利用", " ");*/
+    select2[3][14] = new Option("动物检疫学", " ");
+    select2[3][15] = new Option("自然保护区管理", " ");
+    select2[3][16] = new Option("野生动物组织解剖学", " ");
+    select2[3][17] = new Option("动物遗传育种与繁殖学的技术人工繁殖", " ");
 
     select2[4][0] = new Option("机械工业自动化", " ");
     select2[4][1] = new Option("电力电子", " ");
@@ -285,47 +288,49 @@ $(document).ready(function() {
     select2[6][6] = new Option("眼科", " ");
     select2[6][7] = new Option("肿瘤学", " ");
     select2[6][8] = new Option("麻醉学", " ");
-    select2[6][9] = new Option("急诊医学", " ");
-    select2[6][10] = new Option("藏医医疗", " ");
-    select2[6][11] = new Option("藏药研发", " ");
-    select2[6][12] = new Option("认药、制药、用药", " ");
-    select2[6][13] = new Option("护理学基础", " ");
-    select2[6][14] = new Option("护理药械", " ");
-    select2[6][15] = new Option("中药护理", " ");
-    select2[6][16] = new Option("医院感染控制", " ");
-    select2[6][17] = new Option("病理生理学", " ");
-    select2[6][18] = new Option("急救护理", " ");
-    select2[6][19] = new Option("老年护理学", " ");
+    // select2[6][9] = new Option("急诊医学", " ");
+    select2[6][9] = new Option("藏医医疗", " ");
+    select2[6][10] = new Option("藏药研发", " ");
+    select2[6][11] = new Option("认药、制药、用药", " ");
+    select2[6][12] = new Option("护理学基础", " ");
+    select2[6][13] = new Option("护理药械", " ");
+    select2[6][14] = new Option("中药护理", " ");
+    select2[6][15] = new Option("医院感染控制", " ");
+    select2[6][16] = new Option("病理生理学", " ");
+    // select2[6][18] = new Option("急救护理", " ");
+    // select2[6][19] = new Option("老年护理学", " ");
 
-    select2[7][0] = new Option("建筑工程技术与应用", " ");
+    /*select2[7][0] = new Option("建筑工程技术与应用", " ");
     select2[7][1] = new Option("建筑工程测量", " ");
     select2[7][2] = new Option("供热通风与空调工程技术", " ");
-    select2[7][3] = new Option("给水排水工程", " ");
-    select2[7][4] = new Option("道路勘测设计", " ");
-    select2[7][5] = new Option("道路工程", " ");
-    select2[7][6] = new Option("路基路面工程", " ");
-    select2[7][7] = new Option("施工技术与组织", " ");
-    select2[7][8] = new Option("工民建", " ");
-    select2[7][9] = new Option("城市规划", " ");
-    select2[7][10] = new Option("给水排水工程", " ");
-    select2[7][11] = new Option("城市地下空间工程", " ");
-    select2[7][12] = new Option("景观建筑设计", " ");
-    select2[7][13] = new Option("计房地产开发管理", " ");
-    select2[7][14] = new Option("理论力学", " ");
-    select2[7][15] = new Option("材料力学", " ");
-    select2[7][16] = new Option("弹性力学", " ");
-    select2[7][17] = new Option("塑性力学", " ");
-    select2[7][18] = new Option("断裂力学", " ");
-    select2[7][19] = new Option("分析力学", " ");
-    select2[7][20] = new Option("桥梁结构工程与抗震分析", " ");
+    select2[7][3] = new Option("给水排水工程", " ");*/
+    select2[7][0] = new Option("道路勘测设计", " ");
+    select2[7][1] = new Option("道路工程", " ");
+    select2[7][2] = new Option("路基路面工程", " ");
+    select2[7][3] = new Option("施工技术与组织", " ");
+    select2[7][4] = new Option("工民建", " ");
+    select2[7][5] = new Option("城市规划", " ");
+    select2[7][6] = new Option("给水排水工程", " ");
+    select2[7][7] = new Option("城市地下空间工程", " ");
+    select2[7][8] = new Option("景观建筑设计", " ");
+    // select2[7][13] = new Option("计房地产开发管理", " ");
+    select2[7][9] = new Option("理论力学", " ");
+    select2[7][10] = new Option("材料力学", " ");
+    select2[7][11] = new Option("弹性力学", " ");
+    select2[7][12] = new Option("塑性力学", " ");
+    select2[7][13] = new Option("断裂力学", " ");
+    select2[7][14] = new Option("分析力学", " ");
+    /*select2[7][20] = new Option("桥梁结构工程与抗震分析", " ");
     select2[7][21] = new Option("桥隧检测、加固技术与可靠性分析", " ");
     select2[7][22] = new Option("桥隧工程仿真分析", " ");
     select2[7][23] = new Option("隧道设计理论与优化", " ");
-    select2[7][24] = new Option("隧道施工新技术及信息化", " ");
-    select2[7][25] = new Option("道路交通工程", " ");
-    select2[7][26] = new Option("河湖水系工程、地下管线工程", " ");
-    select2[7][27] = new Option("架空杆线工程", " ");
-    select2[7][28] = new Option("街道绿化工程", " ");
+    select2[7][24] = new Option("隧道施工新技术及信息化", " ");*/
+    select2[7][15] = new Option("道路交通工程", " ");
+    select2[7][16] = new Option("河湖水系工程、地下管线工程", " ");
+    select2[7][17] = new Option("架空杆线工程", " ");
+    select2[7][18] = new Option("街道绿化工程", " ");
+
+    select2[8][0] = new Option("其它", " ");
 
     //联动函数
     function redirec(x)
