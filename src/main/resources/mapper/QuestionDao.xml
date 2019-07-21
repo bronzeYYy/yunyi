@@ -4,7 +4,8 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.chen.dao.mysql.QuestionDao">
     <insert id="save">
-        insert into question(question_name, questioner_id, question_content, creation_time) values(#{questionName}, #{questioner.id}, #{questionContent}, now())
+        insert into question(question_name, questioner_id, question_content, creation_time, name1, name2)
+        values(#{questionName}, #{questioner.id}, #{questionContent}, now(), #{name1}, #{name2})
     </insert>
     <select id="getQuestions" resultMap="getQuestion" parameterType="cn.chen.model.Question">
         select * from question order by creation_time desc;
@@ -17,11 +18,54 @@
          select *, `user`.creation_time as user_creationTime, `user`.id as user_id from question left join user on questioner_id = `user`.id
         where questioner_id = #{userId} order by question.creation_time desc;
     </select>
+    <insert id="starQuestion">
+        INSERT into likenum_ques(question_id, questioner_id, star_time) VALUES(#{0}, #{1}, now());
+    </insert>
+    <select id="getQuestionsOrderByStarAndComment" resultMap="getQuestion">
+        select * from question order by (likenum + comment_num) desc;
+    </select>
+    <update id="addStarNum">
+        UPDATE question set likenum = likenum + 1 WHERE id = #{questionId};
+    </update>
+    <update id="addCommentNum">
+        UPDATE question set comment_num= comment_num + 1 WHERE id = #{questionId};
+    </update>
+    <select id="getQuestionsByName1" resultMap="getQuestion">
+        select * from question where name1 = #{name1} order by ${order} desc;
+    </select>
+    <select id="getQuestionsByName1AndName2" resultMap="getQuestion">
+        select * from question where name1 = #{name1} and name2 = #{name2} order by ${order} desc;
+    </select>
+    <select id="getQuestionsByKeywords" resultMap="getQuestion">
+        select * from question where (${sql}) order by ${order} desc;
+    </select>
+    <select id="getQuestionsByContent" resultMap="getQuestion">
+        select * from question where (question_name like #{content} or question_content like #{content}) order by ${order} desc;
+    </select>
+    <select id="getQuestionsByContentFromNames" resultMap="getQuestion">
+        select * from question where name1 = #{name1} and name2 = #{name2} and
+        (question_name like #{content} or question_content like #{content}) order by ${order} desc;
+    </select>
+    <select id="getQuestionsByContentFromName1" resultMap="getQuestion">
+        select * from question where name1 = #{name1} and
+        (question_name like #{content} or question_content like #{content}) order by ${order} desc;
+    </select>
+
+    <select id="getQuestionsByKeywordsAndName1" resultMap="getQuestion">
+        select * from question where name1 = #{name1} and (${sql}) order by ${order} desc;
+    </select>
+    <select id="getQuestionsByKeywordsAndName1AndName2" resultMap="getQuestion">
+        select * from question where name1 = #{name1} and name2 = #{name2} and (${sql}) order by ${order} desc;
+    </select>
     <resultMap id="getQuestion" type="cn.chen.model.Question">
         <id column="id" property="id" />
         <result column="question_name" property="questionName" />
         <result column="question_content" property="questionContent" />
         <result column="creation_time" property="creationTime" />
+        <result column="likenum" property="likenum" />
+        <result column="comment_num" property="commentNum" />
+        <result column="name1" property="name1" />
+        <result column="name2" property="name2" />
         <association property="questioner" javaType="cn.chen.model.User">
             <id column="user_id" property="id"/>
             <result column="user_name" property="userName" />

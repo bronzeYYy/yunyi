@@ -1,4 +1,29 @@
+.hidebar1{
+			height: 300px;
+			min-width: 720px;
+			display: none;
+			background: rgba(0,0,0,.7);
+			position: fixed;
+			top:51px;
+			left: 230px;
+			color: #aaaaaa;
+		}
+		.hidebar1 ul{
+			list-style: none;
+			margin:0 40px;
+		}
+		.hidebar1 ul li{
+			height: 50px;
+			text-align: center;
+			line-height: 50px;
+			font-size: 16px;
+		}
+		.hidebar1 ul .title{
+			font-size: 20px;
+			font-weight: 500;
+			border-bottom: 1px solid #aaa ;
 
+		}
 .footer_bottom1 label {
 	color: #ff4f81;
 	display: block;

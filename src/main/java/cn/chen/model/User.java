@@ -24,6 +24,7 @@ public class User {
     @NotNull(message = "学号必须得填")
     @Size(min = 5, max = 10, message = "学号长度需在5到10之间")
     private String studentNo;
+    private int uploadNumber;
 
     public int getId() {
         return id;

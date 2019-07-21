@@ -3,7 +3,9 @@ package cn.chen.data.enums;
 public enum CommitTypeEnum {
     SEND_RANDOM_CODE(1, "发送验证码"),
     COMMIT_QUESTION(2, "提问"),
-    COMMIT_ANSWER(3, "回答");
+    COMMIT_ANSWER(3, "回答"),
+    COMMIT_UPLOAD(4, "上传文件");
+    //COMMIT_ANSWER(5, "回答");
     private int code;
     private String type;
     CommitTypeEnum(int code, String type) {

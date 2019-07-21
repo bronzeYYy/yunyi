@@ -5,5 +5,8 @@
 <configuration>
   <settings>
     <setting name="mapUnderscoreToCamelCase" value="true"/>
+
+<!--  显示sql语句  -->
+<!--    <setting name="logImpl" value="STDOUT_LOGGING" />-->
   </settings>
 </configuration>

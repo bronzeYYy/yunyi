@@ -1,5 +1,6 @@
 package cn.chen.config;
 
+import cn.chen.interceptor.NeedLoginMsgInterceptor;
 import cn.chen.interceptor.QuestionInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -32,9 +33,10 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         super.addInterceptors(registry);
-        registry.addInterceptor(new QuestionInterceptor())
-                .addPathPatterns("/question/*", "/user/update", "/answer/save", "/user")
-                .excludePathPatterns("/question/detail/*");
+        registry.addInterceptor(new QuestionInterceptor()) // 需要登陆并自动跳转
+                .addPathPatterns("/user/update", "/user");
+        registry.addInterceptor(new NeedLoginMsgInterceptor())
+                .addPathPatterns("/answer/save", "/answer/star", "/question/star", "/file/upload", "/question/save", "/user/update/avatar");
         // 注册拦截器
     }
 }

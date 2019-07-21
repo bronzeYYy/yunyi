@@ -11,13 +11,14 @@ import cn.chen.utils.Utils;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/answer")
+@RequestMapping(value = "/answer", method = RequestMethod.POST)
 public class AnswerController {
     private AnswerDaoService answerDaoService;
     private UserDaoService userDaoService;
@@ -29,7 +30,7 @@ public class AnswerController {
     @ResponseBody
     public AbstractResult save(@Valid Answer answer, Errors errors, HttpSession session, int questionId) {
         if (errors.hasErrors()) {
-            return Utils.dealErrors(errors);
+            Utils.dealErrors(errors);
         }
         answer.setAnswerUser((User) session.getAttribute("user"));
         Question question = new Question();
@@ -41,8 +42,21 @@ public class AnswerController {
             msgResult.setMsg("回复成功");
             session.setAttribute("user", userDaoService.getUserById(answer.getAnswerUser().getId()));
         } else {
-            msgResult.setCode(0);
+            msgResult.setCode(-1);
             msgResult.setMsg("回复失败");
+        }
+        return msgResult;
+    }
+    @RequestMapping("/star")
+    @ResponseBody
+    public AbstractResult star(int answerId, HttpSession session) {
+        MsgResult msgResult = new MsgResult();
+        if (answerDaoService.starAnswer(answerId, ((User) session.getAttribute("user")).getId())) {
+            msgResult.setCode(0);
+            msgResult.setMsg("ok");
+        } else {
+            msgResult.setCode(-1);
+            msgResult.setMsg("点赞失败");
         }
         return msgResult;
     }

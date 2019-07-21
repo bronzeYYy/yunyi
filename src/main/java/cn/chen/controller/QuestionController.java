@@ -4,11 +4,13 @@ import cn.chen.config.QiNiuConfig;
 import cn.chen.data.exceptions.NoSuchDataException;
 import cn.chen.data.result.AbstractResult;
 import cn.chen.data.result.MsgResult;
+import cn.chen.model.Answer;
 import cn.chen.model.Question;
 import cn.chen.model.User;
 import cn.chen.service.AnswerDaoService;
 import cn.chen.service.QuestionService;
 import cn.chen.service.UserDaoService;
+import cn.chen.utils.QiniuUtils;
 import cn.chen.utils.Utils;
 import com.qiniu.storage.UploadManager;
 import com.qiniu.util.Auth;
@@ -18,17 +20,14 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.io.IOException;
-import java.util.Map;
-import java.util.Set;
+import java.util.List;
 
 @Controller
 @RequestMapping("/question")
@@ -51,14 +50,20 @@ public class QuestionController {
     }
 
     @RequestMapping("/detail/{id}")
-    public String questionDetail(@PathVariable int id, Model model) {
+    public String questionDetail(@PathVariable int id, Model model, @RequestParam(required = false) String order) {
         Question question = questionService.getQuestionById(id);
         if (question == null) {
             throw new NoSuchDataException();
         }
         model.addAttribute("Question", question);
         model.addAttribute("hello", "../../");
-        model.addAttribute("comment", answerDaoService.getAnswersByQuestionId(id));
+        List<Answer> answers;
+        if (order != null) {
+            answers = answerDaoService.getAnswersByQuestionIdOrderByStar(id);
+        } else {
+            answers = answerDaoService.getAnswersByQuestionId(id);
+        }
+        model.addAttribute("comment", answers);
         return "question";
     }
 
@@ -66,28 +71,29 @@ public class QuestionController {
     @ResponseBody
     public AbstractResult uploadImg(HttpServletRequest request) {
         // 等待确认返回信息
-        if (servletMultipartResolver.isMultipart(request)) {
-            MultipartHttpServletRequest multipartHttpServletRequest = servletMultipartResolver.resolveMultipart(request);
-            Map<String, MultipartFile> multipartFileMap = multipartHttpServletRequest.getFileMap();
-            Set<String> strings = multipartFileMap.keySet();
-            for (String string : strings) {
-                MultipartFile multipartFile = multipartFileMap.get(string);
-                if (Utils.isImgFile(multipartFile)) {
-                    try {
-                        uploadManager.put(multipartFile.getBytes(), multipartFile.getName(), getToken());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-        return new MsgResult(0, "question");
+        return QiniuUtils.uploadImg(request, "");
+
     }
+    @RequestMapping("/star")
+    @ResponseBody
+    public AbstractResult star(int questionId, HttpSession session) {
+        MsgResult msgResult = new MsgResult();
+        if (questionService.starQuestion(questionId, ((User) session.getAttribute("user")).getId())) {
+            msgResult.setCode(0);
+            msgResult.setMsg("ok");
+        } else {
+            msgResult.setCode(-1);
+            msgResult.setMsg("点赞失败");
+        }
+        return msgResult;
+
+    }
+
     @RequestMapping("/save")
     @ResponseBody
     public AbstractResult save(@Valid Question question, Errors errors, HttpSession session) {
         if (errors.hasErrors()) {
-            return Utils.dealErrors(errors);
+            Utils.dealErrors(errors);
         }
         User user = (User) session.getAttribute("user");
         question.setQuestioner(user);

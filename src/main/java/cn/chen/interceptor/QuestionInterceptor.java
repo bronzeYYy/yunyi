@@ -1,7 +1,6 @@
 package cn.chen.interceptor;
 
-import cn.chen.data.exceptions.NeedLoginException;
-import cn.chen.data.exceptions.YunyiException;
+import cn.chen.data.exceptions.login.NeedLoginAndRedirectException;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -14,7 +13,7 @@ public class QuestionInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
         if (httpServletRequest.getSession().getAttribute("user") == null) {
             // 未登录
-            throw new NeedLoginException();
+            throw new NeedLoginAndRedirectException();
         }
         return true;
     }

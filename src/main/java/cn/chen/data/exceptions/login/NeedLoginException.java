@@ -1,4 +1,4 @@
-package cn.chen.data.exceptions;
+package cn.chen.data.exceptions.login;
 
 public class NeedLoginException extends RuntimeException {
     public NeedLoginException() {

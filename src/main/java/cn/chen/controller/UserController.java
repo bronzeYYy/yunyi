@@ -6,6 +6,7 @@ import cn.chen.data.result.AbstractResult;
 import cn.chen.data.result.MsgResult;
 import cn.chen.model.User;
 import cn.chen.service.UserDaoService;
+import cn.chen.utils.QiniuUtils;
 import cn.chen.utils.Utils;
 import com.mysql.jdbc.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,7 +57,7 @@ public class UserController {
             return new MsgResult(-1, "请填写验证码");
         }
         if (errors.hasErrors()) {
-            return Utils.dealErrors(errors);
+            Utils.dealErrors(errors);
         }
         if (!jedisDao.checkRandomCode(user.getEmail(), code)) {
             return new MsgResult(-1, "验证码不正确");
@@ -78,9 +79,10 @@ public class UserController {
         if (StringUtils.isNullOrEmpty(email) || !Pattern.matches("[a-zA-Z_0-9]{2,}@(([a-zA-z0-9]-*)+\\.){1,3}[a-zA-z\\-]+", email)) {
             return new MsgResult(-1, "邮箱不正确");
         }
-        if (!jedisDao.checkEmailSendCode(email)) {
+        jedisDao.checkEmailSendCode(email);
+        /*if (!jedisDao.checkEmailSendCode(email)) {
             return new MsgResult(-1, "发送频繁");
-        }
+        }*/
         if (sendEmail(email)) {
             return new MsgResult(0, "发送成功");
         }
@@ -100,11 +102,13 @@ public class UserController {
     }
 
     @RequestMapping(value = "/avatar/{id}", method = RequestMethod.GET)
-    public void getUserAvatar(@PathVariable int id, HttpServletResponse response) {
-        String avatarUrl = QiNiuConfig.BUCKET_URL + "avatar_" + id;
+    public void getUserAvatar(@PathVariable int id, HttpServletRequest request, HttpServletResponse response) {
+        String avatarUrl = QiNiuConfig.BUCKET_URL + QiniuUtils.AVATAR_SUFFIX + id;
+//        System.out.println(avatarUrl + "_0");
         try {
-            if (Utils.qiniuFileExists(avatarUrl)) {
-                response.sendRedirect(avatarUrl);
+            if (Utils.qiniuFileExists(avatarUrl + "_0")) {
+                response.sendRedirect(avatarUrl + "_" +
+                        (QiniuUtils.getUserAvatarNum(request, QiniuUtils.AVATAR_SUFFIX + id + "_") - 1));
             } else {
                 response.sendRedirect(QiNiuConfig.BUCKET_URL + "avatar_default");
             }

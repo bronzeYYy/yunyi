@@ -12,6 +12,28 @@ public class Question {
     @NotNull(message = "问题内容必须填")
     private String questionContent;
     private String creationTime;
+    private int likenum;
+    private int commentNum;
+    @NotNull(message = "分类必须填")
+    private String name1;
+    @NotNull(message = "分类必须填")
+    private String name2;
+
+    public String getName1() {
+        return name1;
+    }
+
+    public void setName1(String name1) {
+        this.name1 = name1;
+    }
+
+    public String getName2() {
+        return name2;
+    }
+
+    public void setName2(String name2) {
+        this.name2 = name2;
+    }
 
     public int getId() {
         return id;
@@ -51,5 +73,21 @@ public class Question {
 
     public void setCreationTime(String creationTime) {
         this.creationTime = creationTime;
+    }
+
+    public void setLikenum(int likenum) {
+        this.likenum = likenum;
+    }
+
+    public int getLikenum() {
+        return likenum;
+    }
+
+    public void setCommentNum(int commentNum) {
+        this.commentNum = commentNum;
+    }
+
+    public int getCommentNum() {
+        return commentNum;
     }
 }
