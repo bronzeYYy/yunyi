@@ -9,11 +9,20 @@
     <link rel="stylesheet" href="${hello}css/personalPage.css">
     <link rel="stylesheet" href="${hello}iconfont/iconfont.css">
     <script src="${hello}js/jquery-3.3.1.min.js"></script>
-<style> 
-.divcss5{ border:0px solid #000; width:300px; height:300px;overflow:hidden} 
-.divcss5 img{max-width:300px;_width:expression(this.width > 300 ? "300px" : this.width);} 
-</style> 
 <style>
+.divcss5{ border:0px solid #000; width:300px; height:300px;overflow:hidden}
+.divcss5 img{max-width:300px;_width:expression(this.width > 300 ? "300px" : this.width);}
+</style>
+<style>
+    .delete {
+        cursor:pointer;
+        color:#fffdef;
+        background-color: darkred;
+        /*width:100%;
+        height: 100%;*/
+        border-style:none;
+        border-radius: 20px
+    }
 	.file {
     position: relative;
     display: inline-block;
@@ -53,13 +62,13 @@
         <div class="top"></div>
         <img id="touxiang" style="cursor:pointer" src="${hello}user/avatar/${user.id}">
         <div  class="usrname">用户名:${user.userName}
-        
+
 <!-- 详情页 -->
         </div>
         <div class="textinfo">
             <span>积分：${user.integral}</span>
-            <span>发布数：${user.askingNumber}</span>
-            <span>回答数：${user.answerNumber}</span>
+            <span>发布数：<span id="asking-num">${user.askingNumber}</span></span>
+            <span>回答数：<span id="answer-num">${user.answerNumber}</span></span>
         </div>
 
         <button id="modify" style="">修改个人信息</button>
@@ -71,55 +80,83 @@
             <p>邮&emsp;&emsp;箱：${user.email}</p>
         </div>
     </div>
-    
- <!--  历史提问   -->
+    <!-- 历史上传 -->
+    <div id="myfile" style="display: none;">
+        <ul class="menu">
+            <li><a id="question1">我的提问</a></li>
+            <li><a id="answer1">我的回答</a></li>
+            <li><strong>我的资料</strong></li>
+            <li><a href="javascript:tiwen()">提问</a></li>
+            <li><a href="javascript:ziliao()">上传资料</a></li>
+            <li><a id="xiaoxi">消息</a></li>
+
+        </ul>
+        <div style="width:100%;height:100px;margin-left:50px;">
+            <c:forEach var="i" items="${files}">
+                <div>
+                    <div style="margin-top:20px;float:left;width: 80%">
+                        <font style="size:20px;color:#989898;">${i.creationTime }</font>
+                        <a href="${hello}question/detail/${i.md5}"><h3>${i.fileName}</h3></a>
+                        <h3>${i.fileDetail }</h3>
+                        <hr>
+                        <br>
+                    </div>
+                    <div style="margin-top:40px;float: left;">
+                        <button class="delete" onclick="delete_file('${i.md5}', $(this))">删除</button>
+                    </div>
+                </div>
+            </c:forEach>
+        </div>
+    </div>
+
+
+    <!--  历史提问   -->
 <div id="myquestion">
     <ul class="menu">
         <li><strong>我的提问</strong></li>
-        <li><a id="answer">我的回答</a></li>
-<%--        <li>我的资料</li>--%>
-        <li><a id="tiwen">提问</a></li>
-        <li><a id="ziliao">上传资料</a></li>
+        <li><a id="answer2">我的回答</a></li>
+        <li><a id="file1">我的资料</a></li>
+        <li><a href="javascript:tiwen()">提问</a></li>
+        <li><a href="javascript:ziliao()">上传资料</a></li>
+        <li><a id="xiaoxi">消息</a></li>
     </ul>
-    <div style="width:60%;height:100px;margin-left:50px;">
-    <table>
-        <c:forEach var="i" items="${questions}">
-
-            <tr>
-                <div style="margin-top:20px">
-                    <font style="size:20px;color:#989898;">创建时间${i.creationTime }</font>
-                    <a href="/question/detail/${i.id}"><h3>${i.questionName }</h3></a>
-                    <h3>${i.questionContent }</h3>
-<%--                    <p>赞同数 &emsp;评论数</p>--%>
-                    <hr>
-                    <br>
-                </div>
-            </tr>
-        </c:forEach>
-    </table>
-	</div>
+    <c:forEach var="i" items="${questions}">
+        <div style="margin-top:20px; padding-left: 30px; padding-right: 30px">
+            <font style="size:20px;color:#989898;">${i.creationTime }</font>
+            <h3><a href="/question/detail/${i.id}">${i.questionName }</a>
+                <button style="float: right" class="delete" onclick="delete_question('${i.id}', $(this))">删除</button>
+            </h3>
+            <p>${i.questionContent }</p>
+                <%--                    <p>赞同数 &emsp;评论数</p>--%>
+            <hr>
+        </div>
+    </c:forEach>
 </div>
 
 <!-- 历史问答 -->
 
 <div id="myanswer" style="display:none">
     <ul class="menu">
-         <li><a id="question">我的问题</a></li>
+         <li><a id="question2">我的提问</a></li>
         <li><strong>我的回答</strong></li>
-<%--        <li>我的资料</li>--%>
-        <li><a id="tiwen">提问</a></li>
-        <li><a id="ziliao">上传资料</a></li>
+        <li><a id="file2">我的资料</a></li>
+        <li><a href="javascript:tiwen()">提问</a></li>
+        <li><a href="javascript:ziliao()">上传资料</a></li>
+        <li><a id="xiaoxi">消息</a></li>
     </ul>
-    <div  style="width:60%;height:100px;margin-left:50px">
+    <div  style="width:100%;height:100px;margin-left:50px;">
     <table>
         <c:forEach var="i" items="${answers}">
             <tr>
-                <div style="margin-top:20px">
-                    <font style="size:20px;color:#989898;">创建时间${i.answerTime}</font>
+                <div style="margin-top:20px;float:left;width: 80%">
+                    <font style="size:20px;color:#989898;">${i.answerTime}</font>
                     <a href="/question/detail/${i.question.id}"><h3>${i.answerContent}</h3></a>
 <%--                    <h4>我的回答</h4>--%>
                     <hr>
                     <br>
+                </div>
+                <div style="margin-top:40px;float: left;">
+                    <button class="delete" onclick="delete_answer('${i.id}', $(this))">删除</button>
                 </div>
             </tr>
         </c:forEach>
@@ -140,7 +177,7 @@
 <!-- 更换头像 -->
 
 <div style="display: none" id="update">
- <div class="divcss5"> 
+ <div class="divcss5">
 
   <img id="img" style='height:300px;width:300px' src='${hello}user/avatar/${user.id}'>
  </div>
@@ -150,7 +187,7 @@
  <br>
  <!--form enctype="multipart/form-data" id="uploadForm"-->
  <input type="file" id="xuanze" style="display:none" onchange="fileReader(this)" />
- 
+
  <input type="submit" class='file' style='cursor:pointer;text-align:center;margin-left:110px;height:30px;width:100px'  id='picinput'value="确认修改"/>
 
 </div>
@@ -184,7 +221,7 @@
             $('.detailbtn span').html(txt);
         }
     });
-    $('#tiwen').on('click',function(){
+    var tiwen = function() {
         layer.open({
             type:2,
             title:'提交问题',
@@ -193,8 +230,8 @@
             area:['1000px','700px'],
             content:'${hello}input.jsp'
         });
-    });
-    $('#ziliao').on('click',function(){
+    };
+    var ziliao = function() {
         layer.open({
             type:2,
             title:'上传资料',
@@ -203,7 +240,7 @@
             area:['1000px','700px'],
             content:'${hello}answer.jsp'
         });
-    });
+    };
 
     $('#modify').on('click',function(){
         layer.open({
@@ -228,9 +265,9 @@
 	});
 	$('#add').on('click',function(){
 			$('#xuanze').trigger('click');
-			
+
 		});
-	
+
     $('.hidebox .submit').click(function () {
         $('.shadow').hide();
         $('.hidebox').hide();
@@ -257,22 +294,39 @@
     });
 	$(document).ready(function() {
 
-		$("#answer").on('click',function(){
-			$("#myquestion").hide(500);
+		$("#answer1").on('click',function(){
+			$("#myfile").hide(500);
 			$("#myanswer").show(500);
 		});
-	
-		$("#question").on('click',function(){
-			$("#myanswer").hide(500);
+        $("#answer2").on('click',function(){
+            $("#myquestion").hide(500);
+            $("#myanswer").show(500);
+        });
+
+		$("#question1").on('click',function(){
+			$("#myfile").hide(500);
 			$("#myquestion").show(500);
 		});
-	
-	
+
+        $("#question2").on('click',function(){
+            $("#myanswer").hide(500);
+            $("#myquestion").show(500);
+        });
+        $("#file1").on('click',function () {
+           $("#myquestion").hide(500);
+           $("#myfile").show(500);
+        });
+        $("#file2").on('click',function () {
+            $("#myanswer").hide(500);
+            $("#myfile").show(500);
+        });
 	});
-	
-	
+
+
+
+
 	//头像预览实现
-	
+
     function fileReader(obj){
     	var file = obj.files;
     	var img = document.getElementById("img");
@@ -296,9 +350,8 @@
 	//图片上传
     	$('#picinput').on('click',function(){
           var l = layer.load();
-        var formData = new FormData();  //创建一个forData 
-
-        formData.append('img', $('#xuanze')[0].files[0]) //把file添加进去  name命名为img
+        var formData = new FormData();  //创建一个forData
+        formData.append('img', $('#xuanze')[0].files[0]); //把file添加进去  name命名为img
         $.ajax({
             url: "${hello}user/update/avatar",
             data: formData,
@@ -321,6 +374,50 @@
             }
           });
     });
+    var delete_question = function (id, b) {
+        $.ajax({
+            url: '${hello}user/delete/question',
+            type: 'post',
+            data: {'questionId': id},
+            success: function (data) {
+                layer.msg(data.msg);
+                if (data.code === 0) {
+                    var num = $('#asking-num');
+                    b.parent().parent().remove();
+                    num.text(parseInt(num.text()) - 1);
+                }
+            }
+        })
+    };
+    var delete_answer = function (id, b) {
+        $.ajax({
+            url: '${hello}user/delete/answer',
+            type: 'post',
+            data: {'answerId': id},
+            success: function (data) {
+                layer.msg(data.msg);
+                if (data.code === 0) {
+                    b.parent().parent().remove();
+                    var num = $('#answer-num');
+                    b.parent().parent().remove();
+                    num.text(parseInt(num.text()) - 1);
+                }
+            }
+        })
+    };
+    var delete_file = function (md5, b) {
+        $.ajax({
+            url: '${hello}user/delete/file',
+            type: 'post',
+            data: {'fileMd5': md5},
+            success: function (data) {
+                layer.msg(data.msg);
+                if (data.code === 0) {
+                    b.parent().parent().remove();
+                }
+            }
+        })
+    };
 </script>
 </body>
 </html>

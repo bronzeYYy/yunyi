@@ -50,8 +50,8 @@ public class QuestionServiceImpl implements QuestionService {
         return true;
     }
     @Override
-    public List<Question> getQuestions() {
-        return questionDao.getQuestions();
+    public List<Question> getQuestions(int start, int length) {
+        return questionDao.getQuestions(start, length);
     }
 
     @Override
@@ -65,8 +65,8 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public List<Question> getQuestionsOrderByStarAndComment() {
-        return questionDao.getQuestionsOrderByStarAndComment();
+    public List<Question> getQuestionsOrderByStarAndComment(int start, int length) {
+        return questionDao.getQuestionsOrderByStarAndComment(start, length);
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -89,63 +89,106 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public List<Question> getQuestionsByKeywords(String searchContent, int order) {
+    public List<Question> getQuestionsByKeywords(String searchContent, int order, int start, int length) {
         List<String> list = Utils.getResultList(searchContent);
         String column = Utils.getOrder(order);
         List<Question> questions;
         if (list.size() == 0) {
             list = Collections.singletonList(searchContent);
-            questions = questionDao.getQuestionsByContent("%" + searchContent + "%", column);
+            questions = questionDao.getQuestionsByContent("%" + searchContent + "%", column, start, length);
         } else {
-            questions = questionDao.getQuestionsByKeywords(Utils.getSql(searchContent, list), column);
+            questions = questionDao.getQuestionsByKeywords(Utils.getSql(searchContent, list), column, start, length);
         }
         Utils.highAll(questions, list);
         return questions;
     }
 
     @Override
-    public List<Question> getQuestionsByKeywordsAndName1(String searchContent, String name1, int order) {
+    public List<Question> getQuestionsByKeywordsAndName1(String searchContent, String name1, int order, int start, int length) {
         String column = Utils.getOrder(order);
         List<String> list = Utils.getResultList(searchContent);
         List<Question> questions;
         if (list.size() == 0) {
             list = Collections.singletonList(searchContent);
-            questions = questionDao.getQuestionsByContentFromName1(name1, "%" + searchContent + "%", column);
+            questions = questionDao.getQuestionsByContentFromName1(name1, "%" + searchContent + "%", column, start, length);
         } else {
-            questions = questionDao.getQuestionsByKeywordsAndName1(Utils.getSql(searchContent, list), name1, column);
+            questions = questionDao.getQuestionsByKeywordsAndName1(Utils.getSql(searchContent, list), name1, column, start, length);
         }
         Utils.highAll(questions, list);
         return questions;
     }
 
     @Override
-    public List<Question> getQuestionsByKeywordsAndName1AndName2(String searchContent, String name1, String name2, int order) {
+    public List<Question> getQuestionsByKeywordsAndName1AndName2(String searchContent, String name1, String name2, int order,
+                                                                 int start, int length) {
         List<String> list = Utils.getResultList(searchContent);
         String column = Utils.getOrder(order);
         List<Question> questions;
         if (list.size() == 0) {
             list = Collections.singletonList(searchContent);
-            questions = questionDao.getQuestionsByContentFromNames(name1, name2, "%" + searchContent + "%", column);
+            questions = questionDao.getQuestionsByContentFromNames(name1, name2, "%" + searchContent + "%", column, start, length);
         } else {
-            questions = questionDao.getQuestionsByKeywordsAndName1AndName2(Utils.getSql(searchContent, list), name1, name2, column);
+            questions = questionDao.getQuestionsByKeywordsAndName1AndName2(Utils.getSql(searchContent, list), name1, name2, column,
+                    start, length);
         }
         Utils.highAll(questions, list);
         return questions;
     }
 
     @Override
-    public List<Question> getQuestionsByName1(String name1, int order) {
+    public List<Question> getQuestionsByName1(String name1, int order, int start, int length) {
         String column = Utils.getOrder(order);
-        return questionDao.getQuestionsByName1(name1, column);
+        return questionDao.getQuestionsByName1(name1, column, start, length);
     }
 
     @Override
-    public List<Question> getQuestionsByName1AndName2(String name1, String name2, int order) {
+    public List<Question> getQuestionsByName1AndName2(String name1, String name2, int order, int start, int length) {
         String column = Utils.getOrder(order);
-        return questionDao.getQuestionsByName1AndName2(name1, name2, column);
+        return questionDao.getQuestionsByName1AndName2(name1, name2, column, start, length);
     }
 
-    private List<Question> getQuestionsByContent(String name1, String name2, String content, int order) {
-        return null;
+    @Override
+    public int getQuestionsCount() {
+        return questionDao.getQuestionsCount();
+    }
+
+    @Override
+    public int getQuestionsByContentFromNamesCount(String name1, String name2, String content) {
+        return questionDao.getQuestionsByContentFromNamesCount(name1, name2, content);
+    }
+
+    @Override
+    public int getQuestionsByContentFromName1Count(String name1, String content) {
+        return questionDao.getQuestionsByContentFromName1Count(name1, content);
+    }
+
+    @Override
+    public int getQuestionsByContentCount(String content) {
+        return questionDao.getQuestionsByContentCount(content);
+    }
+
+    @Override
+    public int getQuestionsByName1Count(String name1) {
+        return questionDao.getQuestionsByName1Count(name1);
+    }
+
+    @Override
+    public int getQuestionsByName1AndName2Count(String name1, String name2) {
+        return questionDao.getQuestionsByName1AndName2Count(name1, name2);
+    }
+
+    @Override
+    public int getQuestionsByKeywordsCount(String searchContent) {
+        return questionDao.getQuestionsByKeywordsCount(Utils.getSql(searchContent));
+    }
+
+    @Override
+    public int getQuestionsByKeywordsAndName1Count(String searchContent, String name1) {
+        return questionDao.getQuestionsByKeywordsAndName1Count(Utils.getSql(searchContent), name1);
+    }
+
+    @Override
+    public int getQuestionsByKeywordsAndName1AndName2Count(String searchContent, String name1, String name2) {
+        return questionDao.getQuestionsByKeywordsAndName1AndName2Count(Utils.getSql(searchContent), name1, name2);
     }
 }

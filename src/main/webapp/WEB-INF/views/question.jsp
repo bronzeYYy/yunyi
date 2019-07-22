@@ -161,15 +161,12 @@ color:white;
            			 <font style="line-height:80px;color:#202020">${i.answerTime}</font>
            			&emsp;
 					<a  style="color:#202020;cursor:pointer"id="doubleclick"><span class="glyphicon glyphicon-thumbs-up"></span></a><text></text>
-      
            		</div>	
            </div>
             </tr>
 							<hr style=" height:2px;width:80%;border:none;border-top:2px dotted #808080;" />
 							<c:set scope="page" value="${j + 1}" var="j" />
           </c:forEach>
-
-
           </table>
         </div>
        

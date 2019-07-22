@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!doctype html>
 <html>
 <head>
 <title>资料详情-${file.fileName}</title>
@@ -91,67 +92,70 @@ color:white;
 							<text style="color:#505050">${file.creationTime}</text>
 						</p>
 					</div>
-					<div>
-						<div style="float: left">
-							<button class="btn btn-default" style="margin-bottom: 20px" id="huida" type="submit">
-								<span class="glyphicon glyphicon-pencil"></span>&nbsp;我来评价</button>
-						</div>
-						<div style="margin-left:20px;cursor:pointer; float: left">
-							<a class="btn btn-primary" href="${hello}file/download/${file.md5}">
-								<img width="20px" height="20px" id="download" src="${hello}image/download.png">
-								下载</a>
-						</div>
+					<div style="margin-bottom: 10px">
+						<button class="btn btn-default" id="huida" type="submit">
+							<span class="glyphicon glyphicon-pencil"></span>&nbsp;我来评价</button>
+						<a class="btn btn-primary" href="${hello}file/download/${file.md5}" style="height: 34px; margin-left: 10px">
+							<img width="20px" height="20px" id="download" src="${hello}image/download.png">
+							下载</a>
 					</div>
+					<div id="editorDiv" style="color: #000000; margin-bottom: 10px; display: none">
+						<div id="editor">
 
+						</div>
+						<div style="margin-top: 10px" >
+							<button id="answer" class="btn btn-primary">回答</button>
+							<span id="answer-cancel" style="margin-left: 10px; cursor: pointer">取消</span>
+						</div>
+
+					</div>
                                                <!-- 资料评价 -->
-            <div class="col-md-12" style=" box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
-                    <h5><b><p style="color:#202020">评论列表</p></b></h5>
-            </div>
+					<div style="height: 50px; padding: 15px; box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+						<b><p style="color:#202020">评论列表
+							<c:choose>
+								<c:when test="${not empty param.order}">
+									<a style="margin-left: 5px; color: #646464;"
+										 href="${hello}file/detail/${file.md5}?order=1">
+										<small>按时间排序</small></a>
+								</c:when>
+								<c:otherwise>
+									<a style="margin-left: 5px; color: #646464;"
+										 href="${hello}file/detail/${file.md5}?order=2"><small>按热度排序</small></a>
+								</c:otherwise>
+							</c:choose>
+						</p></b>
 
+					</div>
             <table>
+							<c:set var="j" value="1" scope="page"/>
             <c:forEach var="i" items="${comment}">
       		<tr>
             <div class="row">
                     <br>
                     <div style="width:100px;height:100px;float:left;margin-top:20px;margin-left:30px">
-						<p><img src="${hello}user/avatar/${i.answerUser.id}"style=" width:45px ;height:45px"></p>
-						<p><a style="color:#202020" href="${hello}others.jsp">${i.answerUser.userName}</a></p>
+						<p><img src="${hello}user/avatar/${i.commentUser.id}"style=" width:45px ;height:45px"></p>
+						<p><a style="color:#202020" href="${hello}others.jsp">${i.commentUser.userName}</a></p>
 					</div>
                
 				<div style="width:400px;height:100px;float:left;margin-top:20px;margin-left:30px;">
-					<h3  style="color:#202020">${i.answerContent}</h3>
+					<h3  style="color:#202020">${i.commentContent}</h3>
 				</div>
 				<div style="width:100px;height:100px;float:left;margin-top:20px;margin-left:30px;">	
-					<h4 style="color:#202020;line-height:80px">第?楼</h4>
+					<h4 style="color:#202020;line-height:80px">第${j}楼</h4>
 				</div>
 				<div style="color:#202020;width:300px;height:100px;float:left;margin-top:20px;margin-left:20px;">
 					
-				<font style="line-height:100px;color:#202020">${i.answerTime}</font>
+				<font style="line-height:100px;color:#202020">${i.commentTime}</font>
 					&emsp;&emsp;&emsp;
-					<img id="dianzan" src="image/dianzan1.png" style="cursor:pointer;height:25px;width:25px">
+					<%--<img id="dianzan" src="${hello}image/dianzan1.png" style="cursor:pointer;height:25px;width:25px">
 					&emsp;&emsp;&emsp;
-					<a style="color:#202020" id="huifu" href="#"><span class="glyphicon glyphicon-comment"></span></a>
+					<a style="color:#202020" id="huifu" href="#"><span class="glyphicon glyphicon-comment"></span></a>--%>
 					&emsp;&emsp;&emsp;
-					<img id="getdown" src="image/down.png" style="cursor:pointer;height:25px;width:25px">
 				</div>
             </div>
-           <div id="dpinglun" style="display:none;background-color:#E0E0E0;margin-left:180px;width:70%;height:70px;">            <!-- 评价的评论-->
-           		<div style="width:50px;float:left">
-           			 <img src="${hello}user/avatar/${i.answerUser.id}" style=" width:45px ;height:45px">
-           			<br><a href="others.jsp" style="color:#202020">${i.answerUser.userName}</a>
-           		</div>
-           		<div style="margin-left:50px;float:left;width:60%;height:70px;">
-           			 <font style="line-height:80px;color:#202020">${i.answerTime}</font>
-           		</div>
-           		<div style="margin-left:50px;float:left;width:20%;height:70px">
-           			 <font style="line-height:80px;color:#202020">${i.answerTime}</font>
-           			&emsp;
-					<a  style="color:#202020;cursor:pointer"id="doubleclick"><span class="glyphicon glyphicon-thumbs-up"></span></a><text></text>
-      
-           		</div>	
-           </div>
             </tr>
 							<br><hr style=" height:2px;width:80%;border:none;border-top:2px dotted #808080;" />
+							<c:set scope="page" value="${j + 1}" var="j" />
           </c:forEach>
           
 
@@ -166,20 +170,43 @@ color:white;
 	</textarea><br><br><br><strong>
 	<h3 id='huidafabiao' style="cursor:pointer;color: #000000;margin-top:20px;margin-left: 230px">提交</h3></strong>
 </div>
-
+<script type="text/javascript" src="${hello}js/wangEditor.min.js"></script>
+<script>
+	// 上传图片（举例）var E = window.wangEditor
+	var E = window.wangEditor;
+	var editor = new E('#editor');
+	// 或者 var editor = new E( document.getElementById('editor') )
+	editor.create();
+	$('#answer').on('click', function () {
+		$.ajax({
+			url: '${hello}file/save',
+			type: 'post',
+			data: {'md5': '${file.md5}', 'commentContent': editor.txt.html()},
+			success: function (data) {
+				layer.msg(data.msg);
+				if (data.code == 0) {
+					window.location.reload();
+				}
+			}
+		});
+	});
+	$('#answer-cancel').on('click', function () {
+		$('#editorDiv').css('display', 'none');
+	});
+</script>
 
 <script>
 	$('#huida').on('click',function(){
-
+		$('#editorDiv').css('display', 'block');
       //var content = "";
-      layer.open({
+      /*layer.open({
           type:1,
           title:'回答界面',
           maxmin:true,
           shadeClose:true,
           area:['500px','300px'],
           content:$('#huifa')
-      });
+      });*/
 	
   });	
 	/*$('#download').on('click',function(){
@@ -213,7 +240,7 @@ $('#fabiao').on('click',function(){
       $.ajax({
     //      url:  'answer/save',
                   type: 'post',
-                  data: {'answerContent':f1, 'answerId': ${answer.id}},
+                  data: {'answerContent':f1, 'answerId': 1},
               success:function(data) {
                   layer.msg(data.msg);
                   if(data.code === 0)
@@ -230,7 +257,7 @@ $('#fabiao').on('click',function(){
         $.ajax({
             url:  '${hello}answer/save',
             type: 'post',
-            data: {'answerContent':f1, 'ziliaoId': ${file.md5}},
+            data: {'answerContent':f1, 'ziliaoId': '${file.md5}'},
             success:function(data) {
                 layer.msg(data.msg);
                 if(data.code === 0)
@@ -242,23 +269,7 @@ $('#fabiao').on('click',function(){
         });
     });
     
-    $('dianzan').on('click',function(){
-        $.ajax({
-            url:  '${hello}answer/star',
-            type: 'post',
-            data: {'answerId':${i.answerId}},
-            success:function(data) {
-                layer.msg(data.msg);
-                if(data.code === 0)
-                {
-                	$(this).attr('src', '${hello}image/dianzan2.png');
-                    window.location.href=window.location.href;
-                    window.location.reload();
-                }
-            }
-        });
-    		
-    });
+
 </script>
 </body>
 </html>

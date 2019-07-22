@@ -24,7 +24,7 @@
  
 <body style="text-align:center;background-color: #E8E8E8">
 <div>
-	<img src="images/6FHvzK.png" style="margin-left:80px;width: 25%;height:304px"><img src="images/not.png" style="margin-bottom:70px;width: 10%;height:60px">
+	<img src="${pageContext.request.contextPath}images/6FHvzK.png" style="margin-left:80px;width: 25%;height:304px"><img src="${pageContext.request.contextPath}images/not.png" style="margin-bottom:70px;width: 10%;height:60px">
 	<br>
 	<a style="font-family: piliti;font-size: 50px">The page you are currently visiting does not exist</a><br>
 </div>

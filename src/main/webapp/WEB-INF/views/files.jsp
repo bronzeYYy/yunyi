@@ -70,6 +70,12 @@
         a:hover{
             text-decoration:none;
         }
+        .page {
+            margin-right: 5px;
+            padding: 7px;
+            border-radius: 2px;
+            border: 1px solid #000000;
+        }
     </style>
     <style type="text/css">
 
@@ -222,15 +228,20 @@
             <div style="margin-top: 10px">
                 <button class="btn btn-success" id="ishang">上传</button>
                 <c:choose>
-                    <c:when test="${not empty param.order and param.order eq 1 }">
-                        <a style="margin-left: 5px; padding: 10px; color: #646464;" href="${hello}files?name1=${param.name1}&name2=${param.name2}&order=2"><span>按时间排序</span></a>
+                    <c:when test="${not empty param.order and param.order eq 2 }">
+                        <a style="margin-left: 5px; padding: 10px; color: #646464;" href="${hello}files?name1=${param.name1}&name2=${param.name2}&order=1"><span>按时间排序</span></a>
                     </c:when>
                     <c:otherwise>
-                        <a style="margin-left: 5px; padding: 10px; color: #646464;" href="${hello}files?name1=${param.name1}&name2=${param.name2}&order=1"><span>按热度排序</span></a>
+                        <a style="margin-left: 5px; padding: 10px; color: #646464;" href="${hello}files?name1=${param.name1}&name2=${param.name2}&order=2"><span>按热度排序</span></a>
                     </c:otherwise>
                 </c:choose>
                 <a style="padding: 10px; color: #646464;" href="${hello}column?name1=${param.name1}&name2=${param.name2}&order=1"><span>问答</span></a>
                 <a style="padding: 10px; color: #646464;"><span>当前栏目：${param.name2}</span></a>
+
+                <label class="control-label">
+                    &nbsp;<input class="form-control" type="text" placeholder="要搜索的内容" name="searchContent" value="${param.searchContent}">
+                </label>
+                <a style="padding: 10px; color: #646464; cursor: pointer" id="search">搜索</a>
             </div>
         </div>
 
@@ -266,7 +277,29 @@
             </div>
         </div>
             <div class="footer_top_agileits">
-
+                <div style="float: left; margin-top: 5px;">
+                    <c:if test="${param.page > 1}">
+                        <a href="${hello}files?name1=${param.name1}
+								&order=${param.order}&page=${param.page - 1}" class="page">上一页</a>
+                    </c:if>
+                    <c:forEach begin="1" end="${pages}" step="1" var="i">
+                        <c:choose>
+                            <c:when test="${not empty param.page and i eq param.page or empty param.page and i eq 1}">
+                                <span style="margin-right: 5px">${i}</span>
+                            </c:when>
+                            <c:otherwise>
+                                <a href="${hello}files?name1=${param.name1}
+								&order=${param.order}&page=${i}"
+                                   class="page">
+                                        ${i}</a>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+                    <c:if test="${empty param.page or param.page < pages}">
+                        <a href="${hello}files?name1=${param.name1}
+						&order=${param.order}&page=${param.page + 1}" class="page">下一页</a>
+                    </c:if>
+                </div>
                 <div style=" float:right" align="center">
 
                     <a style="margin-top:50px">侵权举报 网上有害信息举报专区</a><p style="margin-top:10px"></p>

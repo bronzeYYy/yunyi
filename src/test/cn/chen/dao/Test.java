@@ -3,6 +3,11 @@ package cn.chen.dao;
 import cn.chen.config.QiNiuConfig;
 import cn.chen.config.RootConfig;
 import cn.chen.dao.mysql.UserDao;
+import cn.chen.model.Comment;
+import cn.chen.model.File;
+import cn.chen.model.User;
+import cn.chen.service.CommentDaoService;
+import cn.chen.service.UserDaoService;
 import cn.chen.utils.Utils;
 import com.google.gson.JsonParser;
 import com.qiniu.util.Md5;
@@ -12,12 +17,12 @@ import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 
 import java.io.ByteArrayInputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 import java.util.Properties;
 
 public class Test {
@@ -60,6 +65,18 @@ public class Test {
 
     @org.junit.Test
     public void test4() {
+        AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(RootConfig.class);
+        CommentDaoService commentDaoService = annotationConfigApplicationContext.getBean(CommentDaoService.class);
+        Comment comment = new Comment();
+        File file = new File();
+        file.setMd5("017637700a0049901d6e4f07d21c8faa");
+        comment.setFile(file);
+        User user = new User();
+        user.setId(1);
+        comment.setCommentUser(user);
+        comment.setCommentContent("ok");
+        List<Comment> comments = commentDaoService.getCommentsByFileMD5("017637700a0049901d6e4f07d21c8faa");
+        System.out.println();
         /*Properties properties = new Properties();
         try {
             properties.load(new InputStreamReader(new ClassPathResource("detail.properties").getInputStream(), "gbk"));
@@ -68,6 +85,13 @@ public class Test {
             e.printStackTrace();
         }*/
 
+    }
+
+    @org.junit.Test
+    public void test5() {
+        AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(RootConfig.class);
+        UserDaoService userDaoService = annotationConfigApplicationContext.getBean(UserDaoService.class);
+        System.out.println(userDaoService.deleteAnswer(18, 15));
     }
 
 }

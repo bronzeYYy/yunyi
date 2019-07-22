@@ -38,6 +38,33 @@ public class UserController {
         this.userDaoService = userDaoService;
     }
 
+    @RequestMapping("/delete/question")
+    public AbstractResult deleteQuestion(int questionId, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        AbstractResult abstractResult =
+                Utils.deleteResult(userDaoService.deleteQuestion(questionId, user.getId()));
+        if (abstractResult.getCode() == 0) {
+            user = userDaoService.getUserById(user.getId());
+            session.setAttribute("user", user);
+        }
+        return abstractResult;
+    }
+    @RequestMapping("/delete/answer")
+    public AbstractResult deleteAnswer(int answerId, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        AbstractResult abstractResult =
+                Utils.deleteResult(userDaoService.deleteAnswer(answerId, ((User) session.getAttribute("user")).getId()));
+        if (abstractResult.getCode() == 0) {
+            user.setAnswerNumber(user.getAnswerNumber() - 1);
+            session.setAttribute("user", user);
+        }
+        return abstractResult;
+    }
+    @RequestMapping("/delete/file")
+    public AbstractResult deleteFile(String fileMd5, HttpSession session) {
+        return Utils.deleteResult(userDaoService.deleteFile(fileMd5, ((User) session.getAttribute("user")).getId()));
+    }
+
     @RequestMapping("/login")
     public AbstractResult login(String noOrEmail, String password, HttpSession session) {
         Utils.checkStringLength(noOrEmail, 5, 40);

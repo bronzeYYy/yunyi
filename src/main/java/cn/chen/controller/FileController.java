@@ -6,8 +6,8 @@ import cn.chen.data.exceptions.NoSuchDataException;
 import cn.chen.data.exceptions.YunyiException;
 import cn.chen.data.result.AbstractResult;
 import cn.chen.data.result.MsgResult;
-import cn.chen.model.File;
-import cn.chen.model.User;
+import cn.chen.model.*;
+import cn.chen.service.CommentDaoService;
 import cn.chen.service.FileDaoService;
 import cn.chen.utils.QiniuUtils;
 import cn.chen.utils.Utils;
@@ -29,13 +29,16 @@ import javax.validation.Valid;
 @RequestMapping(value = "/file", method = RequestMethod.POST)
 public class FileController {
     private FileDaoService fileDaoService;
+    private CommentDaoService commentDaoService;
     private JedisDao jedisDao;
     // private UserDaoService userDaoService;
     private StandardServletMultipartResolver multipartResolver;
-    public FileController(FileDaoService fileDaoService, StandardServletMultipartResolver multipartResolver, JedisDao jedisDao) {
+    public FileController(FileDaoService fileDaoService, StandardServletMultipartResolver multipartResolver, JedisDao jedisDao,
+                          CommentDaoService commentDaoService) {
         this.fileDaoService = fileDaoService;
         this.multipartResolver = multipartResolver;
         this.jedisDao = jedisDao;
+        this.commentDaoService = commentDaoService;
     }
 
     @RequestMapping("/upload")
@@ -80,9 +83,36 @@ public class FileController {
     }
 
 
+    @RequestMapping("/save")
+    @ResponseBody
+    public AbstractResult save(@Valid Comment comment, Errors errors, HttpSession session, String md5) {
+        if (errors.hasErrors()) {
+            Utils.dealErrors(errors);
+        }
+        comment.setCommentUser((User) session.getAttribute("user"));
+        File file = new File();
+        file.setMd5(md5);
+        comment.setFile(file);
+        MsgResult msgResult = new MsgResult();
+        if (commentDaoService.save(comment)) {
+            msgResult.setCode(0);
+            msgResult.setMsg("回复成功");
+        } else {
+            msgResult.setCode(-1);
+            msgResult.setMsg("回复失败");
+        }
+        return msgResult;
+    }
+
+
     @RequestMapping(value = "/detail/{md5}", method = RequestMethod.GET)
     public String detail(@PathVariable String md5, Model model) {
-        model.addAttribute("file", fileDaoService.getFileByMD5(md5));
+        File file = fileDaoService.getFileByMD5(md5);
+        if (file == null) {
+            throw new NoSuchDataException();
+        }
+        model.addAttribute("file", file);
+        model.addAttribute("comment", commentDaoService.getCommentsByFileMD5(md5));
         model.addAttribute("hello", "../../");
         return "ziliao";
     }

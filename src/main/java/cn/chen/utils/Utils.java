@@ -3,6 +3,8 @@ package cn.chen.utils;
 import cn.chen.config.QiNiuConfig;
 import cn.chen.data.exceptions.IllegalParamException;
 import cn.chen.data.exceptions.YunyiException;
+import cn.chen.data.result.AbstractResult;
+import cn.chen.data.result.MsgResult;
 import cn.chen.model.Question;
 import com.hankcs.hanlp.HanLP;
 import com.mysql.jdbc.StringUtils;
@@ -179,6 +181,22 @@ public final class Utils {
         }
         // MB
         return (float) (size / 1024.0 / 1024);
+    }
+
+    public static int getPageNum(int count) {
+        return (count + 9) / 10 ;
+    }
+
+    public static AbstractResult deleteResult(boolean deleteResult) {
+        MsgResult msgResult = new MsgResult();
+        if (deleteResult) {
+            msgResult.setCode(0);
+            msgResult.setMsg("删除成功");
+        } else {
+            msgResult.setCode(-1);
+            msgResult.setMsg("删除失败");
+        }
+        return msgResult;
     }
 
 }

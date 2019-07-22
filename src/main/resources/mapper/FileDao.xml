@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.chen.dao.mysql.FileDao">
   <insert id="uploadFile" parameterType="cn.chen.model.File">
-    INSERT into file(md5, file_name, file_detail, uploader_id, creation_time, file_size, file_type, size_unit) VALUE(#{md5},
-    #{fileName}, #{fileDetail}, #{uploader.id}, NOW(), #{fileSize}, #{fileType}, #{sizeUnit});
+    INSERT into file(md5, file_name, file_detail, uploader_id, creation_time, file_size, file_type, size_unit, name1) VALUE(#{md5},
+    #{fileName}, #{fileDetail}, #{uploader.id}, NOW(), #{fileSize}, #{fileType}, #{sizeUnit}, #{name1});
   </insert>
   <select id="getFileByMD5" resultMap="getFile">
     SELECT *, `user`.creation_time as user_creationTime from file LEFT JOIN user on uploader_id = id where md5 = #{md5};
@@ -12,7 +12,22 @@
     SELECT * from file where uploader_id = #{userId};
   </select>
   <select id="getFiles" resultMap="getFile">
-    SELECT *, `user`.creation_time as user_creationTime from file LEFT JOIN user on uploader_id = id;
+    SELECT *, `user`.creation_time as user_creationTime from file LEFT JOIN user on uploader_id = id order by file.creation_time desc
+    limit #{0}, #{1};
+  </select>
+  <select id="getFilesOrderByDownloadNum" resultMap="getFile">
+    SELECT *, `user`.creation_time as user_creationTime from file LEFT JOIN user on uploader_id = id order by download_num desc
+    limit #{0}, #{1};
+  </select>
+  <select id="getFilesCount" resultType="int">
+    select count(*) from file;
+  </select>
+  <select id="getFilesByName1OrderBy" resultMap="getFile">
+    SELECT *, `user`.creation_time as user_creationTime from file LEFT JOIN user on uploader_id = id where name1 = #{name1}
+     order by ${order} desc limit #{start}, #{length};
+  </select>
+  <select id="getFilesByName1Count" resultType="int">
+    select count(*) from file where name1 = #{name1};
   </select>
   <update id="upDownloadNumByMD5">
     update file set download_num = download_num + 1 where md5 = #{md5};
@@ -26,6 +41,7 @@
     <result column="file_type" property="fileType" />
     <result column="size_unit" property="sizeUnit" />
     <result column="download_num" property="downloadNum" />
+    <result column="name1" property="name1" />
     <association property="uploader" javaType="cn.chen.model.User">
       <id column="user_id" property="id"/>
       <result column="user_name" property="userName" />

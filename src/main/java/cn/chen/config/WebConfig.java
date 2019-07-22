@@ -36,7 +36,10 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         registry.addInterceptor(new QuestionInterceptor()) // 需要登陆并自动跳转
                 .addPathPatterns("/user/update", "/user");
         registry.addInterceptor(new NeedLoginMsgInterceptor())
-                .addPathPatterns("/answer/save", "/answer/star", "/question/star", "/file/upload", "/question/save", "/user/update/avatar");
+                .addPathPatterns("/answer/save", "/answer/star",
+                        "/question/star", "/file/upload",
+                        "/question/save", "/user/update/avatar",
+                        "/file/save", "/user/delete/*");
         // 注册拦截器
     }
 }

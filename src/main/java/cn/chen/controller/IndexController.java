@@ -1,6 +1,7 @@
 package cn.chen.controller;
 
 import cn.chen.data.exceptions.NoSuchDataException;
+import cn.chen.model.File;
 import cn.chen.model.User;
 import cn.chen.service.AnswerDaoService;
 import cn.chen.service.FileDaoService;
@@ -20,6 +21,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 @Controller
 public class IndexController {
@@ -37,6 +39,7 @@ public class IndexController {
         model.addAttribute("hello", "");
         model.addAttribute("answers", answerDaoService.getUserAnswersByUserId(user.getId()));
         model.addAttribute("questions", questionService.getUserQuestionsByUserId(user.getId()));
+        model.addAttribute("files", fileDaoService.getFilesByUserId(user.getId()));
         return "personal";
     }
     /*@RequestMapping("/")
@@ -49,22 +52,32 @@ public class IndexController {
     @RequestMapping("/column")
     public String column(@RequestParam(required = false) Integer order, Model model,
                          @RequestParam(required = false) String name1, @RequestParam(required = false) String name2,
-                         @RequestParam(required = false) String searchContent) {
+                         @RequestParam(required = false) String searchContent,
+                         @RequestParam(required = false) Integer page) {
+        int start = 0;
+        int length = 10;
+        if (page != null && page > 0) {
+            start = (page - 1) * 10;
+            length = start + 10;
+        }
+
         if (!StringUtils.isNullOrEmpty(name1)) {
-            return name1Column(order, model, name1, name2, searchContent);
+            return name1Column(order, model, name1, name2, searchContent, start, length);
         }
         if (!StringUtils.isNullOrEmpty(searchContent)) {
             if (null != order && order == 1) {
-                model.addAttribute("questions", questionService.getQuestionsByKeywords(searchContent, 1));
+                model.addAttribute("questions", questionService.getQuestionsByKeywords(searchContent, 1, start, length));
             } else {
-                model.addAttribute("questions", questionService.getQuestionsByKeywords(searchContent, 2));
+                model.addAttribute("questions", questionService.getQuestionsByKeywords(searchContent, 2, start, length));
             }
+            model.addAttribute("pages", Utils.getPageNum(questionService.getQuestionsByKeywordsCount(searchContent)));
         } else {
             if (null != order && order == 1) {
-                model.addAttribute("questions", questionService.getQuestions());
+                model.addAttribute("questions", questionService.getQuestions(start, length));
             } else {
-                model.addAttribute("questions", questionService.getQuestionsOrderByStarAndComment());
+                model.addAttribute("questions", questionService.getQuestionsOrderByStarAndComment(start, length));
             }
+            model.addAttribute("pages", Utils.getPageNum(questionService.getQuestionsCount()));
         }
         model.addAttribute("hello", "");
         model.addAttribute("columnName", "所有");
@@ -73,7 +86,15 @@ public class IndexController {
     }
     @RequestMapping("/files")
     public String files(@RequestParam(required = false) Integer order, Model model,
-                         @RequestParam(required = false) String name1, @RequestParam(required = false) String name2) {
+                         @RequestParam(required = false) String name1, @RequestParam(required = false) Integer page) {
+        int start = 0;
+        int length = 10;
+        if (page != null && page > 0) {
+            start = (page - 1) * 10;
+            length = start + 10;
+        }
+        List<File> files;
+        int count;
         if (!StringUtils.isNullOrEmpty(name1)) {
             String columnDetail = Utils.getString(name1);
             if (columnDetail == null) {
@@ -81,66 +102,84 @@ public class IndexController {
             }
             model.addAttribute("columnName", name1);
             model.addAttribute("columnDetail", columnDetail);
+            files = fileDaoService.getFilesByName1OrderBy(name1, order, start, length);
+            count = fileDaoService
+                    .getFilesByName1Count(name1);
+        } else {
+            files = fileDaoService.getFiles(start, length, order);
+            count = fileDaoService.getFilesCount();
         }
-        model.addAttribute("files", fileDaoService.getFiles());
+        model.addAttribute("files", files);
         model.addAttribute("hello", "");
+        model.addAttribute("pages", Utils.getPageNum(count));
         return "files";
     }
 
     @RequestMapping(value = {"", "/index"})
     public String questions(Model model) {
-        model.addAttribute("questions", questionService.getQuestions());
+        /*int start = 0;
+        int length = 10;
+        model.addAttribute("questions", questionService.getQuestions(start, length));*/
         model.addAttribute("hello", "");
         return "index";
     }
 
-    private String name1Column(Integer order, Model model, String name1, String name2, String searchContent) {
+    private String name1Column(Integer order, Model model, String name1, String name2, String searchContent, int start, int length) {
         String columnDetail = Utils.getString(name1);
         if (!StringUtils.isNullOrEmpty(name2)) {
-            return name2Column(order, model, name1, name2, searchContent);
+            return name2Column(order, model, name1, name2, searchContent, start, length);
         }
         if (!StringUtils.isNullOrEmpty(searchContent)) {
             if (null != order && order == 1) {
-                model.addAttribute("questions", questionService.getQuestionsByKeywordsAndName1(searchContent, name1, 1));
+                model.addAttribute("questions", questionService.getQuestionsByKeywordsAndName1(searchContent, name1, 1,
+                        start, length));
             } else {
-                model.addAttribute("questions", questionService.getQuestionsByKeywordsAndName1(searchContent, name1, 2));
+                model.addAttribute("questions", questionService.getQuestionsByKeywordsAndName1(searchContent, name1, 2,
+                        start, length));
             }
+            model.addAttribute("pages", Utils.getPageNum(questionService.getQuestionsByKeywordsAndName1Count(searchContent, name1)));
         } else {
             if (null != order && order == 1) {
-                model.addAttribute("questions", questionService.getQuestionsByName1(name1, 1));
+                model.addAttribute("questions", questionService.getQuestionsByName1(name1, 1, start, length));
             } else {
-                model.addAttribute("questions", questionService.getQuestionsByName1(name1, 2));
+                model.addAttribute("questions", questionService.getQuestionsByName1(name1, 2, start, length));
             }
+            model.addAttribute("pages", Utils.getPageNum(questionService.getQuestionsByName1Count(name1)));
         }
         model.addAttribute("columnName", name1);
         model.addAttribute("columnDetail", columnDetail);
         model.addAttribute("hello", "");
         return "column";
     }
-    private String name2Column(Integer order, Model model, String name1, String name2, String searchContent) {
+    private String name2Column(Integer order, Model model, String name1, String name2, String searchContent, int start, int length) {
         String columnDetail = Utils.getString(name1);
         if (!StringUtils.isNullOrEmpty(searchContent)) {
-            return searchColumn(order, model, name1, name2, searchContent);
+            return searchColumn(order, model, name1, name2, searchContent, start, length);
         }
         if (null != order && order == 1) {
-            model.addAttribute("questions", questionService.getQuestionsByName1AndName2(name1, name2, 1));
+            model.addAttribute("questions", questionService.getQuestionsByName1AndName2(name1, name2, 1, start, length));
         } else {
-            model.addAttribute("questions", questionService.getQuestionsByName1AndName2(name1, name2, 2));
+            model.addAttribute("questions", questionService.getQuestionsByName1AndName2(name1, name2, 2, start, length));
         }
+        model.addAttribute("pages", Utils.getPageNum(questionService.getQuestionsByName1AndName2Count(name1, name2)));
         model.addAttribute("columnName", name1);
         model.addAttribute("columnDetail", columnDetail);
         model.addAttribute("hello", "");
         return "column";
     }
-    private String searchColumn(Integer order, Model model, String name1, String name2, String searchContent) {
+    private String searchColumn(Integer order, Model model, String name1, String name2, String searchContent, int start, int length) {
         if (null != order && order == 1) {
-            model.addAttribute("questions", questionService.getQuestionsByKeywordsAndName1AndName2(searchContent, name1, name2, 1));
+            model.addAttribute("questions", questionService.getQuestionsByKeywordsAndName1AndName2(searchContent, name1, name2, 1,
+                    start, length));
         } else {
-            model.addAttribute("questions", questionService.getQuestionsByKeywordsAndName1AndName2(searchContent, name1, name2, 2));
+            model.addAttribute("questions", questionService.getQuestionsByKeywordsAndName1AndName2(searchContent, name1, name2, 2,
+                    start, length));
         }
         String columnDetail = Utils.getString(name1);
         model.addAttribute("columnName", name1);
         model.addAttribute("columnDetail", columnDetail);
+        model.addAttribute("pages", Utils.getPageNum(questionService.getQuestionsByKeywordsAndName1AndName2Count(searchContent,
+                name1, name2)));
         model.addAttribute("hello", "");
         return "column";
     }

@@ -93,7 +93,21 @@
         <p id="select" style="display: none;">已选文件：<span id="select-name"></span></p>
     </div>
 
-    <br>
+    <p style="position: relative;">
+    <form name="frm">
+        <select style="border-style: none;width:100px" id="school" onChange="redirec(document.frm.s1.options.selectedIndex)">
+            <option selected>请选择院系</option>
+            <option value="1">计算机系</option>
+            <option value="2">化工学院</option>
+            <option value="3">农牧学院</option>
+            <option value="4">机械学院</option>
+            <option value="5">财经学院</option>
+            <option value="6">医学院</option>
+            <option value="7">土木学院</option>
+            <option value="8">其他</option>
+        </select>
+    </form>
+    </p>
     <div id="show"></div>
     <p>
         <strong>简单介绍你的文件：</strong>
@@ -105,38 +119,7 @@
        <strong>文件的类型？</strong>
    </p>
 <input style="cursor:pointer" type="text" id="qtype" value="" readonly="readonly">--%>
-    <div class="hidebox">
-        <span>C/C++</span>
-        <span>Java</span>
-        <span>Python</span>
-        <span>js</span>
-        <span>数据库</span>
-        <span>网络</span>
-        <span>操作系统</span>
-        <span>信息安全</span>
-        <span>高数</span>
-        <span>大物</span>
-        <span>线性代数</span>
-        <span>概率论</span>
-        <span>无机化学</span>
-        <span>有机化学</span>
-        <span>结构化学</span>
-        <span>物理化学</span>
-        <span>分析化学</span>
-        <span>医学</span>
-        <span>建筑</span>
-        <span>财经</span>
-        <span>植物学</span>
-        <span>动物学</span>
-        <span>水利水电</span>
-        <span>新能源</span>
-        <span>84548</span>
-        <span>14325</span>
-        <span>4a35d</span>
-        <span>Ryzen9-3900X</span>
-        <div id="reset" >清空</div>
-        <div id="close" style="margin-right:50px">确认</div>
-    </div>
+
     <div style="margin-top: 5px">
         <button id="scziliao" style="width:80px;height:30px;background-color: #666666; border-radius:3px; color:#FFFFFF">确认上传</button>
 <%--        <span id="upload-result" style="margin-left: 3px">123</span>--%>
@@ -212,18 +195,29 @@
            // $('#wenjian').css('display','none');
             layer.msg('资料选择完成');
         });
-        
+
+        $(document).keydown(function(e){
+            if(e.keyCode == 13)
+            {
+                $("#scziliao").trigger('click');
+            }
+        });
+
       	$('#scziliao').on('click',function(){  //文件上传
+            var l = layer.load();
+      	    var indexit = document.getElementById('school').selectedIndex;
+            var school = document.getElementById('school').options[indexit].text;
+
       	    /*var result = $('#upload-result');
       	    result.css('display', 'none');*/
-            var l = layer.load();
+
             //var f1 = document.getElementById("title").value;
             var f1 = editor.txt.html();
       		var formData = new FormData();
       		formData.append('file',$('#xuanze')[0].files[0]);
       		formData.append('fileDetail',f1);
+      		formData.append('name1',school);
 
-      		
       	$.ajax({
                 url: "${hello}/file/upload",
                 data: formData,
@@ -233,6 +227,7 @@
                 contentType: false,
                 processData: false,
                 success: function(data) {
+                    layer.close(l);
                     //layer.msg(data.msg);
                     /*result.text(data.msg);
                     result.css('display', '');*/
@@ -284,7 +279,7 @@
        $('.hidebox').show();
     });
 */
-    $('.hidebox span').click(function (e) {
+  /*  $('.hidebox span').click(function (e) {
         let tagName=$(this).html();
         let text=oinput.val();
         let color=$(this).css('background-color');
@@ -306,7 +301,7 @@
     $('#reset').on('click',function(){
     	document.getElementById('qtype').value="";
     	  $('.hidebox span').css('background-color',"rgb(85, 85, 85)");
-    });
+    });*/
 
 </script>
   

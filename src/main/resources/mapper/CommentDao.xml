@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.chen.dao.mysql.CommentDao">
+  <insert id="save" parameterType="cn.chen.model.Comment">
+        insert into file_comment(file_md5, comment_content, comment_time, commenter_id) values(#{file.md5}, #{commentContent}, now(), #{commentUser.id})
+  </insert>
+  <select id="getCommentsByFileMD5" resultMap="getComment" parameterType="cn.chen.model.Comment">
+        select *, file.creation_time as file_creationTime ,`user`.creation_time as user_creationTime, `user`.id as user_id from file_comment
+        left join user on commenter_id = `user`.id left join file on file_md5 = file.md5 where file_md5 = #{FileMD5}
+        order by comment_time desc;
+  </select>
+  <select id="getCommentById" resultMap="getComment" parameterType="cn.chen.model.Comment">
+        select *, file.creation_time as file_creationTime ,`user`.creation_time as user_creationTime, `user`.id as user_id from file_comment
+        left join user on commenter_id = `user`.id left join file on file_md5 = file.md5 where file_comment.id = #{id}
+        order by comment_time desc;
+  </select>
+  <resultMap id="getComment" type="cn.chen.model.Comment">
+    <id property="id" column="id" />
+    <result column="comment_content" property="commentContent" />
+    <result column="comment_time" property="commentTime" />
+    <association property="file" javaType="cn.chen.model.File">
+      <id column="md5" property="md5" />
+      <result column="file_name" property="fileName" />
+      <result column="file_detail" property="fileDetail" />
+      <result column="creation_time" property="creationTime" />
+      <!--<association property="answerUser" javaType="cn.chen.model.User">
+          <id column="user_id" property="id"/>
+          <result column="user_name" property="userName" />
+          <result column="user_password" property="userPassword" />
+          <result column="user_class" property="userClass" />
+          <result column="integral" property="integral" />
+          <result column="asking_number" property="askingNumber" />
+          <result column="answer_number" property="answerNumber" />
+          <result column="email" property="email" />
+          <result column="user_creationTime" property="creationTime" />
+          <result column="student_no" property="studentNo" />
+      </association>-->
+    </association>
+    <association property="commentUser" javaType="cn.chen.model.User">
+      <id column="user_id" property="id"/>
+      <result column="user_name" property="userName" />
+      <result column="user_password" property="userPassword" />
+      <result column="user_class" property="userClass" />
+      <result column="integral" property="integral" />
+      <result column="asking_number" property="askingNumber" />
+      <result column="answer_number" property="answerNumber" />
+      <result column="email" property="email" />
+      <result column="user_creationTime" property="creationTime" />
+      <result column="student_no" property="studentNo" />
+    </association>
+  </resultMap>
+</mapper>

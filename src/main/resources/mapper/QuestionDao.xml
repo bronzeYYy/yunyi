@@ -8,7 +8,7 @@
         values(#{questionName}, #{questioner.id}, #{questionContent}, now(), #{name1}, #{name2})
     </insert>
     <select id="getQuestions" resultMap="getQuestion" parameterType="cn.chen.model.Question">
-        select * from question order by creation_time desc;
+        select * from question order by creation_time desc limit #{0}, #{1};
     </select>
     <select id="getQuestionById" resultMap="getQuestion" parameterType="cn.chen.model.Question">
         select *, `user`.creation_time as user_creationTime, `user`.id as user_id from question left join user on questioner_id = `user`.id
@@ -22,7 +22,7 @@
         INSERT into likenum_ques(question_id, questioner_id, star_time) VALUES(#{0}, #{1}, now());
     </insert>
     <select id="getQuestionsOrderByStarAndComment" resultMap="getQuestion">
-        select * from question order by (likenum + comment_num) desc;
+        select * from question order by (likenum + comment_num) desc limit #{0}, #{1};
     </select>
     <update id="addStarNum">
         UPDATE question set likenum = likenum + 1 WHERE id = #{questionId};
@@ -31,32 +31,66 @@
         UPDATE question set comment_num= comment_num + 1 WHERE id = #{questionId};
     </update>
     <select id="getQuestionsByName1" resultMap="getQuestion">
-        select * from question where name1 = #{name1} order by ${order} desc;
+        select * from question where name1 = #{name1} order by ${order} desc limit #{start}, #{length};
     </select>
     <select id="getQuestionsByName1AndName2" resultMap="getQuestion">
-        select * from question where name1 = #{name1} and name2 = #{name2} order by ${order} desc;
+        select * from question where name1 = #{name1} and name2 = #{name2} order by ${order} desc limit #{start}, #{length};
     </select>
     <select id="getQuestionsByKeywords" resultMap="getQuestion">
-        select * from question where (${sql}) order by ${order} desc;
+        select * from question where (${sql}) order by ${order} desc limit #{start}, #{length};
     </select>
     <select id="getQuestionsByContent" resultMap="getQuestion">
         select * from question where (question_name like #{content} or question_content like #{content}) order by ${order} desc;
     </select>
     <select id="getQuestionsByContentFromNames" resultMap="getQuestion">
         select * from question where name1 = #{name1} and name2 = #{name2} and
-        (question_name like #{content} or question_content like #{content}) order by ${order} desc;
+        (question_name like #{content} or question_content like #{content}) order by ${order} desc
+         limit #{start}, #{length};
     </select>
     <select id="getQuestionsByContentFromName1" resultMap="getQuestion">
         select * from question where name1 = #{name1} and
-        (question_name like #{content} or question_content like #{content}) order by ${order} desc;
+        (question_name like #{content} or question_content like #{content}) order by ${order} desc
+         limit #{start}, #{length};
     </select>
 
     <select id="getQuestionsByKeywordsAndName1" resultMap="getQuestion">
-        select * from question where name1 = #{name1} and (${sql}) order by ${order} desc;
+        select * from question where name1 = #{name1} and (${sql}) order by ${order} desc
+         limit #{start}, #{length};
     </select>
     <select id="getQuestionsByKeywordsAndName1AndName2" resultMap="getQuestion">
-        select * from question where name1 = #{name1} and name2 = #{name2} and (${sql}) order by ${order} desc;
+        select * from question where name1 = #{name1} and name2 = #{name2} and (${sql}) order by ${order} desc
+         limit #{start}, #{length};
     </select>
+    <select id="getQuestionsCount" resultType="int">
+        select count(*) from question;
+    </select>
+    <select id="getQuestionsByContentFromNamesCount" resultType="int">
+        select count(*) from question where name1 = #{name1} and name2 = #{name2} and
+        (question_name like #{content} or question_content like #{content});
+    </select>
+    <select id="getQuestionsByContentFromName1Count" resultType="int">
+        select count(*) from question where name1 = #{name1} and
+        (question_name like #{content} or question_content like #{content});
+    </select>
+    <select id="getQuestionsByContentCount" resultType="int">
+        select count(*) from question where (question_name like #{content} or question_content like #{content});
+    </select>
+    <select id="getQuestionsByName1Count" resultType="int">
+        select count(*) from question where name1 = #{name1};
+    </select>
+    <select id="getQuestionsByName1AndName2Count" resultType="int">
+        select count(*) from question where name1 = #{name1} and name2 = #{name2};
+    </select>
+    <select id="getQuestionsByKeywordsCount" resultType="int">
+        select count(*) from question where (${sql});
+    </select>
+    <select id="getQuestionsByKeywordsAndName1Count" resultType="int">
+        select count(*) from question where name1 = #{name1} and (${sql});
+    </select>
+    <select id="getQuestionsByKeywordsAndName1AndName2Count" resultType="int">
+        select count(*) from question where name1 = #{name1} and name2 = #{name2} and (${sql});
+    </select>
+
     <resultMap id="getQuestion" type="cn.chen.model.Question">
         <id column="id" property="id" />
         <result column="question_name" property="questionName" />
