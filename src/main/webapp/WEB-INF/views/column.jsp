@@ -116,14 +116,14 @@ a:hover{
 				<li class="active"><a style="font-size:20px;color:#888888" href="${hello}column?order=1" id="test">所有</a></li>
 				<li class="active"><a style="font-size:20px;color:#888888" href="${hello}hot">热门</a></li>
 				<li class="active"><a style="font-size:20px;color:#888888" href="${hello}recommend">推荐</a></li>
-				<li class="active"><a class="scroll" href="${hello}column?name1=计算机系" id="cpu">计算机系</a></li>
-				<li class="active"><a class="scroll" href="${hello}column?name1=化工学院" id = "chemical">化工学院</a></li>
-				<li class="active"><a class="scroll" href="${hello}column?name1=农牧学院" id ="husbandry">农牧学院</a></li>
-				<li class="active"><a class="scroll" href="${hello}column?name1=机械学院" id="machinery">机械学院</a></li>
-				<li class="active"><a class="scroll" href="${hello}column?name1=财经学院" id="economy">财经学院</a></li>
-				<li class="active"><a class="scroll" href="${hello}column?name1=医学院" id="medical">医学院</a></li>
-				<li class="active"><a class="scroll" href="${hello}column?name1=土木学院" id="build">土木学院</a></li>
-				<li class="active"><a class="scroll" href="${hello}column?name1=其它">其它</a></li>
+				<li class="active"><a class="scroll" href="${hello}column?name1=计算机系&order=1" id="cpu">计算机系</a></li>
+				<li class="active"><a class="scroll" href="${hello}column?name1=化工学院&order=1" id = "chemical">化工学院</a></li>
+				<li class="active"><a class="scroll" href="${hello}column?name1=农牧学院&order=1" id ="husbandry">农牧学院</a></li>
+				<li class="active"><a class="scroll" href="${hello}column?name1=机械学院&order=1" id="machinery">机械学院</a></li>
+				<li class="active"><a class="scroll" href="${hello}column?name1=财经学院&order=1" id="economy">财经学院</a></li>
+				<li class="active"><a class="scroll" href="${hello}column?name1=医学院&order=1" id="medical">医学院</a></li>
+				<li class="active"><a class="scroll" href="${hello}column?name1=土木学院&order=1" id="build">土木学院</a></li>
+				<li class="active"><a class="scroll" href="${hello}column?name1=其它&order=1">其它</a></li>
 			</ul>
 			<ul class="nav navbar-nav pull-right">
 				<li>

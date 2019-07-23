@@ -111,7 +111,8 @@
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a style="font-size:20px;color:#888888" href="${hello}column?order=1" id="test">所有</a></li>
-                <li class="active"><a style="font-size:20px;color:#888888" href="${hello}column?order=2">热门</a></li>
+                <li class="active"><a style="font-size:20px;color:#888888" href="${hello}hot">热门</a></li>
+                <li class="active"><a style="font-size:20px;color:#888888" href="${hello}recommend">推荐</a></li>
                 <li class="active"><a class="scroll" href="${hello}column?name1=计算机系" id="cpu">计算机系</a></li>
                 <li class="active"><a class="scroll" href="${hello}column?name1=化工学院" id = "chemical">化工学院</a></li>
                 <li class="active"><a class="scroll" href="${hello}column?name1=农牧学院" id ="husbandry">农牧学院</a></li>
