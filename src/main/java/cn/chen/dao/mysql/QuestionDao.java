@@ -19,6 +19,8 @@ public interface QuestionDao {
     int addStarNum(int questionId);
     int addCommentNum(int questionId);
 
+    List<Question> getRecommendQuestionsByName1(@Param("sql") String sql);
+
     List<Question> getQuestionsByContentFromNames(@Param("name1") String name1, @Param("name2") String name2,
                                          @Param("content") String content,
                                          @Param("order") String order, @Param("start") int start, @Param("length") int length);

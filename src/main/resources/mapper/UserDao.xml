@@ -32,6 +32,9 @@
     <update id="deleteAnswerNum">
         update user set answer_number = answer_number - 1 where id = #{userId};
     </update>
+    <update id="deleteQuestionNum">
+        update question set comment_num = comment_num - 1 where id = #{questionId};
+    </update>
     <delete id="deleteQuestion">
         delete from question where id = #{0} and questioner_id = #{1};
     </delete>

@@ -127,7 +127,7 @@
 <!-- //Navigation -->
 
 <!-- banner-slider -->
-<div class="w3l_banner_info">
+<%--<div class="w3l_banner_info">
 	<div class="slider">
 		<div class="callbacks_container">
 			<ul class="rslides" id="slider3">
@@ -188,7 +188,7 @@
 			</ul>
 		</div>
 	</div>
-</div>
+</div>--%>
 <div class="clearfix"></div>
 
 <!-- footer -->
@@ -354,52 +354,30 @@
 			}
 		});
 
-		$('#main').hover(function(){
-		    $("#di1").fadeIn(500);
-            $("#di2").fadeIn(1000);
-            $("#di3").fadeIn(1500);
-            $("#di4").fadeIn(2000);
-            $("#di5").fadeIn(2500);
-        });
+		/*$('#main').hover(function(){
 
+        });*/
 
-		$('#di1').mouseover(function () {
-            $("#di1").animate({bottom:'20px'});
-        });
-		$('#di1').mouseout(function () {
-            $('#di1').animate({top:'20px'});
-        });
-        $('#di2').mouseover(function () {
-            $("#di2").animate({bottom:'20px'});
-        });
-       $('#di2').mouseout(function () {
-            $('#di2').animate({top:'20px'});
-        });
-        $('#di3').mouseover(function () {
-            $("#di3").animate({bottom:'20px'});
-        });
-        $('#di3').mouseout(function () {
-            $('#di3').animate({top:'20px'});
-        });
-        $('#di4').mouseover(function () {
-            $("#di4").animate({bottom:'20px'});
-        });
-     $('#di4').mouseout(function () {
-            $('#di4').animate({top:'20px'});
-        });
-        $('#di5').mouseover(function () {
-            $("#di5").animate({bottom:'20px'});
-        });
-      $('#di5').mouseout(function () {
-            $('#di5').animate({top:'20px'});
-        });
+		$("#di1").fadeIn(500);
+		$("#di2").fadeIn(1000);
+		$("#di3").fadeIn(1500);
+		$("#di4").fadeIn(2000);
+		$("#di5").fadeIn(2500);
+
+		for(let i=1;i<=5;++i){
+			let di=$('#di'+i);
+			di.mouseenter(function () {
+				di.animate({bottom:'20px'});
+			}).mouseleave(function () {
+					di.animate({bottom:'0'});
+			})
+		}
+
 
 	});
 </script>
 
-<script>
 
-</script>
 
 </body>
 </html>

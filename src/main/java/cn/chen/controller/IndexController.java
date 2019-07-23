@@ -6,6 +6,7 @@ import cn.chen.model.User;
 import cn.chen.service.AnswerDaoService;
 import cn.chen.service.FileDaoService;
 import cn.chen.service.QuestionService;
+import cn.chen.service.UserDaoService;
 import cn.chen.utils.Utils;
 import com.mysql.jdbc.StringUtils;
 import org.springframework.stereotype.Controller;
@@ -22,17 +23,25 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.Set;
 
+
+// 需要数据的页面，如首页，专栏等等
 @Controller
 public class IndexController {
     private QuestionService questionService;
     private AnswerDaoService answerDaoService;
     private FileDaoService fileDaoService;
-    public IndexController(QuestionService questionService, AnswerDaoService answerDaoService, FileDaoService fileDaoService) {
+    private UserDaoService userDaoService;
+    public IndexController(QuestionService questionService, AnswerDaoService answerDaoService, FileDaoService fileDaoService,
+                           UserDaoService userDaoService) {
         this.questionService = questionService;
         this.answerDaoService = answerDaoService;
         this.fileDaoService = fileDaoService;
+        this.userDaoService = userDaoService;
     }
+
+    // 用户个人信息页面，根据session获取
     @RequestMapping("/user")
     public String user(Model model, HttpSession session) {
         User user = (User) session.getAttribute("user");
@@ -42,6 +51,21 @@ public class IndexController {
         model.addAttribute("files", fileDaoService.getFilesByUserId(user.getId()));
         return "personal";
     }
+
+    // 根据用户的id到其他用户页面
+    @RequestMapping("/other")
+    public String other(int userId, Model model) {
+        User user = userDaoService.getUserById(userId);
+        if (user == null) {
+            throw new NoSuchDataException();
+        }
+        model.addAttribute("hello", "");
+        model.addAttribute("user", user);
+        model.addAttribute("answers", answerDaoService.getUserAnswersByUserId(userId));
+        model.addAttribute("questions", questionService.getUserQuestionsByUserId(userId));
+        model.addAttribute("files", fileDaoService.getFilesByUserId(userId));
+        return "others";
+    }
     /*@RequestMapping("/")
     public void testException(HttpServletRequest request) {
         //throw new FrequencyException(CommitTypeEnum.SEND_RANDOM_CODE);
@@ -49,6 +73,35 @@ public class IndexController {
         System.out.println("getRequestURI: " + request.getRequestURI());
         System.out.println("getServletPath: " + request.getServletPath());
     }*/
+
+    // 热门页面
+    @RequestMapping("/hot")
+    public String hot(Model model) {
+        int start = 0;
+        int length = 10;
+        model.addAttribute("questions", questionService.getQuestionsOrderByStarAndComment(start, length));
+        model.addAttribute("hello", "");
+        model.addAttribute("columnName", "热门");
+        model.addAttribute("columnDetail", Utils.getString("热门"));
+        return "hot";
+    }
+
+    // 推荐页面
+    @RequestMapping("/recommend")
+    public String recommend(Model model, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        int id = -1;
+        if (user != null) {
+            id = user.getId();
+        }
+        model.addAttribute("questions", questionService.getRecommendQuestionsByName1(id));
+        model.addAttribute("hello", "");
+        model.addAttribute("columnName", "推荐");
+        model.addAttribute("columnDetail", Utils.getString("推荐"));
+        return "hot";
+    }
+
+    // 专栏页面
     @RequestMapping("/column")
     public String column(@RequestParam(required = false) Integer order, Model model,
                          @RequestParam(required = false) String name1, @RequestParam(required = false) String name2,
@@ -84,6 +137,8 @@ public class IndexController {
         model.addAttribute("columnDetail", Utils.getString("所有"));
         return "column";
     }
+
+    // 文件列表页面
     @RequestMapping("/files")
     public String files(@RequestParam(required = false) Integer order, Model model,
                          @RequestParam(required = false) String name1, @RequestParam(required = false) Integer page) {
@@ -115,6 +170,7 @@ public class IndexController {
         return "files";
     }
 
+    // 主页
     @RequestMapping(value = {"", "/index"})
     public String questions(Model model) {
         /*int start = 0;

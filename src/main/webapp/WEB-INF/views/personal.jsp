@@ -49,20 +49,29 @@
     color: #004974;
     text-decoration: none;
 }
-
+.loginout {
+    border:1px #7bc7ff solid;
+    border-radius: 10px;
+    outline: none;
+    background: #fff;
+    cursor: pointer;
+    padding: 10px;
+}
 </style>
 </head>
 
 <body style="background-color:#444">
 <div class="nav">
-	<h3 style="color:#ffffff;cursor:pointer;margin-left:50px" onclick="window.location = '${hello}column'" >返回</h3>
+    <h3>
+        <a style="color:#ffffff;cursor:pointer;margin-left:50px" href="${hello}column">返回</a>
+    </h3>
 </div>
 <div class="container">
     <div class="personInfo">
         <div class="top"></div>
         <img id="touxiang" style="cursor:pointer" src="${hello}user/avatar/${user.id}">
         <div  class="usrname">用户名:${user.userName}
-
+            <a class="loginout" href="${hello}user/loginout">退出登陆</a>
 <!-- 详情页 -->
         </div>
         <div class="textinfo">
@@ -89,27 +98,18 @@
             <li><a href="javascript:tiwen()">提问</a></li>
             <li><a href="javascript:ziliao()">上传资料</a></li>
             <li><a id="xiaoxi">消息</a></li>
-
         </ul>
-        <div style="width:100%;height:100px;margin-left:50px;">
-            <c:forEach var="i" items="${files}">
-                <div>
-                    <div style="margin-top:20px;float:left;width: 80%">
-                        <font style="size:20px;color:#989898;">${i.creationTime }</font>
-                        <a href="${hello}question/detail/${i.md5}"><h3>${i.fileName}</h3></a>
-                        <h3>${i.fileDetail }</h3>
-                        <hr>
-                        <br>
-                    </div>
-                    <div style="margin-top:40px;float: left;">
-                        <button class="delete" onclick="delete_file('${i.md5}', $(this))">删除</button>
-                    </div>
-                </div>
-            </c:forEach>
-        </div>
+        <c:forEach var="i" items="${files}">
+            <div style="margin-top:20px; padding-left: 30px; padding-right: 30px">
+                <font style="size:20px;color:#989898;">${i.creationTime }</font>
+                <h3><a href="${hello}question/detail/${i.md5}">${i.fileName}</a>
+                    <button style="float: right" class="delete" onclick="delete_file('${i.md5}', $(this))">删除</button>
+                </h3>
+                <h3>${i.fileDetail }</h3>
+                <hr>
+            </div>
+        </c:forEach>
     </div>
-
-
     <!--  历史提问   -->
 <div id="myquestion">
     <ul class="menu">
@@ -144,24 +144,17 @@
         <li><a href="javascript:ziliao()">上传资料</a></li>
         <li><a id="xiaoxi">消息</a></li>
     </ul>
-    <div  style="width:100%;height:100px;margin-left:50px;">
-    <table>
-        <c:forEach var="i" items="${answers}">
-            <tr>
-                <div style="margin-top:20px;float:left;width: 80%">
-                    <font style="size:20px;color:#989898;">${i.answerTime}</font>
-                    <a href="/question/detail/${i.question.id}"><h3>${i.answerContent}</h3></a>
-<%--                    <h4>我的回答</h4>--%>
-                    <hr>
-                    <br>
-                </div>
-                <div style="margin-top:40px;float: left;">
-                    <button class="delete" onclick="delete_answer('${i.id}', $(this))">删除</button>
-                </div>
-            </tr>
-        </c:forEach>
-    </table>
-</div>
+    <c:forEach var="i" items="${answers}">
+        <div style="margin-top:20px; padding-left: 30px; padding-right: 30px">
+            <font style="size:20px;color:#989898;">${i.answerTime}</font>
+            <h3>主题：<a href="/question/detail/${i.question.id}">${i.question.questionName}</a>
+                <%--                    <h4>我的回答</h4>--%>
+            <button style="float: right" class="delete" onclick="delete_answer('${i.id}', $(this))">删除</button>
+            </h3>
+            ${i.answerContent}
+            <hr>
+        </div>
+    </c:forEach>
 </div>
 
 </div>

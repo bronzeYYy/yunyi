@@ -24,7 +24,7 @@ import javax.validation.Valid;
 import java.io.IOException;
 import java.util.regex.Pattern;
 
-
+// 与用户相关的操作
 @RestController
 @RequestMapping(value = "/user", method = RequestMethod.POST)
 public class UserController {
@@ -38,6 +38,7 @@ public class UserController {
         this.userDaoService = userDaoService;
     }
 
+    // 删除问题
     @RequestMapping("/delete/question")
     public AbstractResult deleteQuestion(int questionId, HttpSession session) {
         User user = (User) session.getAttribute("user");
@@ -49,6 +50,8 @@ public class UserController {
         }
         return abstractResult;
     }
+
+    // 删除回答
     @RequestMapping("/delete/answer")
     public AbstractResult deleteAnswer(int answerId, HttpSession session) {
         User user = (User) session.getAttribute("user");
@@ -60,11 +63,14 @@ public class UserController {
         }
         return abstractResult;
     }
+
+    // 删除上传的文件
     @RequestMapping("/delete/file")
     public AbstractResult deleteFile(String fileMd5, HttpSession session) {
         return Utils.deleteResult(userDaoService.deleteFile(fileMd5, ((User) session.getAttribute("user")).getId()));
     }
 
+    // 登陆
     @RequestMapping("/login")
     public AbstractResult login(String noOrEmail, String password, HttpSession session) {
         Utils.checkStringLength(noOrEmail, 5, 40);
@@ -77,6 +83,17 @@ public class UserController {
         return new MsgResult(0, "登陆成功");
     }
 
+    @RequestMapping(value = "/loginout", method = RequestMethod.GET)
+    public void loginout(HttpSession session, HttpServletResponse response) {
+        session.invalidate();
+        try {
+            response.sendRedirect("../index");
+            // 退出登陆后跳转到首页
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @RequestMapping("/register")
     public AbstractResult register(@Valid User user, Errors errors, HttpServletRequest request) {
         String code = request.getParameter("code");
@@ -85,6 +102,7 @@ public class UserController {
         }
         if (errors.hasErrors()) {
             Utils.dealErrors(errors);
+            // 处理错误，其中抛出异常
         }
         if (!jedisDao.checkRandomCode(user.getEmail(), code)) {
             return new MsgResult(-1, "验证码不正确");
@@ -94,7 +112,9 @@ public class UserController {
             msgResult.setMsg("注册成功");
             msgResult.setCode(0);
             login(user.getEmail(), user.getUserPassword(), request.getSession());
+            // 注册成功后登陆
             jedisDao.delCode(user.getEmail());
+            // 删除验证码
         } else {
             msgResult.setMsg("注册失败");
             msgResult.setCode(-1);
@@ -102,12 +122,14 @@ public class UserController {
         return msgResult;
     }
 
+    // 发送验证码
     @RequestMapping("/register/send")
     public AbstractResult send(String email) {
         if (StringUtils.isNullOrEmpty(email) || !Pattern.matches("[a-zA-Z_0-9]{2,}@(([a-zA-z0-9]-*)+\\.){1,3}[a-zA-z\\-]+", email)) {
             return new MsgResult(-1, "邮箱不正确");
         }
         jedisDao.checkEmailSendCode(email);
+        // 检测是否发送频繁
         /*if (!jedisDao.checkEmailSendCode(email)) {
             return new MsgResult(-1, "发送频繁");
         }*/
@@ -117,28 +139,33 @@ public class UserController {
         return new MsgResult(-1, "发送失败，请稍后再试");
     }
 
-    @RequestMapping("/login/forget")
+    @RequestMapping("/login/forget") // 忘记密码
     public AbstractResult forget(String email, String studentNo) {
         Utils.checkStringLength(email, 8, 40);
         Utils.checkStringLength(studentNo, 5, 10);
+        // 检查信息规范
         User user = userDaoService.getUserPassword(email, studentNo);
         if (user == null) {
             return new MsgResult(-1, "信息不匹配");
         }
-        sendPassword(user);
+        sendPassword(user); // 发送验证码到邮箱
         return new MsgResult(0, "密码已发送到邮箱");
     }
 
+    // 根据用户id获取用户的头像
     @RequestMapping(value = "/avatar/{id}", method = RequestMethod.GET)
     public void getUserAvatar(@PathVariable int id, HttpServletRequest request, HttpServletResponse response) {
         String avatarUrl = QiNiuConfig.BUCKET_URL + QiniuUtils.AVATAR_SUFFIX + id;
+        // 构造用户头像的地址
 //        System.out.println(avatarUrl + "_0");
         try {
-            if (Utils.qiniuFileExists(avatarUrl + "_0")) {
+            if (Utils.qiniuFileExists(avatarUrl + "_0")) { // 上传过头像
                 response.sendRedirect(avatarUrl + "_" +
                         (QiniuUtils.getUserAvatarNum(request, QiniuUtils.AVATAR_SUFFIX + id + "_") - 1));
+                // 到最新的头像的地址
             } else {
                 response.sendRedirect(QiNiuConfig.BUCKET_URL + "avatar_default");
+                // 使用默认头像
             }
         } catch (IOException e) {
             e.printStackTrace();

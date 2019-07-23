@@ -45,53 +45,10 @@
     </div>
     
  <!--  历史提问   -->
-<div id="myquestion">
-    <ul class="menu">
-        <li><strong>ta的提问</strong></li>
-        <li><a id="answer">ta的回答</a></li>
-    </ul>
-    <div style="width:60%;height:100px;margin-left:50px;">
-    <table>
-        <c:forEach var="i" items="${questions}">
 
-            <tr>
-                <div style="margin-top:20px">
-                    <font style="size:20px;color:#989898;">创建时间${i.creationTime }</font>
-                    <a href="/question/detail/${i.id}"><h3>${i.questionName }</h3></a>
-                    <h3>${i.questionContent }</h3>
-<%--                    <p>赞同数 &emsp;评论数</p>--%>
-                    <hr>
-                    <br>
-                </div>
-            </tr>
-        </c:forEach>
-    </table>
-	</div>
-</div>
 
 <!-- 历史问答 -->
 
-<div id="myanswer" style="display:none">
-    <ul class="menu">
-         <li><a id="question">ta的提问</a></li>
-        <li><strong>ta的回答</strong></li>
-    </ul>
-    <div  style="width:60%;height:100px;margin-left:50px">
-    <table>
-        <c:forEach var="i" items="${answers}">
-            <tr>
-                <div style="margin-top:20px">
-                    <font style="size:20px;color:#989898;">创建时间${i.answerTime}</font>
-                    <a href="/question/detail/${i.question.id}"><h3>${i.answerContent}</h3></a>
-<%--                    <h4>我的回答</h4>--%>
-                    <hr>
-                    <br>
-                </div>
-            </tr>
-        </c:forEach>
-    </table>
-</div>
-</div>
 
 </div>
 

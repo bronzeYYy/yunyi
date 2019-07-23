@@ -2,12 +2,15 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 				 pageEncoding="utf-8"%>
 <!DOCTYPE html>
- <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
 <head>
 	<meta charset="utf-8">
 	<title>问答专栏</title>
+	<c:if test="${empty param.order}">
+		<c:redirect url="${hello}column?order=1"/>
+	</c:if>
 	<link rel="stylesheet" href="${hello}css&js/bootstrap.min.css">
 	<link rel="stylesheet" href="${hello}css&js/login.css" />
 	<link href="${hello}css&js/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
@@ -110,7 +113,9 @@ a:hover{
 		</div>
 		<div id="navbar" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
-			<li class="active"><a style="font-size:20px;color:#888888" href="${hello}column" id="test">所有</a></li>
+				<li class="active"><a style="font-size:20px;color:#888888" href="${hello}column?order=1" id="test">所有</a></li>
+				<li class="active"><a style="font-size:20px;color:#888888" href="${hello}hot">热门</a></li>
+				<li class="active"><a style="font-size:20px;color:#888888" href="${hello}recommend">推荐</a></li>
 				<li class="active"><a class="scroll" href="${hello}column?name1=计算机系" id="cpu">计算机系</a></li>
 				<li class="active"><a class="scroll" href="${hello}column?name1=化工学院" id = "chemical">化工学院</a></li>
 				<li class="active"><a class="scroll" href="${hello}column?name1=农牧学院" id ="husbandry">农牧学院</a></li>
@@ -122,7 +127,7 @@ a:hover{
 			</ul>
 			<ul class="nav navbar-nav pull-right">
 				<li>
-					<a style="color:#FFFFFF" href="${hello}user">${not empty user.userName ? user.userName:'登陆'}</a>
+					<a style="color:#FFFFFF" href="${hello}user">${not empty user.userName ? user.userName:'登录'}</a>
 				</li>
 			</ul>
 		</div>

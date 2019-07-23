@@ -12,6 +12,7 @@ public interface UserDao {
 
     int deleteAskingNum(int userId);
     int deleteAnswerNum(int userId);
+    int deleteQuestionNum(int questionId);
 
     int deleteQuestion(int questionId, int userId);
     int deleteAnswer(int answerId, int userId);

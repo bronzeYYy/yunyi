@@ -134,6 +134,8 @@ public class UserBehaviorAspect {
     public Object deleteAnswerNum(ProceedingJoinPoint pjp) {
         // 回答之前
         int userId = (int) pjp.getArgs()[1];
+        int answerId = (int) pjp.getArgs()[0];
+        int questionId = answerDao.getAnswerById(answerId).getQuestion().getId();
         Object o;
         try {
             o = pjp.proceed();
@@ -144,7 +146,8 @@ public class UserBehaviorAspect {
         }
         if (Boolean.TRUE.equals(o)) {
             // 提问成功
-            if (userDao.deleteAnswerNum(userId) != 1) {
+            if (userDao.deleteQuestionNum(questionId) != 1
+                    || userDao.deleteAnswerNum(userId) != 1) {
                 throw new YunyiException("删除失败");
                 // 更新个数失败，回滚
             }

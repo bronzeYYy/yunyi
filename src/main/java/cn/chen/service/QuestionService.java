@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.dao.DataAccessException;
 
 import java.util.List;
+import java.util.Set;
 
 public interface QuestionService {
     boolean save(Question question);
@@ -37,4 +38,6 @@ public interface QuestionService {
     int getQuestionsByKeywordsAndName1Count(String sql, String name1);
 
     int getQuestionsByKeywordsAndName1AndName2Count(String sql, String name1, String name2);
+
+    List<Question> getRecommendQuestionsByName1(int id);
 }

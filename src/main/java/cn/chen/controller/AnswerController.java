@@ -26,7 +26,8 @@ public class AnswerController {
         this.answerDaoService = answerDaoService;
         this.userDaoService = userDaoService;
     }
-    @RequestMapping("/save")
+
+    @RequestMapping("/save")  // 保存回答
     @ResponseBody
     public AbstractResult save(@Valid Answer answer, Errors errors, HttpSession session, int questionId) {
         if (errors.hasErrors()) {
@@ -47,7 +48,7 @@ public class AnswerController {
         }
         return msgResult;
     }
-    @RequestMapping("/star")
+    @RequestMapping("/star")  // 给回答点赞
     @ResponseBody
     public AbstractResult star(int answerId, HttpSession session) {
         MsgResult msgResult = new MsgResult();

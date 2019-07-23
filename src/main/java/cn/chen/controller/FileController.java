@@ -41,7 +41,8 @@ public class FileController {
         this.commentDaoService = commentDaoService;
     }
 
-    @RequestMapping("/upload")
+
+    @RequestMapping("/upload") // 文件上传
     @ResponseBody
     public AbstractResult upload(@Valid File file, Errors errors, HttpServletRequest request, HttpSession session) {
         if (errors.hasErrors()) {
@@ -51,10 +52,8 @@ public class FileController {
             return new MsgResult(-1, "请选择文件");
         }
         User user = (User) session.getAttribute("user");
-        jedisDao.checkCommit(user.getId(), CommitTypeEnum.COMMIT_UPLOAD);
-
+        jedisDao.checkCommit(user.getId(), CommitTypeEnum.COMMIT_UPLOAD); // 检测是否上传频繁
         file.setUploader(user);
-
         MsgResult msgResult = new MsgResult();
         if (fileDaoService.uploadFile(file, multipartResolver.resolveMultipart(request))) {
             msgResult.setCode(0);
@@ -67,6 +66,7 @@ public class FileController {
         return msgResult;
     }
 
+    // 通过文件的md5下载文件给客户端
     @RequestMapping(value = "/download/{md5}", method = RequestMethod.GET)
     public void download(@PathVariable String md5, HttpServletRequest request, HttpServletResponse response) {
         File file = fileDaoService.getFileByMD5(md5);
@@ -83,7 +83,7 @@ public class FileController {
     }
 
 
-    @RequestMapping("/save")
+    @RequestMapping("/save") // 评论文件
     @ResponseBody
     public AbstractResult save(@Valid Comment comment, Errors errors, HttpSession session, String md5) {
         if (errors.hasErrors()) {
@@ -105,6 +105,7 @@ public class FileController {
     }
 
 
+    // 根据MD5获取文件的具体信息，添加数据并返回具体的视图
     @RequestMapping(value = "/detail/{md5}", method = RequestMethod.GET)
     public String detail(@PathVariable String md5, Model model) {
         File file = fileDaoService.getFileByMD5(md5);

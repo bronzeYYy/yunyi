@@ -15,6 +15,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
+import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -94,4 +96,20 @@ public class Test {
         System.out.println(userDaoService.deleteAnswer(18, 15));
     }
 
+    @org.junit.Test
+    public void test6() {
+        AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(RootConfig.class);
+        JedisPool jedisPool = annotationConfigApplicationContext.getBean(JedisPool.class);
+        Jedis jedis = jedisPool.getResource();
+        //jedis.set("1:计算机专业".getBytes(), "1".getBytes());
+        //jedis.zadd("z", 1, "1:计算机专业");
+        //jedis.zadd("z", 2, "1:农牧");
+       /* System.out.println(jedis.zincrby("z", 2, "1:计算机专业"));
+        System.out.println(jedis.zrevrange("z", 0, 2));*/
+        System.out.println(jedis.zrange("23", 0, 2));
+//        System.out.println(jedis.zscore("1", "1"));
+//        System.out.println(jedis.zrange("z", 0, 2));
+        //System.out.println(new String(jedis.get("1:计算机专业".getBytes())));
+        jedis.close();
+    }
 }

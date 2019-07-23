@@ -91,6 +91,11 @@
         select count(*) from question where name1 = #{name1} and name2 = #{name2} and (${sql});
     </select>
 
+<!--获取推荐-->
+    <select id="getRecommendQuestionsByName1" resultMap="getQuestion">
+        select * from question where (${sql}) order by rand() limit 10;
+    </select>
+
     <resultMap id="getQuestion" type="cn.chen.model.Question">
         <id column="id" property="id" />
         <result column="question_name" property="questionName" />

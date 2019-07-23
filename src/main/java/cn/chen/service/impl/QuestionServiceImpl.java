@@ -16,9 +16,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class QuestionServiceImpl implements QuestionService {
@@ -190,5 +188,47 @@ public class QuestionServiceImpl implements QuestionService {
     @Override
     public int getQuestionsByKeywordsAndName1AndName2Count(String searchContent, String name1, String name2) {
         return questionDao.getQuestionsByKeywordsAndName1AndName2Count(Utils.getSql(searchContent), name1, name2);
+    }
+
+    /*
+    @Override
+    public List<Question> getRecommendQuestionsByName1(int id) {
+        Set<String> strings = jedisDao.getNamesById(id);
+        StringBuilder sb = new StringBuilder("1 = 1 and ( ");
+        Iterator<String> iterator = strings.iterator();
+        while (iterator.hasNext()) {
+            sb.append(" name1 = '");
+            sb.append(iterator.next());
+            sb.append("'   or");
+        }
+        sb.append(")");
+
+        sb.delete(sb.length() - 5, sb.length() - 1);
+        return questionDao.getRecommendQuestionsByName1(sb.toString());
+    }
+    */
+
+    @Override
+    public List<Question> getRecommendQuestionsByName1(int id) {
+        int deleteChar = 1;
+        Set<String> strings = jedisDao.getNamesById(id);
+        StringBuilder sb = new StringBuilder("1 = 1");
+        Iterator<String> iterator = strings.iterator();
+        if (iterator.hasNext()) {
+           sb.append(" and (");
+           deleteChar = 3;
+        }
+        while (iterator.hasNext()) {
+            sb.append(" name1 = '");
+            sb.append(iterator.next());
+            sb.append("' or");
+        }
+        if (deleteChar == 3) {
+            sb.append(")");
+        }
+
+        sb.delete(sb.length() - deleteChar, sb.length() - 1);
+        System.out.println(sb);
+        return questionDao.getRecommendQuestionsByName1(sb.toString());
     }
 }

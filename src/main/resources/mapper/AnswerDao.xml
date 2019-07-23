@@ -9,7 +9,7 @@
     <select id="getAnswersByQuestionId" resultMap="getAnswer" parameterType="cn.chen.model.Answer">
         select *, question.creation_time as question_creationTime ,`user`.creation_time as user_creationTime, `user`.id as user_id from answer
         left join user on responder_id = `user`.id left join question on question_id = question.id where question_id = #{questionId}
-        order  by answer_time desc;
+        order by answer_time desc;
     </select>
     <select id="getAnswersByQuestionIdOrderByStar" resultMap="getAnswer" parameterType="cn.chen.model.Answer">
         select *, question.creation_time as question_creationTime ,`user`.creation_time as user_creationTime, `user`.id as user_id from answer
@@ -20,8 +20,9 @@
         select * from answer where id = #{id}
     </select>
     <select id="getUserAnswersByUserId" resultMap="getAnswer" parameterType="cn.chen.model.Answer">
-        select *, `user`.creation_time as user_creationTime, `user`.id as user_id from answer left join user on responder_id = `user`.id
-        where responder_id = #{userId};
+        select *, question.creation_time as question_creationTime ,`user`.creation_time as user_creationTime, `user`.id as user_id from answer
+        left join user on responder_id = `user`.id left join question on question_id = question.id where responder_id = #{userId}
+        order by answer_time desc;
     </select>
     <insert id="starAnswer">
         INSERT into likenum_ans(response_id, responder_id, star_time) VALUES(#{0}, #{1}, now());

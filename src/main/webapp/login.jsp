@@ -35,13 +35,19 @@
 				$("#login_container").show(500);
 			});
 		});
+		$(document).keydown(function (event) {
+			if(event.keyCode === 13)
+			{
+				$("#tijiao").trigger('click');
+			}
+		});
 	</script>
 </head>
 <body style="background-image:url(images/denglu.jpg)">
 
 <!-- 登录 -->
 <div id="login_container" style="background:#E6E6FA;margin:80px auto;width:400px;height:550px">
-	<div>
+	<div onclick="window.location = 'index'">
 	    <span style="font-size:23px;color:#708090"><img src="image/timg.png" style="width:90px;height:90px"/>
 	              云 易，让问答变得很容易
 	    </span>

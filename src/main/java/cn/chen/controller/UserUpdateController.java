@@ -1,14 +1,12 @@
 package cn.chen.controller;
 
 
-import cn.chen.config.QiNiuConfig;
 import cn.chen.data.exceptions.IllegalParamException;
 import cn.chen.data.result.AbstractResult;
 import cn.chen.data.result.MsgResult;
 import cn.chen.model.User;
 import cn.chen.service.UserDaoService;
 import cn.chen.utils.QiniuUtils;
-import cn.chen.utils.Utils;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+// 用户更新的操作
 @RestController
 @RequestMapping("/user")
 public class UserUpdateController {
@@ -25,6 +24,8 @@ public class UserUpdateController {
     public UserUpdateController(UserDaoService userDaoService) {
         this.userDaoService = userDaoService;
     }
+
+    // 更新用户信息
     @RequestMapping ("/update")
     public AbstractResult update(@Valid User user, Errors errors, HttpSession session) {
         if (errors.hasErrors()) {
@@ -45,6 +46,7 @@ public class UserUpdateController {
         return msgResult;
     }
 
+    // 更改用户头像
     @RequestMapping("/update/avatar")
     public AbstractResult updateAvatar(HttpServletRequest request, HttpSession session) {
         User user = (User) session.getAttribute("user");
