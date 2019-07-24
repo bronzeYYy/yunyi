@@ -87,7 +87,7 @@ color:white;
 								<span style="margin-left: 10px">大小：${file.fileSize}${file.sizeUnit}</span>
 							</span>
 							<img alt="上传者头像" title="上传者头像" width="16px" height="16px" style="color:#202020" src="${hello}user/avatar/${file.uploader.id}">
-							<a style="color:	#505050" href="#">${file.uploader.userName}</a>
+							<a style="color:	#505050" href="${hello}other/${file.uploader.id}">${file.uploader.userName}</a>
 							&nbsp;
 							<text style="color:#505050">${file.creationTime}</text>
 						</p>
@@ -134,11 +134,11 @@ color:white;
                     <br>
                     <div style="width:100px;height:100px;float:left;margin-top:20px;margin-left:30px">
 						<p><img src="${hello}user/avatar/${i.commentUser.id}"style=" width:45px ;height:45px"></p>
-						<p><a style="color:#202020" href="${hello}others.jsp">${i.commentUser.userName}</a></p>
+						<p><a style="color:#202020" href="${hello}other/${file.uploader.id}">${i.commentUser.userName}</a></p>
 					</div>
                
 				<div style="width:400px;height:100px;float:left;margin-top:20px;margin-left:30px;">
-					<h3  style="color:#202020">${i.commentContent}</h3>
+					<div  style="color:#202020">${i.commentContent}</div>
 				</div>
 				<div style="width:100px;height:100px;float:left;margin-top:20px;margin-left:30px;">	
 					<h4 style="color:#202020;line-height:80px">第${j}楼</h4>

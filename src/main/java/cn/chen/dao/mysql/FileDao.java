@@ -19,4 +19,5 @@ public interface FileDao {
 
     //int upStarNumByMD5(String md5);
     int upDownloadNumByMD5(String md5);
+
 }

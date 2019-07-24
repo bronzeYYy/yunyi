@@ -8,7 +8,7 @@ public class Answer {
     private User answerUser;
     private Question question;
     @NotNull(message = "回答内容必须填")
-    @Size(min = 5, message = "回答内容长度需大于5")
+    @Size(min = 15, message = "回答内容有点短")
     private String answerContent;
     private int likenum;
     private String answerTime;

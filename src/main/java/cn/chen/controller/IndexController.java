@@ -11,6 +11,7 @@ import cn.chen.utils.Utils;
 import com.mysql.jdbc.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -53,13 +54,13 @@ public class IndexController {
     }
 
     // 根据用户的id到其他用户页面
-    @RequestMapping("/other")
-    public String other(int userId, Model model) {
+    @RequestMapping("/other/{id}")
+    public String other(@PathVariable("id") int userId, Model model) {
         User user = userDaoService.getUserById(userId);
         if (user == null) {
             throw new NoSuchDataException();
         }
-        model.addAttribute("hello", "");
+        model.addAttribute("hello", "../");
         model.addAttribute("user", user);
         model.addAttribute("answers", answerDaoService.getUserAnswersByUserId(userId));
         model.addAttribute("questions", questionService.getUserQuestionsByUserId(userId));

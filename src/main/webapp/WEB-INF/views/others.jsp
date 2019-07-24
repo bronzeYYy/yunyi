@@ -32,8 +32,8 @@
             <span>积分：${user.integral}</span>
             <span>发布数：${user.askingNumber}</span>
             <span>回答数：${user.answerNumber}</span>
+            <span>资料数：${user.uploadNumber}</span>
         </div>
-
        
         <div class="bot"></div>
         <div class="detailbtn"><i class="iconfont icon-unfold"></i> <span>详细资料</span></div>
@@ -41,6 +41,11 @@
             <p>班&emsp;&emsp;级：${user.userClass}</p>
             <p>学&emsp;&emsp;号：${user.studentNo}</p>
             <p>邮&emsp;&emsp;箱：${user.email}</p>
+            <p>Q&emsp;&emsp;Q：${user.userQq}
+                <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=${user.userQq}&site=qq&menu=yes">
+                    立刻交谈
+                </a>
+            </p>
         </div>
     </div>
     
@@ -67,7 +72,7 @@
     var cnt=0;
     $('.personInfo .detailbtn').click(function () {
         if(cnt===0){
-            bot.animate({height:'200px'},showDetail);
+            bot.animate({height:'240px'},showDetail);
             function showDetail(){
                 detail.show();
             }

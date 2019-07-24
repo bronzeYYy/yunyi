@@ -7,7 +7,7 @@ public class File {
     private String md5;
     private String fileName;
     @NotNull(message = "文件描述必须填")
-    @Size(min = 8, message = "文件描述应大于8个字符")
+    @Size(min = 15, message = "文件描述有点短")
     private String fileDetail;
     private User uploader;
     private String creationTime;

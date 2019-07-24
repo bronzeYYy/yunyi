@@ -141,6 +141,7 @@
 		<input type="password" id="rmima" style="margin-top:10px" class="form-control" placeholder="密码" name="userPassword"  value=""/>
 		<input type="text" id="rbanji" style="margin-top:10px" class="form-control" placeholder="班级"  name="banji" value="" />
 		<input type="text" id="ryouxiang" class="form-control" style="margin-top:10px" placeholder="邮箱"  name="email" value="" />
+		<input type="text" id="userqq" class="form-control" style="margin-top:10px" placeholder="QQ，为了尽快解决您的问题，请正确填写"  name="userQq" value="" />
 		<div>
 			<div  style="heighgt:50px;float:left;margin-top:10px">
 				<input type="text" id="ryanzheng"  class="form-control" style="width:195px" placeholder="验证码"  name="veri-code" value="" />
@@ -200,10 +201,11 @@
 		var r4 = document.getElementById("rbanji").value;
 		var r5 = document.getElementById("ryouxiang").value;
 		var r6 = document.getElementById("ryanzheng").value;
+		var r7 = document.getElementById("userqq").value;
 		$.ajax({
 			url:  'user/register',
 			type: 'post',
-			data: {'studentNo':r1,'userName':r2,'userPassword':r3,'userClass':r4,'email':r5,'code':r6},
+			data: {'studentNo':r1,'userName':r2,'userPassword':r3,'userClass':r4,'email':r5,'code':r6,'userQq':r7},
 			success:function(data) {
 				layer.msg(data.msg);
 				if(data.code === 0)

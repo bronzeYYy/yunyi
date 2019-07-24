@@ -76,14 +76,6 @@ public class QuestionController {
         return "question";
     }
 
-    // 编辑框中的图片的上传
-    @RequestMapping("/upload")
-    @ResponseBody
-    public AbstractResult uploadImg(HttpServletRequest request) {
-        // 等待确认返回信息
-        return QiniuUtils.uploadImg(request, "");
-
-    }
     // 给问题点赞
     @RequestMapping("/star")
     @ResponseBody
@@ -113,7 +105,8 @@ public class QuestionController {
         if (questionService.save(question)) { // save方法抛出的异常传到此处之后ExceptionHandler进行处理
             msgResult.setCode(0);
             msgResult.setMsg("提问成功");
-            session.setAttribute("user", userDaoService.getUserById(user.getId()));
+            user.setAskingNumber(user.getAskingNumber() + 1);
+            session.setAttribute("user", user);
         } else {
             msgResult.setCode(0);
             msgResult.setMsg("提问失败，请重试");

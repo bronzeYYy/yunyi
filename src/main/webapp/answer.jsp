@@ -142,9 +142,20 @@
 <script  src="${hello}css&js/jquery.min.js"></script>
 <script src="${hello}layer-v3.1.1/layer/layer.js"></script>
 <script>
-    var E = window.wangEditor;
-    var editor = new E('#editor');
+    let E = window.wangEditor;
+    let editor = new E('#editor');
     // 或者 var editor = new E( document.getElementById('editor') )
+    editor.customConfig.uploadImgServer = '/user/upload';
+    editor.customConfig.uploadImgHooks = {
+        fail: function (xhr, editor, result) {
+            // 图片上传并返回结果，但图片插入错误时触发
+            // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象，result 是服务器端返回的结果
+            layer.msg(JSON.parse(xhr.responseText).msg);
+        }
+    };
+    editor.customConfig.customAlert = function (info) {
+        // info 是需要提示的内容
+    };
     editor.create();
       var index = parent.layer.getFrameIndex(window.name);
   	$('#fabu').on('click',function(){

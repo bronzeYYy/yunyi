@@ -8,8 +8,8 @@
 <head>
 	<meta charset="utf-8">
 	<title>问答专栏</title>
-	<c:if test="${empty param.order}">
-		<c:redirect url="${hello}column?order=1"/>
+	<c:if test="${empty param.order or empty param.page}">
+		<c:redirect url="${hello}column?order=1&page=1"/>
 	</c:if>
 	<link rel="stylesheet" href="${hello}css&js/bootstrap.min.css">
 	<link rel="stylesheet" href="${hello}css&js/login.css" />

@@ -10,6 +10,7 @@ public class Question {
     private String questionName;
     private User questioner;
     @NotNull(message = "问题内容必须填")
+    @Size(min = 15, message = "问题内容有点短")
     private String questionContent;
     private String creationTime;
     private int likenum;

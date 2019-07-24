@@ -59,6 +59,8 @@ public class FileController {
             msgResult.setCode(0);
             msgResult.setMsg("上传成功");
             jedisDao.setCommitState(user.getId(), CommitTypeEnum.COMMIT_UPLOAD);
+            user.setUploadNumber(user.getUploadNumber() + 1);
+            session.setAttribute("user", user);
         } else {
             msgResult.setCode(-1);
             msgResult.setMsg("上传失败");

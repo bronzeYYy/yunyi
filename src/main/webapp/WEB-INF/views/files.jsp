@@ -7,6 +7,9 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <c:if test="${empty param.page}">
+        <c:redirect url="${hello}files?page=1"/>
+    </c:if>
     <title>资料专栏</title>
     <link rel="stylesheet" href="${hello}css&js/bootstrap.min.css">
     <link rel="stylesheet" href="${hello}css&js/login.css" />
@@ -109,14 +112,14 @@
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a style="font-size:20px;color:#888888" href="${hello}files" id="test">所有</a></li>
-                <li class="active"><a class="scroll" href="${hello}files?name1=计算机系" id="cpu">计算机系</a></li>
-                <li class="active"><a class="scroll" href="${hello}files?name1=化工学院" id = "chemical">化工学院</a></li>
-                <li class="active"><a class="scroll" href="${hello}files?name1=农牧学院" id ="husbandry">农牧学院</a></li>
-                <li class="active"><a class="scroll" href="${hello}files?name1=机械学院" id="machinery">机械学院</a></li>
-                <li class="active"><a class="scroll" href="${hello}files?name1=财经学院" id="economy">财经学院</a></li>
-                <li class="active"><a class="scroll" href="${hello}files?name1=医学院" id="medical">医学院</a></li>
-                <li class="active"><a class="scroll" href="${hello}files?name1=土木学院" id="build">土木学院</a></li>
-                <li class="active"><a class="scroll" href="${hello}files?name1=其它">其它</a></li>
+                <li class="active"><a class="scroll" href="${hello}files?name1=计算机系&page=1" id="cpu">计算机系</a></li>
+                <li class="active"><a class="scroll" href="${hello}files?name1=化工学院&page=1" id = "chemical">化工学院</a></li>
+                <li class="active"><a class="scroll" href="${hello}files?name1=农牧学院&page=1" id ="husbandry">农牧学院</a></li>
+                <li class="active"><a class="scroll" href="${hello}files?name1=机械学院&page=1" id="machinery">机械学院</a></li>
+                <li class="active"><a class="scroll" href="${hello}files?name1=财经学院&page=1" id="economy">财经学院</a></li>
+                <li class="active"><a class="scroll" href="${hello}files?name1=医学院&page=1" id="medical">医学院</a></li>
+                <li class="active"><a class="scroll" href="${hello}files?name1=土木学院&page=1" id="build">土木学院</a></li>
+                <li class="active"><a class="scroll" href="${hello}files?name1=其它&page=1">其它</a></li>
                 <%--<li>
                     <a style="color:#FFFFFF" href="${hello}user"><c:if test="${not empty user}">
                         ${user.userName}

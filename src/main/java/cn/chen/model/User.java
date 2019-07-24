@@ -25,6 +25,9 @@ public class User {
     @Size(min = 5, max = 10, message = "学号长度需在5到10之间")
     private String studentNo;
     private int uploadNumber;
+    @NotNull
+    @Size(min = 5, max = 10, message = "为了尽快解决您的问题，请正确填写QQ")
+    private String userQq;
 
     public int getId() {
         return id;
@@ -104,5 +107,21 @@ public class User {
 
     public void setStudentNo(String studentNo) {
         this.studentNo = studentNo;
+    }
+
+    public int getUploadNumber() {
+        return uploadNumber;
+    }
+
+    public void setUploadNumber(int uploadNumber) {
+        this.uploadNumber = uploadNumber;
+    }
+
+    public String getUserQq() {
+        return userQq;
+    }
+
+    public void setUserQq(String userQq) {
+        this.userQq = userQq;
     }
 }

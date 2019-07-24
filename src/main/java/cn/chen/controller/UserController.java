@@ -4,6 +4,7 @@ import cn.chen.config.QiNiuConfig;
 import cn.chen.dao.JedisDao;
 import cn.chen.data.result.AbstractResult;
 import cn.chen.data.result.MsgResult;
+import cn.chen.data.result.UploadResult;
 import cn.chen.model.User;
 import cn.chen.service.UserDaoService;
 import cn.chen.utils.QiniuUtils;
@@ -12,16 +13,16 @@ import com.mysql.jdbc.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSender;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.io.IOException;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.regex.Pattern;
 
 // 与用户相关的操作
@@ -170,6 +171,21 @@ public class UserController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+    }
+
+    // 编辑框中的图片的上传
+    @RequestMapping("/upload")
+    public UploadResult uploadImg(HttpServletRequest request, HttpSession session) {
+        // 等待确认返回信息
+        User user = (User) session.getAttribute("user");
+        String dateTime = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(LocalDateTime.now());
+        String fileName = user.getId() + "_" + dateTime;
+        UploadResult uploadResult = new UploadResult();
+        if (QiniuUtils.uploadImg(request, fileName).getCode() == 0) {
+            uploadResult.add(QiNiuConfig.BUCKET_URL + fileName);
+        }
+        return uploadResult;
 
     }
 

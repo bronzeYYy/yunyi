@@ -24,6 +24,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Properties;
 
@@ -91,9 +94,10 @@ public class Test {
 
     @org.junit.Test
     public void test5() {
-        AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(RootConfig.class);
+        /*AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(RootConfig.class);
         UserDaoService userDaoService = annotationConfigApplicationContext.getBean(UserDaoService.class);
-        System.out.println(userDaoService.deleteAnswer(18, 15));
+        System.out.println(userDaoService.deleteAnswer(18, 15));*/
+        System.out.println(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(LocalDateTime.now()));
     }
 
     @org.junit.Test

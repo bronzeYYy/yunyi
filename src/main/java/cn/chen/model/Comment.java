@@ -8,7 +8,7 @@ public class Comment {
     private User commentUser;
     private File file;
     @NotNull (message = "评论内容必须填")
-    @Size (min = 5, message = "评论内容长度需大于5")
+    @Size (min = 15, message = "评论内容有点短")
     private String commentContent;
     private String commentTime;
 

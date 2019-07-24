@@ -33,7 +33,8 @@ public class AnswerController {
         if (errors.hasErrors()) {
             Utils.dealErrors(errors);
         }
-        answer.setAnswerUser((User) session.getAttribute("user"));
+        User user = (User) session.getAttribute("user");
+        answer.setAnswerUser(user);
         Question question = new Question();
         question.setId(questionId);
         answer.setQuestion(question);
@@ -41,7 +42,8 @@ public class AnswerController {
         if (answerDaoService.save(answer)) {
             msgResult.setCode(0);
             msgResult.setMsg("回复成功");
-            session.setAttribute("user", userDaoService.getUserById(answer.getAnswerUser().getId()));
+            user.setAnswerNumber(user.getAnswerNumber() + 1);
+            session.setAttribute("user", user);
         } else {
             msgResult.setCode(-1);
             msgResult.setMsg("回复失败");

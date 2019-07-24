@@ -25,7 +25,12 @@
     <update id="addAnswerNum">
         update user set answer_number = answer_number + 1 where id = #{userId};
     </update>
-
+    <update id="addUploadFileNum">
+        update user set upload_number = upload_number + 1 where id = #{userId};
+    </update>
+    <update id="deleteUploadFileNum">
+        update user set upload_number = upload_number - 1 where id = #{userId};
+    </update>
     <update id="deleteAskingNum">
         update user set asking_number = asking_number - 1 where id = #{userId};
     </update>
@@ -44,4 +49,6 @@
     <delete id="deleteFile">
         delete from file where md5 = #{0} and uploader_id = #{1};
     </delete>
+
+
 </mapper>

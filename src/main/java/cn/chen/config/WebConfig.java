@@ -39,7 +39,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
                 .addPathPatterns("/answer/save", "/answer/star",
                         "/question/star", "/file/upload",
                         "/question/save", "/user/update/avatar",
-                        "/file/save", "/user/delete/*");
+                        "/file/save", "/user/delete/*", "/user/upload");
         // 注册拦截器
     }
 }

@@ -56,6 +56,11 @@
     background: #fff;
     cursor: pointer;
     padding: 10px;
+    text-decoration: none;
+    margin-left: 10px;
+    font-size: 15px;
+    font-weight: normal;
+    margin-bottom: 10px;
 }
 </style>
 </head>
@@ -78,6 +83,7 @@
             <span>积分：${user.integral}</span>
             <span>发布数：<span id="asking-num">${user.askingNumber}</span></span>
             <span>回答数：<span id="answer-num">${user.answerNumber}</span></span>
+            <span>资料数：<span id="upload-num">${user.uploadNumber}</span></span>
         </div>
 
         <button id="modify" style="">修改个人信息</button>
@@ -87,6 +93,7 @@
             <p>班&emsp;&emsp;级：${user.userClass}</p>
             <p>学&emsp;&emsp;号：${user.studentNo}</p>
             <p>邮&emsp;&emsp;箱：${user.email}</p>
+            <p>Q&emsp;&emsp;Q：${user.userQq}</p>
         </div>
     </div>
     <!-- 历史上传 -->
@@ -196,7 +203,7 @@
     var cnt=0;
     $('.personInfo .detailbtn').click(function () {
         if(cnt===0){
-            bot.animate({height:'200px'},showDetail);
+            bot.animate({height:'240px'},showDetail);
             function showDetail(){
                 detail.show();
             }
@@ -406,6 +413,8 @@
             success: function (data) {
                 layer.msg(data.msg);
                 if (data.code === 0) {
+                    var num = $('#upload-num');
+                    num.text(parseInt(num.text()) - 1);
                     b.parent().parent().remove();
                 }
             }
