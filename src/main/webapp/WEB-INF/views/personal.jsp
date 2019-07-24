@@ -6,8 +6,10 @@
 <head>
 <%--    <meta charset="UTF-8">--%>
     <title>个人主页</title>
-    <link rel="stylesheet" href="${hello}css/personalPage.css">
-    <link rel="stylesheet" href="${hello}iconfont/iconfont.css">
+<%--    <link rel="stylesheet" href="${hello}css&js/bootstrap.min.css" type="text/css" />--%>
+<%--    <link rel="stylesheet" href="${hello}css&js/login.css" type="text/css" />--%>
+    <link rel="stylesheet" href="${hello}css/personalPage.css" type="text/css">
+    <link rel="stylesheet" href="${hello}iconfont/iconfont.css" type="text/css">
     <script src="${hello}js/jquery-3.3.1.min.js"></script>
 <style>
 .divcss5{ border:0px solid #000; width:300px; height:300px;overflow:hidden}
@@ -109,7 +111,7 @@
         <c:forEach var="i" items="${files}">
             <div style="margin-top:20px; padding-left: 30px; padding-right: 30px">
                 <font style="size:20px;color:#989898;">${i.creationTime }</font>
-                <h3><a href="${hello}question/detail/${i.md5}">${i.fileName}</a>
+                <h3><a href="${hello}file/detail/${i.md5}">${i.fileName}</a>
                     <button style="float: right" class="delete" onclick="delete_file('${i.md5}', $(this))">删除</button>
                 </h3>
                 <h3>${i.fileDetail }</h3>
@@ -195,7 +197,6 @@
 <!--  ------------------------------------------------------------------------------------------------------------------- -->
 
 
-
 <script src="${hello}layer-v3.1.1/layer/layer.js"></script>
 <script>
     var bot=$('.personInfo .bot');
@@ -248,7 +249,7 @@
             title:'修改信息',
             maxmin:true,
             shadeClose:true,
-            area:['400px','533px'],
+            area:['400px','404px'],
             content:'${hello}update.jsp'
         });
     });

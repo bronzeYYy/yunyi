@@ -68,7 +68,14 @@ public class UserController {
     // 删除上传的文件
     @RequestMapping("/delete/file")
     public AbstractResult deleteFile(String fileMd5, HttpSession session) {
-        return Utils.deleteResult(userDaoService.deleteFile(fileMd5, ((User) session.getAttribute("user")).getId()));
+        User user = (User) session.getAttribute("user");
+        AbstractResult abstractResult =
+                Utils.deleteResult(userDaoService.deleteFile(fileMd5, ((User) session.getAttribute("user")).getId()));
+        if (abstractResult.getCode() == 0) {
+            user.setUploadNumber(user.getUploadNumber() - 1);
+            session.setAttribute("user", user);
+        }
+        return abstractResult;
     }
 
     // 登陆
