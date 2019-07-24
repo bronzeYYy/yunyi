@@ -393,7 +393,7 @@
         });
     }
 
-
+    $('p>img').css('width', '48px');
 </script>
 
 </body>

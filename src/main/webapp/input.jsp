@@ -137,13 +137,44 @@
     let editor = new wangEditor('#textarea1');
     // 上传图片（举例）
     //editor.config.uploadImgFileName = 'myFileName';
+    let l;
     editor.customConfig.uploadImgServer = '/user/upload';
     editor.customConfig.uploadImgHooks = {
+        before: function (xhr, editor, files) {
+            // 图片上传之前触发
+            // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象，files 是选择的图片文件
+
+            // 如果返回的结果是 {prevent: true, msg: 'xxxx'} 则表示用户放弃上传
+            // return {
+            //     prevent: true,
+            //     msg: '放弃上传'
+            // }
+            l = layer.load();
+        },
+
+        error: function (xhr, editor) {
+            // 图片上传出错时触发
+            // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象
+            layer.msg('上传错误');
+            layer.close(l);
+        },
+        timeout: function (xhr, editor) {
+            // 图片上传超时时触发
+            // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象
+            layer.msg('上传超时，请检查网络');
+            layer.close(l);
+        },
         fail: function (xhr, editor, result) {
             // 图片上传并返回结果，但图片插入错误时触发
             // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象，result 是服务器端返回的结果
             layer.msg(JSON.parse(xhr.responseText).msg);
-        }
+            layer.close(l);
+        },
+        success: function (xhr, editor, result) {
+            // 图片上传并返回结果，图片插入成功之后触发
+            // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象，result 是服务器端返回的结果
+            layer.close(l);
+        },
     };
     editor.customConfig.customAlert = function (info) {
         // info 是需要提示的内容

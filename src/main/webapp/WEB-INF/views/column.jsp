@@ -406,7 +406,7 @@ jQuery(document).ready(function($) {
 
 		});
 	}
-
+	$('p>img').css('width', '48px');
 </script>
 
 </body>

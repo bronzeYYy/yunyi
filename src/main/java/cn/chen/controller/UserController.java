@@ -14,6 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSender;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.support.StandardMultipartHttpServletRequest;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,6 +26,7 @@ import java.io.IOException;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 // 与用户相关的操作
@@ -32,11 +36,15 @@ public class UserController {
     private JedisDao jedisDao;
     private MailSender mailSender;
     private UserDaoService userDaoService;
+
+    private StandardServletMultipartResolver multipartHttpServletRequest;
     @Autowired
-    public UserController(JedisDao jedisDao, MailSender mailSender, UserDaoService userDaoService) {
+    public UserController(JedisDao jedisDao, MailSender mailSender, UserDaoService userDaoService,
+                          StandardServletMultipartResolver multipartHttpServletRequest) {
         this.jedisDao = jedisDao;
         this.mailSender = mailSender;
         this.userDaoService = userDaoService;
+        this.multipartHttpServletRequest = multipartHttpServletRequest;
     }
 
     // 删除问题
@@ -185,10 +193,23 @@ public class UserController {
     @RequestMapping("/upload")
     public UploadResult uploadImg(HttpServletRequest request, HttpSession session) {
         // 等待确认返回信息
+        if (!multipartHttpServletRequest.isMultipart(request)) {
+            return new UploadResult();
+        }
         User user = (User) session.getAttribute("user");
         String dateTime = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(LocalDateTime.now());
         String fileName = user.getId() + "_" + dateTime;
         UploadResult uploadResult = new UploadResult();
+        Map<String, MultipartFile> multipartFileMap = multipartHttpServletRequest.resolveMultipart(request).getFileMap();
+        String name = multipartFileMap.keySet().iterator().next();
+        String n = multipartFileMap.get(name).getOriginalFilename();
+        try {
+            fileName += n.substring(n.lastIndexOf('.'));
+        } catch (IndexOutOfBoundsException e) {
+            e.printStackTrace();
+            return new UploadResult();
+        }
+
         if (QiniuUtils.uploadImg(request, fileName).getCode() == 0) {
             uploadResult.add(QiNiuConfig.BUCKET_URL + fileName);
         }

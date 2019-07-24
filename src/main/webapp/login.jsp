@@ -133,7 +133,7 @@
 	    </span>
 		<hr style="height:5px;border:none;border-top:5px groove skyblue;" />
 	</div>
-	<div style="width:300px;height:310px">
+	<div style="width:300px;height:330px">
 		<p style="font-size:20px;text-align:center;color:#708090">用户注册</p>
 
 		<input type="text" id="rzhaohao" style="margin-top:10px" class="form-control" placeholder="学号" name="studentNo" value="" />
