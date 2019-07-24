@@ -19,7 +19,7 @@ public class JedisDaoTest {
         jedisDao.addNumByName(1, "农牧");
         jedisDao.addNumByName(1, "农牧");*/
         Jedis jedis = new Jedis("192.168.190.130");
-        System.out.println(jedis.set("1", "3", "xx", "ex", 123213));
+        System.out.println(jedis.set("1", "3", "nx|xx", "ex", 122));
         jedis.close();
     }
 }

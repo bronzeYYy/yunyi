@@ -26,8 +26,14 @@ public class JedisDaoImpl implements JedisDao {
         Jedis jedis = null;
         try {
             jedis = jedisPool.getResource();
+            if (jedis.exists(email + SEND)) {
+                jedis.del(email + SEND);
+            }
+            if (jedis.exists(email + CODE)) {
+                jedis.del(email + CODE);
+            }
             Transaction transaction = jedis.multi();
-            transaction.set(email + SEND, "1", "xx", "ex", TIME);
+            transaction.set(email + SEND, "1", "nx", "ex", TIME);
             transaction.set(email + CODE, code, "nx", "ex", TIME + 200);
             List<Object> objects = transaction.exec();
             for (Object object : objects) {

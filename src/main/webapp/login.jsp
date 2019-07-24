@@ -140,8 +140,8 @@
 		<input type="text" id="rname" style="margin-top:10px" class="form-control" placeholder="昵称"  name="userName" value="" />
 		<input type="password" id="rmima" style="margin-top:10px" class="form-control" placeholder="密码" name="userPassword"  value=""/>
 		<input type="text" id="rbanji" style="margin-top:10px" class="form-control" placeholder="班级"  name="banji" value="" />
-		<input type="text" id="ryouxiang" class="form-control" style="margin-top:10px" placeholder="邮箱"  name="email" value="" />
 		<input type="text" id="userqq" class="form-control" style="margin-top:10px" placeholder="QQ，为了尽快解决您的问题，请正确填写"  name="userQq" value="" />
+		<input type="text" id="ryouxiang" class="form-control" style="margin-top:10px" placeholder="邮箱"  name="email" value="" />
 		<div>
 			<div  style="heighgt:50px;float:left;margin-top:10px">
 				<input type="text" id="ryanzheng"  class="form-control" style="width:195px" placeholder="验证码"  name="veri-code" value="" />

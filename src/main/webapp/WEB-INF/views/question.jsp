@@ -100,7 +100,6 @@ color:white;
 							<button id="answer" class="btn btn-primary">回答</button>
 							<span id="answer-cancel" style="margin-left: 10px; cursor: pointer">取消</span>
 						</div>
-
 					</div>
 			<br>
             <div style="height: 50px; padding: 15px; box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
@@ -129,7 +128,7 @@ color:white;
 							<div style="width:100px;height:100px;float:left;margin-top:20px;margin-left:30px">
 								<p><img src="${hello}user/avatar/${i.answerUser.id}"style=" width:45px ;height:45px">
 								</p>
-								<p><a style="color:#202020" href="${hello}others.jsp">${i.answerUser.userName}</a></p>
+								<p><a style="color:#202020" href="${hello}other/${i.answerUser.id}">${i.answerUser.userName}</a></p>
 							</div>
 							<div style="width:400px;float:left;margin-top:20px;margin-left:30px;">
 								<div  style="color:#202020">${i.answerContent}</div>
