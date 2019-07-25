@@ -4,8 +4,8 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.chen.dao.mysql.UserDao">
     <insert id="addUser" parameterType="cn.chen.model.User">
-        insert into user(user_name, user_password, user_class, integral, email, student_no, creation_time)
-        value (#{userName}, #{userPassword}, #{userClass}, #{integral}, #{email}, #{studentNo}, now())
+        insert into user(user_name, user_password, user_class, integral, email, student_no, creation_time, user_qq)
+        value (#{userName}, #{userPassword}, #{userClass}, #{integral}, #{email}, #{studentNo}, now(), #{userQq})
     </insert>
     <select id="getUserById" resultType="cn.chen.model.User">
         select * from user where id = #{id}

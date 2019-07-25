@@ -92,7 +92,7 @@ public class FileDaoServiceImpl implements FileDaoService {
 
     @Override
     public int getFilesCount() {
-        return 0;
+        return fileDao.getFilesCount();
     }
 
     @Override
@@ -106,7 +106,7 @@ public class FileDaoServiceImpl implements FileDaoService {
 
     @Override
     public int getFilesByName1Count(String name1) {
-        return 0;
+        return fileDao.getFilesByName1Count(name1);
     }
 
     @Override

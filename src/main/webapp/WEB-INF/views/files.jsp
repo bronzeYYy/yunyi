@@ -180,15 +180,15 @@
     var id=0;
     data.forEach(function (item,index) {
         var newnode=$("<div class='hidebar1'></div>");
-        item.forEach(function (item2) {
+        /*item.forEach(function (item2) {
             var newUL=$("<ul></ul>");
             newUL.append($("<li class='title'>"+item2.title+"</li>"));
             item2.content.forEach(function (item3) {
-                newUL.append($("<li><a style='color: #CCCCCC' href='${hello}files?name1=" + item2.belong + "&name2="+item3+"'>"+item3+"</a></li>"));
+                newUL.append($("<li><a style='color: #CCCCCC' href='${hello}files?page=1&name1=" + item2.belong + "&name2="+item3+"'>"+item3+"</a></li>"));
                 //id++
             });
             newnode.append(newUL);
-        });
+        });*/
         hide.append(newnode);
     });
 
@@ -232,19 +232,19 @@
                 <button class="btn btn-success" id="ishang">上传</button>
                 <c:choose>
                     <c:when test="${not empty param.order and param.order eq 2 }">
-                        <a style="margin-left: 5px; padding: 10px; color: #646464;" href="${hello}files?name1=${param.name1}&name2=${param.name2}&order=1"><span>按时间排序</span></a>
+                        <a style="margin-left: 5px; padding: 10px; color: #646464;" href="${hello}files?name1=${param.name1}&name2=${param.name2}&order=1&page=${param.page}"><span>按时间排序</span></a>
                     </c:when>
                     <c:otherwise>
-                        <a style="margin-left: 5px; padding: 10px; color: #646464;" href="${hello}files?name1=${param.name1}&name2=${param.name2}&order=2"><span>按热度排序</span></a>
+                        <a style="margin-left: 5px; padding: 10px; color: #646464;" href="${hello}files?name1=${param.name1}&name2=${param.name2}&order=2&page=${param.page}"><span>按热度排序</span></a>
                     </c:otherwise>
                 </c:choose>
-                <a style="padding: 10px; color: #646464;" href="${hello}column?name1=${param.name1}&name2=${param.name2}&order=1"><span>问答</span></a>
-                <a style="padding: 10px; color: #646464;"><span>当前栏目：${param.name2}</span></a>
+                <a style="padding: 10px; color: #646464;" href="${hello}column?name1=${param.name1}&name2=${param.name2}&order=1&page=1"><span>问答</span></a>
+                <a style="padding: 10px; color: #646464;"><span>当前栏目：${empty param.name2 ? param.name1 : param.name2}</span></a>
 
-                <label class="control-label">
+                <%--<label class="control-label">
                     &nbsp;<input class="form-control" type="text" placeholder="要搜索的内容" name="searchContent" value="${param.searchContent}">
                 </label>
-                <a style="padding: 10px; color: #646464; cursor: pointer" id="search">搜索</a>
+                <a style="padding: 10px; color: #646464; cursor: pointer" id="search">搜索</a>--%>
             </div>
         </div>
 
@@ -259,6 +259,7 @@
                             <a style="color:#1A1A1A" href="${hello}file/detail/${i.md5}">
                                 <img alt="图标" width="50px" src="${hello}images/ge/${i.fileType}.png">
                                     ${i.fileName }</a>
+                          <small style="color: #ff0080">${i.name1}</small>
                             <span style="float: right; font-size: 13px; color: #999999">${i.creationTime }</span>
                         </h3><br>
                         <p class="content-p" style="color:#000000">${i.fileDetail }</p><br>
@@ -356,7 +357,7 @@
 
 
 
-    var div_x_1 = 230;
+    /*var div_x_1 = 230;
     var div_y_1 = 50;
     var act=$('.active .scroll');
     for(let i=0;i<7;++i){
@@ -391,7 +392,7 @@
 
 
         });
-    }
+    }*/
 
     $('p>img').css('width', '48px');
 </script>

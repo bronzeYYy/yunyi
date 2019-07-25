@@ -164,6 +164,8 @@ public class IndexController {
         } else {
             files = fileDaoService.getFiles(start, length, order);
             count = fileDaoService.getFilesCount();
+            model.addAttribute("columnName", "文件");
+            model.addAttribute("columnDetail", Utils.getString("文件"));
         }
         model.addAttribute("files", files);
         model.addAttribute("hello", "");

@@ -21,10 +21,8 @@ import javax.validation.Valid;
 @RequestMapping(value = "/answer", method = RequestMethod.POST)
 public class AnswerController {
     private AnswerDaoService answerDaoService;
-    private UserDaoService userDaoService;
-    public AnswerController(AnswerDaoService answerDaoService, UserDaoService userDaoService) {
+    public AnswerController(AnswerDaoService answerDaoService) {
         this.answerDaoService = answerDaoService;
-        this.userDaoService = userDaoService;
     }
 
     @RequestMapping("/save")  // 保存回答
