@@ -181,7 +181,7 @@
             var newUL=$("<ul></ul>");
             newUL.append($("<li class='title'>"+item2.title+"</li>"));
             item2.content.forEach(function (item3) {
-                newUL.append($("<li><a style='color: #CCCCCC' href='${hello}column?name1=" + item2.belong + "&name2="+item3+"'>"+item3+"</a></li>"));
+                newUL.append($("<li><a style='color: #CCCCCC' href='${hello}column?order=1&page=1&name1=" + item2.belong + "&name2="+item3+"'>"+item3+"</a></li>"));
                 //id++
             });
             newnode.append(newUL);

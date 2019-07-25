@@ -63,7 +63,7 @@
         }
 
         .text div{
-            background-color: #aaaaaa;
+            background-color: #eeeeee;
             border-radius: 20px;
             float: left;
             height:40%;
