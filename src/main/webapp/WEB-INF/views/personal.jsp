@@ -82,7 +82,7 @@
 <!-- 详情页 -->
         </div>
         <div class="textinfo">
-            <span>积分：${user.integral}</span>
+<%--            <span>积分：${user.integral}</span>--%>
             <span>发布数：<span id="asking-num">${user.askingNumber}</span></span>
             <span>回答数：<span id="answer-num">${user.answerNumber}</span></span>
             <span>资料数：<span id="upload-num">${user.uploadNumber}</span></span>
@@ -421,6 +421,8 @@
             }
         })
     };
+
+    $('p>img').css('width', '48px');
 </script>
 </body>
 </html>

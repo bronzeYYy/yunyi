@@ -29,7 +29,7 @@
 <!-- 详情页 -->
         </div>
         <div class="textinfo">
-            <span>积分：${user.integral}</span>
+<%--            <span>积分：${user.integral}</span>--%>
             <span>发布数：${user.askingNumber}</span>
             <span>回答数：${user.answerNumber}</span>
             <span>资料数：${user.uploadNumber}</span>

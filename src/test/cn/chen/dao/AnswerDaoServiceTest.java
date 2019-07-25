@@ -10,14 +10,14 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 
 public class AnswerDaoServiceTest {
-    @Test
+    /*@Test
     public void test() {
-        AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(RootConfig.class);
+        *//*AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(RootConfig.class);
         AnswerDaoService answerDaoService = annotationConfigApplicationContext.getBean(AnswerDaoService.class);
         Question question = new Question();
         question.setId(2);
-        /*uestion.setQuestionContent("1");
-        question.setQuestionName("你好");*/
+        *//**//*uestion.setQuestionContent("1");
+        question.setQuestionName("你好");*//**//*
         User user = new User();
         user.setId(15);
         question.setQuestioner(user);
@@ -25,12 +25,12 @@ public class AnswerDaoServiceTest {
         answer.setAnswerContent("testtestetst");
         answer.setAnswerUser(user);
         answer.setQuestion(question);
-        System.out.println(answerDaoService.save(answer));
+        System.out.println(answerDaoService.save(answer));*//*
         //System.out.println(answerDaoService.getUserAnswersByUserId(14).size());
         //System.out.println(answerDaoService.save(answer));
-        /*List<Answer> q = answerDaoService.getAnswersByQuestionId(1);
+        *//*List<Answer> q = answerDaoService.getAnswersByQuestionId(1);
         System.out.println();
-        System.out.println();*/
+        System.out.println();*//*
     }
     @Test
     public void test1() {
@@ -39,9 +39,9 @@ public class AnswerDaoServiceTest {
         answerDaoService.getAnswersByQuestionId(1).forEach(e -> System.out.println(e.getId()));
         //System.out.println(answerDaoService.getUserAnswersByUserId(14).size());
         //System.out.println(answerDaoService.save(answer));
-        /*List<Answer> q = answerDaoService.getAnswersByQuestionId(1);
+        *//*List<Answer> q = answerDaoService.getAnswersByQuestionId(1);
         System.out.println();
-        System.out.println();*/
+        System.out.println();*//*
     }
     @Test
     public void test2() {
@@ -50,8 +50,8 @@ public class AnswerDaoServiceTest {
         answerDaoService.getUserAnswersByUserId(15).forEach(e -> System.out.println(e.getId()));
         //System.out.println(answerDaoService.getUserAnswersByUserId(14).size());
         //System.out.println(answerDaoService.save(answer));
-        /*List<Answer> q = answerDaoService.getAnswersByQuestionId(1);
+        *//*List<Answer> q = answerDaoService.getAnswersByQuestionId(1);
         System.out.println();
-        System.out.println();*/
-    }
+        System.out.println();*//*
+    }*/
 }

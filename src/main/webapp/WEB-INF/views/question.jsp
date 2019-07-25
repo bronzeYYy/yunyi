@@ -130,7 +130,7 @@ color:white;
 								</p>
 								<p><a style="color:#202020" href="${hello}other/${i.answerUser.id}">${i.answerUser.userName}</a></p>
 							</div>
-							<div style="width:400px;float:left;margin-top:20px;margin-left:30px;">
+							<div style="width:480px;float:left;margin-top:20px;margin-left:30px;">
 								<div  style="color:#202020">${i.answerContent}</div>
 							</div>
 							<div style="width:100px;height:100px;float:left;margin-top:20px;margin-left:30px;">
@@ -142,7 +142,7 @@ color:white;
 								<img onclick="star($(this), '${i.id}')" id="dianzan" src="${hello}image/dianzan1.png" style="cursor:pointer;height:25px;width:25px">
 								<span id="likenum">${i.likenum}</span>
 							</span>
-					&emsp;&emsp;&emsp;<a style="color:#202020" id="huifu"><span class="glyphicon glyphicon-comment"></span></a>
+<%--					&emsp;&emsp;&emsp;<a style="color:#202020" id="huifu"><span class="glyphicon glyphicon-comment"></span></a>--%>
 <%--					&emsp;&emsp;&emsp;<img id="getdown" src="${hello}image/down.png" style="cursor:pointer;height:25px;width:25px">--%>
 							</div>
 						</div>

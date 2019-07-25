@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 				 pageEncoding="utf-8"%>
 <%--@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" --%>
+<html>
 <head>
 	<title>云易知识问答平台</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -10,18 +11,18 @@
 	<link href="${hello}css/style.css" type="text/css" rel="stylesheet" media="all">
 	<link href="${hello}css/font-awesome.css" rel="stylesheet"> <!-- font-awesome icons -->
 	<link rel="stylesheet" href="${hello}css/owl.carousel.css" type="text/css" media="all" />
-	<link rel="stylesheet" href="${hello}css&js/bootstrap.min.css">
-	<link rel="stylesheet" href="${hello}css&js/login.css" />
-	<link href="${hello}css&js/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-	<script  src="${hello}css&js/jquery.min.js"></script>
+<%--	<link rel="stylesheet" href="${hello}css&js/bootstrap.min.css">--%>
+<%--	<link rel="stylesheet" href="${hello}css&js/login.css" />--%>
+<%--	<link href="${hello}css&js/bootstrap.css" rel="stylesheet" type="text/css" media="all" />--%>
+<%--	<script  src="${hello}css&js/jquery.min.js"></script>--%>
 
 
-	<link href="${hello}css&js/style.css" rel="stylesheet" type="text/css" media="all" />
-	<link href='http://fonts.useso.com/css?family=Raleway:400,200,100,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.useso.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>
+<%--	<link href="${hello}css&js/style.css" rel="stylesheet" type="text/css" media="all" />--%>
+	<%--<link href='http://fonts.useso.com/css?family=Raleway:400,200,100,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.useso.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>--%>
 
 
-	<link href="${hello}css&js/styles.css" rel="stylesheet">
+<%--	<link href="${hello}css&js/styles.css" rel="stylesheet">--%>
 	<link rel="stylesheet" type="text/css" href="${hello}css&js/component.css" />
 
 	<link href="${hello}css&js/animate.min.css" rel="stylesheet">
@@ -30,8 +31,8 @@
 	<script src="${hello}js/jquery-2.2.3.min.js"></script>
 	<!-- //js -->
 	<!-- web-fonts -->
-	<link href="http://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-	<link href="http://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700" rel="stylesheet">
+	<%--<link href="http://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+	<link href="http://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700" rel="stylesheet">--%>
 
 	<!-- //web-fonts -->
 	<script>
@@ -62,7 +63,7 @@
         }
 
         .text div{
-            background-color: #E8E8E8;
+            background-color: #aaaaaa;
             border-radius: 20px;
             float: left;
             height:40%;
@@ -80,8 +81,8 @@
         }
 
         .text h6{
-            width: 60%;
-            margin-left:40px;
+            width: 80%;
+            margin-left:20px;
             line-height: 20px;
 
         }
@@ -114,7 +115,7 @@
 				<li class="active"><a class="scroll" href="${hello}column" id="test">专栏</a></li>
 				<li class="active"><a class="scroll" href="#" id = "yuan">发现</a></li>
 				<li class="active"><a class="scroll" href="#lianxi" id ="coll">联系我们</a></li>
-				<li class="active"><a class="scroll" href="personal.jsp" id ="${hello}user">我的主页</a></li>
+				<li class="active"><a class="scroll" href="${hello}user" id ="${hello}user">我的主页</a></li>
 			</ul>
 			<ul class="nav navbar-nav pull-right">
 				<li>
@@ -206,13 +207,12 @@
 		<img src="${hello}images/ziliao.png">
 		<strong><h5>资料总汇</h5></strong><hr>
 
-		<h6>分享资料，下载资料，找资料，查资料，在资料汇总方面我们云易很专业。
+		<h6>分享资料，下载资料，在资料汇总方面我们云易很专业。
 		</h6>
 	</div>
 	<div id="di3" style="margin-top: 50px" onclick="window.location='${hello}column'">
 		<img src="${hello}images/jiaoliu.png">
 		<strong><h5 >互动便捷</h5></strong><hr>
-
 		<h6>想和校内大牛们探讨人生吗？来云易，让你方便快捷地和大神们进行灵魂对话。
 		</h6>
 	</div>
@@ -376,8 +376,6 @@
 
 	});
 </script>
-
-
 
 </body>
 </html>

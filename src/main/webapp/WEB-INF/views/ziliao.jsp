@@ -112,7 +112,7 @@ color:white;
                                                <!-- 资料评价 -->
 					<div style="height: 50px; padding: 15px; box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
 						<b><p style="color:#202020">评论列表
-							<c:choose>
+							<%--<c:choose>
 								<c:when test="${not empty param.order}">
 									<a style="margin-left: 5px; color: #646464;"
 										 href="${hello}file/detail/${file.md5}?order=1">
@@ -122,7 +122,7 @@ color:white;
 									<a style="margin-left: 5px; color: #646464;"
 										 href="${hello}file/detail/${file.md5}?order=2"><small>按热度排序</small></a>
 								</c:otherwise>
-							</c:choose>
+							</c:choose>--%>
 						</p></b>
 
 					</div>
@@ -137,7 +137,7 @@ color:white;
 						<p><a style="color:#202020" href="${hello}other/${file.uploader.id}">${i.commentUser.userName}</a></p>
 					</div>
                
-				<div style="width:400px;height:100px;float:left;margin-top:20px;margin-left:30px;">
+				<div style="width:500px;height:100px;float:left;margin-top:20px;margin-left:30px;">
 					<div  style="color:#202020">${i.commentContent}</div>
 				</div>
 				<div style="width:100px;height:100px;float:left;margin-top:20px;margin-left:30px;">	
