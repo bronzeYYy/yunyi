@@ -8,13 +8,13 @@
 <head>
     <meta charset="utf-8">
     <title>问答专栏</title>
-    <link rel="stylesheet" href="${hello}css&js/bootstrap.min.css">
+<%--    <link rel="stylesheet" href="${hello}css&js/bootstrap.min.css">--%>
     <link rel="stylesheet" href="${hello}css&js/login.css" />
     <link href="${hello}css&js/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
     <link href="${hello}css&js/scrollbar.css" rel="stylesheet" type="text/css" media="all" />
     <link href="${hello}css&js/ddsmoothmenu.css" rel="stylesheet" type="text/css" media="all" />
-    <script  src="${hello}css&js/jquery.min.js"></script>
-    <link href="${hello}css&js/style.css" rel="stylesheet" type="text/css" media="all" />
+<%--    <script  src="${hello}css&js/jquery.min.js"></script>--%>
+<%--    <link href="${hello}css&js/style.css" rel="stylesheet" type="text/css" media="all" />--%>
     <link href="${hello}css/style2.css" rel="stylesheet" type="text/css" media="all" />
     <script src="${hello}layer-v3.1.1/layer/layer.js"></script>
 
@@ -85,8 +85,8 @@
     </style>
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!---->
-    <link href='http://fonts.useso.com/css?family=Raleway:400,200,100,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.useso.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>
+<%--    <link href='http://fonts.useso.com/css?family=Raleway:400,200,100,300,500,600,700,800,900' rel='stylesheet' type='text/css'>--%>
+<%--    <link href='http://fonts.useso.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>--%>
 
     <link href="${hello}css&js/styles.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="${hello}css&js/component.css" />
@@ -99,7 +99,7 @@
     <!-- //animation-effect -->
 
     <script src="${hello}css&js/jquery.min.js"></script>
-    <script src="${hello}css&js/bootstrap.min.js"></script>
+<%--    <script src="${hello}css&js/bootstrap.min.js"></script>--%>
 
 </head>
 <body style="background-color:#F6F6F6;background-repeat :no-repeat;background-position: right bottom;background-attachment:fixed;">

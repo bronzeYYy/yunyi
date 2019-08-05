@@ -12,7 +12,7 @@
    <script src="${hello}js/jquery-3.3.1.min.js"></script>
    <script src="${hello}js/bootstrap.js"></script>
    <script src="${hello}layer-v3.1.1/layer/layer.js"></script>
-	<script src="${hello}css&js/bootstrap.min.js"></script>
+<%--	<script src="${hello}css&js/bootstrap.min.js"></script>--%>
 	<script>
 		var test = 1;
 		var zan = 1;

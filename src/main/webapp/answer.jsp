@@ -137,7 +137,7 @@
 
 </div>
 
-<script type="text/javascript" src="dist/js/lib/jquery-1.10.2.min.js"></script>
+<%--<script type="text/javascript" src="dist/js/lib/jquery-1.10.2.min.js"></script>--%>
 <script type="text/javascript" src="js/wangEditor.min.js"></script>
 <script  src="${hello}css&js/jquery.min.js"></script>
 <script src="${hello}layer-v3.1.1/layer/layer.js"></script>

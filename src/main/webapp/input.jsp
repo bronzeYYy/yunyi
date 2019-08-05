@@ -130,7 +130,7 @@
 </div>
 
 
-<script type="text/javascript" src="${hello}dist/js/lib/jquery-1.10.2.min.js"></script>
+<%--<script type="text/javascript" src="${hello}dist/js/lib/jquery-1.10.2.min.js"></script>--%>
 <script type="text/javascript" src="${hello}js/wangEditor.min.js"></script>
 
 <script type="text/javascript">

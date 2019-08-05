@@ -9,11 +9,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
    <link rel="stylesheet" href="${hello}css/bootstrap.css">
-   <script src="${hello}js/jquery-3.3.1.min.js"></script>
+<%--   <script src="${hello}js/jquery-3.3.1.min.js"></script>--%>
    <script src="${hello}js/bootstrap.js"></script>
    <script src="${hello}layer-v3.1.1/layer/layer.js"></script>
    <script src="${hello}css&js/jquery.min.js"></script>
-	<script src="${hello}css&js/bootstrap.min.js"></script>
+<%--	<script src="${hello}css&js/bootstrap.min.js"></script>--%>
 	<script>
 		$(document).ready(function() {
 			//关闭

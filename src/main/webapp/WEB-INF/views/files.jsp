@@ -11,7 +11,7 @@
         <c:redirect url="${hello}files?page=1"/>
     </c:if>
     <title>资料专栏</title>
-    <link rel="stylesheet" href="${hello}css&js/bootstrap.min.css">
+<%--    <link rel="stylesheet" href="${hello}css&js/bootstrap.min.css">--%>
     <link rel="stylesheet" href="${hello}css&js/login.css" />
     <link href="${hello}css&js/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
     <link href="${hello}css&js/scrollbar.css" rel="stylesheet" type="text/css" media="all" />
@@ -86,10 +86,10 @@
     </style>
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!---->
-    <link href='http://fonts.useso.com/css?family=Raleway:400,200,100,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.useso.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>
+<%--    <link href='http://fonts.useso.com/css?family=Raleway:400,200,100,300,500,600,700,800,900' rel='stylesheet' type='text/css'>--%>
+<%--    <link href='http://fonts.useso.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>--%>
 
-    <link href="${hello}css&js/styles.css" rel="stylesheet">
+<%--    <link href="${hello}css&js/styles.css" rel="stylesheet">--%>
     <link rel="stylesheet" type="text/css" href="${hello}css&js/component.css" />
 
     <link href="${hello}css&js/animate.min.css" rel="stylesheet">
@@ -99,8 +99,8 @@
     </script>
     <!-- //animation-effect -->
 
-    <script src="${hello}css&js/jquery.min.js"></script>
-    <script src="${hello}css&js/bootstrap.min.js"></script>
+<%--    <script src="${hello}css&js/jquery.min.js"></script>--%>
+<%--    <script src="${hello}css&js/bootstrap.min.js"></script>--%>
 
 </head>
 <body style="background-color:#F6F6F6;background-repeat :no-repeat;background-position: right bottom;background-attachment:fixed;">
@@ -180,15 +180,6 @@
     var id=0;
     data.forEach(function (item,index) {
         var newnode=$("<div class='hidebar1'></div>");
-        /*item.forEach(function (item2) {
-            var newUL=$("<ul></ul>");
-            newUL.append($("<li class='title'>"+item2.title+"</li>"));
-            item2.content.forEach(function (item3) {
-                newUL.append($("<li><a style='color: #CCCCCC' href='${hello}files?page=1&name1=" + item2.belong + "&name2="+item3+"'>"+item3+"</a></li>"));
-                //id++
-            });
-            newnode.append(newUL);
-        });*/
         hide.append(newnode);
     });
 

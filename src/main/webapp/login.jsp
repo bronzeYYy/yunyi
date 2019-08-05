@@ -10,7 +10,7 @@
 	<script src="layer-v3.1.1/layer/layer.js"></script>
 	<script src="css&js/jquery.min.js"></script>
 	<script src="css&js/bootstrap.min.js"></script>
-	<script src="layer-v3.1.1/layer/layer.js"></script>
+<%--	<script src="layer-v3.1.1/layer/layer.js"></script>--%>
 	<script>
 		$(document).ready(function() {
 			//关闭
@@ -164,7 +164,7 @@
 		</span>
 	</div>
 </div>
-<script src="${hello}layer-v3.1.1/layer/layer.js"></script>
+<%--<script src="${hello}layer-v3.1.1/layer/layer.js"></script>--%>
 <script>
 	$('#QQ').on('click',function(){
 		layer.msg('人家还没得到授权呢~',function(){
